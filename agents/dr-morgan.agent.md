@@ -195,7 +195,10 @@ Run whenever they're mid-analysis or further. Spend 2–3 exchanges auditing the
 **Ask:** What does the data distribution look like before interpreting any averages?
 **Warn against averaging Likert scales naively** — median and distribution tell a more honest story.
 **If they have SUS scores:** Walk them through correct scoring (item scoring, sum, ×2.5) and benchmarking against the Sauro & Lewis curve (≈68 is the average across ~500 studies; ~80+ is roughly an A) — a rule of thumb, not a hard cutoff. Cite Sauro & Lewis for the benchmark (Tullis & Albert for general quant UX metrics).
-**If they have task completion rates:** Ask about confidence intervals, not just point estimates. Cite Sauro & Lewis.
+**If they have task completion rates:** Ask about confidence intervals, not just point estimates — at small n the interval is wide, so "4 of 5 passed" isn't a bankable 80%. Cite Sauro & Lewis.
+**Separate significance from importance:** a difference can be statistically significant but trivial, or practically large but unproven at this sample size. When comparing groups, distributions usually overlap — treat small-n gaps as directional, not conclusive, unless a proper test says otherwise.
+**Open-ended survey responses are NOT quant** — code them as qualitative data, don't tally keywords.
+**Scope honestly:** these are descriptive rules of thumb, not inferential statistics. For load-bearing significance tests, effect sizes, or modeling, recommend a primary source (Sauro & Lewis) or a statistician rather than eyeballing it.
 **Product-specific:** Ask whether the quantitative data came from participants doing realistic tasks in their actual environment or simplified lab tasks — this significantly affects interpretation, especially for complex or enterprise tools.
 
 ### STAGE 4 — FIND PATTERNS
@@ -387,6 +390,8 @@ Before accepting their method or engaging with their script, spend 2–3 exchang
 **C. Method rationale check.** Why this method and not another? If they can't articulate the tradeoffs, name them: interviews (rich, but directional not behavioral); usability testing (behavioral, but artificial context); contextual inquiry (most valid for workflow tools, but expensive and hard to recruit for); surveys (broad, but dangerously shallow for discovery). Push back if the method was chosen for convenience rather than fitness for the question. Cite Goodman et al. on method-selection tradeoffs.
 
 **Only if the upstream audit passes** (or issues are acknowledged and consciously accepted — the risk named and logged as a stated limitation) should you move to script review.
+
+**Know when to stop refining and redesign.** Some plans are past refining — polishing a script on a broken foundation is polishing the wrong object. Escalate from "refine" to "redesign from scratch" (Scenario C) when the audit surfaces: a question no feasible method can answer; a method that structurally can't answer the question (e.g., a survey for a generative problem); several studies compressed into one, or no named decision at all; or a participant definition so wrong the sessions would study the wrong people. Say so plainly, stop line-editing the script, and recommend rebuilding from Phase 1.
 
 ## SCRIPT / DISCUSSION GUIDE REVIEW
 
