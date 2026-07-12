@@ -1,10 +1,11 @@
 # Dr. Morgan — UX Research Mentor Prompts
 
 A suite of AI prompt "agents" that act as a senior UX researcher mentor. They are
-designed to be pasted into **Copilot Chat** (or any chat interface that accepts a
-system prompt / custom instructions) and used to guide, challenge, and co-pilot UX
-research work for **IBM Secure products** (HashiCorp Vault, Boundary, Consul,
-Terraform, and Vault Radar).
+designed to be pasted into any chat interface that accepts a system prompt /
+custom instructions, and used to guide, challenge, and co-pilot UX research work
+for your own product(s). Each prompt has a fill-in **PRODUCT CONTEXT** section you
+complete with the product(s) your team works on, so the guidance stays specific
+rather than generic.
 
 The mentor — **Dr. Morgan**, a senior researcher with a PhD in HCI — teaches
 through Socratic questioning, challenges weak reasoning, insists on traceable
@@ -25,19 +26,19 @@ switches between them on demand.
 
 | File | Role | Use it when |
 |---|---|---|
-| `agents/dr-morgan.agent.md` | **The orchestrator.** One invocable Dr. Morgan agent (VS Code `.agent.md` with frontmatter) with a scenario router that covers all five scenarios (A–E) and switches between them mid-conversation. | You want a single agent for a whole research effort and may move between tasks. |
+| `agents/dr-morgan.agent.md` | **The orchestrator.** One invocable Dr. Morgan agent (`.agent.md` with frontmatter) with a scenario router that covers all six scenarios (A–F) and switches between them mid-conversation. | You want a single agent for a whole research effort and may move between tasks. |
 | `agents/research-synthesis-checker.agent.md` | **Research-integrity auditor.** Invocable agent that cross-checks every synthesized finding, theme, quote, and statistic against the source-of-truth (transcripts, raw notes, survey CSVs) to catch hallucinated, unsupported, or overstated claims before a synthesis is shared. | You have a draft synthesis and need to verify it is faithfully grounded in the source data; run it again after a draft readout deck is prepared to confirm no invented or falsified evidence made it into slides. |
 | `ux_plan_from_scratch.md` | **Scenario C** — build a research plan from zero through six phases (questions → participants → method → guide → analysis → output). | You're starting a brand-new study and have nothing yet. |
 | `select_best_method.md` | **Scenario B** — method-selection advisor built around the *Minimum Viable Research Method* and real recruitment constraints. | You need to pick the most rigorous method you can actually execute. |
 | `analyze_your_data.md` | **Scenario A** — guides analysis through six stages and pushes findings up the observation → insight ladder. | You have data and need help reaching defensible insights. |
 | `challenge_and_refine_plan.md` | **Scenario D** — critical review of an existing plan, method, or discussion guide via a rapid upstream audit + script review. | You have a draft and want it stress-tested. |
 | `competitive_analysis.md` | **Scenario E** *(new)* — competitive-analysis co-pilot comparing 2–4 products across UX, capability, and market/strategy lenses, with templates, a source-integrity audit, and a **visual-evidence workflow** for sourcing and comparing competitor UI from web pages, screenshots, and demo video. | You're comparing competing products to inform a design, positioning, or roadmap decision. After you synthesize the comparison output, run the Research-integrity auditor to verify claims and evidence traceability before sharing. |
-| `qualitative_data_analysis_skill.md` | **Specialized deep-dive** on qualitative analysis with a *mandatory data-integrity audit* (hallucination, confirmation bias, and cherry-picking detection) before any analysis proceeds. | Analysis quality control is the priority and you want the strictest integrity checks. |
-| `research-readout-deck/` | **Artifact generator** — converts raw research materials (interview notes, usability observations, survey data, verbatim quotes) into a findings-first `.pptx` readout built for a mixed product-team audience (PM + Eng + UXD). Enforces separation of observation, interpretation, and recommendation; calibrates evidence strength; defaults to HashiCorp Vault branding. Bundles a slide-by-slide recipe reference (`references/deck-structure.md`). | You've completed a study and need to present findings to your product team. |
+| `qualitative_data_analysis_skill.md` | **Scenario F** — specialized deep-dive on qualitative analysis with a *mandatory data-integrity audit* (hallucination, confirmation bias, and cherry-picking detection) before any analysis proceeds. Also wired into the Dr. Morgan agent as the integrity-first analysis path. | Analysis quality control is the priority and you want the strictest integrity checks. |
+| `research-readout-deck/` | **Artifact generator** — converts raw research materials (interview notes, usability observations, survey data, verbatim quotes) into a findings-first `.pptx` readout built for a mixed product-team audience (PM + Eng + UXD). Enforces separation of observation, interpretation, and recommendation; calibrates evidence strength; uses neutral, fill-in branding placeholders you set for your own product. Bundles a slide-by-slide recipe reference (`references/deck-structure.md`). | You've completed a study and need to present findings to your product team. |
 
 ---
 
-## The five scenarios (Dr. Morgan agent)
+## The six scenarios (Dr. Morgan agent)
 
 The `agents/dr-morgan.agent.md` agent routes between these. You can name a scenario,
 let Dr. Morgan auto-detect from your message, or switch at any time.
@@ -50,10 +51,13 @@ let Dr. Morgan auto-detect from your message, or switch at any time.
   in order.
 - **D — Challenge & Refine Plan:** audit upstream decisions and review a draft
   discussion guide for leading, double-barreled, and hypothetical questions.
-- **E — Competitive Analysis** *(new)*: compare 2–4 products across three lenses,
+- **E — Competitive Analysis:** compare 2–4 products across three lenses,
   research-then-refine, with a verdict tied to a real decision — including
   **side-by-side UI teardowns** built from sourced screenshots, product-tour
   pages, and demo video.
+- **F — Deep Qualitative Analysis** (integrity-first): the same territory as A,
+  but the strictest QA path — runs a *mandatory data-integrity audit*
+  (hallucination, confirmation bias, cherry-picking) before any analysis proceeds.
 
 ---
 
@@ -127,10 +131,16 @@ improvised. Full citations live in the individual prompt files.
 
 ## How to use
 
-1. **Invoke the agent** — in VS Code Copilot Chat, select the **Dr. Morgan** agent
-   (`agents/dr-morgan.agent.md`) directly. Or, for a single scenario, open one of the
-   standalone scenario files and copy its contents into **Copilot Chat or IBM Bob** as a
-   system prompt / custom instructions, or as the first message in a new chat.
+> **First, fill in `PRODUCT CONTEXT`.** Every scenario file (and the readout deck's
+> branding) has a fill-in **PRODUCT CONTEXT** section marked with `[PLACEHOLDER]`
+> tokens. Replace it with the product(s), personas, and workflows your team works on
+> before using the prompt — that's what keeps the guidance specific rather than generic.
+
+1. **Invoke the agent** — in any client that supports `.agent.md` agents, select the
+   **Dr. Morgan** agent (`agents/dr-morgan.agent.md`) directly. Or, for a single
+   scenario, open one of the standalone scenario files and copy its contents into any
+   chat interface as a system prompt / custom instructions, or as the first message in
+   a new chat.
 2. Describe what you're working on. Dr. Morgan will route you to the right scenario
    (or follow the one scenario you loaded) and guide you from there.
 3. Paste in your own materials — research questions, transcripts, draft guides,
@@ -181,7 +191,7 @@ work.
 
 ## Repo
 
-- **Repository:** [kirsten-hosic/UX-Research-Skills](https://github.com/kirsten-hosic/UX-Research-Skills)
-- **Clone:** `https://github.com/kirsten-hosic/UX-Research-Skills.git`
+- **Repository:** [kirstenhosic/UX-Research-Skills](https://github.com/kirstenhosic/UX-Research-Skills)
+- **Clone:** `https://github.com/kirstenhosic/UX-Research-Skills.git`
 - **License:** MIT
-- **Maintainer:** [@kirsten-hosic](https://github.com/kirsten-hosic)
+- **Maintainer:** [@kirstenhosic](https://github.com/kirstenhosic)
