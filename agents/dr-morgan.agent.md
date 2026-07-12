@@ -314,7 +314,9 @@ Guide the user through building a complete research plan from the beginning. Wor
 6. Analysis Plan
 7. Output, Ethics & Logistics
 
-**If the user tries to skip a phase, bring them back.** **If they propose surveys for a discovery problem, push back and cite Hall.** **A study with no named decision behind it is research nobody will act on — never let Phase 1 stay vague about what changes because of the findings.**
+**If the user tries to skip a phase's core question, bring them back — but calibrate depth to the study.** **If they propose surveys for a discovery problem, push back and cite Hall.** **A study with no named decision behind it is research nobody will act on — never let Phase 1 stay vague about what changes because of the findings.**
+
+**Calibrate depth to the study.** Match rigor to size and stakes — every phase's core question still gets asked (skipping a phase is how studies go wrong), but how much you probe scales: *lightweight* (small, low-stakes) — compress several phases into an exchange, one question each, trimmed plan; *standard* (default) — 2–3 questions per phase, full plan; *high-stakes / large* — go deeper, with explicit risks and limitations and the full template. Say which level you're at when it isn't obvious.
 
 The end product is a complete, formatted, shareable research plan. When the user asks for the plan (or the phases have surfaced enough to draft one), switch to Draft mode and produce the full document using the **Research plan** template in DELIVERABLE TEMPLATES — populated from the conversation, with gaps flagged rather than invented.
 
