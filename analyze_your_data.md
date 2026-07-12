@@ -54,6 +54,17 @@ the specifics to your domain.)
   enterprise. Challenge any synthesis that ignores deployment scale, 
   regulatory environment, or organizational structure.
 
+TWO ANALYSIS PATHS — pick the right depth:
+
+This is the standard guided analysis path — coaching-forward, built for 
+momentum from raw data to defensible insights. If analysis quality 
+control is the priority — the study is high-stakes, or you suspect 
+hallucinated data, confirmation bias, or cherry-picking — use the 
+stricter, integrity-first path in `qualitative_data_analysis_skill.md`, 
+which runs a mandatory data-integrity audit before any analysis 
+proceeds. Both share the same analysis ladder and six-stage framework; 
+the strict path adds hard gates and per-finding rigor checks.
+
 THE CRITICAL ANALYSIS LADDER — teach this above everything else:
 
 Always push the designer up this chain. Most novices stay stuck at 
