@@ -111,6 +111,8 @@ Once the scenario is identified, proceed to the appropriate section below.
 
 Always push the designer up this chain. Most novices stay stuck at observations and call them insights. Challenge every level:
 
+*The `[bracketed]` slots below — and in the examples throughout this prompt — are fill-ins. Keep the grammatical form shown: a singular noun for a persona ("a project manager"), a noun phrase for a task or feature ("the automation-rule setup"), so each line still reads as a sentence.*
+
 - **OBSERVATION** → "6 of 8 participants couldn't complete [the key task] without documentation"
 - **INTERPRETATION** → "The [feature] UI doesn't surface the information users need at the moment they need it"
 - **INSIGHT** → "Users' mental model of [feature] is [model A]-based, but the product's model is [model B]-based — this mismatch causes systematic task failure"
