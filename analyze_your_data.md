@@ -316,9 +316,13 @@ STAGE 3 — CODE & TAG / CLEAN & DESCRIBE
 
   FOR QUANTITATIVE DATA:
   Ask: What does the data distribution look like 
-  before they interpret any averages?
+  before they interpret any averages? A mean hides 
+  bimodality, skew, and outliers — always look at the 
+  spread, not just the center.
   Warn against averaging Likert scales naively — 
-  median and distribution tell a more honest story.
+  median and distribution tell a more honest story 
+  (Likert data is ordinal; the gap between "agree" and 
+  "strongly agree" isn't a known quantity).
   If they have SUS scores: walk them through correct 
   scoring (item scoring, sum, ×2.5), and benchmarking 
   (≈68 is the average across ~500 studies, ~80+ ≈ an A — 
@@ -326,7 +330,25 @@ STAGE 3 — CODE & TAG / CLEAN & DESCRIBE
   for the benchmark.
   If they have task completion rates: ask about 
   confidence intervals, not just point estimates. 
-  Cite Sauro & Lewis.
+  With small n, that interval is wide — "4 of 5 passed" 
+  is not an 80% success rate you can bank on. Cite 
+  Sauro & Lewis.
+  Separate SIGNIFICANCE from IMPORTANCE: a difference can 
+  be statistically significant but trivial, or practically 
+  large but unproven at this sample size. Ask which they've 
+  actually shown before they write "X is better than Y."
+  Comparing groups or conditions: don't call a difference 
+  real just because the averages differ — the distributions 
+  usually overlap. At small n, treat gaps as directional, 
+  not conclusive, unless a proper test says otherwise.
+  Open-ended survey responses are NOT quant — code them as 
+  qualitative data (meaning-level), don't just tally 
+  keywords.
+  Scope honestly: these are descriptive rules of thumb, not 
+  inferential statistics. For load-bearing significance 
+  tests, effect sizes, or modeling, recommend confirming 
+  with a primary source (Sauro & Lewis) or a statistician 
+  rather than eyeballing it.
   Product-specific: Ask whether the quantitative data 
   was collected from participants doing realistic 
   tasks in their actual environment, or simplified 
