@@ -186,6 +186,16 @@ work.
   copies of each scenario, so when you change a standalone file, mirror the change in
   the agent (or treat the agent as the source of truth and regenerate the standalones).
   They will drift otherwise.
+- **Shared blocks are duplicated on purpose.** Each scenario file is self-contained so
+  it can be pasted into a chat on its own, which means the `OPERATING PRINCIPLES` block
+  (calibrate to experience · Coach/Draft modes · never fabricate data · never fabricate
+  sources · protect participant data) is **repeated verbatim** across every skill file.
+  That's the price of portability, not an accident. When you edit that block, mirror the
+  change to **all** skill files (or pick one as canonical and regenerate the rest) so they
+  stay identical. Quick drift check — this should print exactly one hash:
+  ````
+  for f in *.md; do b=$(awk '/^OPERATING PRINCIPLES \(apply throughout/{p=1} /^MENTORING RULES/{p=0} p' "$f"); [ -n "$b" ] && printf '%s' "$b" | md5; done | sort -u
+  ````
 
 ---
 
