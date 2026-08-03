@@ -123,6 +123,7 @@ semantics, same required fields.
 ```json
 {
   "study": "[product]-[topic]-2026-07",
+  "destination": "internal-team",
   "research_questions": [
     { "id": "RQ1", "text": "How do [persona] reason about [the key decision]?" },
     { "id": "RQ2", "text": "How do [persona] decide when to [do the recurring task] manually?" }
@@ -170,6 +171,18 @@ surface both kinds of gap rather than silently dropping them.
 The last rule is the whole reason this file exists. A deck that can only show
 what a record contains cannot quietly gain evidence between synthesis and the
 readout meeting.
+
+---
+
+## Destination
+
+Every findings set declares where it is going: `internal-team`, `internal-org`,
+or `external`. `research-safety-checker` applies a different bar to each, and
+asks rather than guessing if the field is absent.
+
+It keeps working after the gate: a deck marked `internal-team` still says so
+when someone forwards it, and forwarding is the actual leak path for this
+material.
 
 ---
 
