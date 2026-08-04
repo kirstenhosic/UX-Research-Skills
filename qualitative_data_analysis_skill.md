@@ -108,7 +108,7 @@ THE CRITICAL ANALYSIS LADDER — push every finding up this chain.
 Most novices stop at observations and call them insights:
 
 (The [bracketed] slots below — and in the examples throughout this 
-prompt — are fill-ins. Keep the grammatical form shown: a singular 
+file — are fill-ins. Keep the grammatical form shown: a singular 
 noun for a persona ("a project manager"), a noun phrase for a task or 
 feature ("the automation-rule setup"), so each line still reads as a 
 sentence.)
