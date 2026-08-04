@@ -3,10 +3,10 @@
 An invokable UX research mentor, plus the skills and evaluator agents that check
 its work.
 
-You load the Dr. Morgan agent in your AI tool, describe what you're working on,
-and it coaches you through the research — or drafts the artifact and then picks it
-apart with you. **Claude is the recommended tool**, and anything that can load an
-agent file or accept custom instructions will work.
+You load the Dr. Morgan agent in your AI tool and describe what you're working on.
+It coaches you through the research, or drafts the artifact and then picks it apart
+with you. **Claude is the recommended tool**, and anything that can load an agent
+file or accept custom instructions will work.
 
 Dr. Morgan is the mentor: a senior researcher with a PhD in HCI who asks
 questions before handing over answers, argues with weak reasoning, insists that
@@ -16,7 +16,7 @@ plan, guide, coding frame, finding, or matrix, then critique it with you at the
 same standard.
 
 Nothing here ships unchecked. Anything the suite produces runs an **evaluation
-loop** — five independent evaluator agents that verify the work, hand back what's
+loop**: five independent evaluator agents that verify the work, hand back what's
 broken, and cap the retries before a person has to look. And when Dr. Morgan does
 the analysis itself, it stops mid-way and asks you to sign off on the themes
 before anything gets built on top of them.
@@ -34,13 +34,13 @@ it with your product, your personas, your workflows. This is the step that makes
 the guidance specific to your work, and skipping it is the single most common way
 to get generic advice back.
 
-**2. Invoke the agent.** In Claude — or any tool that loads agent files — select
+**2. Invoke the agent.** In Claude, or any tool that loads agent files, select
 **Dr. Morgan** by name and start talking to it. If your tool has no agent support,
 paste the file into its custom-instructions box, or send it as the first message in
 a new chat. The agent behaves the same either way; invoking it is just less
 friction.
 
-**3. Say what you're working on.** A plain sentence is fine — "I have eight
+**3. Say what you're working on.** A plain sentence is fine: "I have eight
 interviews about our setup flow and I don't know where to start." Dr. Morgan
 figures out which of the six scenarios fits and goes from there. You can also
 name the scenario yourself, or switch mid-conversation.
@@ -48,7 +48,7 @@ name the scenario yourself, or switch mid-conversation.
 **4. Paste your materials when asked.** Research questions, transcripts, draft
 guides, competitor notes. Swap participant names, email addresses, and phone
 numbers for IDs (P1, P2) before you paste. Roles, account names, and regions can
-stay — they're what make a finding actionable, and there's a separate check that
+stay. They're what make a finding actionable, and there's a separate check that
 governs where they're allowed to travel. Treat the chat the way you'd treat any
 outside tool holding research data.
 
@@ -73,7 +73,7 @@ that come from AI tooling, or that this repo uses in a particular way.
 |---|---|
 | artifact | Anything the suite produces for someone else to read: a research plan, a discussion guide, a findings doc, a competitive analysis, a slide deck. |
 | agent | A prompt packaged so a tool can load it by name. The configuration at the top of an `.agent.md` file is called *frontmatter*; you don't need to touch it. |
-| skill | A prompt bundled with its supporting files — templates, reference docs — usually shipped as one zipped file. |
+| skill | A prompt bundled with its supporting files (templates, reference docs), usually shipped as one zipped file. |
 | system prompt / custom instructions | The box in your chat tool where you set standing instructions for a whole conversation instead of retyping them. |
 | gate | A checker that reads a finished artifact and reports whether it passes. There are five, and each looks for something different. |
 | verdict | The block a gate ends with: `PASS`, `PASS_WITH_FLAGS`, or `FAIL`, plus what to do next. Written in a fixed shape so a person or a script can act on it without reading prose. |
@@ -118,9 +118,9 @@ Rounded boxes are people. The hexagon is the one place a person decides instead 
 an agent. Dotted arrows are loops back.
 
 Two things the shape of this is meant to show. Coach mode never leaves the top of
-the diagram — no gates, because you did the work and there's no draft to verify.
-And every path out of `Verdict` ends with a person: release is your call, revision
-is capped at two passes, and escalation goes straight to you.
+the diagram. No gates run there, because you did the work and there's no draft to
+verify. And every path out of `Verdict` ends with a person: release is your call,
+revision is capped at two passes, and escalation goes straight to you.
 
 ---
 
@@ -133,7 +133,7 @@ as the work moves.
   every finding up the ladder from observation to interpretation to insight to
   recommendation.
 - **B — Select the best method.** Recommends the most rigorous method you can
-  actually execute, given who you can really get access to and what's at stake.
+  execute, given who you can get access to and what's at stake.
 - **C — Build a plan from scratch.** Seven phases in order: frame, questions,
   participants, method, guide, analysis, output. Depth scales to the size and
   stakes of the study.
@@ -145,8 +145,8 @@ as the work moves.
   Includes side-by-side UI teardowns built from sourced screenshots, product-tour
   pages, and demo video.
 - **F — Deep qualitative analysis.** Same territory as A, strictest path. Runs a
-  mandatory data-integrity audit — hallucination, confirmation bias,
-  cherry-picking — before any analysis proceeds.
+  mandatory data-integrity audit for hallucination, confirmation bias, and
+  cherry-picking before any analysis proceeds.
 
 ---
 
@@ -160,16 +160,16 @@ Confirmation bias and cherry-picking get named out loud. Analysis from memory
 isn't allowed.
 
 **Provenance integrity.** Each piece of evidence records who the participant was.
-When an internal colleague describes *customers'* experience, that's secondhand —
-it establishes what they believe about customers, which is a different claim from
+When an internal colleague describes *customers'* experience, that's secondhand. It
+establishes what they believe about customers, which is a different claim from
 what customers do. Ordinary traceability can't tell the two apart, so the gates
 check provenance separately.
 
 **Source integrity**, in Scenario E. Every claim carries a label:
 `[verified]`, `[vendor claim]`, `[inference]`, or `[unknown]`. A vendor saying it
 does something is a claim until corroborated. Volatile data gets dated. Citations
-are never invented. Visual evidence gets the same treatment — screenshots and
-clips are labeled by source type (`[live product]`, `[marketing]`, `[demo video]`,
+are never invented. Visual evidence gets the same treatment. Screenshots and clips
+are labeled by source type (`[live product]`, `[marketing]`, `[demo video]`,
 `[third party]`) and dated, and UX never gets scored from marketing imagery
 alone.
 
@@ -185,10 +185,10 @@ the reasoning behind it.
 ### A person reviews the themes first
 
 Every gate in this suite runs on a finished artifact. That means none of them
-looks at the stage where the interpretive commitments actually get made. In Draft
+looks at the stage where the interpretive commitments get made. In Draft
 mode Dr. Morgan codes the corpus and clusters the codes, so the checkpoint stops
-there and asks you for a decision on each theme — accept, revise, split, or
-reject — before synthesis builds anything on top.
+there and asks you for a decision on each theme (accept, revise, split, or reject)
+before synthesis builds anything on top.
 
 No agent runs it. An LLM judging an LLM's themes is a second opinion drawn from
 the same blind spots.
@@ -201,8 +201,8 @@ Coach mode is exempt, since you did the clustering yourself. Flagged at
 
 Not last, and not queued inside the ordered sequence. The quality gates stop at
 the first failure, so a safety scan placed last would never run at all on an
-artifact that failed groundedness — identifying data could sit undiscovered
-through two full revision cycles, on the one check that's never negotiable.
+artifact that failed groundedness. Identifying data could sit undiscovered through
+two full revision cycles, on the one check that's never negotiable.
 
 The scan knows two things about your artifact.
 
@@ -229,7 +229,7 @@ email addresses, and phone numbers block for everyone at every tier.
 
 Destination matters because the bar for a team readout isn't the bar for a
 conference talk. Apply the external bar to internal work and you'll block
-ordinary research over an account name the whole team already knows — inside the
+ordinary research over an account name the whole team already knows. Inside the
 company, "an SRE at Contoso Financial" is a category of user at a category of
 customer. Where the study's consent terms are stricter than the destination
 allows, consent wins. That's what participants were promised, and an office norm
@@ -250,7 +250,7 @@ Three more rules govern the loop:
   re-checks its own rewrite launders its errors past itself. Revision goes back to
   the producer, scoped to the blocking items alone.
 - **Two revision passes, then a person looks.** An artifact that can't clear the
-  bar in two tries has a problem upstream of the wording — the data, the question,
+  bar in two tries has a problem upstream of the wording: the data, the question,
   or the method.
 - **Blocking and flagged are different.** Blocking means the artifact asserts
   something untrue, unsupported, or unsafe; it gets fixed. Flagged means the
@@ -261,8 +261,8 @@ Three more rules govern the loop:
 ### What the gates deliberately don't delete
 
 Coverage gets checked in both directions. A finding that maps to none of your
-stated research questions is kept and flagged — unplanned findings are often the
-most valuable thing in a study. A research question that no finding addressed is
+stated research questions is kept and flagged, because unplanned findings are often
+the most valuable thing in a study. A research question that no finding addressed is
 flagged too, so you can choose between a follow-up, recovering it from the
 corpus, or rewriting the question. Both gaps travel to the readout.
 
@@ -301,7 +301,7 @@ Nobody argues with it, which feels like agreement and isn't.
   jumping between a systemic mental-model claim and "the modal close target is
   small" with no signal.
 - Write the finding once, then add a short "what this means for you" per audience
-  — engineers, PMs, designers, researchers, customer-facing teams. Keep it to one
+  (engineers, PMs, designers, researchers, customer-facing teams). Keep it to one
   document; splitting into five guarantees four go stale.
 
 Most advice about sounding human makes writing worse, so the standard also says
@@ -338,7 +338,7 @@ each.
 |---|---|---|
 | [`agents/dr-morgan.agent.md`](agents/dr-morgan.agent.md) | The main agent. Routes between all six scenarios and switches mid-conversation. | You want one agent for a whole research effort. |
 | [`EVALUATION-LOOP.md`](EVALUATION-LOOP.md) | How an artifact gets released: which gates run on what, the verdict shape, the revision cycle and its two-pass cap, escalation triggers, and the Definition of Done per artifact type. | You want to know how release works, or you're adding a skill or evaluator. |
-| [`FINDINGS-CONTRACT.md`](FINDINGS-CONTRACT.md) | One shape for a finding, shared by everything that produces or reads one. Because the deck skill can only render fields a record actually contains, this is what structurally stops evidence from being invented during deck building. | You're synthesizing findings, or building anything that reads them. |
+| [`FINDINGS-CONTRACT.md`](FINDINGS-CONTRACT.md) | One shape for a finding, shared by everything that produces or reads one. Because the deck skill can only render fields a record contains, this is what structurally stops evidence from being invented during deck building. | You're synthesizing findings, or building anything that reads them. |
 | [`VOICE-AND-STYLE.md`](VOICE-AND-STYLE.md) | How outputs should read, and the 21-item rubric the readability gate scores against. | Any artifact a stakeholder will open. |
 | [`agents/research-safety-checker.agent.md`](agents/research-safety-checker.agent.md) | Pre-flight: is this safe to share? Calibrated to where the artifact is going and who the participants were. | Every artifact, first, every iteration. |
 | [`agents/research-synthesis-checker.agent.md`](agents/research-synthesis-checker.agent.md) | Gate 1: is it true? Cross-checks every claim, quote, and statistic against the source. | Any draft synthesis, competitive analysis, or readout deck. |
@@ -346,14 +346,14 @@ each.
 | [`agents/research-plan-reviewer.agent.md`](agents/research-plan-reviewer.agent.md) | The plan gate: will this study work? The only gate that runs before the money is spent. | Any research plan or discussion guide, before fieldwork. |
 | [`agents/research-readability-checker.agent.md`](agents/research-readability-checker.agent.md) | The last gate: can a mixed room act on it? Scored against `VOICE-AND-STYLE.md`. | Every artifact, last, before it leaves the team. |
 | [`ux_plan_from_scratch.md`](ux_plan_from_scratch.md) | Scenario C, in full. Seven phases, with depth calibrated to the study's stakes (lightweight, standard, or high-stakes). | You're starting a new study with nothing yet. |
-| [`select_best_method.md`](select_best_method.md) | Scenario B, in full. Built around the Minimum Viable Research Method: establishes your real recruitment and access situation first, then applies only the constraint patterns that fit. | You need the most rigorous method you can actually run. |
+| [`select_best_method.md`](select_best_method.md) | Scenario B, in full. Built around the Minimum Viable Research Method: establishes your real recruitment and access situation first, then applies only the constraint patterns that fit. | You need the most rigorous method you can run. |
 | [`analyze_your_data.md`](analyze_your_data.md) | Scenario A, in full. Six stages, with guardrails for quantitative data (distributions, small-n confidence, significance vs. importance). The quick path. In Draft mode it stops at the theme checkpoint. | You have data and need defensible insights. |
 | [`challenge_and_refine_plan.md`](challenge_and_refine_plan.md) | Scenario D, in full. Rapid upstream audit plus script review — and it knows when to stop refining and send you back to Scenario C for a redesign. | You have a draft and want it stress-tested. |
 | [`competitive_analysis.md`](competitive_analysis.md) | Scenario E, in full. Tiered templates (a core three, plus six you add when they earn it), a source-integrity audit, and a visual-evidence workflow for comparing competitor UI. | You're comparing products to inform a design, positioning, or roadmap call. Run the safety pre-flight and the synthesis checker in source-integrity mode before sharing the output. |
 | [`qualitative_data_analysis_skill.md`](qualitative_data_analysis_skill.md) | Scenario F, in full. Mandatory data-integrity audit before any analysis, and a theme checkpoint after clustering. Also wired into the agent as its integrity-first path. | Analysis quality control is the priority. |
 | [`research-readout-deck.skill`](research-readout-deck.skill) | Artifact generator, packaged as a skill bundle — unzip to inspect. Renders a findings-first `.pptx` for a mixed product-team audience from findings records, validating them before it builds a slide and reporting gaps by finding ID. Handed raw notes, it says what that costs: `disconfirming`, `limits`, and `confidence` can't be recovered at deck-build time. Uses neutral branding placeholders you set. Needs the separate **pptx** skill to render. | You've finished a study and need to present it. |
 
-Each evaluator's own file carries its detail — what it checks, what blocks versus
+Each evaluator's own file carries its detail: what it checks, what blocks versus
 flags, the verdict it emits. This table says what each one is for.
 
 ---
@@ -383,12 +383,12 @@ citations live in the individual files.
   guidance
 
 **Competitive analysis (Scenario E)**
-- Michael E. Porter — *Competitive Strategy* (1980) — Five Forces, generic
+- Michael E. Porter — *Competitive Strategy* (1980): Five Forces, generic
   strategies
-- Christensen, Hall, Dillon & Duncan — *Competing Against Luck* (2016) — Jobs to
+- Christensen, Hall, Dillon & Duncan — *Competing Against Luck* (2016): Jobs to
   Be Done
-- April Dunford — *Obviously Awesome* (2019) — product positioning
-- Marty Cagan — *Inspired* — product judgment
+- April Dunford — *Obviously Awesome* (2019): product positioning
+- Marty Cagan — *Inspired*: product judgment
 - Amy Schade & Tim Neusesser (Nielsen Norman Group) — competitive usability
   evaluation
 
@@ -402,10 +402,10 @@ Releasing an artifact to other people takes three steps.
    artifact is going (`internal-team`, `internal-org`, or `external`). It will ask
    if you don't. This runs before everything else, every iteration.
 2. Run the quality gates in order, stopping at the first `FAIL`. Which ones apply
-   depends on what you made — [`EVALUATION-LOOP.md`](EVALUATION-LOOP.md) §3.
+   depends on what you made. See [`EVALUATION-LOOP.md`](EVALUATION-LOOP.md) §3.
 3. Act on the verdict. `REVISE` means fix the blocking items only, then re-run
    that gate. `RELEASE` means ship it, with any flags attached as Reviewer Notes.
-   `ESCALATE` means stop — the problem isn't the wording.
+   `ESCALATE` means stop, because the problem isn't the wording.
 
 ---
 
@@ -416,7 +416,7 @@ Everything below is repo upkeep. Skip it if you're here to use the skills.
 **Test fixtures live in a separate repo.** Before you change a gate, a rubric, or
 `EVALUATION-LOOP.md`, run the fixtures in
 [kirstenhosic/UX-Research-Skills-testing](https://github.com/kirstenhosic/UX-Research-Skills-testing).
-`theme-clustering/` is the one that came from here — it scores the analysis skill's
+`theme-clustering/` is the one that came from here. It scores the analysis skill's
 theme building against a published study team's own held-out theme set.
 
 **Consistent persona and format.** Every file uses Dr. Morgan and the same plain
@@ -433,8 +433,8 @@ path.
   insights through six stages. Coaching-forward; integrity matters, but the
   emphasis is forward motion.
 - [`qualitative_data_analysis_skill.md`](qualitative_data_analysis_skill.md) (the
-  skill) *audits, then analyzes*. Mandatory data-integrity audit — hallucination,
-  confirmation bias, cherry-picking — before it continues into synthesis.
+  skill) *audits, then analyzes*. Mandatory data-integrity audit for hallucination,
+  confirmation bias, and cherry-picking before it continues into synthesis.
 - [`agents/research-synthesis-checker.agent.md`](agents/research-synthesis-checker.agent.md)
   (the agent) is a *pure verifier*. Cross-checks a finished synthesis against the
   source and reports Supported / Partially Supported / Unsupported per claim. It
@@ -446,7 +446,7 @@ A is analysis: raw data to defensible insights. The deck skill is output:
 finished findings to slides. Run Scenario A first if the findings aren't
 synthesized yet.
 
-**Five evaluators, five jobs — each blind to the others'.** That blindness is the
+**Five evaluators, five jobs, each blind to the others'.** That blindness is the
 reason there's more than one. A groundedness checker will pass a perfectly-sourced
 finding that answers nothing anyone asked. A significance checker will pass a
 decision-relevant finding built on a fabricated quote. Neither notices a
@@ -461,8 +461,8 @@ participant's real name in the appendix.
 | `research-readability-checker` | Will a mixed audience understand and act on it? | Whether any of it is correct, and whether it's safe to share |
 
 **Keep the agent in sync.** `agents/dr-morgan.agent.md` embeds condensed copies of
-each scenario, so a change to a standalone file needs mirroring into the agent —
-or treat the agent as canonical and regenerate the standalones. They will drift
+each scenario, so a change to a standalone file needs mirroring into the agent.
+Or treat the agent as canonical and regenerate the standalones. They will drift
 otherwise.
 
 **Shared blocks are duplicated on purpose.** Each scenario file has to be
@@ -493,7 +493,7 @@ check 'OPERATING PRINCIPLES (apply throughout' 'MENTORING RULES'
 check 'RELEASE GATE (apply to every artifact' ''
 ````
 
-Literal prefix matching, no regex, no GNU-only flags — it runs as-is on macOS.
+Literal prefix matching, no regex, no GNU-only flags. It runs as-is on macOS.
 
 ---
 
