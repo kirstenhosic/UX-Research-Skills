@@ -1,8 +1,12 @@
-# Dr. Morgan — UX Research Mentor Prompts
+# Dr. Morgan — UX Research Skills & Agents
 
-A set of prompts that turn a chat assistant into a senior UX research mentor. You
-paste one in, describe what you're working on, and it coaches you through the
-work — or drafts the artifact and then picks it apart with you.
+An invokable UX research mentor, plus the skills and evaluator agents that check
+its work.
+
+You load the Dr. Morgan agent in your AI tool, describe what you're working on,
+and it coaches you through the research — or drafts the artifact and then picks it
+apart with you. **Claude is the recommended tool**, and anything that can load an
+agent file or accept custom instructions will work.
 
 Dr. Morgan is the mentor: a senior researcher with a PhD in HCI who asks
 questions before handing over answers, argues with weak reasoning, insists that
@@ -12,13 +16,13 @@ plan, guide, coding frame, finding, or matrix, then critique it with you at the
 same standard.
 
 Nothing here ships unchecked. Anything the suite produces runs an **evaluation
-loop** — independent checkers that verify the work, hand back what's broken, and
-cap the retries before a person has to look. And when Dr. Morgan does the
-analysis itself, it stops mid-way and asks you to sign off on the themes before
-anything gets built on top of them.
+loop** — five independent evaluator agents that verify the work, hand back what's
+broken, and cap the retries before a person has to look. And when Dr. Morgan does
+the analysis itself, it stops mid-way and asks you to sign off on the themes
+before anything gets built on top of them.
 
-No installation. You need a chat tool with a box for standing instructions, and
-about ten minutes to fill in one section.
+Nothing to install. Budget about ten minutes to fill in one section before your
+first run.
 
 ---
 
@@ -30,10 +34,11 @@ it with your product, your personas, your workflows. This is the step that makes
 the guidance specific to your work, and skipping it is the single most common way
 to get generic advice back.
 
-**2. Load the file.** If your tool can load `.agent.md` agents by name, select
-**Dr. Morgan** directly. Otherwise copy the whole file into your tool's
-custom-instructions box, or paste it as the first message in a new chat. Both
-work.
+**2. Invoke the agent.** In Claude — or any tool that loads agent files — select
+**Dr. Morgan** by name and start talking to it. If your tool has no agent support,
+paste the file into its custom-instructions box, or send it as the first message in
+a new chat. The agent behaves the same either way; invoking it is just less
+friction.
 
 **3. Say what you're working on.** A plain sentence is fine — "I have eight
 interviews about our setup flow and I don't know where to start." Dr. Morgan
@@ -51,10 +56,10 @@ That's all of it, for coaching. If you asked for Draft mode and now have an
 artifact you intend to show someone, keep going to
 [How work gets checked](#how-work-gets-checked).
 
-> **Want one file instead of the whole agent?** Every scenario also exists as a
-> standalone file you can paste on its own, and those versions go deeper than the
-> agent's condensed copies. Fill in the same `PRODUCT CONTEXT` block first. Each
-> one is self-contained — you never need the others loaded.
+> **Need more depth on one scenario?** Each of the six also exists as a standalone
+> file that goes further than the agent's condensed copy of it. Load one directly
+> when you already know exactly what you need. Fill in the same `PRODUCT CONTEXT`
+> block first; each file is self-contained, so you never need the others loaded.
 > See [File reference](#file-reference).
 
 ---
@@ -77,6 +82,45 @@ that come from AI tooling, or that this repo uses in a particular way.
 | blocking vs. flagged | Blocking means something is wrong and gets fixed. Flagged means it's accurate but a human should look. |
 | altitude | How zoomed-in a claim is. "Operators misunderstand the permission model" and "the close button is 4px too small" are different altitudes. |
 | proxy evidence | Something a colleague told you about customers, as distinct from something a customer told you. |
+
+---
+
+## How it fits together
+
+```mermaid
+flowchart TD
+    R(["You — the researcher"])
+    R --> DM["<b>Dr. Morgan</b> — the agent you talk to<br/>routes six scenarios, A through F"]
+
+    DM -->|"Coach mode — the default"| C["Socratic guidance.<br/>You do the analysis."]
+    C -.->|"you keep working"| R
+
+    DM -->|"Draft mode"| CL["Dr. Morgan codes<br/>and clusters your corpus"]
+    CL --> TC{{"THEME CHECKPOINT<br/>a person decides, not an agent<br/>accept · revise · split · reject"}}
+    TC --> SY["Synthesis"]
+    SY --> ART[["Artifact<br/>plan · guide · findings · comparison"]]
+
+    ART --> PF["<b>Pre-flight</b> — research-safety-checker<br/>safe to share with this audience?<br/>runs first, on everything, every iteration"]
+    PF --> G["<b>Quality gates, in order</b><br/>plan-reviewer · synthesis-checker<br/>significance-checker · readability-checker<br/>which ones run depends on the artifact"]
+    G --> V{"Verdict"}
+
+    V -->|"PASS or PASS_WITH_FLAGS"| SK["Output skill<br/>research-readout-deck<br/>renders the .pptx"]
+    SK --> OUT[["Released, with any flags<br/>attached as Reviewer Notes"]]
+    OUT --> R
+
+    V -->|"FAIL — REVISE<br/>blocking items only"| RV["Dr. Morgan revises.<br/>Evaluators never edit."]
+    RV -.->|"two passes maximum"| PF
+
+    V -->|"ESCALATE"| ES(["A person looks.<br/>The problem is upstream<br/>of the wording."])
+```
+
+Rounded boxes are people. The hexagon is the one place a person decides instead of
+an agent. Dotted arrows are loops back.
+
+Two things the shape of this is meant to show. Coach mode never leaves the top of
+the diagram — no gates, because you did the work and there's no draft to verify.
+And every path out of `Verdict` ends with a person: release is your call, revision
+is capped at two passes, and escalation goes straight to you.
 
 ---
 
@@ -134,17 +178,9 @@ alone.
 ## How work gets checked
 
 Dr. Morgan drafts. A safety scan and up to three quality gates check. Dr. Morgan
-revises the blocking items. You decide.
-
-```
-themes  →  THEME CHECKPOINT  →  synthesis  →  safety pre-flight  →  gates  →  release
-           ↳ a person, not an agent                                 ↳ which gates
-             (Draft mode only)                                        depends on
-                                                                      the artifact
-```
-
-Read the arrows left to right as the order things happen in. The `↳` marks a note
-about the step above it.
+revises the blocking items. You decide. The diagram in
+[How it fits together](#how-it-fits-together) shows the whole path; this section is
+the reasoning behind it.
 
 ### A person reviews the themes first
 
@@ -324,7 +360,7 @@ flags, the verdict it emits. This table says what each one is for.
 
 ## Frameworks and canon referenced
 
-The prompts cite established literature so the guidance is grounded. Full
+The scenarios cite established literature so the guidance is grounded. Full
 citations live in the individual files.
 
 **Methods, interviewing, and analysis**
@@ -375,7 +411,13 @@ Releasing an artifact to other people takes three steps.
 
 ## For maintainers
 
-Everything below is repo upkeep. Skip it if you're here to use the prompts.
+Everything below is repo upkeep. Skip it if you're here to use the skills.
+
+**Test fixtures live in a separate repo.** Before you change a gate, a rubric, or
+`EVALUATION-LOOP.md`, run the fixtures in
+[kirstenhosic/UX-Research-Skills-testing](https://github.com/kirstenhosic/UX-Research-Skills-testing).
+`theme-clustering/` is the one that came from here — it scores the analysis skill's
+theme building against a published study team's own held-out theme set.
 
 **Consistent persona and format.** Every file uses Dr. Morgan and the same plain
 instruction opener (`For this conversation, you are Dr. Morgan…`).
