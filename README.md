@@ -49,6 +49,7 @@ switches between them on demand.
 | `challenge_and_refine_plan.md` | **Scenario D** — critical review of an existing plan, method, or discussion guide via a rapid upstream audit + script review — and it knows when to stop refining and send you back to Scenario C for a redesign. | You have a draft and want it stress-tested. |
 | `competitive_analysis.md` | **Scenario E** — competitive-analysis co-pilot comparing 2–4 products across UX, capability, and market/strategy lenses, with tiered templates (a core three, plus six you add only when they earn their place), a source-integrity audit, and a **visual-evidence workflow** for sourcing and comparing competitor UI from web pages, screenshots, and demo video. | You're comparing competing products to inform a design, positioning, or roadmap decision. After you synthesize the comparison output, run the gate sequence — safety pre-flight, then the synthesis checker in source-integrity mode — before sharing. |
 | `qualitative_data_analysis_skill.md` | **Scenario F** — specialized deep-dive on qualitative analysis with a *mandatory data-integrity audit* (hallucination, confirmation bias, and cherry-picking detection) before any analysis proceeds, and a *theme checkpoint* after clustering and before synthesis. Also wired into the Dr. Morgan agent as the integrity-first analysis path. | Analysis quality control is the priority and you want the strictest integrity checks. |
+| `test-fixtures/theme-clustering/` | **Fixture for the interpretation claim.** The first test here that measures judgment rather than extraction: cluster a published 93-code codebook into themes, scored against the study team's own theme set, held out. Three tests — blind clustering, prevalence discipline on evidence that cannot support a count (the correct answer is to refuse), and the codebook-checkpoint packet. Inputs are generated locally from a gated QDR deposit and never committed. Tests `codes → themes`, not `transcript → codes`. | You're changing how themes get built, or you want to know whether the analysis skills hold up on interpretation. |
 | `research-readout-deck.skill` | **Artifact generator** (packaged skill bundle — unzip to inspect) — renders a findings-first `.pptx` readout for a mixed product-team audience (PM + Eng + UXD) **from findings records**, validating them before it builds a slide and reporting gaps by finding ID rather than filling them in. Handed raw notes instead, it says what that costs — `disconfirming`, `limits`, and `confidence` cannot be recovered at deck-build time — and reconstructs records as it goes. Enforces separation of observation, interpretation, and recommendation; calibrates evidence strength; uses neutral, fill-in branding placeholders you set for your own product. Bundles a slide-by-slide recipe + theme reference (`references/deck-structure.md`); requires the separate **pptx** skill to render slides. | You've completed a study and need to present findings to your product team. |
 
 Each evaluator's own file carries the detail — what it checks, what blocks versus
@@ -186,8 +187,9 @@ confusing — P3" passes every groundedness check if P3 said exactly that. The
 gates flag the phrasing and require the scope line to name the proxy.
 
 **Known limits are stated,** not glossed: LLM evaluators grade leniently on text
-that reads rigorous, chained gates compound false positives, and a green verdict
-is not a correct study. See §7 of [`EVALUATION-LOOP.md`](EVALUATION-LOOP.md).
+that reads rigorous, chained gates compound false positives, a hand-built answer
+key is the most likely thing in the room to be wrong, and a green verdict is not
+a correct study. See §7 of [`EVALUATION-LOOP.md`](EVALUATION-LOOP.md).
 
 ---
 
