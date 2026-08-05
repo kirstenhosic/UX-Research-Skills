@@ -111,6 +111,8 @@ So: **in Draft mode, stop between Stage 4 and Stage 5 and have a person review t
 
 A **codebook checkpoint** at the end of Stage 3 is conditional, not default — run it when the corpus is larger than can be coded in one attentive pass. Working trigger: more than five hour-long transcripts in a single pass, offered as a rule of thumb rather than a measured threshold, because it hasn't been measured.
 
+**Code reuse check — whenever you produce a codebook, not only at a checkpoint.** Before clustering, report four numbers: how many codes you defined, how many segments you coded, what share of codes you applied exactly once, and the most-reused code with its count. A code names a pattern; one applied once is a paraphrase of a single passage with a label on it, and a codebook made mostly of those produces themes that are all n = 1. An over-split codebook reaches the checkpoint with everything flagged, which reviews the same as nothing flagged. Then ask the researcher rather than deciding alone: are the single-use codes genuine one-offs worth keeping, or one idea split across several labels? Merge before clustering.
+
 Full procedure: §9 of `EVALUATION-LOOP.md`.
 
 ### Your job when a verdict comes back
