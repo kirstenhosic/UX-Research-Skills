@@ -84,11 +84,19 @@ Fill in the same `PRODUCT CONTEXT` block first; each file is self-contained.
 | **E — Competitive analysis** | You're comparing two to four products across UX, capability, and market lenses, ending in a verdict tied to a real decision. Includes UI teardowns from sourced screenshots and demo video. | [`competitive_analysis.md`](competitive_analysis.md) |
 | **F — Deep qualitative analysis** | Same territory as A, strictest path. Runs a mandatory data-integrity audit for hallucination, confirmation bias, and cherry-picking before any analysis proceeds. | [`qualitative_data_analysis_skill.md`](qualitative_data_analysis_skill.md) |
 
+**A or F?** Both analyze data. A is the quicker guided path and keeps you moving;
+F front-loads a mandatory integrity audit for hallucination, confirmation bias, and
+cherry-picking before it will analyze anything. Start with A unless verification is
+the point. Either way, [`research-synthesis-checker`](agents/research-synthesis-checker.agent.md)
+is a different thing again — it never analyzes, it only checks a finished synthesis
+against the source, claim by claim.
+
 **Need a deck?** [`research-readout-deck.skill`](research-readout-deck.skill)
 renders a findings-first `.pptx` from findings records, validating each one before
 it builds a slide and reporting gaps by finding ID. Hand it raw notes instead and
 it tells you what that costs. Unzip it to inspect; it needs the separate **pptx**
-skill to render.
+skill to render. It turns finished findings into slides — if they aren't
+synthesized yet, run Scenario A first.
 
 ---
 
@@ -274,6 +282,7 @@ The gate matrix, verdict schema, and known limits are in
 | [`EVALUATION-LOOP.md`](EVALUATION-LOOP.md) | How release works: the gate matrix, the verdict shape, the two-pass cap, escalation triggers, Definition of Done per artifact type, and the known limits. Read before adding a skill or evaluator. |
 | [`FINDINGS-CONTRACT.md`](FINDINGS-CONTRACT.md) | One shape for a finding, shared by everything that produces or reads one. Because the deck skill can only render fields a record contains, this is what structurally stops evidence from being invented during deck building. |
 | [`VOICE-AND-STYLE.md`](VOICE-AND-STYLE.md) | How outputs should read, and the rubric the readability gate scores against. |
+| [`MAINTAINING.md`](MAINTAINING.md) | Repo upkeep — test fixtures, keeping the agent in sync with the standalone files, and the drift check for shared blocks. Only needed if you're editing the suite, not using it. |
 
 The six scenario files and the five evaluator agents are listed in
 [What you can ask for](#what-you-can-ask-for) and
@@ -328,82 +337,6 @@ citations live in the individual files.
 | blocking vs. flagged | Blocking means something is wrong and gets fixed. Flagged means it's accurate but a human should look. |
 | altitude | How zoomed-in a claim is. "Operators misunderstand the permission model" and "the close button is 4px too small" are different altitudes. |
 | proxy evidence | Something a colleague told you about customers, as distinct from something a customer told you. |
-
-</details>
-
----
-
-<details>
-<summary><b>For maintainers</b> — repo upkeep. Skip it if you're here to use the skills.</summary>
-
-**Test fixtures live in a separate repo.** Before you change a gate, a rubric, or
-`EVALUATION-LOOP.md`, run the fixtures in
-[kirstenhosic/UX-Research-Skills-testing](https://github.com/kirstenhosic/UX-Research-Skills-testing).
-`theme-clustering/` is the one that came from here. It scores the analysis skill's
-theme building against a published study team's own held-out theme set.
-
-**Consistent persona and format.** Every file uses Dr. Morgan and the same plain
-instruction opener (`For this conversation, you are Dr. Morgan…`).
-
-**Three analysis-integrity files, three jobs.** Easy to confuse, so:
-
-- [`analyze_your_data.md`](analyze_your_data.md) (Scenario A) *guides you to*
-  insights through six stages. Coaching-forward; integrity matters, but the
-  emphasis is forward motion.
-- [`qualitative_data_analysis_skill.md`](qualitative_data_analysis_skill.md) (the
-  skill) *audits, then analyzes*. Mandatory data-integrity audit for hallucination,
-  confirmation bias, and cherry-picking before it continues into synthesis. The
-  overlap with Scenario A is intentional — keep both.
-- [`agents/research-synthesis-checker.agent.md`](agents/research-synthesis-checker.agent.md)
-  (the agent) is a *pure verifier*. Cross-checks a finished synthesis against the
-  source and reports Supported / Partially Supported / Unsupported per claim. It
-  never analyzes or rewrites. Use it after synthesis to fact-check, then again
-  after deck drafting as a final pass.
-
-**`research-readout-deck.skill` and Scenario A serve different phases.** Scenario
-A is analysis: raw data to defensible insights. The deck skill is output: finished
-findings to slides. Run Scenario A first if the findings aren't synthesized yet.
-
-**Keep the agent in sync.** `agents/dr-morgan.agent.md` embeds condensed copies of
-each scenario, so a change to a standalone file needs mirroring into the agent. Or
-treat the agent as canonical and regenerate the standalones. They will drift
-otherwise.
-
-**Shared blocks are duplicated on purpose.** Each scenario file has to be
-self-contained so it can be pasted into a chat alone, which means the
-`OPERATING PRINCIPLES` block (calibrate to experience · Coach/Draft modes · never
-fabricate data · never fabricate sources · protect participant data) is repeated
-verbatim in every skill file. That's the cost of portability. When you edit that
-block, mirror it to all skill files, or pick one as canonical and regenerate the
-rest. Same goes for the `RELEASE GATE` / `REVISION PROTOCOL` / `COVERAGE` /
-`VOICE` block appended to each one.
-
-Quick drift check, run from the repo root. Each block should report `OK`, and the
-file names beside each hash make a mismatch diagnosable:
-
-````
-check() {
-  echo "--- $1"
-  for f in *.md; do
-    b=$(awk -v s="$1" -v e="$2" 'index($0,s)==1{p=1} e!="" && index($0,e)==1{p=0} p' "$f")
-    [ -n "$b" ] && printf '%s  %s\n' "$(printf '%s' "$b" | md5)" "$f"
-  done | sort > /tmp/_d
-  cat /tmp/_d
-  n=$(cut -d' ' -f1 /tmp/_d | sort -u | wc -l | tr -d ' ')
-  [ "$n" = 1 ] && echo "    OK — identical across $(wc -l < /tmp/_d | tr -d ' ') files" \
-                || echo "    DRIFT — $n variants"
-}
-check 'OPERATING PRINCIPLES (apply throughout' 'MENTORING RULES'
-check 'RELEASE GATE (apply to every artifact' ''
-````
-
-Literal prefix matching, no regex, no GNU-only flags. It runs as-is on macOS.
-
-This covers the six standalone scenario files only. `agents/dr-morgan.agent.md`
-carries the same guidance in markdown rather than plain text, so it can't be hashed
-against them. It's the file most likely to drift, and it has to be checked by
-reading — the scenario list in its opening paragraph and its closing sync note are
-the two places that go stale first.
 
 </details>
 
