@@ -225,10 +225,12 @@ And the loop that enforces it:
 
 ## Releasing an artifact
 
-Three steps, every time.
+Anything you drafted in Draft mode gets checked before you share it. Dr. Morgan
+runs the loop and tells you which checker comes next — load it by name in your
+AI tool, then bring the verdict back. You don't need to track which gates apply.
 
-**1. Run `research-safety-checker` first,** and tell it where the artifact is
-going. It will ask if you don't.
+**Say where it's going.** The safety scan runs first on everything, and its bar
+depends on who will read it. Dr. Morgan asks if you haven't said.
 
 | Destination | Who sees it |
 |---|---|
@@ -237,8 +239,7 @@ going. It will ask if you don't.
 | `external` | Anyone outside it: customers, conference talks, blog posts, public repos |
 
 It also asks who you talked to, because internal participants carry *more*
-permitted detail, not less — role, product area, and region are how a colleague's
-perspective becomes interpretable.
+permitted detail, not less.
 
 | Participant type | Meaning |
 |---|---|
@@ -247,21 +248,21 @@ perspective becomes interpretable.
 | `internal-proxy` | An employee describing customers' experience — support, customer success, solution architects, field engineering |
 | `sme-external` | An outside subject-matter expert who matches the persona but isn't a customer |
 
-Names, emails, and phone numbers block for everyone at every tier. Everything else
-scales with the destination: apply the external bar to internal work and you'll
-block ordinary research over an account name the whole team already knows. Where
-the study's consent terms are stricter than the destination allows, consent wins.
+Names, emails, and phone numbers block at every tier. Role, account name, and
+region scale with the destination, and stricter consent terms win.
 
-**2. Run the quality gates in order,** stopping at the first `FAIL`. Which ones
-apply depends on what you made — [`EVALUATION-LOOP.md`](EVALUATION-LOOP.md) §3 has
-the matrix, and it lives only there.
+**Then act on the verdict.** `RELEASE` ships it, with any flags attached as
+Reviewer Notes for you to weigh. `REVISE` means Dr. Morgan fixes the blocking
+items and re-runs that gate — twice at most. `ESCALATE` means stop and look at
+it yourself.
 
-**3. Act on the verdict.** `REVISE` means fix the blocking items only, then re-run
-that gate. `RELEASE` means ship it, with any flags attached as Reviewer Notes.
-`ESCALATE` means stop, because the problem isn't the wording.
+Two calls stay yours: the themes, which you accept, revise, split, or reject one
+at a time before synthesis is built on them, and whether the artifact actually
+ships. Passing the gates isn't approval. A readout deck is a new artifact and
+runs the checks again.
 
-A readout deck is a new artifact, not a byproduct of release — it runs the checks
-again, because story-editing is where invented evidence tends to show up.
+The gate matrix, verdict schema, and known limits are in
+[`EVALUATION-LOOP.md`](EVALUATION-LOOP.md).
 
 ---
 
