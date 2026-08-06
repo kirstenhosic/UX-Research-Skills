@@ -21,9 +21,9 @@ has to look. When Dr. Morgan does the analysis itself, it stops and asks you to
 sign off on the themes before anything gets built on top of them. The checks catch
 the obvious failures. Judging whether the work is any good is still yours.
 
-Nothing to install. Budget about ten minutes to fill in the `PRODUCT CONTEXT`
-section before your first run — once in the agent, and again in any standalone
-scenario file you load, since each one stands alone.
+Budget about ten minutes to fill in the `PRODUCT CONTEXT` section before your
+first run — once in the agent, and again in any standalone scenario file you load,
+since each one stands alone.
 
 ---
 
