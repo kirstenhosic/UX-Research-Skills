@@ -55,7 +55,7 @@ not equivalent, and the difference matters:
 interviews about our setup flow and I don't know where to start." Dr. Morgan
 routes to the right scenario. You can also name one, or switch mid-conversation.
 
-**4. Paste your materials when asked.** Research questions, transcripts, draft
+**4. Add your materials when asked.** Research questions, transcripts, draft
 guides, competitor notes. Swap participant names, email addresses, and phone
 numbers for IDs (P1, P2) before you paste. Roles, account names, and regions can
 stay — they're what make a finding actionable, and a separate check governs where
