@@ -41,13 +41,13 @@ the deeper scenario files it treats as source of truth.
 If your tool has no agent support you can paste the file in instead — but it is
 not equivalent, and the difference matters:
 
-> - **A pasted copy has no file access.** Dr. Morgan defers to those files in nine
->   places for things it only summarizes: the verdict schema, the
->   Definition-of-Done rubrics, the 21-item readability rubric, the
->   theme-checkpoint procedure. Pasted, those pointers are dead ends — and the risk
->   isn't a refusal, it's a rubric reconstructed from memory and delivered with the
->   same confidence. Paste the file a gate needs alongside the agent, or run that
->   gate in a tool that can read the repo.
+> - **A pasted copy has no file access.** Dr. Morgan defers to those files for the
+>   things it only summarizes: the verdict schema, the Definition-of-Done rubrics,
+>   the 21-item readability rubric, the theme-checkpoint procedure. Pasted, those
+>   pointers are dead ends — and the risk isn't a refusal, it's a rubric
+>   reconstructed from memory and delivered with the same confidence. Paste the
+>   file a gate needs alongside the agent, or run that gate in a tool that can
+>   read the repo.
 > - **Custom instructions beat a first chat message.** Custom instructions are
 >   re-applied every turn. A first message is just an early turn, and it gets
 >   buried as you paste transcripts in — which is exactly when you're asking for
@@ -214,7 +214,7 @@ worth having. None of them is a substitute for you reading the thing.
 
 **What they can't do**
 
-A green verdict means nothing blocking was found — not that the study is right.
+A `PASS` means nothing blocking was found — not that the study is right.
 These checks catch fabrication, irrelevance, incoherence, and opacity; a
 well-executed study of the wrong question passes every one of them. LLM evaluators
 also grade leniently on text that reads as rigorous, and chained checks compound
@@ -225,7 +225,7 @@ the limits are written down in [`EVALUATION-LOOP.md`](EVALUATION-LOOP.md) §7.
 
 ## Releasing an artifact
 
-Anything you drafted in Draft mode gets checked before you share it. Dr. Morgan
+Draft-mode artifacts go through the loop before they reach anyone else. Dr. Morgan
 runs the loop and tells you which checker comes next — load it by name in your
 AI tool, then bring the verdict back. You don't need to track which gates apply.
 
@@ -322,7 +322,7 @@ citations live in the individual files.
 | agent | A prompt packaged so a tool can load it by name. The configuration at the top of an `.agent.md` file is called *frontmatter*; you don't need to touch it. |
 | skill | A prompt bundled with its supporting files (templates, reference docs), usually shipped as one zipped file. |
 | system prompt / custom instructions | The box in your chat tool where you set standing instructions for a whole conversation instead of retyping them. |
-| gate | A checker that reads a finished artifact and reports whether it passes. There are five, and each looks for something different. |
+| gate | A checker that reads a finished artifact and reports whether it passes. Four of the five run as quality gates; the safety checker runs ahead of them as pre-flight. Each looks for something different. |
 | verdict | The block a gate ends with: **PASS**, **PASS WITH FLAGS**, or **FAIL**, plus what to do next. Written in a fixed shape so a person or a script can act on it without reading prose — in that machine-readable block they appear as `PASS`, `PASS_WITH_FLAGS`, `FAIL`. |
 | pre-flight | The safety scan that runs before the gates, on everything, every time. |
 | checkpoint | A stop where a *person* decides, not an agent. Two exist: the **theme checkpoint** after clustering (the default one), and a conditional **codebook checkpoint** at the end of coding, run only when the corpus is too large to code in one attentive pass. |
