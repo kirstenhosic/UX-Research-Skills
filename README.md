@@ -21,8 +21,9 @@ has to look. When Dr. Morgan does the analysis itself, it stops and asks you to
 sign off on the themes before anything gets built on top of them. The checks catch
 the obvious failures. Judging whether the work is any good is still yours.
 
-Nothing to install. Budget about ten minutes to fill in one section before your
-first run.
+Nothing to install. Budget about ten minutes to fill in the `PRODUCT CONTEXT`
+section before your first run — once in the agent, and again in any standalone
+scenario file you load, since each one stands alone.
 
 ---
 
@@ -95,10 +96,10 @@ against the source, claim by claim.
 
 **Need a deck?** [`research-readout-deck.skill`](research-readout-deck.skill)
 renders a findings-first `.pptx` from findings records, validating each one before
-it builds a slide and reporting gaps by finding ID. Hand it raw notes instead and
-it tells you what that costs. Unzip it to inspect; it needs the separate **pptx**
-skill to render. It turns finished findings into slides — if they aren't
-synthesized yet, run Scenario A first.
+it builds a slide and reporting gaps by finding ID. It turns finished findings
+into slides — hand it raw notes instead and it tells you what that costs, but run
+Scenario A first if they aren't synthesized yet. Unzip it to inspect; it needs the
+separate **pptx** skill to render.
 
 ---
 
@@ -225,9 +226,9 @@ the limits are written down in [`EVALUATION-LOOP.md`](EVALUATION-LOOP.md) §7.
 
 ## Releasing an artifact
 
-Draft-mode artifacts go through the loop before they reach anyone else. Dr. Morgan
-runs the loop and tells you which checker comes next — load it by name in your
-AI tool, then bring the verdict back. You don't need to track which gates apply.
+Draft-mode artifacts get checked before they reach anyone else. Dr. Morgan runs
+the sequence and tells you which checker comes next — load it by name in your AI
+tool, then bring the verdict back. You don't need to track which gates apply.
 
 **Say where it's going.** The safety scan runs first on everything, and its bar
 depends on who will read it. Dr. Morgan asks if you haven't said.
@@ -336,7 +337,7 @@ citations live in the individual files.
 
 ## Repo
 
-- **Repository:** [kirstenhosic/UX-Research-Skills](https://github.com/kirstenhosic/UX-Research-Skills)
+- **Repository:** [kirstenhosic/UX-Research-Skills](https://github.com/kirstenhosic/UX-Research-Skills) *(private — ask the maintainer for access before passing the link on)*
 - **Clone:** `https://github.com/kirstenhosic/UX-Research-Skills.git`
 - **License:** MIT
 - **Maintainer:** [@kirstenhosic](https://github.com/kirstenhosic)
