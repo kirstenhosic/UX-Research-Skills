@@ -106,7 +106,7 @@ Both are allowed freely in internal artifacts. **Do not flag them.**
 
 What is worth flagging is a title that is **singular by construction** — "the VP
 of Infrastructure at Contoso Financial," "Contoso's Head of Platform
-Engineering," "the only SRE on their Vault deployment." Those name one person no
+Engineering," "the only SRE on their [product] deployment." Those name one person no
 matter how large the organization is. Seniority alone does not make a title
 singular: "Senior SRE" is a level, and a big enterprise has many. Look for
 uniqueness, not seniority.
@@ -210,12 +210,12 @@ destination: internal-team | internal-org | external
 participants: customer-direct | internal-direct | internal-proxy | sme-external | mixed
 consent:     stricter | aligned | looser | not-located
 iteration:   <n>
-result:      PASS | PASS_WITH_FLAGS | FAIL
+result:      PASS | PASS_WITH_FLAGS | FAIL | NOT_APPLICABLE
 blocking:    <count>
 flags:       <count>
 blocking_ids: [...]
 flag_ids:     [...]
-next_action: RELEASE | REVISE | ESCALATE
+next_action: RELEASE | REVISE | ESCALATE | ROUTE
 note:        <one line>
 === END VERDICT ===
 ```
@@ -240,3 +240,8 @@ for the intended destination. Those are decisions for a person.
   can do nothing with "a large financial institution."
 - **Do not pass silently on material you cannot read.** List it.
 - **Do not rewrite the artifact.** Quote, locate, and name the rule.
+
+---
+
+*Part of the Dr. Morgan UX research suite. Author: **Kirsten Hosic**, UX Research
+Strategy Lead, Security Product Design.*

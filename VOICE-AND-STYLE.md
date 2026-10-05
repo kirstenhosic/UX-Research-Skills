@@ -136,6 +136,15 @@ Words that cluster in generated text and rarely in a researcher's notes:
 Not banned — some are ordinary words with ordinary uses. But three of them in
 one paragraph is a signature.
 
+There's a second vocabulary tell that's about accuracy, not tone: **don't
+relabel the unit the study counts, and don't reach for a grand synonym where the
+customer's own plain word exists.** For a customer's set of clusters, use their
+unit — "fleet", "footprint", "deployment", or plain "clusters" — not "estate",
+which imports a scale the research didn't measure. And never reuse a word the
+study counts as a loose catch-all: if the deck reports "environments" as a
+measured unit, "environment" can't also mean "wherever their stuff runs." A word
+that carries a number has to keep meaning that number every time it appears.
+
 ### 1.10 Over-signposting
 
 "First, we'll examine the methodology. Then we'll turn to findings. Finally,
@@ -162,6 +171,17 @@ hallway. Method goes lower, where a skeptic will look for it.
 
 **One idea per sentence.** Concrete nouns, active verbs, named actors. If a
 sentence has two ideas joined by "and," it's usually two sentences.
+
+**Use plain words. Keep formality low.** Write the way you'd explain it to a
+colleague at their desk, not the way you'd write it for a journal. Prefer the
+everyday word over the formal one: *use* not *utilize*, *so* not *therefore* or
+*thus*, *about* not *regarding* or *with respect to*, *help* not *facilitate*,
+*enough* not *sufficient*, *start* not *commence*, *show* not *demonstrate*,
+*before* not *prior to*. Short declarative sentences. Contractions are fine.
+Academic register and research-process framing describe *your* work, not the
+reader's takeaway — keep them out of anything a stakeholder opens. This is the
+lowest formality that still reads as competent, not casualness: see Part 5,
+*Don't fake casualness*. Plain is not sloppy.
 
 **Quantify exactly.** "6 of 8," not "most." "2 of 8, both [persona A]," not "some
 users." Exact counts at small n are honest twice over — they give the real
@@ -236,6 +256,25 @@ documents guarantees four go stale.
   words daily, they are the actual words. Don't over-simplify for an audience
   that knows more than the document does.
 
+### Methods sections are brief
+
+Say what you did and what it can't tell you. Not why you designed it that way.
+The audience is not academic and does not need the rationale behind the study
+design — that reasoning is the researcher's, and it belongs in planning notes,
+not in the deliverable. A method note or methodology section states the sample,
+the method, when it ran, and the one or two limits that most constrain the
+findings (**what it cannot tell you**, which always stays). Everything else
+about the design comes out. This holds for every output in the suite: findings
+reports, readout decks, and research plans.
+
+### Numbered lists
+
+When a list is numbered, use plain sequential numbers — `1.`, `2.`, `3.` in
+Markdown, and Word's native numbering in a `.docx` (the
+`research-document-template` handles this). Never hand-build decimal outline
+numbers like `1.1`, `1.2`, `2.1` — they are hard to read and drift out of order
+the moment a list changes.
+
 ### Length
 
 A findings readout that runs past two pages loses the PM. Two pages, or a
@@ -251,7 +290,7 @@ artifact as a whole.
 
 **Structure**
 1. Leads with the answer, not the method or the background
-2. Findings ordered by importance, not by chronology or by research question number
+2. Findings ordered by the story, not by chronology or by research question number. The sequence is the narrative the room should walk through — set up the problem, then its implications, then what follows — with the most important finding earning its place in that arc rather than being buried. On a readout deck, the finding **numbers track presentation order** (F1 → F2 → F3 is the order they appear, not the order they were analyzed); if you re-order findings, renumber them and update every cross-reference — the summary/at-a-glance slide, next-steps tags, follow-up-study links, and speaker notes — so no F# points at the wrong finding. This broadens the original "ordered by importance" item in place; the numbered cross-references in §4.8 of `EVALUATION-LOOP.md` stay intact.
 3. Visual weight tracks evidence strength — the strongest finding is not the shortest section
 4. Altitude is marked or grouped; no unsignalled jumps between systemic and interface level
 5. Fits its budget (findings readout ≤ 2 pages, or 1 page + appendix)
@@ -264,10 +303,10 @@ artifact as a whole.
 10. Bold marks only what should survive a skim
 
 **Substance**
-11. Every quantifier is exact. Any instance of `most`, `many`, `several`, `a number of`, or `some users` where a count exists is a failure.
+11. Every quantifier is exact. Any instance of `most`, `many`, `several`, `a number of`, or `some users` where a count exists is a failure. Ranking adjectives that stand in for a count fail the same way: `widest`, `deepest`, `strongest`, `biggest`, `most significant` imply an order without giving the number that earns it. Replace with the fact ("came up in 5 of 7 sessions, more than any other area"). Added 2026-09-16; broadens the existing blocking item rather than adding a new one, so the numbered cross-references in §4.8 of `EVALUATION-LOOP.md` stay intact.
 12. At least one verbatim quote per major finding
 13. At least one concrete, specific detail that could only come from having been there
-14. Confidence and limits stated in the researcher's own voice, not only in a table
+14. Confidence and limits stated in the researcher's own voice, not only in a table. They stay in the findings record and speaker notes always. Placement on a *deck* follows the destination: on an `internal-team` readout the weak-signal qualifier may sit in the notes or be left off the slide face (the room sat in the sessions); on an `internal-org` or `external` deck it must appear on the slide or a clearly-marked notes line. This never removes confidence or limits from the record — it only moves the qualifier off the slide face for the internal team.
 15. Every recommendation is an action with an owner
 16. The summary concludes rather than restates — it would be wrong if the findings were different
 17. No unearned both-sidesing
@@ -282,6 +321,22 @@ artifact as a whole.
     destination (`internal-team` / `internal-org` / `external`). That gate holds
     the tier table and the consent rule; this rubric defers to its verdict
     rather than re-deciding it.
+
+**Appended**
+
+22. No sentence is interrupted by an em dash or en dash. The thought finishes;
+    the qualification arrives as a new sentence or a bracketed aside. Hyphens
+    in compound words and minus signs are fine. Added 2026-09-02 with the
+    findings-report skill and appended rather than inserted, because earlier
+    items are cited by number here and in §4.8 of `EVALUATION-LOOP.md`. See
+    Part 5's punctuation entry for the rule's scope and rationale.
+
+23. Plain language, low formality. No formal or academic word where a common
+    word carries the same meaning (*utilize*, *therefore*, *regarding*,
+    *facilitate*, *commence*, *prior to* and their kin), and no unnecessary
+    nominalization. Methods sections state what was done and what it can't tell
+    you, not the design rationale. Appended 2026-09-14 with the plain-language
+    update; appended, not inserted, for the same numbering reason as item 22.
 
 Items 11, 15, and 16 are blocking. Item 21 is owned by the safety gate, which
 runs before any of this. The rest are
@@ -303,10 +358,20 @@ something they know well* — plain, direct, unhurried. Plain is not casual.
 don't read as authentic, they read as careless, and in a document asking a room
 to spend money that's expensive.
 
-**Don't panic about punctuation.** Em-dashes, semicolons, and the serial comma
-are not tells. Uniformity is the tell. A document with varied sentence lengths
-and one em-dash per page is fine; a document with no em-dashes and metronomic
-rhythm still reads generated.
+**Don't panic about punctuation, with one exception.** Semicolons and the
+serial comma are not tells, and uniformity is still the strongest one: a
+document with metronomic rhythm reads generated no matter how it's punctuated.
+The exception, adopted 2026-09-02 as a suite-wide rule for released artifacts:
+**no sentence is interrupted by an em dash or en dash.** Finish the thought,
+then start the next sentence, or put the aside in brackets. "Configuration
+broke down at the auth screen (six of eight participants) before anyone
+reached policies," not "Configuration broke down — six of eight — at the auth
+screen." The interrupting dash has become the most widely recognized
+generated-text signature among stakeholders, and a report read as generated
+loses the room whether or not the signal is fair. Hyphens in compound words
+and minus signs are not dashes and are fine. The rule governs artifacts a
+stakeholder will open; this repo's own documentation predates it and is not
+retrofitted.
 
 **Don't manufacture opinions.** "I think" attached to a claim you can't defend
 is worse than the neutral version. Stance has to be earned by evidence — the
@@ -321,3 +386,8 @@ vagueness that reads generated.
 some of it is legitimately a form — timeline, consent, screener criteria. Voice
 matters in the framing, the questions, and the rationale. It does not need to
 be present in the logistics table.
+
+---
+
+*Part of the Dr. Morgan UX research suite. Author: **Kirsten Hosic**, UX Research
+Strategy Lead, Security Product Design.*

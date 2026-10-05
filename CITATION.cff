@@ -1,0 +1,24 @@
+cff-version: 1.2.0
+title: "Dr. Morgan — UX Research Skills & Agents"
+message: "If you use, adapt, or build on this suite, please cite it."
+type: software
+authors:
+  - family-names: Hosic
+    given-names: Kirsten
+repository-code: "https://github.com/kirstenhosic/UX-Research-Skills"
+abstract: >-
+  An invokable, product-agnostic UX research mentor for product teams, with a
+  scenario router covering analysis (with an integrity-first audit built in), method selection,
+  study planning, plan and discussion-guide critique, and competitive analysis —
+  plus seven independent evaluator agents that gate every drafted artifact for
+  participant safety, plan soundness, discussion-guide quality, survey-instrument
+  quality, groundedness, significance, and readability.
+keywords:
+  - ux-research
+  - user-research
+  - qualitative-analysis
+  - discussion-guide
+  - research-operations
+  - llm-agents
+  - evaluation
+license: MIT
