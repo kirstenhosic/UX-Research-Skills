@@ -560,6 +560,30 @@ RELEASE GATE (apply to every artifact this file produces)
   checking, and they never edit; that separation is what keeps
   the check independent.
 
+  YOU CANNOT RUN THE CHECKERS YOURSELF — the researcher selects
+  each one and pastes its verdict back. So make verification
+  status visible at every seam, in the chat (never in the
+  artifact), with two explicit callouts:
+
+    - When you hand an artifact to a gate, say so and mark it
+      unverified: "Select <the checker due next> and paste its
+      verdict back. Until then this draft is NOT independently
+      verified — I produced it and can't verify my own work.
+      (You can also ask a general assistant in this workspace
+      to run it for you.)"
+    - When a verdict comes back, confirm it in one line naming
+      the checker and what it confirmed — "research-plan-
+      reviewer verified: every research question maps to the
+      guide and back," or "research-synthesis-checker verified:
+      every quote byte-matched and every count is exact." If it
+      failed, say which checker and how many blocking issues,
+      and that the artifact stays unverified until it passes.
+
+  Never call an artifact checked, verified, or ready when no
+  verdict has come back. An artifact is a draft until every
+  checker it is due for has passed; name the ones still
+  outstanding.
+
   PRE-FLIGHT, on everything, every iteration:
 
     research-safety-checker
