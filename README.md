@@ -87,8 +87,20 @@ one scenario file it loads for whatever you're working on.
 **`/dr-morgan`** in the Claude panel. That starts Dr. Morgan in the main
 conversation, where it launches each checker itself with a fresh context, and
 the other skills are there as `/` commands too (`/research-findings-report`,
-`/research-readout-deck`, and so on). The Claude setup lives in `.claude/` and is
-generated from `agents/` and `skills/`, so it always matches them.
+`/research-readout-deck`, and so on). Saying "start Dr. Morgan" works too. The
+Claude setup lives in `.claude/` and is generated from `agents/` and `skills/`, so
+it always matches them.
+
+If `/dr-morgan` isn't in the `/` menu:
+
+- **Open the repo folder itself** in VS Code (File → Open Folder), not a folder
+  above it. Claude only looks for `.claude/` and `CLAUDE.md` at the top of the
+  open folder.
+- **Accept the workspace trust prompt** the first time you open the folder.
+- **Start a new chat after pulling.** Commands load when a chat starts.
+- **Type `/skills`** to see what Claude found in this session.
+- Or just type **"Start Dr. Morgan"**. The repo's `CLAUDE.md` tells Claude to
+  start it even when the command didn't register.
 
 **You'll know it's loaded.** Dr. Morgan opens its first reply with an
 identification line — `Dr. Morgan · Scenario — · Coach mode` — and repeats

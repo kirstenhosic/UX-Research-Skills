@@ -325,6 +325,15 @@ by hand: edit `agents/` or `skills/`, run the script, and commit both. The check
 fails if they disagree. Copies rather than symlinks, because a symlink may not
 survive the repo being copied to another host.
 
+`/dr-morgan` is model-invocable on purpose. If the VS Code extension doesn't
+register a project command (wrong folder open, trust not accepted, a chat
+started before a pull), the typed text reaches the model, and a skill marked
+`disable-model-invocation` would leave it unable to help. The root `CLAUDE.md`,
+which loads in every chat, is the second fallback: it tells Claude to start Dr.
+Morgan when asked, by reading the skill file directly if need be. Skill and
+agent descriptions are capped at Claude's 1,024-character limit by the build,
+at a sentence end; a longer one can stop a skill loading.
+
 ## Checkers always start from a fresh context
 
 Dr. Morgan launches the checkers itself where the tool lets one agent launch

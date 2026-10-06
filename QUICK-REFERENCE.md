@@ -9,8 +9,8 @@ One page for using the suite. The full guide is [`README.md`](README.md).
 1. **Give it your product.** A file in [`product-context/`](product-context/), the
    `PRODUCT CONTEXT` block in the agent, or answer Dr. Morgan's five questions.
 2. **Start Dr. Morgan** and say what you're working on in a sentence. In Claude
-   in VS Code, open the repo folder and type **`/dr-morgan`**. In other tools,
-   select the Dr. Morgan agent by name.
+   in VS Code, open the repo folder and type **`/dr-morgan`**, or just say
+   "Start Dr. Morgan". In other tools, select the Dr. Morgan agent by name.
 3. **Swap names, emails, and phone numbers for P1, P2…** before you paste anything.
 
 Every reply opens with a status line, like `Dr. Morgan · Scenario A · Draft mode
