@@ -311,6 +311,20 @@ there is a pointer, not a copy to keep in parity. When you improve any of
 them, grep for `TED+W` and `always-probe` and visit every hit before you
 commit — the same sweep as the count words below.
 
+## `.claude/` is generated, for Claude Code users
+
+Claude Code (the CLI and the VS Code extension) only finds project agents in
+`.claude/agents/` and skills in `.claude/skills/<name>/SKILL.md`, in its own
+frontmatter format; it never reads `agents/*.agent.md`. `./build-claude.sh`
+derives that setup from the sources: the seven checkers as full copies with
+read-only tools, Dr. Morgan as a full-copy `/dr-morgan` skill that only a person
+can start (so it runs in the main conversation and can launch the checkers as
+fresh-context subagents), and each skill as a short pointer to its real folder in
+`skills/`, so no script, reference, or font is duplicated. Never edit `.claude/`
+by hand: edit `agents/` or `skills/`, run the script, and commit both. The check
+fails if they disagree. Copies rather than symlinks, because a symlink may not
+survive the repo being copied to another host.
+
 ## Checkers always start from a fresh context
 
 Dr. Morgan launches the checkers itself where the tool lets one agent launch
@@ -597,9 +611,10 @@ someone to notice. It checks that:
   `agents/dr-morgan.agent.md` (`scripts/check_gate_rows.py`). The theme set is
   skipped because it is a human checkpoint.
 - **Generated files are current.** It runs `./build-rubrics.sh`, `./build-skill.sh`,
-  `templates/build-tracker.py` and `templates/build-docx.py`, then fails if
-  `rubrics/`, the `.skill` packages, `templates/docx/`, the tracker or the template
-  bundle differ from what is committed. If this fails, run the build scripts and
+  `./build-claude.sh`, `templates/build-tracker.py` and `templates/build-docx.py`,
+  then fails if `rubrics/`, the `.skill` packages, `.claude/agents/`,
+  `.claude/skills/`, `templates/docx/`, the tracker or the template bundle differ
+  from what is committed. If this fails, run the build scripts and
   commit the results. A rebuilt archive that differs only in bytes, with the same
   files and content inside, is not reported, because zip entry order and
   compression vary by platform. `scripts/zip_same.py` makes that comparison.

@@ -83,6 +83,13 @@ frontmatter grants it `read` and `search`, which is how it reaches
 `EVALUATION-LOOP.md`, `VOICE-AND-STYLE.md`, `FINDINGS-CONTRACT.md`, and the
 one scenario file it loads for whatever you're working on.
 
+**Using Claude in VS Code?** Open this repo's folder in VS Code and type
+**`/dr-morgan`** in the Claude panel. That starts Dr. Morgan in the main
+conversation, where it launches each checker itself with a fresh context, and
+the other skills are there as `/` commands too (`/research-findings-report`,
+`/research-readout-deck`, and so on). The Claude setup lives in `.claude/` and is
+generated from `agents/` and `skills/`, so it always matches them.
+
 **You'll know it's loaded.** Dr. Morgan opens its first reply with an
 identification line — `Dr. Morgan · Scenario — · Coach mode` — and repeats
 it whenever the scenario or mode changes. Once it has drafted an artifact, the

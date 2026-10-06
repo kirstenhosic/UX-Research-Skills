@@ -93,11 +93,11 @@ python3 scripts/check_counts.py || FAILED=1
 python3 scripts/check_gate_rows.py || FAILED=1
 
 # --- f. Generated files are current.
-GENERATED="rubrics *.skill templates/docx templates/06-participant-tracker.xlsx templates/UX-Research-Templates.zip"
+GENERATED="rubrics *.skill templates/docx templates/06-participant-tracker.xlsx templates/UX-Research-Templates.zip .claude/agents .claude/skills"
 if [ "$BUILD" = 1 ]; then
   build_ok=1
   log=$(mktemp)
-  for step in "./build-rubrics.sh" "./build-skill.sh" \
+  for step in "./build-rubrics.sh" "./build-skill.sh" "./build-claude.sh" \
               "python3 templates/build-tracker.py" "python3 templates/build-docx.py"; do
     if ! $step > "$log" 2>&1; then
       fail "generated: '$step' failed:"

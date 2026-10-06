@@ -29,7 +29,8 @@ When you introduce a new phrasing for one of these counts, add it here.
    plus six evaluators" is seven in total).
 
 Scans tracked and untracked-not-ignored *.md files plus CITATION.cff, except
-rubrics/ (generated from EVALUATION-LOOP.md; checked at the source).
+rubrics/ (generated from EVALUATION-LOOP.md; checked at the source) and
+.claude/ (generated from agents/ and skills/ by build-claude.sh).
 Stdlib only. Exits 1 on any mismatch.
 """
 
@@ -66,7 +67,7 @@ def scanned_files():
     except (OSError, subprocess.CalledProcessError):
         files = [os.path.relpath(p, REPO)
                  for p in glob.glob(os.path.join(REPO, "**", "*.md"), recursive=True)]
-    files = [f for f in files if not f.startswith("rubrics/")]
+    files = [f for f in files if not f.startswith(("rubrics/", ".claude/"))]
     if os.path.isfile(os.path.join(REPO, "CITATION.cff")):
         files.append("CITATION.cff")
     return sorted(f for f in files if os.path.isfile(os.path.join(REPO, f)))
