@@ -1,18 +1,18 @@
 ---
 name: research-pdf-export
 description: >
-  Convert a Markdown file into a PDF in IBM Carbon styling. Use when the user asks to convert, render, generate, or export a Markdown document (.md) into a branded or styled PDF, asks for a "styled report" or a PDF "in IBM Carbon styling," asks to "make a PDF from this markdown," or shares an .md file and wants it formatted for distribution. Produces PDFs via ReportLab using IBM Plex Sans and IBM Design Language colors, with optional cover page and auto-detected table of contents. Prefer this skill over generic markdown-to-PDF tools whenever IBM Carbon styling is wanted. Do not trigger for non-Markdown sources (Word docs, Google Docs, PDFs as input) or for documents that should not carry IBM Carbon styling.
+  Convert a Markdown file into a PDF in USWDS styling (U.S. Web Design System color tokens with the Public Sans typeface). Use when the user asks to convert, render, generate, or export a Markdown document (.md) into a branded or styled PDF, asks for a "styled report" or a PDF "in USWDS styling," asks to "make a PDF from this markdown," or shares an .md file and wants it formatted for distribution. Produces PDFs via ReportLab using the bundled Public Sans fonts and USWDS color tokens, with optional cover page and auto-detected table of contents. Prefer this skill over generic markdown-to-PDF tools whenever a styled research PDF is wanted. Do not trigger for non-Markdown sources (Word docs, Google Docs, PDFs as input) or for documents that must carry a different visual style.
 ---
 
-# Research PDF Export (Markdown → PDF in IBM Carbon styling)
+# Research PDF Export (Markdown → PDF in USWDS styling)
 
 > Adapted from `document-conversion` by Neil Everette. Usage telemetry removed.
 
-Render a Markdown file into a PDF in IBM Carbon styling using Python + ReportLab. Output uses IBM Plex Sans and IBM Design Language colors. Cover page, cover logo, footer note, and table of contents are optional.
+Render a Markdown file into a PDF in USWDS styling using Python + ReportLab. Output uses the U.S. Web Design System (USWDS) color tokens with the Public Sans typeface. Public Sans ships with the skill in `assets/fonts/` under the SIL Open Font License 1.1 (license files included), so nothing is downloaded. Cover page, cover logo, footer note, and table of contents are optional.
 
 ## Scope
 
-- **In scope:** Markdown (`.md`) input → PDF output in IBM Carbon styling.
+- **In scope:** Markdown (`.md`) input → PDF output in USWDS styling.
 - **Out of scope:** DOCX, PPTX, HTML, slide decks, non-Markdown inputs. Do not invoke this skill for those — fail closed and tell the user.
 
 ## Execution mode
@@ -37,7 +37,7 @@ SKILL_DIR="$HOME/.claude/skills/research-pdf-export"
 Before running, skim:
 
 1. `$SKILL_DIR/references/style-schema.json` — style values (fonts, colors, margins, spacing). The schema mirrors the values hardcoded in the script. Edit both to keep in sync.
-2. `$SKILL_DIR/references/ibm-brand.md` — IBM Design Language styling reference.
+2. `$SKILL_DIR/references/design-tokens.md` — USWDS color tokens, Public Sans typography, sources and licenses.
 
 ## Source markdown conventions
 
@@ -47,6 +47,7 @@ The renderer recognizes these markdown patterns. Authors should follow them; the
 - **Cover boilerplate:** `## Cover` is stripped from the body. Pass cover content via CLI args instead.
 - **Forced page break:** `<!-- pagebreak -->` (case-insensitive, on its own line) forces a page break.
 - **Horizontal rule:** `---` renders as a thin horizontal rule, not a page break.
+- **Callout:** `> ` lines render as a callout box, with inline bold, italic, and links intact. A line directly after it that starts with `--` or `—` becomes the attribution.
 - **Headings:** H1 = 32pt Light, H2 = 16pt Medium, H3 = 12pt Medium. No automatic page-per-section.
 
 <Steps>
@@ -69,7 +70,7 @@ Defaults if the user does not specify:
 - **Team:** Omit `--team` entirely unless the user names one. The cover suppresses the team row when not provided, and the PDF's author metadata stays empty — do not pass a placeholder such as a company name.
 - **Footer note:** Omit `--footer-note` unless the user asks for one (e.g. "Confidential — Internal Use Only"). Without it the footer's right side reads "Page N"; with it, "{note} · Page N".
 - **Cover logo:** None by default. A team that wants its own mark on the cover drops an SVG at `$SKILL_DIR/assets/logo.svg`, and the renderer draws it when present. Do not fetch or substitute a logo yourself.
-- **Font directory:** Omit `--font-dir` unless the user has a non-standard install. The script defaults to `~/Documents/IBM_Plex_Sans/static`. If the fonts are missing entirely, the script falls back to ReportLab's built-in fonts and continues — branding will be off but the PDF will still render.
+- **Font directory:** Omit `--font-dir`. Public Sans ships with the skill in `$SKILL_DIR/assets/fonts/` (ten static TTFs, with `OFL.txt` and `LICENSE.md`), and the script loads it from there. Nothing is downloaded. Pass `--font-dir` only to load the same ten `PublicSans-*.ttf` files from another folder. If any of them can't be loaded, the script prints one warning and renders the whole PDF in Helvetica instead: colors and layout stay the same, only the typeface changes.
 
 If — and only if — the user asks for a cover page, collect:
 
@@ -82,16 +83,18 @@ If — and only if — the user asks for a cover page, collect:
 **Install dependencies.**
 
 ```bash
-# System dependencies (check once, install if missing)
-if ! pkg-config --exists cairo 2>/dev/null; then
-  brew install cairo pkg-config
-fi
-
 # Python venv — always recreate to ensure correct packages
 rm -rf /tmp/research-pdf-venv
 python3 -m venv /tmp/research-pdf-venv
-/tmp/research-pdf-venv/bin/pip install reportlab svglib -q
+/tmp/research-pdf-venv/bin/pip install reportlab -q
+
+# svglib is only needed for the optional cover logo (assets/logo.svg)
+if [ -f "$SKILL_DIR/assets/logo.svg" ]; then
+  /tmp/research-pdf-venv/bin/pip install svglib -q
+fi
 ```
+
+No font install step: the fonts ship with the skill.
 </Step>
 
 <Step>
@@ -101,7 +104,7 @@ python3 -m venv /tmp/research-pdf-venv
 
 ```bash
 /tmp/research-pdf-venv/bin/python \
-  "$SKILL_DIR/scripts/generate_ibm_pdf.py" \
+  "$SKILL_DIR/scripts/generate_pdf.py" \
   "<source>.md" "<output>.pdf" \
   --date "<Month YYYY>" 2>&1
 ```
@@ -110,7 +113,7 @@ python3 -m venv /tmp/research-pdf-venv
 
 ```bash
 /tmp/research-pdf-venv/bin/python \
-  "$SKILL_DIR/scripts/generate_ibm_pdf.py" \
+  "$SKILL_DIR/scripts/generate_pdf.py" \
   "<source>.md" "<output>.pdf" \
   --cover \
   --title "<short primary title>" \
@@ -119,7 +122,7 @@ python3 -m venv /tmp/research-pdf-venv
   --date "<Month YYYY>" 2>&1
 ```
 
-Optional flags: `--team "<team name>"` (only if user named one), `--footer-note "<note>"` (only if user asked for one), `--font-dir "<path>"` (only for non-standard font installs). All cover content (`--title`, `--subtitle`, `--description`) comes strictly from CLI args. The script does not auto-detect cover content from the markdown.
+Optional flags: `--team "<team name>"` (only if user named one), `--footer-note "<note>"` (only if user asked for one), `--font-dir "<path>"` (only to load Public Sans from a folder other than the bundled `assets/fonts/`). All cover content (`--title`, `--subtitle`, `--description`) comes strictly from CLI args. The script does not auto-detect cover content from the markdown.
 </Step>
 
 <Step>
@@ -134,6 +137,8 @@ Source: <source>.md
 Output: <output>.pdf
 Pages: <count>
 ```
+
+If the run printed the Public Sans warning, add a line saying the PDF rendered in Helvetica instead of Public Sans, and why (the warning names the folder and the missing or unreadable files).
 </Step>
 
 </Steps>
@@ -144,6 +149,7 @@ Pages: <count>
 - **No DOCX or PPTX.** If the user asks for those formats, decline and suggest a separate skill.
 - **Source files stay intact.** Never modify the original Markdown.
 - **Run autonomously after intake.** Do not ask the user to run scripts manually.
+- **No downloads.** The fonts ship with the skill. Never fetch fonts or other assets at run time.
 - **Any markdown structure works.** No required document structure beyond the conventions above.
 - **Style values are hardcoded in the script** and mirrored in `references/style-schema.json`. Do not hardcode new colors, fonts, or dimensions inline in this SKILL.md — change the script and the schema together.
 
@@ -151,7 +157,9 @@ Pages: <count>
 
 | File | Purpose |
 |------|---------|
-| `$SKILL_DIR/scripts/generate_ibm_pdf.py` | PDF renderer (ReportLab). |
+| `$SKILL_DIR/scripts/generate_pdf.py` | PDF renderer (ReportLab). |
 | `$SKILL_DIR/references/style-schema.json` | Style values mirroring the script's hardcoded constants. |
-| `$SKILL_DIR/references/ibm-brand.md` | IBM Design Language styling reference. |
-| `$SKILL_DIR/assets/` | Optional team assets. Drop your own SVG at `assets/logo.svg` to put a logo on the cover; nothing ships here by default. |
+| `$SKILL_DIR/references/design-tokens.md` | USWDS color tokens, Public Sans typography, sources and licenses. |
+| `$SKILL_DIR/references/page-types/` | What the cover, table of contents, and content pages draw. |
+| `$SKILL_DIR/assets/fonts/` | Public Sans, ten static TTFs, with `OFL.txt` and `LICENSE.md` (SIL Open Font License 1.1). Loaded by default. |
+| `$SKILL_DIR/assets/logo.svg` | Optional, not shipped. Drop your own SVG here to put a logo on the cover (needs `svglib`). |

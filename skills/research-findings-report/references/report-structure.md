@@ -9,7 +9,7 @@ budget, only a relevance bar.
 
 The structure follows the shape of well-constructed UX research reports in
 general circulation (findings-first, evidence one layer down, method visible
-but brief, recommendations as actions) and renders in the suite's IBM Carbon
+but brief, recommendations as actions) and renders in the suite's USWDS
 styling via the research-document-template. Nothing here changes the rendering
 rule: every claim, quote, and count comes from a findings record.
 
@@ -287,12 +287,12 @@ The report uses the template's custom `sections` layout
 ```
 
 Design-system specifics the template already owns (don't restyle):
-IBM Plex Sans throughout · Blue 60 #0F62FE titles and H1 · Gray 70 #525252
-H2 · callouts on Gray 10 #F4F4F4 with a Blue 60 accent bar · table headers
-Gray 10 with bold Gray 100 text · Gray 100 #161616 body. The quote paragraph
-inside a finding renders italic; the headline renders as a callout. One
-callout in the executive summary is emphasis; a callout per section is
-noise.
+Public Sans throughout · `primary` #005EA2 titles and H1 ·
+`base-dark` #565C65 H2 · callouts on `base-lightest` #F0F0F0 with a `primary`
+accent bar · table headers `base-lightest` with bold `ink` text ·
+`ink` #1B1B1B body. The quote paragraph inside a finding renders italic; the
+headline renders as a callout. One callout in the executive summary is
+emphasis; a callout per section is noise.
 
 **Length check before rendering:** the body sections (1-7) should land at
 3-5 pages once rendered. The template's omission report tells you what was

@@ -11,7 +11,7 @@ Before you change a gate, a rubric, or `EVALUATION-LOOP.md`, run the fixtures in
 [kirstenhosic/UX-Research-Skills-testing](https://github.com/kirstenhosic/UX-Research-Skills-testing).
 `theme-clustering/` came from here: it scores the analysis skill's theme building
 against a published study team's own held-out theme set. The other three were
-built against the IBM Secure version of this suite. The gates, rubrics, and
+built against a product-specific version of this suite. The gates, rubrics, and
 `EVALUATION-LOOP.md` are the same in both versions and the fixture content is
 synthetic, so they run against this one unchanged.
 
@@ -401,7 +401,7 @@ What must not drift is the **spine**: the product one-liner and the personas
 sentence, which every file carries. In this version of the suite the spine is
 the placeholder text a team replaces, so drift here means a file whose
 placeholders no longer match the others — and a team that fills in one file
-from another's wording gets a gap where the two disagree. The IBM Secure
+from another's wording gets a gap where the two disagree. The product-specific
 version of the suite drifted four ways on this before the check existed, none
 of it visible to a byte-hash, because the wrapping differs anyway.
 

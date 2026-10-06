@@ -144,10 +144,10 @@ them separately, and ask once rather than inventing anything.
 - Which findings the user considers the headline, if they have a view
 
 **About delivery:**
-- Theme: **default to the SLM Portfolio palette** — pale-blue content slides,
-  deep-navy anchors, a single teal accent, Aptos type (the palette below). Only
-  switch to the IBM Carbon alternative if the deck is IBM-branded, or swap the
-  accent if the user requires a different brand
+- Theme: **default to the USWDS palette** — white content slides,
+  `primary-darker` anchors, a single `primary` blue accent, Public Sans type
+  (the palette below). Only swap the palette if the user requires a different
+  brand, and keep the same discipline when you do
 - Any hard constraints (must-include sections). The deck targets **~15 slides**
   by default — see the slide budget in Step 3
 - Screenshots of the tested UI (screens, states, flows, the artifact under test) — ask for these if the study touched an interface and none came with the findings; most usability readouts should be screenshot-led
@@ -277,7 +277,7 @@ evidence slide instead), and the Appendix. A tight spine beats completeness.
   `participant_type` distinction rides here too: a customer's own words and an
   internal SME reporting on customers must not read the same on the slide.
 - **The finding title and the quote must read as different things.** On a finding
-  slide the claim (the title) is the largest text — bold, upright, near-navy,
+  slide the claim (the title) is the largest text — bold, upright, `ink`,
   sitting at the top under its kicker and accent rule. The quote sits lower,
   smaller, italic, set off by the accent bar. That visual gap is what lets a
   skimming reader tell your finding from the participant's words at a glance;
@@ -370,24 +370,24 @@ to carry over:
   titles, no text-only filler slides, strong contrast, no overflow. Every slide
   needs a visual element (stat callout, icon, chart, screenshot, or quote mark).
 
-### Theme — SLM Portfolio by default (Aptos / navy + teal), IBM Carbon alternative
+### Theme — USWDS palette (Public Sans / `primary` blue on white)
 
-Default to the **SLM Portfolio palette**: light and grid-disciplined —
-predominantly **pale-blue (`#E5F6FF`)** content slides with crisp near-navy type
-(`#0E2841`), a single **teal (`#156082`)** accent, and **deep-navy (`#012F86`)**
-dark anchors for title, dividers, and closing slides (with white/pale type and a
-**sky (`#4FA6D9`)** accent on those dark slides). Flat color only (no gradients,
-shadows, glows, or rounded-corner gimmicks); lead with type hierarchy and
-whitespace, left-aligned to a grid. Typography is **Aptos** (Aptos Display for
-headings and large statements, Aptos for body, data, and small-caps meta labels),
-falling back to a clean grotesque if Aptos is unavailable — never a default serif
-like Times for body.
+Use the **U.S. Web Design System (USWDS) palette with Public Sans**: light and
+grid-disciplined — predominantly **white (`#FFFFFF`)** content slides with crisp
+`ink` type (`#1B1B1B`), a single **`primary` blue (`#005EA2`)** accent, and
+**`primary-darker` (`#162E51`)** dark anchors for title, dividers, and closing
+slides (with white type and an **`accent-cool` (`#00BDE3`)** accent on those
+dark slides). Flat color only (no gradients, shadows, glows, or rounded-corner
+gimmicks); lead with type hierarchy and whitespace, left-aligned to a grid.
+Typography is **Public Sans** (Public Sans for headings, body, data, and
+small-caps meta labels; Public Sans Light for big titles and large statements;
+Public Sans Light Italic for pull quotes; Roboto Mono only where data or a table
+needs a monospace), falling back to a clean grotesque (Helvetica Neue / Arial) if
+Public Sans is unavailable — never a serif.
 
-For an **IBM-branded** deck, use the **IBM Carbon** alternative instead — white
-(or Gray 10) content slides, a single **Blue 60** accent, **Gray 100** anchors,
-**IBM Plex** type. Either way, keep the same discipline: one dark anchor, one
-accent, light content backgrounds, AA contrast. For any other brand, swap the
-accent for that brand's primary color and hold everything else.
+Whatever palette the deck uses, keep the same discipline: one dark anchor, one
+accent, light content backgrounds, AA contrast. For another brand, swap in that
+brand's palette (its primary color as the accent) and hold everything else.
 
 **Keep the organization's logo on every slide for an internal readout.** An
 internal-use deck (destination `internal-team` / `internal-org`) carries
@@ -398,7 +398,7 @@ an `external` deck, follow whatever brand and co-marketing rules the destination
 requires instead. The mark is a fixed corner element; it does not count as the
 slide's one accent.
 
-**Both full color-token palettes (hex values + per-role usage), the status
+**The full USWDS color-token palette (hex values + per-role usage), the status
 colors, and the every-slide aesthetic guardrails live in
 [references/deck-structure.md](references/deck-structure.md) — read it before
 building, and enforce the guardrails again in QA (Step 6).**
@@ -479,11 +479,11 @@ Then re-check the **aesthetic guardrails** (in
 - Is the deck **≤ 15 slides** (or only slightly over for a large study)?
 - Any text running off-slide, clipped, or touching an edge? Any overflow?
 - Does every text/background pair pass AA contrast? No light-slide accent as text
-  on a dark fill, no Yellow 30 as text, no gray-on-gray?
-- One accent per slide (Teal on light, Sky on navy; Blue 60 if Carbon), light
-  backgrounds dominant, navy (or Gray 100) anchors?
-- Aptos throughout (IBM Plex if Carbon); images keeping their proportions inside
-  the margins?
+  on a dark fill, no `warning` yellow as text, no gray-on-gray?
+- One accent per slide (`primary` on light, `accent-cool` on `primary-darker`),
+  light backgrounds dominant, `primary-darker` anchors?
+- Public Sans throughout (Roboto Mono only for data that needs a monospace);
+  images keeping their proportions inside the margins?
 
 Fix content and layout gaps before declaring done. If you had to assume something the
 source didn't cover, surface it to the user rather than burying it in a slide.

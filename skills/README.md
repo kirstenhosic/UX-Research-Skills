@@ -1,6 +1,6 @@
 ---
 name: research-document-template
-description: Generate professionally formatted UX research documents (plans, rationales, briefs) for your product, styled with the suite's IBM Carbon design system
+description: Generate professionally formatted UX research documents (plans, rationales, briefs) for your product, styled with the suite's USWDS design system
 meta:
   version: 2.0
   author: UX Research Team
@@ -10,12 +10,12 @@ meta:
 
 # Research Document Template
 
-Create professional, reusable research documents following the suite's design system (IBM Carbon styling) and formatting standards. **This is the single template every generated research document goes through** — use it whenever a skill, agent, or teammate produces a research document, so all outputs share the same structure and styling.
+Create professional, reusable research documents following the suite's design system (USWDS styling with Public Sans) and formatting standards. **This is the single template every generated research document goes through** — use it whenever a skill, agent, or teammate produces a research document, so all outputs share the same structure and styling.
 
 ## What This Skill Does
 
 Generates polished Word documents (.docx) for UX research artifacts with:
-- **Consistent Design System**: IBM Plex Sans typography, IBM Carbon color tokens (Blue 60 #0F62FE, Gray 100 #161616), Gray 10 callouts with Blue 60 accent bars
+- **Consistent Design System**: Public Sans typography, U.S. Web Design System (USWDS) color tokens (`primary` #005EA2, `ink` #1B1B1B), `base-lightest` callouts with `primary` accent bars
 - **Two Layouts**:
   - **Research plan** (default) — purpose → scope → research questions → participants → discussion guide → timeline → deliverables
   - **Custom `sections`** — for rationales, briefs, one-pagers, or any document that doesn't fit the plan structure
@@ -81,13 +81,13 @@ plan the config came from before you share the document.
 
 ## Design System
 
-All documents use IBM Carbon styling (see `../DESIGN-SYSTEM.md` for the full standard):
-- **Font:** IBM Plex Sans throughout (body, lists, tables, footers), 1.15 line spacing
-- **Blue 60** (#0F62FE) for the title and H1 headings
-- **Gray 70** (#525252) for the subtitle and H2 headings
-- **Callouts:** Gray 10 (#F4F4F4) background with a #0F62FE left accent bar
-- **Body text:** Gray 100 (#161616) for comfortable reading
-- **Tables:** Gray 10 (#F4F4F4) headers with bold Gray 100 text
+All documents use USWDS styling (see `../DESIGN-SYSTEM.md` for the full standard):
+- **Font:** Public Sans throughout (body, lists, tables, footers), 1.15 line spacing; Roboto Mono for monospace. Word uses the font by name, so install Public Sans (free, from Google Fonts or `research-pdf-export/assets/fonts/`) for exact rendering; otherwise Word substitutes a system sans
+- **`primary`** (#005EA2) for the title and H1 headings
+- **`base-dark`** (#565C65) for the subtitle and H2 headings
+- **Callouts:** `base-lightest` (#F0F0F0) background with a `primary` (#005EA2) left accent bar
+- **Body text:** `ink` (#1B1B1B) for comfortable reading
+- **Tables:** `base-lightest` (#F0F0F0) headers with bold `ink` text
 
 ## Common Scenarios
 

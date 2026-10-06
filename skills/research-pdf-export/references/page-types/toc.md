@@ -1,6 +1,6 @@
 # Page Type: Table of Contents
 
-Optional. Rendered only if the source markdown contains an explicit `## Contents` (or `## Table of Contents`) heading followed by a numbered list. Implemented in `extract_and_strip_toc` and `build_toc` in `scripts/generate_ibm_pdf.py`.
+Optional. Rendered only if the source markdown contains an explicit `## Contents` (or `## Table of Contents`) heading followed by a numbered list. Implemented in `extract_and_strip_toc` and `build_toc` in `scripts/generate_pdf.py`.
 
 ## How the TOC is generated
 
@@ -28,17 +28,18 @@ A trailing `---` rule directly after the block is also consumed so it does not l
 ## What the script actually draws
 
 1. **Spacer** -- 0.3 inch from the top of the content area.
-2. **Blue bar** -- 40x3pt rectangle in `blue_60`.
-3. **"Contents" title** -- 28pt Light, gray_100.
-4. **Heavy rule** -- 0.75pt line in gray_100, full content width.
+2. **Accent bar** -- 40x3pt rectangle in `primary` (`#005EA2`).
+3. **"Contents" title** -- 28pt Light, `ink` (`#1B1B1B`).
+4. **Heavy rule** -- 0.75pt line in `ink`, full content width.
 5. **Numbered entries** -- one two-column row per entry:
-   - Left column (0.6 inch wide): zero-padded sequential number (`01`, `02`, `03`, ...) in 14pt Light blue_60. The number comes from the entry's *position* in the list, not from any number the author wrote.
-   - Right column (5.5 inch wide): the entry text in 14pt Light gray_100. Any leading "N. " from the source is stripped before display.
-   - Each row has a 0.3pt gray_20 underline.
+   - Left column (0.6 inch wide): zero-padded sequential number (`01`, `02`, `03`, ...) in 14pt Light `primary`. The number comes from the entry's *position* in the list, not from any number the author wrote.
+   - Right column (5.5 inch wide): the entry text in 14pt Light `ink`. Any leading "N. " from the source is stripped before display.
+   - Each row has a 0.3pt `base-lighter` (`#DFE1E2`) underline.
 6. **PageBreak** -- so the body starts on a fresh page.
 
 ## Style references
 
+- `style-schema.json` > `toc_header.*` -- spacing, accent bar, heavy rule, and row layout.
+- `style-schema.json` > `text_styles.toc_title` -- the "Contents" title.
 - `style-schema.json` > `text_styles.toc_number` -- left column.
 - `style-schema.json` > `text_styles.toc_text` -- right column.
-- `style-schema.json` > `section_header.blue_bar` -- the bar above the title.

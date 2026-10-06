@@ -3,7 +3,7 @@ name: research-participant-summary-card
 description: >-
   Design and render the participant-facing DOCUMENT that a close-the-loop
   message attaches or embeds: a one-page "At a Glance" card (PNG plus
-  editable HTML, IBM Carbon design system) summarizing what a study heard,
+  editable HTML, USWDS styling with Public Sans) summarizing what a study heard,
   written for the people who were interviewed rather than for internal
   stakeholders. Also produces a "You said / We heard" one-pager .docx or a
   slide-ready summary on request. Use when someone wants a visual, designed,
@@ -174,24 +174,24 @@ build instructions and the reference HTML: `references/at-a-glance-card.md`.
 
 Six zones, top to bottom:
 
-1. **Eyebrow** — `[Team name]  |  [Product]`, uppercase, Gray 70. The
+1. **Eyebrow** — `[Team name]  |  [Product]`, uppercase, `base-dark`. The
    team branding standard applies to this artifact like every other.
 2. **Title + subtitle** — Title is `What You Told Us About Adopting [Product]`,
-   Blue 60, 50pt, two lines. The second person is the whole point; do not
-   retitle this to something about the study. Subtitle names the study and
+   `primary` blue, 50pt, two lines. The second person is the whole point; do
+   not retitle this to something about the study. Subtitle names the study and
    what the reader is looking at. Never describe the document as "sanitized"
    or "anonymized" in the subtitle — that language belongs in the footer as a
    disclosure, and in the title area it makes a warm document feel legal.
-3. **Three stat tiles** — Gray 10 fill, Blue 60 left accent bar. Participant
-   count with a role descriptor, a qualitative depth marker, and the number of
-   conditions. **Do not put session length here.** Nobody outside research
+3. **Three stat tiles** — `base-lightest` fill, `primary` left accent bar.
+   Participant count with a role descriptor, a qualitative depth marker, and
+   the number of conditions. **Do not put session length here.** Nobody outside research
    cares, and "60 min" invites sample-size arithmetic. Prefer "In depth" over
    any duration.
-4. **Headline callout** — Gray 10 with the Blue 60 accent bar, one sentence,
-   the single thing you heard. Enablement framing, bold on the operative
+4. **Headline callout** — `base-lightest` with the `primary` accent bar, one
+   sentence, the single thing you heard. Enablement framing, bold on the operative
    phrase. This is the sentence that gets remembered; write it last, after the
    three conditions are settled.
-5. **Three numbered conditions** — bordered rows, Blue 60 numbered square,
+5. **Three numbered conditions** — bordered rows, `primary` numbered square,
    bold title, then a supporting line that **opens with "You described / You
    asked for / You told us."** Three is the number: two looks thin, four
    stops being scannable at a glance.

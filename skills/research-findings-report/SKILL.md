@@ -3,7 +3,7 @@ name: research-findings-report
 description: >-
   Write a findings-and-recommendations report from synthesized findings
   records, the output of a completed analysis (Scenario A): a 3-5 page .docx
-  body in IBM Carbon styling, a .md appendix carrying the detail a
+  body in USWDS styling, a .md appendix carrying the detail a
   skeptic will check, and an additional-materials section linking the files a
   re-user will need. Use this whenever someone wants to write up, document, or
   share research findings as a document rather than slides. Trigger on
@@ -30,7 +30,7 @@ of them, by leading with the finding and keeping the evidence one layer down.
 This skill owns the report's *content, structure, and language*. It hands the
 `.docx` rendering (typography, palette, callouts, tables) to the
 **research-document-template** skill, which holds the suite's design system
-(IBM Carbon styling).
+(USWDS styling with Public Sans).
 
 > **Prerequisite: the research-document-template skill**
 > (`skills/research-document-template.py` and `skills/CONFIG-SCHEMA.md`). This
@@ -316,8 +316,8 @@ gate scores. The rules that do the most work in a findings report:
 
 Compose a `sections` config (the custom layout in `skills/CONFIG-SCHEMA.md`)
 and render through `skills/research-document-template.py`. That template owns
-the design system: IBM Plex Sans, IBM Carbon color tokens (Blue 60 #0F62FE
-headings, Gray 100 #161616 body), callout boxes with accent bars,
+the design system: Public Sans, USWDS color tokens (`primary` #005EA2
+headings, `ink` #1B1B1B body), callout boxes with accent bars,
 design-system tables, page furniture. Don't
 restyle by hand. Specifics that matter for this report:
 

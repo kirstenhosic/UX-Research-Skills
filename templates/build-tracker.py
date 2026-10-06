@@ -23,18 +23,19 @@ from openpyxl.worksheet.datavalidation import DataValidation
 OUT = os.path.join(os.path.dirname(os.path.abspath(__file__)),
                    "06-participant-tracker.xlsx")
 
-FONT = "IBM Plex Sans"
-BLUE60 = "0F62FE"      # Carbon Blue 60
-GRAY100 = "161616"     # Carbon Gray 100
-GRAY70 = "525252"      # Carbon Gray 70
-GRAY10 = "F4F4F4"      # Carbon Gray 10
+FONT = "Public Sans"
+PRIMARY = "005EA2"        # USWDS primary
+INK = "1B1B1B"            # USWDS ink
+BASE_DARK = "565C65"      # USWDS base-dark
+BASE_LIGHTEST = "F0F0F0"  # USWDS base-lightest
+BASE_LIGHTER = "DFE1E2"   # USWDS base-lighter (cell borders)
 
 header_font = Font(name=FONT, bold=True, color="FFFFFF", size=10)
-header_fill = PatternFill("solid", fgColor=BLUE60)
-body_font = Font(name=FONT, size=10, color=GRAY100)
-example_font = Font(name=FONT, size=10, color=GRAY70, italic=True)
+header_fill = PatternFill("solid", fgColor=PRIMARY)
+body_font = Font(name=FONT, size=10, color=INK)
+example_font = Font(name=FONT, size=10, color=BASE_DARK, italic=True)
 wrap = Alignment(wrap_text=True, vertical="top")
-thin = Side(style="thin", color="D0D0D0")
+thin = Side(style="thin", color=BASE_LIGHTER)
 border = Border(left=thin, right=thin, top=thin, bottom=thin)
 
 wb = Workbook()
@@ -90,9 +91,9 @@ r = 1
 for kind, text in rows:
     c = ws.cell(row=r, column=2, value=text)
     if kind == "title":
-        c.font = Font(name=FONT, bold=True, size=16, color=BLUE60)
+        c.font = Font(name=FONT, bold=True, size=16, color=PRIMARY)
     elif kind == "h":
-        c.font = Font(name=FONT, bold=True, size=11, color=BLUE60)
+        c.font = Font(name=FONT, bold=True, size=11, color=PRIMARY)
     else:
         c.font = body_font
         c.alignment = wrap
@@ -125,7 +126,7 @@ def sheet(ws, cols, widths, example, dropdowns):
             c.font = body_font
             c.border = border
             if row % 2 == 1:
-                c.fill = PatternFill("solid", fgColor=GRAY10)
+                c.fill = PatternFill("solid", fgColor=BASE_LIGHTEST)
     for col_name, values in dropdowns.items():
         idx = cols.index(col_name) + 1
         letter = get_column_letter(idx)

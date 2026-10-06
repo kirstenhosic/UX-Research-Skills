@@ -18,19 +18,18 @@ from docx.enum.text import WD_ALIGN_PARAGRAPH, WD_TAB_ALIGNMENT, WD_TAB_LEADER
 from docx.oxml.ns import qn
 from docx.oxml import OxmlElement
 
-# Brand Colors — IBM Carbon tokens (see DESIGN-SYSTEM.md; source:
-# ibm.com/design/language and carbondesignsystem.com/elements/color)
-PRIMARY_BLUE = RGBColor(0x0F, 0x62, 0xFE)    # Blue 60 — titles, H1, accents
-SECONDARY_TEXT = RGBColor(0x52, 0x52, 0x52)  # Gray 70 — subtitles, H2
-BODY_GRAY = RGBColor(0x16, 0x16, 0x16)       # Gray 100 — body text
-META_GRAY = RGBColor(0x52, 0x52, 0x52)       # Gray 70 — metadata and footer text
-CALLOUT_BG = "F4F4F4"                        # Gray 10 (layer) — callout boxes
-TABLE_HEADER_BG = "F4F4F4"                   # Gray 10 (layer) — table headers
-ACCENT_HEX = "0F62FE"                        # Hex form of PRIMARY_BLUE for XML
+# Brand Colors — U.S. Web Design System (USWDS) theme tokens (see
+# DESIGN-SYSTEM.md; source: designsystem.digital.gov/design-tokens/color/theme-tokens/)
+PRIMARY = RGBColor(0x00, 0x5E, 0xA2)         # primary — titles, H1, accents
+BASE_DARK = RGBColor(0x56, 0x5C, 0x65)       # base-dark — subtitles, H2, metadata, footer text
+INK = RGBColor(0x1B, 0x1B, 0x1B)             # ink — body text
+BASE_LIGHTEST = "F0F0F0"                     # base-lightest (layer) — callout boxes, table headers
+PRIMARY_HEX = "005EA2"                       # Hex form of PRIMARY for XML
 
-# Default Font — IBM Plex Sans (install from github.com/IBM/plex; Word
-# substitutes a system sans automatically where it isn't installed)
-DEFAULT_FONT = "IBM Plex Sans"
+# Default Font — Public Sans (free, SIL Open Font License; from Google Fonts or
+# skills/research-pdf-export/assets/fonts/). Word uses the font by name and
+# substitutes a system sans automatically where it isn't installed.
+DEFAULT_FONT = "Public Sans"
 
 
 class ResearchDocumentGenerator:
@@ -57,11 +56,11 @@ class ResearchDocumentGenerator:
             section.left_margin = Inches(1)
             section.right_margin = Inches(1)
 
-        # Base style: everything (body, lists, table text) inherits IBM Plex Sans 11pt
+        # Base style: everything (body, lists, table text) inherits Public Sans 11pt
         normal = self.doc.styles['Normal']
         normal.font.name = DEFAULT_FONT
         normal.font.size = Pt(11)
-        normal.font.color.rgb = BODY_GRAY
+        normal.font.color.rgb = INK
         normal.paragraph_format.line_spacing = 1.15
         rpr = normal.element.get_or_add_rPr()
         rfonts = rpr.find(qn('w:rFonts'))
@@ -94,7 +93,7 @@ class ResearchDocumentGenerator:
         run.font.name = DEFAULT_FONT
         run.font.size = Pt(9)
         run.font.bold = True
-        run.font.color.rgb = PRIMARY_BLUE
+        run.font.color.rgb = PRIMARY
         p.paragraph_format.space_after = Emu(0)
         last_p = p
         if len(lines) > 1:
@@ -102,7 +101,7 @@ class ResearchDocumentGenerator:
             run2 = p2.add_run(lines[1])
             run2.font.name = DEFAULT_FONT
             run2.font.size = Pt(9)
-            run2.font.color.rgb = META_GRAY
+            run2.font.color.rgb = BASE_DARK
             p2.paragraph_format.space_after = Emu(0)
             last_p = p2
         # Thin rule separating the header from the page body
@@ -112,7 +111,7 @@ class ResearchDocumentGenerator:
         bottom.set(qn('w:val'), 'single')
         bottom.set(qn('w:sz'), '4')
         bottom.set(qn('w:space'), '4')
-        bottom.set(qn('w:color'), ACCENT_HEX)
+        bottom.set(qn('w:color'), PRIMARY_HEX)
         borders.append(bottom)
         p_pr.append(borders)
 
@@ -125,7 +124,7 @@ class ResearchDocumentGenerator:
         def _styled(run, size=9):
             run.font.name = DEFAULT_FONT
             run.font.size = Pt(size)
-            run.font.color.rgb = META_GRAY
+            run.font.color.rgb = BASE_DARK
             return run
 
         if note:
@@ -166,7 +165,7 @@ class ResearchDocumentGenerator:
         left = OxmlElement('w:left')
         left.set(qn('w:val'), 'single')
         left.set(qn('w:sz'), '28')
-        left.set(qn('w:color'), ACCENT_HEX)
+        left.set(qn('w:color'), PRIMARY_HEX)
         borders.append(left)
         tc_pr.append(borders)
 
@@ -197,7 +196,7 @@ class ResearchDocumentGenerator:
         title_run.font.size = Pt(28)
         title_run.font.bold = True
         title_run.font.name = DEFAULT_FONT
-        title_run.font.color.rgb = PRIMARY_BLUE
+        title_run.font.color.rgb = PRIMARY
         title_para.paragraph_format.space_before = Emu(152400)
         title_para.paragraph_format.space_after = Emu(50800)
 
@@ -208,7 +207,7 @@ class ResearchDocumentGenerator:
             subtitle_run.font.size = Pt(16)
             subtitle_run.font.bold = True
             subtitle_run.font.name = DEFAULT_FONT
-            subtitle_run.font.color.rgb = SECONDARY_TEXT
+            subtitle_run.font.color.rgb = BASE_DARK
             subtitle_para.paragraph_format.space_after = Emu(76200)
             rule_target = subtitle_para
 
@@ -219,7 +218,7 @@ class ResearchDocumentGenerator:
         bottom.set(qn('w:val'), 'single')
         bottom.set(qn('w:sz'), '8')
         bottom.set(qn('w:space'), '6')
-        bottom.set(qn('w:color'), ACCENT_HEX)
+        bottom.set(qn('w:color'), PRIMARY_HEX)
         borders.append(bottom)
         p_pr.append(borders)
 
@@ -231,7 +230,7 @@ class ResearchDocumentGenerator:
             run = p.add_run(item)
             run.font.size = Pt(10)
             run.font.name = DEFAULT_FONT
-            run.font.color.rgb = META_GRAY
+            run.font.color.rgb = BASE_DARK
         self.doc.add_paragraph().paragraph_format.space_after = Emu(152400)
 
     def add_heading_1(self, text, numbered=True):
@@ -245,7 +244,7 @@ class ResearchDocumentGenerator:
         self._keep_with_next(h)
         for run in h.runs:
             run.font.name = DEFAULT_FONT
-            run.font.color.rgb = PRIMARY_BLUE
+            run.font.color.rgb = PRIMARY
         return h
 
     def add_heading_2(self, text):
@@ -256,7 +255,7 @@ class ResearchDocumentGenerator:
         self._keep_with_next(h)
         for run in h.runs:
             run.font.name = DEFAULT_FONT
-            run.font.color.rgb = SECONDARY_TEXT
+            run.font.color.rgb = BASE_DARK
         return h
 
     def add_toc(self, title="Table of Contents", entries=None):
@@ -269,7 +268,7 @@ class ResearchDocumentGenerator:
         self._keep_with_next(h)
         for run in h.runs:
             run.font.name = DEFAULT_FONT
-            run.font.color.rgb = SECONDARY_TEXT
+            run.font.color.rgb = BASE_DARK
 
         p_begin = self.doc.add_paragraph()
         p_begin.paragraph_format.space_before = Emu(19050)
@@ -299,13 +298,13 @@ class ResearchDocumentGenerator:
                 r_title = toc_p.add_run(entry_title)
                 r_title.font.name = DEFAULT_FONT
                 r_title.font.size = Pt(10.5)
-                r_title.font.color.rgb = BODY_GRAY
+                r_title.font.color.rgb = INK
                 
                 r_page = toc_p.add_run(f"\t{page_num}")
                 r_page.font.name = DEFAULT_FONT
                 r_page.font.size = Pt(10.5)
                 r_page.font.bold = True
-                r_page.font.color.rgb = PRIMARY_BLUE
+                r_page.font.color.rgb = PRIMARY
 
         p_end = self.doc.add_paragraph()
         p_end.paragraph_format.space_before = Emu(19050)
@@ -503,7 +502,7 @@ class ResearchDocumentGenerator:
         table.allow_autofit = False
 
         cell = table.rows[0].cells[0]
-        self.shade_cell(cell, CALLOUT_BG)
+        self.shade_cell(cell, BASE_LIGHTEST)
         self._accent_border(cell)
         cell.vertical_alignment = 1
 
@@ -513,13 +512,13 @@ class ResearchDocumentGenerator:
         title_run.font.bold = True
         title_run.font.size = Pt(12)
         title_run.font.name = DEFAULT_FONT
-        title_run.font.color.rgb = PRIMARY_BLUE
+        title_run.font.color.rgb = PRIMARY
 
         content_run = title_p.add_run(content)
         content_run.font.size = Pt(11)
         content_run.font.name = DEFAULT_FONT
         content_run.font.italic = True
-        content_run.font.color.rgb = BODY_GRAY
+        content_run.font.color.rgb = INK
 
         title_p.paragraph_format.space_before = Emu(50800)
         title_p.paragraph_format.space_after = Emu(50800)
@@ -534,9 +533,9 @@ class ResearchDocumentGenerator:
 
         header_cells = table.rows[0].cells
         for i, header in enumerate(headers):
-            self.shade_cell(header_cells[i], TABLE_HEADER_BG)
+            self.shade_cell(header_cells[i], BASE_LIGHTEST)
             header_cells[i].text = header
-            self._style_cell_text(header_cells[i], bold=True, size=10.5, color=BODY_GRAY)
+            self._style_cell_text(header_cells[i], bold=True, size=10.5, color=INK)
 
         # Repeat header row across page breaks
         tr_pr = table.rows[0]._tr.get_or_add_trPr()
@@ -561,7 +560,7 @@ class ResearchDocumentGenerator:
                         run = p.add_run(item)
                         run.font.name = DEFAULT_FONT
                         run.font.size = Pt(10.5)
-                        run.font.color.rgb = BODY_GRAY
+                        run.font.color.rgb = INK
                 else:
                     cell.text = cell_data
                     self._style_cell_text(cell, size=10.5)
@@ -587,9 +586,9 @@ class ResearchDocumentGenerator:
         headers = headers or ['In Scope', 'Out of Scope']
         for i, header in enumerate(headers):
             cell = table.rows[0].cells[i]
-            self.shade_cell(cell, TABLE_HEADER_BG)
+            self.shade_cell(cell, BASE_LIGHTEST)
             cell.text = header
-            self._style_cell_text(cell, bold=True, size=10.5, color=BODY_GRAY)
+            self._style_cell_text(cell, bold=True, size=10.5, color=INK)
 
         tr_pr = table.rows[0]._tr.get_or_add_trPr()
         tr_pr.append(OxmlElement('w:tblHeader'))
@@ -606,7 +605,7 @@ class ResearchDocumentGenerator:
                 run.font.name = DEFAULT_FONT
                 run.font.size = Pt(10.5)
                 run.font.bold = False
-                run.font.color.rgb = BODY_GRAY
+                run.font.color.rgb = INK
 
         for row in table.rows:
             for cell in row.cells:

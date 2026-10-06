@@ -69,9 +69,9 @@ interrupted by an em dash or en dash.
 
 ## Formatting
 
-Suite documents render in the IBM Carbon scheme (Blue 60 headings, Gray 100
-body, IBM Plex Sans). A manual report in the team's standard document
-template is fine; the structure above is what matters.
+Suite documents render in USWDS styling (`primary` #005EA2 headings,
+`ink` #1B1B1B body, Public Sans). A manual report in the team's standard
+document template is fine; the structure above is what matters.
 
 ## Before release
 

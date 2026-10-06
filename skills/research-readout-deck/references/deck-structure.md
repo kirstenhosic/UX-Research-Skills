@@ -157,9 +157,9 @@ sentence after the bold phrase giving the specifics. Keep the long tail for the
 Rhythm-setter. Full-color background, one short phrase, large, centered or
 left. Examples: "Interviews," "Survey data," "Alignment," "What would you
 change?," "Now what?" No other content. By default, dividers alternate between
-Navy (`#012F86`) and Teal (`#156082`) backgrounds so consecutive dividers differ;
-keep the phrase in White either way. (Carbon: Gray 100 `#161616` / Blue 60
-`#0F62FE`.)
+`primary-darker` (`#162E51`) and `primary` (`#005EA2`) backgrounds so
+consecutive dividers differ; keep the phrase in White either way (13.60:1 and
+6.72:1).
 
 ---
 
@@ -464,13 +464,13 @@ at the end, quotes and dividers for rhythm.
 
 ## Theme & aesthetic guardrails (reference)
 
-The readout skill defaults to the **SLM Portfolio palette** — light-dominant,
-teal as the single accent, deep-navy dark anchors, Aptos type. It is the same
-discipline the Carbon look encodes (light backgrounds, one accent, dark anchors,
-AA contrast); only the specific hues and the typeface differ. For an IBM-branded
-readout, or any other brand, keep the discipline and swap the palette — the
-**IBM Carbon** alternative is documented below the default tables. Whichever
-palette you use, hold the aesthetic guardrails at the end of this section.
+The readout skill uses the **U.S. Web Design System (USWDS) palette with
+Public Sans** — light-dominant, `primary` blue as the single accent,
+`primary-darker` dark anchors, white content slides. The discipline is what
+matters (light backgrounds, one accent, dark anchors, AA contrast), not the
+specific hues: a team can swap in its own brand palette as long as it keeps that
+discipline. Whichever palette you use, hold the aesthetic guardrails at the end
+of this section.
 
 ### Vocabulary (cross-ref `VOICE-AND-STYLE.md`)
 
@@ -482,61 +482,46 @@ counted "environments", so "environment" couldn't double as a vague catch-all).
 Relabeling the unit the study counts quietly changes what a number means. See
 `VOICE-AND-STYLE.md` Part 1.9 for the full vocabulary tells.
 
-### Color — SLM Portfolio palette (default)
+### Color — USWDS palette
 
-Build **light-dominant with teal as the single accent**: pale-blue content
-slides with near-navy type, deep-navy for title/divider/closing backgrounds, and
-teal used sparingly for the one focal element per slide. On the navy slides, type
-goes white/pale and the accent shifts to sky so it reads against the dark fill.
+Build **light-dominant with `primary` as the single accent**: white content
+slides with `ink` type, `primary-darker` for title/divider/closing backgrounds,
+and `primary` used sparingly for the one focal element per slide. On the
+`primary-darker` slides, type goes white (or `primary-lighter` for secondary
+captions) and the accent shifts to `accent-cool` so it reads against the dark
+fill.
 
-| Role | Name | Hex | Use |
-|------|------|-----|-----|
-| Accent | Teal | `156082` | The single accent on light slides: kicker text, big stat numbers, accent rules, key callouts, annotation markers on screenshots |
-| Secondary accent | Teal-dark | `0A4D68` | Provenance tags, secondary bars, the accent bar on quote blockquotes |
-| Dark anchor | Navy | `012F86` | Title, divider, and closing backgrounds — the dark 20-30% of the deck |
-| Primary text | Navy-text | `0E2841` | Titles and body on light slides |
-| Secondary text | Slate | `4B5C66` | Subtitles, captions, quote attributions |
-| Page background | Pale blue | `E5F6FF` | Default content-slide background — the dominant surface |
-| Layer / card | White | `FFFFFF` | Card fills, the one featured panel per slide, table zebra rows |
-| Border / line | Mist | `BDD3E3` | Dividers, table rules, card borders |
-| Accent on dark | Sky | `4FA6D9` | The focal accent when the slide background is Navy |
-| Text on dark | White / Pale | `FFFFFF` / `CFDDEC` | Type on Navy backgrounds (Pale `CFDDEC` for secondary/on-navy captions) |
+| Role | USWDS token | Hex | Use |
+|------|-------------|-----|-----|
+| Accent | `primary` | `005EA2` | The single accent on light slides: kicker text, big stat numbers, accent rules, key callouts, annotation markers on screenshots |
+| Secondary accent | `primary-dark` | `1A4480` | Provenance tags, secondary bars, the accent bar on quote blockquotes |
+| Dark anchor | `primary-darker` | `162E51` | Title, divider, and closing backgrounds — the dark 20-30% of the deck |
+| Primary text | `ink` | `1B1B1B` | Titles and body on light slides |
+| Secondary text | `base-dark` | `565C65` | Subtitles, captions, quote attributions |
+| Page background | `white` | `FFFFFF` | Default content-slide background — the dominant surface |
+| Layer / card | `base-lightest` | `F0F0F0` | Card fills, the one featured panel per slide, table zebra rows |
+| Border / line | `base-lighter` | `DFE1E2` | Dividers, table rules, card borders (non-text only) |
+| Accent on dark | `accent-cool` | `00BDE3` | The focal accent when the slide background is `primary-darker` |
+| Text on dark | `white` / `primary-lighter` | `FFFFFF` / `D9E8F6` | Type on `primary-darker` backgrounds (`primary-lighter` for secondary/on-dark captions) |
 
 Status colors (use only for severity or sentiment, never as the brand accent):
-success Green 50 `24A148`, error/critical Red 60 `DA1E28`, caution Yellow 30
-`F1C21B` (always paired with dark text — never used as a text color), info
-Blue 70 `0043CE`. This palette is the one sampled into `build_deck.py` for a
-past readout; it is the house default.
+success `success` `00A91C` as a fill, `success-darker` `216E1F` as text;
+error/critical `error` `D54309` as a fill, `error-dark` `B50909` as text;
+caution `warning` `FFBE2E` (fill only, always paired with `ink` text — never
+used as a text color); info `info` `00BDE3` as a fill, `info-darker` `2E6276`
+as text. The verified source is the USWDS theme and state color tokens
+(designsystem.digital.gov/design-tokens/color/theme-tokens/ and
+designsystem.digital.gov/design-tokens/color/state-tokens/).
 
-### Color — IBM Carbon tokens (alternative, for IBM-branded readouts)
+### Typography — Public Sans
 
-For an IBM deck, swap in Carbon: **light-dominant with Blue 60 as the single
-accent** — white/Gray 10 content slides, Gray 100 for title/divider/closing
-backgrounds, Blue 60 for the one focal element per slide.
-
-| Role | Carbon token | Hex | Use |
-|------|--------------|-----|-----|
-| IBM Blue | Blue 60 `$interactive` | `0F62FE` | The single accent: kicker text, big stat numbers, accent rules, key callouts, annotation markers on screenshots |
-| Dark anchor | Gray 100 `$background` | `161616` | Title, divider, and closing backgrounds — the dark 20-30% of the deck |
-| Primary text | Gray 100 `$text-primary` | `161616` | Titles and body on light slides |
-| Secondary text | Gray 70 `$text-secondary` | `525252` | Subtitles, captions, quote attributions |
-| Page background | White `$background` | `FFFFFF` | Default content-slide background — the dominant surface |
-| Layer / card | Gray 10 `$layer-01` | `F4F4F4` | Card fills, the one featured panel per slide, table zebra rows |
-| Border / line | Gray 20 `$border-subtle` | `E0E0E0` | Dividers, table rules, card borders |
-| Text on dark | White `$text-on-color` | `FFFFFF` | Type on Gray 100 backgrounds |
-
-The Carbon status tokens match the ones above. The verified source is the Carbon
-Design System (carbondesignsystem.com/elements/color) and the IBM Design Language
-(ibm.com/design/language).
-
-### Typography — Aptos (default), IBM Plex (Carbon alternative)
-
-Default to **Aptos**: headings and large statements in **Aptos Display**, body,
-data, tables, and small-caps meta labels in **Aptos**. For an IBM-branded deck,
-use **IBM Plex** — Plex Sans for headings and body, Plex Mono for data and
-tables, Plex Serif for large pull-quotes. Either way, if the renderer lacks the
-family, fall back to a clean grotesque (Helvetica Neue / Arial) — never a default
-serif like Times.
+Use **Public Sans** for headings and body, with **Public Sans Light** for big
+titles and large statements; body, tables, and small-caps meta labels stay in
+Public Sans. Set large pull quotes in **Public Sans Light Italic**. If data or a
+table needs a monospace, use **Roboto Mono** (the USWDS default mono).
+PowerPoint uses the font by name, so install Public Sans (free, SIL Open Font
+License, from Google Fonts) for exact rendering. If the renderer lacks the
+family, fall back to a clean grotesque (Helvetica Neue / Arial) — never a serif.
 
 ### Aesthetic guardrails (every slide must pass)
 
@@ -552,15 +537,18 @@ and again in QA:
 - **Word budgets.** Title ≤ ~10 words. ≤ 6 bullets per slide, ≤ ~12 words each.
   One idea per slide; if it needs more, it's two slides.
 - **Readable contrast (WCAG AA).** Every text/background pair meets 4.5:1 (small)
-  or 3:1 (large, ≥ 24 px). Default (SLM) safe pairings: Navy-text `0E2841` on
-  Pale `E5F6FF` or White; White (or Pale `CFDDEC`) on Navy `012F86`; Teal `156082`
-  only on light backgrounds and Sky `4FA6D9` only on Navy. Carbon equivalents:
-  Gray 100 on White or Gray 10; White on Gray 100; Blue 60 only on white or
-  Gray 100. Either way: never the light-slide accent as text on a dark fill, never
-  Yellow 30 as text, never gray-on-gray midtones.
-- **One accent per slide.** The accent (Teal on light, Sky on navy; Blue 60 in
-  Carbon) marks a single focal point — don't flood a slide with it. Restraint is
-  the whole look.
+  or 3:1 (large, ≥ 24 px). Safe pairings: `ink` `1B1B1B` on White (17.22:1) or
+  `base-lightest` `F0F0F0` (15.11:1); `base-dark` `565C65` on White (6.74:1) or
+  `F0F0F0` (5.92:1); `primary` `005EA2` only on light backgrounds — White
+  (6.72:1), `F0F0F0` (5.90:1), or `primary-lighter` `D9E8F6` (5.39:1); White
+  (13.60:1) or `primary-lighter` `D9E8F6` (10.90:1) on `primary-darker`
+  `162E51`; `accent-cool` `00BDE3` only on `primary-darker` (6.08:1); `ink` on
+  a `warning` `FFBE2E` fill (10.38:1). Never the light-slide accent as text on a
+  dark fill, never `warning` yellow as text, never `base` `71767A` or a lighter
+  gray as small text (4.03:1 on `F0F0F0`), never gray-on-gray midtones.
+- **One accent per slide.** The accent (`primary` on light, `accent-cool` on
+  `primary-darker`) marks a single focal point — don't flood a slide with it.
+  Restraint is the whole look.
 - **Align to a grid.** Left-align titles and body; keep consistent column edges;
   centered text only on quote and single-insight slides.
 - **Images keep their proportions.** Never stretch or squash a screenshot; crop

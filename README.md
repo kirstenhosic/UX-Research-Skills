@@ -170,15 +170,15 @@ synthesis against the source, claim by claim.
 
 **Need a deck?** [`research-readout-deck.skill`](research-readout-deck.skill)
 renders a findings-first `.pptx` from findings records, validating each one
-before it builds a slide and reporting gaps by finding ID. Defaults to IBM
-theming (Carbon Design System, IBM Plex). Unzip it to inspect; it needs the
-separate **pptx** skill to render. It turns finished findings into slides —
+before it builds a slide and reporting gaps by finding ID. Defaults to the
+USWDS palette in Public Sans. Unzip it to inspect; it needs the separate
+**pptx** skill to render. It turns finished findings into slides —
 if they aren't synthesized yet, run Scenario A first.
 
 **Need a written findings report?**
 [`research-findings-report.skill`](research-findings-report.skill) writes the
 findings-and-recommendations document from findings records: a 3-5 page
-`.docx` body in IBM Carbon styling (rendered through the document
+`.docx` body in the suite's USWDS styling (rendered through the document
 template), a companion `.md` appendix carrying the full records and method
 detail, and an additional-materials list linking the files a future reader
 will need. It validates every record before featuring it and reports gaps by
@@ -189,11 +189,12 @@ synthesized yet, run Scenario A first.
 
 **Need a PDF of a Markdown deliverable?**
 [`research-pdf-export.skill`](research-pdf-export.skill) converts a Markdown
-file (plan, guide, survey text, findings appendix) into a PDF in IBM Carbon
-styling with ReportLab and IBM Plex Sans, with an optional cover page and a
-table of contents from a `## Contents` list. Markdown only; for `.docx` or `.pptx` use
-the document template. Adapted from Neil Everette's `document-conversion`
-skill; source in [`skills/research-pdf-export/`](skills/research-pdf-export/).
+file (plan, guide, survey text, findings appendix) into a PDF in USWDS
+styling with ReportLab and Public Sans (the fonts ship with the skill), with an
+optional cover page and a table of contents from a `## Contents` list. Markdown
+only; for `.docx` or `.pptx` use the document template. Adapted from Neil
+Everette's `document-conversion` skill; source in
+[`skills/research-pdf-export/`](skills/research-pdf-export/).
 
 **Closing the loop with the people who gave the feedback?**
 [`participant-impact-summary.skill`](participant-impact-summary.skill)
@@ -214,8 +215,8 @@ product owner confirms every impact claim. The source is
 
 **And the card or one-pager that email attaches?**
 [`skills/research-participant-summary-card/`](skills/research-participant-summary-card/)
-renders the designed artifact: a one-page "At a Glance" card (PNG in IBM
-Carbon styling) by default, or a "You said / We heard" `.docx`
+renders the designed artifact: a one-page "At a Glance" card (PNG in USWDS
+styling) by default, or a "You said / We heard" `.docx`
 one-pager or slide summary. Same recipient and same destination rule as the
 email above, and one addition that only a designed document needs. An email
 reads as one person writing to another, but a card carries the company's logo,
@@ -229,7 +230,7 @@ a plan the customer's procurement team will act on. Gated at
 
 **Need a formatted Word document?** That's the **Research Document Template**
 ([`skills/research-document-template.py`](skills/research-document-template.py)),
-a separate tool Dr. Morgan hands off to. It renders a `.docx` in IBM Carbon
+a separate tool Dr. Morgan hands off to. It renders a `.docx` in USWDS
 styling and doesn't coach — invoke it as a skill in your tool or run the
 script directly. [`skills/README.md`](skills/README.md) has the full
 documentation and [`skills/CONFIG-SCHEMA.md`](skills/CONFIG-SCHEMA.md)
@@ -595,7 +596,7 @@ those questions up front.
 | [`EVALUATION-LOOP.md`](EVALUATION-LOOP.md) | How release works: the gate matrix, the verdict shape, the two-pass cap, escalation triggers, Definition of Done per artifact type, and the known limits. Read before adding a skill or evaluator. |
 | [`FINDINGS-CONTRACT.md`](FINDINGS-CONTRACT.md) | One shape for a finding, shared by everything that produces or reads one. Because the deck skill can only render fields a record contains, this is what structurally stops evidence from being invented during deck building. |
 | [`VOICE-AND-STYLE.md`](VOICE-AND-STYLE.md) | How outputs should read, and the rubric the readability gate scores against. |
-| [`DESIGN-SYSTEM.md`](DESIGN-SYSTEM.md) | The output standards, in IBM Carbon styling: palette, typography, spacing, document structure, and data integrity. Every generated research plan, deck, and analysis output follows it. |
+| [`DESIGN-SYSTEM.md`](DESIGN-SYSTEM.md) | The output standards: the U.S. Web Design System (USWDS) palette, Public Sans typography, spacing, document structure, and data integrity. Every generated research plan, deck, and analysis output follows it. |
 | [`skills/README.md`](skills/README.md) | Driving the Research Document Template: usage, layouts, output, and common scenarios. [`skills/CONFIG-SCHEMA.md`](skills/CONFIG-SCHEMA.md) documents the JSON config. |
 | [`PRODUCT-CONTEXT.md`](PRODUCT-CONTEXT.md) | How Dr. Morgan gets specific about your product: the resolution order, the five-question intake, the file format, and how to add your own. [`product-context/`](product-context/) holds the files themselves. |
 | [`METHODS.md`](METHODS.md) | How Dr. Morgan gets operationally specific about a method: session shape, counts, instrument craft, and what each method cannot tell you. [`methods/`](methods/) holds the files, and the table of which methods have an instrument gate and which don't. Read before adding a method. |

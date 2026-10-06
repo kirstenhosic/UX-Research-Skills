@@ -45,7 +45,7 @@ editable Markdown source.
 ## Shareable copies and page furniture
 
 Each markdown template has a Word copy in [`docx/`](docx/), rendered in the
-suite's Carbon styling with the shared page furniture: a **UX Research**
+suite's USWDS styling with the shared page furniture: a **UX Research**
 running header, and a footer carrying the suite note on the left and the page
 number on the right. The participant tracker carries the same header and
 footer on every sheet when printed. Grab a single file from the **Download**

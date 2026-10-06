@@ -98,8 +98,9 @@ standalone quote slides (fold the quote into its evidence slide).
 - **Internal decks keep your organization's logo on every slide** — a small corner
   mark, white on dark slides, dark on light, marking provenance for anyone who
   forwards the file.
-- Theme: SLM Portfolio palette (Aptos, deep-navy anchors, teal accent, pale-blue
-  content slides) by default; IBM Carbon (IBM Plex, Blue 60) for IBM-branded decks.
+- Theme: the USWDS palette in Public Sans — white content slides,
+  `primary-darker` #162E51 anchors, a single `primary` #005EA2 accent. A team
+  can swap in its own brand palette if it keeps the same discipline.
 
 ## Before release
 

@@ -1,6 +1,6 @@
 {
-  "title": "Research PDF Style Reference (IBM Carbon styling)",
-  "description": "Reference-only mirror of the hardcoded styling constants used by scripts/generate_ibm_pdf.py. The script does NOT load this file at runtime; edit the script to change behavior. This file exists so a human can see colors, fonts, margins, and layout values in one place.",
+  "title": "Research PDF Style Reference (USWDS styling)",
+  "description": "Reference-only mirror of the hardcoded styling constants used by scripts/generate_pdf.py. The script does NOT load this file at runtime; edit the script to change behavior. This file exists so a human can see colors, fonts, margins, and layout values in one place. Color values are U.S. Web Design System (USWDS) tokens; the typeface is Public Sans.",
 
   "page": {
     "size": "letter",
@@ -13,258 +13,298 @@
       "bottom": 0.85
     },
     "content_width_inches": 7.0,
+    "_top_note": "The document template adds 0.15 inch to the top margin, so body text starts 0.9 inch from the top edge.",
     "unit": "inches"
   },
 
   "fonts": {
-    "primary_family": "IBM Plex Sans",
+    "primary_family": "Public Sans",
+    "license": "SIL Open Font License 1.1 (assets/fonts/OFL.txt, assets/fonts/LICENSE.md)",
     "font_dir_resolution": [
       "--font-dir CLI flag",
-      "~/Documents/IBM_Plex_Sans/static",
-      "ReportLab built-in fonts (graceful fallback if no IBM Plex install is found)"
+      "<skill>/assets/fonts (bundled with the skill; the default)"
     ],
+    "network": "None. The fonts ship with the skill; nothing is downloaded.",
     "weights": [
-      { "name": "IBMPlexSans-Light", "file": "IBMPlexSans-Light.ttf", "weight": 300 },
-      { "name": "IBMPlexSans-Regular", "file": "IBMPlexSans-Regular.ttf", "weight": 400 },
-      { "name": "IBMPlexSans-Medium", "file": "IBMPlexSans-Medium.ttf", "weight": 500 },
-      { "name": "IBMPlexSans-SemiBold", "file": "IBMPlexSans-SemiBold.ttf", "weight": 600 },
-      { "name": "IBMPlexSans-Bold", "file": "IBMPlexSans-Bold.ttf", "weight": 700 },
-      { "name": "IBMPlexSans-Italic", "file": "IBMPlexSans-Italic.ttf", "weight": "400i" },
-      { "name": "IBMPlexSans-LightItalic", "file": "IBMPlexSans-LightItalic.ttf", "weight": "300i" },
-      { "name": "IBMPlexSans-MediumItalic", "file": "IBMPlexSans-MediumItalic.ttf", "weight": "500i" },
-      { "name": "IBMPlexSans-SemiBoldItalic", "file": "IBMPlexSans-SemiBoldItalic.ttf", "weight": "600i" },
-      { "name": "IBMPlexSans-BoldItalic", "file": "IBMPlexSans-BoldItalic.ttf", "weight": "700i" }
+      { "name": "PublicSans-Light", "file": "PublicSans-Light.ttf", "weight": 300 },
+      { "name": "PublicSans-Regular", "file": "PublicSans-Regular.ttf", "weight": 400 },
+      { "name": "PublicSans-Medium", "file": "PublicSans-Medium.ttf", "weight": 500 },
+      { "name": "PublicSans-SemiBold", "file": "PublicSans-SemiBold.ttf", "weight": 600 },
+      { "name": "PublicSans-Bold", "file": "PublicSans-Bold.ttf", "weight": 700 },
+      { "name": "PublicSans-Italic", "file": "PublicSans-Italic.ttf", "weight": "400i" },
+      { "name": "PublicSans-LightItalic", "file": "PublicSans-LightItalic.ttf", "weight": "300i" },
+      { "name": "PublicSans-MediumItalic", "file": "PublicSans-MediumItalic.ttf", "weight": "500i" },
+      { "name": "PublicSans-SemiBoldItalic", "file": "PublicSans-SemiBoldItalic.ttf", "weight": "600i" },
+      { "name": "PublicSans-BoldItalic", "file": "PublicSans-BoldItalic.ttf", "weight": "700i" }
     ],
-    "family_mapping": {
-      "normal": "IBMPlexSans-Regular",
-      "bold": "IBMPlexSans-Bold",
-      "italic": "IBMPlexSans-Italic",
-      "boldItalic": "IBMPlexSans-BoldItalic"
+    "inline_markup_families": {
+      "_note": "Which face <b>, <i>, and <b><i> switch to, per base face a style uses (FONT_FAMILIES in the script). Text set in the Italic base face (callouts) resolves through the PublicSans-Regular family.",
+      "PublicSans-Light": {
+        "normal": "PublicSans-Light",
+        "bold": "PublicSans-Bold",
+        "italic": "PublicSans-LightItalic",
+        "boldItalic": "PublicSans-BoldItalic"
+      },
+      "PublicSans-Regular": {
+        "normal": "PublicSans-Regular",
+        "bold": "PublicSans-Bold",
+        "italic": "PublicSans-Italic",
+        "boldItalic": "PublicSans-BoldItalic"
+      },
+      "PublicSans-Medium": {
+        "normal": "PublicSans-Medium",
+        "bold": "PublicSans-Bold",
+        "italic": "PublicSans-MediumItalic",
+        "boldItalic": "PublicSans-BoldItalic"
+      },
+      "PublicSans-SemiBold": {
+        "normal": "PublicSans-SemiBold",
+        "bold": "PublicSans-Bold",
+        "italic": "PublicSans-SemiBoldItalic",
+        "boldItalic": "PublicSans-BoldItalic"
+      }
+    },
+    "fallback": {
+      "_note": "If any of the ten faces fails to load, every face resolves to its Helvetica stand-in (HELVETICA_FALLBACK in the script) and one warning goes to stderr. Colors and layout are unchanged.",
+      "Light": "Helvetica",
+      "Regular": "Helvetica",
+      "Medium": "Helvetica-Bold",
+      "SemiBold": "Helvetica-Bold",
+      "Bold": "Helvetica-Bold",
+      "Italic": "Helvetica-Oblique",
+      "LightItalic": "Helvetica-Oblique",
+      "MediumItalic": "Helvetica-BoldOblique",
+      "SemiBoldItalic": "Helvetica-BoldOblique",
+      "BoldItalic": "Helvetica-BoldOblique"
     }
   },
 
   "colors": {
-    "blue_10": "#edf5ff",
-    "blue_20": "#d0e2ff",
-    "blue_30": "#a6c8ff",
-    "blue_40": "#78a9ff",
-    "blue_60": "#0f62fe",
-    "blue_80": "#002d9c",
-    "blue_90": "#001d6c",
-    "gray_10": "#f4f4f4",
-    "gray_20": "#e0e0e0",
-    "gray_50": "#8d8d8d",
-    "gray_60": "#6f6f6f",
-    "gray_70": "#525252",
-    "gray_100": "#161616",
-    "white": "#ffffff",
-    "cyan_09": "#e5f6ff",
-    "cyan_11": "#82cfff",
-    "green_60": "#198038",
-    "red_60": "#da1e28"
+    "_note": "USWDS token names and published default hex values. The script's constants use the same names in UPPER_SNAKE_CASE (primary-darker is PRIMARY_DARKER).",
+    "primary-lighter": "#D9E8F6",
+    "primary": "#005EA2",
+    "primary-dark": "#1A4480",
+    "primary-darker": "#162E51",
+    "accent-cool-lighter": "#E1F3F8",
+    "accent-cool": "#00BDE3",
+    "ink": "#1B1B1B",
+    "base-dark": "#565C65",
+    "base-lighter": "#DFE1E2",
+    "base-lightest": "#F0F0F0",
+    "white": "#FFFFFF",
+    "state": {
+      "_note": "Signal indicators only, never decoration. Defined in the script; the current layout uses none. Text uses the darker variant; warning is a fill only, always with ink text.",
+      "success": "#00A91C",
+      "success-darker": "#216E1F",
+      "error": "#D54309",
+      "error-dark": "#B50909",
+      "warning": "#FFBE2E",
+      "info": "#00BDE3",
+      "info-darker": "#2E6276"
+    }
   },
 
   "text_styles": {
     "h1": {
-      "font": "IBMPlexSans-Light",
+      "font": "PublicSans-Light",
       "size": 32,
       "leading": 36,
-      "color": "gray_100",
+      "color": "ink",
       "space_before": 0,
       "space_after": 6
     },
     "h2": {
-      "font": "IBMPlexSans-Medium",
+      "font": "PublicSans-Medium",
       "size": 16,
       "leading": 22,
-      "color": "gray_100",
+      "color": "ink",
       "space_before": 16,
       "space_after": 6
     },
     "h3": {
-      "font": "IBMPlexSans-Medium",
+      "font": "PublicSans-Medium",
       "size": 12,
       "leading": 17,
-      "color": "gray_100",
+      "color": "ink",
       "space_before": 12,
-      "space_after": 5
+      "space_after": 5,
+      "_note": "H4-H6 also render in this style."
     },
     "body": {
-      "font": "IBMPlexSans-Regular",
+      "font": "PublicSans-Regular",
       "size": 9.5,
       "leading": 14.5,
-      "color": "gray_100",
+      "color": "ink",
       "space_before": 0,
       "space_after": 6,
       "alignment": "left"
     },
-    "body_italic": {
-      "font": "IBMPlexSans-Italic",
-      "size": 9.5,
-      "leading": 14.5,
-      "color": "gray_70",
-      "space_before": 0,
-      "space_after": 6
-    },
     "bullet": {
-      "font": "IBMPlexSans-Regular",
+      "font": "PublicSans-Regular",
       "size": 9.5,
       "leading": 14.5,
-      "color": "gray_100",
+      "color": "ink",
       "space_after": 3,
       "left_indent": 18,
       "bullet_indent": 0,
-      "bullet_char": "\u2014"
+      "bullet_char": "—"
     },
     "sub_bullet": {
-      "font": "IBMPlexSans-Regular",
+      "font": "PublicSans-Regular",
       "size": 9.5,
       "leading": 14.5,
-      "color": "gray_100",
+      "color": "ink",
       "space_after": 3,
       "left_indent": 36,
       "bullet_indent": 18,
-      "bullet_char": "\u2022"
-    },
-    "caption": {
-      "font": "IBMPlexSans-Regular",
-      "size": 8,
-      "leading": 11,
-      "color": "gray_60",
-      "space_before": 2,
-      "space_after": 4
-    },
-    "source": {
-      "font": "IBMPlexSans-Regular",
-      "size": 7.5,
-      "leading": 10,
-      "color": "gray_60",
-      "space_before": 2,
-      "space_after": 2
+      "bullet_char": "•"
     },
     "cover_title": {
-      "font": "IBMPlexSans-Light",
+      "font": "PublicSans-Light",
       "size": 45,
       "leading": 50,
       "color": "white",
       "space_after": 27
     },
     "cover_subtitle": {
-      "font": "IBMPlexSans-Light",
+      "font": "PublicSans-Light",
       "size": 24,
       "leading": 26,
-      "color": "cyan_11",
+      "color": "accent-cool",
       "space_after": 14
     },
     "cover_description": {
-      "font": "IBMPlexSans-Light",
+      "font": "PublicSans-Light",
       "size": 14,
       "leading": 20,
-      "color": "cyan_09"
+      "color": "accent-cool-lighter"
     },
     "cover_meta_label": {
-      "font": "IBMPlexSans-Light",
+      "font": "PublicSans-Light",
       "size": 12,
       "leading": 13,
-      "color": "cyan_11",
+      "color": "accent-cool",
       "space_after": 2
     },
     "cover_meta_value": {
-      "font": "IBMPlexSans-Light",
+      "font": "PublicSans-Light",
       "size": 14,
       "leading": 15,
       "color": "white",
       "space_after": 39
     },
+    "toc_title": {
+      "font": "PublicSans-Light",
+      "size": 28,
+      "leading": 32,
+      "color": "ink",
+      "space_after": 16
+    },
     "toc_number": {
-      "font": "IBMPlexSans-Light",
+      "font": "PublicSans-Light",
       "size": 14,
       "leading": 24,
-      "color": "blue_60"
+      "color": "primary"
     },
     "toc_text": {
-      "font": "IBMPlexSans-Light",
+      "font": "PublicSans-Light",
       "size": 14,
       "leading": 24,
-      "color": "gray_100"
+      "color": "ink"
     },
     "table_header": {
-      "font": "IBMPlexSans-SemiBold",
+      "font": "PublicSans-SemiBold",
       "size": 8.5,
       "leading": 12,
-      "color": "gray_100"
+      "color": "ink"
     },
     "table_cell": {
-      "font": "IBMPlexSans-Regular",
+      "font": "PublicSans-Regular",
       "size": 8.5,
       "leading": 12,
-      "color": "gray_100"
+      "color": "ink"
     },
     "callout_text": {
-      "font": "IBMPlexSans-Italic",
+      "font": "PublicSans-Italic",
       "size": 9,
       "leading": 14,
-      "color": "blue_90",
+      "color": "primary-darker",
       "left_indent": 12,
-      "right_indent": 12
+      "right_indent": 12,
+      "space_before": 4,
+      "space_after": 4
     },
     "callout_attribution": {
-      "font": "IBMPlexSans-Regular",
+      "font": "PublicSans-Regular",
       "size": 8,
       "leading": 11,
-      "color": "gray_60",
+      "color": "base-dark",
       "left_indent": 12,
-      "prefix": "\u2014 "
+      "space_after": 2,
+      "prefix": "— "
     },
     "footer_text": {
-      "font": "IBMPlexSans-Regular",
+      "font": "PublicSans-Regular",
       "size": 6.5,
-      "color": "gray_50"
+      "color": "base-dark"
     }
   },
 
   "table_style": {
-    "header_background": "gray_10",
-    "header_line_below": { "width": 1, "color": "gray_100" },
-    "row_line_below": { "width": 0.4, "color": "gray_20" },
-    "alternating_rows": ["white", "#fafafa"],
+    "header_background": "base-lightest",
+    "header_font": "PublicSans-SemiBold",
+    "header_line_below": { "width": 1, "color": "ink" },
+    "row_line_below": { "width": 0.4, "color": "base-lighter" },
+    "alternating_rows": ["white", "base-lightest"],
     "cell_padding": { "top": 5, "bottom": 5, "left": 6, "right": 6 },
+    "column_widths": "content width split evenly across columns",
     "outer_border": false,
     "vertical_lines": false,
     "repeat_header": true
   },
 
   "callout_box": {
-    "background": "blue_10",
-    "border_color": "blue_60",
+    "background": "primary-lighter",
+    "border_color": "primary",
     "border_width": 3,
     "corner_radius": 3,
-    "padding": { "top": 10, "bottom": 10, "left": 12, "right": 12 }
+    "padding": { "top": 10, "bottom": 10, "left": 12, "right": 12 },
+    "space_around": 8
   },
 
-  "section_header": {
-    "blue_bar": { "width": 40, "height": 3, "color": "blue_60" },
-    "underrule": { "color": "gray_20", "thickness": 0.5 },
-    "spacing": { "before_bar": 4, "after_bar": 6, "after_title": 4, "after_rule": 10 }
+  "toc_header": {
+    "_note": "Top of the Contents page (build_toc). Body headings have no bar or rule.",
+    "space_before_inches": 0.3,
+    "accent_bar": { "width": 40, "height": 3, "color": "primary" },
+    "space_after_bar": 6,
+    "title_style": "toc_title",
+    "rule": { "color": "ink", "thickness": 0.75 },
+    "space_after_rule": 12,
+    "row": {
+      "number_column_inches": 0.6,
+      "text_column_inches": 5.5,
+      "line_below": { "width": 0.3, "color": "base-lighter" }
+    }
   },
 
   "thin_rule": {
-    "color": "gray_20",
+    "color": "base-lighter",
     "thickness": 0.5,
     "height": 4
   },
 
   "cover_page": {
-    "background": "#071c68",
+    "background": "primary-darker",
     "accent_line": {
-      "color": "cyan_11",
+      "color": "accent-cool",
       "width": 1,
       "y_offset": 122
     },
     "title_push_down": 1.7,
-    "metadata_y_from_bottom": 188,
+    "metadata_push_down": 2.5,
+    "_metadata_note": "Inches of space between the title block and the metadata block. The Research date row always renders (--date, else the current month and year); the Team row only with --team.",
     "logo": {
-      "_note": "Optional. No logo ships with the skill; a team can drop its own SVG at <skill>/assets/logo.svg. When the file is absent, the cover renders without a logo.",
+      "_note": "Optional. No logo ships with the skill; a team can drop its own SVG at <skill>/assets/logo.svg (drawing it needs svglib). When the file is absent or svglib is not installed, the cover renders without a logo.",
       "optional": true,
       "file": "assets/logo.svg",
       "width": 45,
@@ -279,7 +319,7 @@
     "_note": "The script draws a footer only -- there is no top header rule. The right-hand text is 'Page N'; when --footer-note is passed, the note is prepended as '{footer_note}  ·  Page N'. There is no default note.",
     "rule_y_offset_inches": -0.15,
     "text_y_offset_inches": -0.35,
-    "rule": { "color": "gray_20", "width": 0.5 },
+    "rule": { "color": "base-lighter", "width": 0.5 },
     "left_template": "{title}  |  {date}",
     "right_template": "Page {page}",
     "right_template_with_note": "{footer_note}  ·  Page {page}"
@@ -290,5 +330,5 @@
     "author": "--team value, else empty"
   },
 
-  "link_color": "blue_60"
+  "link_color": "primary"
 }
