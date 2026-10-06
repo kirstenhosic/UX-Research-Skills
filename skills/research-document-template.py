@@ -40,7 +40,7 @@ class ResearchDocumentGenerator:
         self.config = config
         self.toc_entries = toc_entries or []
         self.doc = Document()
-        self.section_num = 0  # dynamic H1 numbering — no gaps when sections are omitted
+        self._heading_num_id = None  # Word-native H1 numbering, created on first use
         self.omissions = []   # every section that did not render, and why
         self._setup_document()
 
@@ -234,11 +234,16 @@ class ResearchDocumentGenerator:
         self.doc.add_paragraph().paragraph_format.space_after = Emu(152400)
 
     def add_heading_1(self, text, numbered=True):
-        """Add Heading 1. Numbering is dynamic — omitted sections never leave gaps."""
-        if numbered:
-            self.section_num += 1
-            text = f"{self.section_num}. {text}"
+        """Add Heading 1. Numbered headings use Word's own numbering, so the
+        numbers are live (they renumber when a section is added or removed in
+        Word) and omitted sections never leave gaps."""
         h = self.doc.add_heading(text, level=1)
+        if numbered:
+            if self._heading_num_id is None:
+                self._heading_num_id = self._add_list_definition([dict(
+                    fmt='decimal', text='%1.', left=0, hanging=0, suffix='space',
+                    color=PRIMARY_HEX, bold=True)])
+            self._apply_numbering(h, self._heading_num_id)
         h.paragraph_format.space_before = Emu(177800)
         h.paragraph_format.space_after = Emu(76200)
         self._keep_with_next(h)
@@ -370,6 +375,68 @@ class ResearchDocumentGenerator:
             if text:
                 run2 = p.add_run((' ' if label else '') + text)
                 run2.font.name = DEFAULT_FONT
+
+    def _add_list_definition(self, levels):
+        """Inject a Word-native list definition (one or more levels) into
+        numbering.xml and return its numId. Each level is a dict: fmt, text
+        (lvlText), and optional start, left/hanging (twips), suffix
+        ('tab' | 'space'), color (hex), bold. Word supplies the markers and
+        renumbers them live."""
+        numbering = self.doc.part.numbering_part.element
+        a_ids = [int(e.get(qn('w:abstractNumId')))
+                 for e in numbering.findall(qn('w:abstractNum'))]
+        n_ids = [int(e.get(qn('w:numId')))
+                 for e in numbering.findall(qn('w:num'))]
+        a_id = (max(a_ids) + 1) if a_ids else 0
+        n_id = (max(n_ids) + 1) if n_ids else 1
+
+        abstract = OxmlElement('w:abstractNum')
+        abstract.set(qn('w:abstractNumId'), str(a_id))
+        multilevel = OxmlElement('w:multiLevelType')
+        multilevel.set(qn('w:val'), 'singleLevel' if len(levels) == 1 else 'multilevel')
+        abstract.append(multilevel)
+        for i, spec in enumerate(levels):
+            lvl = OxmlElement('w:lvl')
+            lvl.set(qn('w:ilvl'), str(i))
+            for tag, val in (('w:start', str(spec.get('start', 1))),
+                             ('w:numFmt', spec['fmt']),
+                             ('w:suff', spec.get('suffix', 'tab')),
+                             ('w:lvlText', spec['text']), ('w:lvlJc', 'left')):
+                e = OxmlElement(tag)
+                e.set(qn('w:val'), val)
+                lvl.append(e)
+            ppr = OxmlElement('w:pPr')
+            ind = OxmlElement('w:ind')
+            ind.set(qn('w:left'), str(spec.get('left', 720)))
+            ind.set(qn('w:hanging'), str(spec.get('hanging', 360)))
+            ppr.append(ind)
+            lvl.append(ppr)
+            rpr = OxmlElement('w:rPr')
+            fonts = OxmlElement('w:rFonts')
+            for attr in ('w:ascii', 'w:hAnsi', 'w:cs'):
+                fonts.set(qn(attr), DEFAULT_FONT)
+            rpr.append(fonts)
+            if spec.get('bold'):
+                rpr.append(OxmlElement('w:b'))
+            if spec.get('color'):
+                c = OxmlElement('w:color')
+                c.set(qn('w:val'), spec['color'])
+                rpr.append(c)
+            lvl.append(rpr)
+            abstract.append(lvl)
+
+        num = OxmlElement('w:num')
+        num.set(qn('w:numId'), str(n_id))
+        ref = OxmlElement('w:abstractNumId')
+        ref.set(qn('w:val'), str(a_id))
+        num.append(ref)
+        first_num = numbering.find(qn('w:num'))
+        if first_num is not None:
+            first_num.addprevious(abstract)
+        else:
+            numbering.append(abstract)
+        numbering.append(num)
+        return n_id
 
     def _add_numbering_definition(self, num_format='decimal', lvl_text='%1.'):
         """Inject a fresh single-level list definition into numbering.xml and
@@ -876,11 +943,17 @@ class ResearchDocumentGenerator:
                 self.add_callout('Moderator Note', guide_intro)
 
             # Questions are numbered sequentially across the whole guide
-            # (1, 2, 3 …) so any question can be referenced unambiguously
-            # mid-session. A question given as a list of strings renders as
-            # letter sub-parts (5a, 5b, 5c) under one number. No bullet
-            # glyphs — the number IS the marker.
-            q_num = 0
+            # (1, 2, 3 …) by Word's own numbering, so they renumber live while
+            # the guide is drafted. A question given as a list of strings
+            # renders its first part as the numbered line ("5.") and the rest
+            # as lettered sub-parts ("5b.", "5c."): Word needs a numbered
+            # parent line before a lettered child. No bullet glyphs — the
+            # number IS the marker. Print a final copy for the moderator, since
+            # inserting a question renumbers everything after it.
+            guide_num = self._add_list_definition([
+                dict(fmt='decimal', text='%1.', left=720, hanging=360),
+                dict(fmt='lowerLetter', text='%1%2.', start=2, left=1080, hanging=432),
+            ])
             for section in self.config.get('discussion_guide', []):
                 self.add_heading_2(section.get('section_name', ''))
                 time_info = section.get('time_info', '')
@@ -893,13 +966,14 @@ class ResearchDocumentGenerator:
                         p = self.add_paragraph(q, italic=True, space_before=0, space_after=31750)
                         p.paragraph_format.left_indent = Inches(0.25)
                         continue
-                    q_num += 1
-                    if isinstance(q, list):
-                        self.add_numbered_items(
-                            [(f"{q_num}{chr(97 + j)}.", part) for j, part in enumerate(q)],
-                            space_before=0)
-                    else:
-                        self.add_numbered_items([(f"{q_num}.", q)], space_before=0)
+                    parts = q if isinstance(q, list) else [q]
+                    for j, part in enumerate(parts):
+                        p = self.doc.add_paragraph()
+                        p.paragraph_format.space_before = Emu(0)
+                        p.paragraph_format.space_after = Emu(31750)
+                        self._apply_numbering(p, guide_num, ilvl=0 if j == 0 else 1)
+                        run = p.add_run(part)
+                        run.font.name = DEFAULT_FONT
 
         # Analysis plan — how sessions become findings. A short paragraph plus
         # optional bullets; content-gated like every other section so it can't

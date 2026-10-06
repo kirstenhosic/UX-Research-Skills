@@ -91,7 +91,7 @@ palette and typeface.)*
 - Space After Title: 50800 EMU (0.35 inch)
 
 **Headings:**
-- Heading 1: Bold, `primary` (#005EA2), auto-numbered ("1.", "2." — numbering is dynamic, so omitted sections never leave gaps)
+- Heading 1: Bold, `primary` (#005EA2), numbered "1.", "2." by Word's own numbering (the number is `primary` bold too), so sections renumber live and omitted sections never leave gaps
 - Space Before: 101600 EMU
 - Space After: 63500 EMU
 - Keep-with-next enabled (no orphaned headings at page bottoms)
@@ -106,17 +106,18 @@ palette and typeface.)*
 - Space Before Paragraph: 38100 EMU
 - Space After Paragraph: 63500 EMU
 
-**Lists:**
-- Use "List Paragraph" style (not bullet points)
-- 11pt Public Sans, Regular
-- Indent: 0.25"
-- Space: 31750 EMU after each item
-- **Numbered lists use Word's native numbering** (the generator injects a
-  single-level definition into `numbering.xml` and attaches paragraphs with
-  `numPr`), so numbers are live and renumber when an item is added or removed —
-  never typed "1." text. Single level only; never a decimal outline (1.1, 1.2,
-  2.1). Items that carry a stable identifier (RQ3, H1a) or a fixed moderator
-  reference number keep that identifier as a bold label instead.
+**Lists — always Word's own bullets and numbering, never typed markers:**
+- **Bullets** use Word's built-in **List Bullet** style (List Bullet 2 for a
+  sub-list), including inside tables. Never a typed "•" or "-".
+- **Numbered lists, numbered section headings, and discussion-guide questions**
+  use Word's own numbering (the generator adds a definition to
+  `numbering.xml` and attaches each paragraph with `numPr`), so the numbers
+  are live and renumber when an item or section is added or removed. Never
+  typed "1." text, and never a decimal outline (1.1, 1.2, 2.1).
+- Items that carry an identifier rather than a position (RQ3, H1a) keep it as a
+  bold label; that's a name, not list numbering.
+- 11pt Public Sans, Regular; 0.25" indent per level; 31750 EMU after each
+  item.
 
 ### Professional Spacing
 
@@ -190,8 +191,12 @@ Every research plan generated follows this structure:
 
 6. **Discussion Guide** (if included)
    - Sections with time allocations
-   - Questions numbered sequentially across the whole guide (1, 2, 3 …; letter
-     sub-parts like 5a, 5b under one number), never a decimal outline (1.1, 2.1)
+   - Questions numbered sequentially across the whole guide (1, 2, 3 …) by
+     Word's own numbering, never a decimal outline (1.1, 2.1). A multi-part
+     question shows its first part as "5." and the rest as "5b.", "5c.",
+     indented under it: Word needs the numbered line before a lettered one.
+     Numbers renumber while you draft, so give the moderator a final printed
+     or PDF copy
    - Probes and moderator notes
    - Research question mappings
 
@@ -398,7 +403,8 @@ Before sharing any document, verify:
 - ✅ Title and H1 headings are `primary` (#005EA2)
 - ✅ Section headings (H2) are `base-dark` (#565C65)
 - ✅ Callout boxes have `base-lightest` (#F0F0F0) background with a #005EA2 accent bar
-- ✅ Section numbering has no gaps (dynamic numbering handles omitted sections)
+- ✅ Bullets and numbers are Word's own (List Bullet, live numbering), never typed
+- ✅ Section numbering has no gaps (Word numbering handles omitted sections)
 - ✅ Spacing is consistent (no cramped text)
 - ✅ Tables have colored headers
 - ✅ Page numbers appear in the footer
