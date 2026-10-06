@@ -495,24 +495,34 @@ is not independent. If you're running inside the UX Research Skills suite, the
 deck still goes through its gates before it's shared — `research-safety-checker`
 first, including speaker notes, then `research-synthesis-checker` in deck mode
 (re-verifying every slide against the findings records), then
-`research-readability-checker`. `EVALUATION-LOOP.md` has the sequence and the
-verdict schema.
+`research-readability-checker`. Each checker starts from a fresh context and
+sees only a checker packet: Dr. Morgan launches it where the tool allows, and
+otherwise hands the researcher the packet to paste into a new chat with that
+checker (`EVALUATION-LOOP.md` §3, *How a gate runs*). `EVALUATION-LOOP.md` has
+the sequence and the verdict schema.
 
-Two things to hand off cleanly:
+Two things go in the packet:
 
 - **The record set you rendered from**, so the deck gate can check slides
   against records rather than re-reading transcripts.
 - **The declared destination**, so the safety scan applies the right bar.
 
+If the readability checker flags formal or academic wording on a slide or in
+the notes, fix it before showing the deck and say in one line what you
+changed. That uses no revision round unless a fix touches a quote, a count, or
+an attribution, which re-runs the synthesis gate.
+
 Screenshots and embedded file metadata can't be machine-checked. List them for
 the user by slide number and say plainly that the deck isn't cleared until a
 person has looked at them.
 
-Whatever the gates say, the deck is a draft until the researcher signs off:
-they read every slide and every speaker note, make their own edits, and the
-sign-off is recorded (§11 of `EVALUATION-LOOP.md` has the block). The deck is
-presented under their name, not a gate's. An edit of theirs that moves a
-quote, a count, or an attribution re-runs the synthesis gate first.
+Whatever the gates say, the deck is a draft until the researcher has read it.
+Ask once, in plain words: *"All the checks passed. Before you present it, go
+through every slide and speaker note and change anything you'd say
+differently. It goes out under your name. Tell me when you're done, and what
+you changed, if anything."* "Done, no changes" is a complete answer; note it
+in one line (`EVALUATION-LOOP.md` §11). An edit of theirs that moves a quote, a
+count, or an attribution re-runs the synthesis gate first.
 
 Outside the suite, the same principle holds in a lighter form: before this deck
 gets presented, someone who didn't build it should read it against the source.
