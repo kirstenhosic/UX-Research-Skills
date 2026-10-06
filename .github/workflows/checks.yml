@@ -1,0 +1,37 @@
+# Drift and stale-build checks. Same script you can run locally:
+#   scripts/check.sh            (full, rebuilds generated files)
+#   scripts/check.sh --no-build (quick)
+# See MAINTAINING.md, "Automated checks".
+name: checks
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+permissions:
+  contents: read
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      # Pinned to the versions the committed .docx/.xlsx files were built with.
+      # lxml and et_xmlfile are pinned too: they serialize the XML inside those
+      # packages, so a silent upgrade could change bytes without a source change.
+      # Bump all four together, rebuild, and commit the results.
+      - name: Install build dependencies
+        run: pip install python-docx==1.2.0 openpyxl==3.1.5 lxml==6.1.3 et_xmlfile==2.0.0
+
+      - name: Ensure zip is available
+        run: command -v zip >/dev/null || (sudo apt-get update && sudo apt-get install -y zip)
+
+      - name: Run checks
+        run: scripts/check.sh

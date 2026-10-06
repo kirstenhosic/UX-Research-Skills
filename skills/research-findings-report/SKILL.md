@@ -386,25 +386,28 @@ You must not wait for the researcher to ask for quality, safety, or formatting c
 1. **Automated Name Scrubbing (Pre-Flight Safeguard):**  
    Before writing any text to a Markdown report, JSON config, or `.docx` file, automatically scrub every participant name and replace it with `P1`, `P2`, ... IDs. State the name-to-ID mapping to the researcher in chat ONCE and ensure it never lands in any output file.
 
-2. **Evaluation Loop (Quality & Redaction Gate) — you name them, the researcher runs them:**  
-   You cannot invoke the checkers yourself. After composing the report draft,
-   name the gates it is due for, mark the report NOT yet independently verified,
-   and ask the researcher to select each one and paste its verdict back:
+2. **Evaluation Loop (Quality & Redaction Gate) — every checker starts fresh:**  
+   After composing the report draft, mark it NOT yet checked and run its gates
+   in order, as `EVALUATION-LOOP.md` §3 (*How a gate runs*) sets out: launch each
+   checker yourself if your tool lets you, giving it only a CHECKER PACKET;
+   otherwise hand the researcher the packet and tell them to open a new chat,
+   load the checker, paste it, and bring the verdict back. Attach the original
+   source files; never retype them.
    - `research-safety-checker` (verifies zero names or PII leak into files, config, or footer metadata)
    - `research-synthesis-checker` (verifies exact quote byte-matching and exact prevalence counts)
-   - `research-readability-checker` (verifies body conciseness: 3–5 pages max, layered structure, plain language)
+   - `research-readability-checker` (verifies body conciseness: 3–5 pages max, layered structure, plain language). Fix any plain-language flags yourself before showing the report, and say what you changed.
 
    **Surface verification status in the chat at every seam** (never in the report itself):
-   - When you hand the report to a gate: *"➡️ Select `research-synthesis-checker` and paste its verdict back. Until then these findings are NOT independently verified. (You can also ask a general assistant in this workspace to run it for you.)"*
-   - When a verdict returns: *"✅ `research-synthesis-checker` verified: every quote byte-matched its record and every count is exact."* — or, on failure, name the checker and its blocking count and keep the report marked unverified.
+   - When you hand the report to a gate: *"➡️ Running `research-synthesis-checker` now"* (or, in packet mode, *"➡️ Open a new chat, load `research-synthesis-checker`, paste the packet below, and bring the verdict back"*). *"Until it comes back, these findings aren't checked."*
+   - When a verdict returns: *"✅ `research-synthesis-checker` verified: every quote matched its record and every count is exact."* — or, on failure, name the checker and how many things it found to fix, and keep the report marked unchecked.
    Never describe the report as checked or verified before its verdicts are back. Nothing about the checkers goes into the report document.
 
 3. **Proactive Researcher Prompts:**  
    Prompt the researcher at natural decision seams:
-   - *"I have created the draft report with all participant names pseudonymized (P1, P2...). It is NOT yet independently verified — select `research-safety-checker`, then `research-synthesis-checker`, and paste each verdict back so I can confirm the safety & groundedness gates as they pass."*
+   - *"The draft report is ready, with every participant shown as P1, P2, and so on. It isn't checked yet; starting the safety and synthesis checks now."*
    - *"Report draft complete. Would you like me to compile the styled `.docx` deliverable using `research-document-template`?"*
    - *"Are there any specific stakeholders or owners to assign to Recommendations R1–R12 before exporting for broader distribution?"*
-   - *"Important: Please thoroughly review and verify this draft report yourself—checking quote nuances, evidence grounding, and stakeholder alignment—before sharing it out with project stakeholders, product managers, or leadership."*
+   - Once the checks pass, the release sign-off, once and in plain words: *"All the checks passed. Before you share it, give it a full read and change anything you'd say differently. It goes out under your name. Tell me when you're done, and what you changed, if anything."*
    - *"Participant Reciprocity (Closing the Loop): Consider preparing a sanitized, high-level participant summary ('What We Learned & Product Direction') to share back with participating customer accounts (e.g., P1–P4). This demonstrates impact, builds long-term trust, and keeps customer accounts engaged for follow-up studies."*
 
 ## Step 7 — You are not the last check

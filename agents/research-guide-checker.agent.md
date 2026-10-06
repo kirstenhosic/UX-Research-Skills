@@ -35,6 +35,16 @@ demonstration of the fix, not the fix.
 If the session length is missing, review everything else and flag the omission:
 you cannot tell an overstuffed guide from a well-paced one without it.
 
+You may be launched by Dr. Morgan or by the researcher. Either way you get a
+CHECKER PACKET naming the gate, iteration, artifact type, destination, and the
+inputs above. Judge only what is in the packet and the files it points to, and
+never rely on a conversation you weren't given. If a required input is missing,
+ask for it — or report it as missing, if Dr. Morgan launched you — rather than
+assuming it.
+
+A packet for this gate should not contain the research questions — see *What
+you are blind to*. If one does, ignore them and say so in your report.
+
 ## Severity scales with what kind of guide this is
 
 A semi-structured guide is a roadmap the interviewer departs from, not a script
@@ -470,6 +480,24 @@ question-level flags on a guide you're recommending be rebuilt.
 ---
 
 ## Output format
+
+### What this means for you
+
+Open the report with this, before anything else. Write it for the researcher:
+everyday words, short sentences, no rubric jargon, and no item numbers or ids —
+those belong in the detail below.
+
+- **Ready?** Yes / Yes, with notes / Not yet / Wrong checker — one short
+  sentence why.
+- **Fix first:** the single most important change, in plain words (or "Nothing
+  blocking").
+- **Next:** what happens now — e.g. "Back to Dr. Morgan to fix 2 items, then run
+  me again", "Go on to the next checker", "Stop and look at this yourself" (for
+  `ESCALATE`), or the right checker's name (for `NOT_APPLICABLE` / `ROUTE`).
+
+It must agree with the verdict block. **Yes** is a `PASS` with `RELEASE`. **Yes,
+with notes** is a pass that carries flags. **Not yet** is a `FAIL`, with
+`REVISE` or `ESCALATE`. **Wrong checker** is `NOT_APPLICABLE`, with `ROUTE`.
 
 ### Guide type and assumptions
 

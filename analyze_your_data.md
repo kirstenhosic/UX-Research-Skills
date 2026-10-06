@@ -642,6 +642,35 @@ STAGE 6 — COMMUNICATE FINDINGS
   [specific work] in [specific context]" tells them 
   exactly where to focus.
 
+  THE DELIVERABLE. Emit the findings as records 
+  conforming to FINDINGS-CONTRACT.md first; the report 
+  and deck can only render fields a record actually 
+  contains, which is what stops evidence being invented 
+  downstream. Then pick the form:
+
+    Full written report (3–5 page .docx body, .md 
+      appendix, materials list) → hand off to the 
+      research-findings-report skill; don't freehand it.
+    Readout deck (.pptx) → the research-readout-deck 
+      skill. Its slide discipline (segment-scoped 
+      headlines, owners as a team or role, verbatim vs. 
+      paraphrase, WHAT THIS SLIDE MEANS speaker notes, 
+      findings numbered in story order) lives in that 
+      skill and templates/09-readout-deck.md.
+    One-pager, inline:
+      - The decision this informs + headline takeaway
+      - 3–5 findings, each as EVIDENCE (verbatim, with 
+        participant ID) → INTERPRETATION → INSIGHT (the 
+        tension or unmet need) → RECOMMENDATION (with an 
+        owner)
+      - Scope: which product, persona, conditions; what 
+        this does NOT cover
+      - Confidence and method note: sample, disconfirming 
+        evidence considered, dates
+      - Reviewer Notes: unmapped findings retained, 
+        research questions left unaddressed, and any open 
+        flags from the gates
+
   CLOSE THE LOOP WITH THE PARTICIPANTS — ASK, EVERY TIME. When 
   the findings have released (gates cleared, Reviewer Notes 
   attached), end with one question: "Want to send the people 
@@ -662,6 +691,22 @@ STAGE 6 — COMMUNICATE FINDINGS
   internal-org for internal participants). No is a fine 
   answer; record it and don't revisit. Never send anything 
   yourself — the skill drafts, a named person sends.
+
+  The designed card or one-pager the email attaches (an "At 
+  a Glance" card by default; a "You said / We heard" .docx 
+  or a slide summary as alternatives) goes through the 
+  research-participant-summary-card skill. Never produce 
+  either by trimming the internal report. A participant-
+  facing piece differs on three axes: its reader may forward 
+  it to their own leadership; it carries NO participant IDs, 
+  exact counts, verbatim quotes, or company names (at a 
+  four-person account "3 of 4" identifies its source); and 
+  every statement is attributed to the participant ("You 
+  asked for…"), never stated flat ("We will ship…"), with 
+  retirement, licensing, pricing, and support windows left 
+  out even when raised — express the need underneath instead 
+  (predictability, for a retirement date). It is ready for 
+  the researcher's review, never ready to send.
 
 THEME CHECKPOINT — a person reviews the themes before synthesis
 
@@ -715,19 +760,24 @@ THEME CHECKPOINT — a person reviews the themes before synthesis
   rejections are the reasoning — and that is where an
   experienced researcher will disagree with you.
 
-  ASK FOR A DECISION, NOT FEEDBACK. "Any thoughts on these
-  themes?" produces silence or "looks good." Ask for one of four
-  per theme:
+  ASK FOR A DECISION ON EACH THEME, IN PLAIN WORDS. "Any
+  thoughts on these themes?" produces silence or "looks good."
+  Ask instead: "Here are the six themes, riskiest first. For
+  each one: keep it, change it, split it, or drop it? 'Keep 1,
+  2 and 4, drop 3, split 5 into...' is a fine answer."
 
-    ACCEPT — as written
-    REVISE — the theme is real but the statement is wrong; say
-             what it should be
-    SPLIT  — this is two themes
-    REJECT — not supported, or not a theme
+    keep   — as written                      (record: ACCEPT)
+    change — the theme is real but the
+             statement is wrong; say what
+             it should be                    (record: REVISE)
+    split  — this is two themes              (record: SPLIT)
+    drop   — not supported, or not a theme   (record: REJECT)
 
-  No bulk accept. Every theme gets its own disposition. Do not
-  carry a REJECT into Stage 5, and re-cluster before proceeding
-  on anything marked SPLIT.
+  Every theme needs its own answer; a blanket "looks good"
+  isn't one, so ask which, if any, they'd change. The record
+  keeps the fixed values; the researcher never has to type
+  them. Don't carry a dropped theme into Stage 5, and
+  re-cluster before going on after a split.
 
   RECORD IT on every finding built from these themes, as
   theme_review in FINDINGS-CONTRACT.md — who reviewed, when,
@@ -777,29 +827,58 @@ RELEASE GATE (apply to every artifact this file produces)
   checking, and they never edit; that separation is what keeps
   the check independent.
 
-  YOU CANNOT RUN THE CHECKERS YOURSELF — the researcher selects
-  each one and pastes its verdict back. So make verification
-  status visible at every seam, in the chat (never in the
-  artifact), with two explicit callouts:
+  HOW A GATE RUNS — the checker gets a fresh context, and you
+  never simulate one. A checker sees the artifact and its
+  inputs and nothing else: not this conversation, not your
+  reasoning. That is what keeps it independent.
 
-    - When you hand an artifact to a gate, say so and mark it
-      unverified: "Select <the checker due next> and paste its
-      verdict back. Until then this draft is NOT independently
-      verified — I produced it and can't verify my own work.
-      (You can also ask a general assistant in this workspace
-      to run it for you.)"
-    - When a verdict comes back, confirm it in one line naming
-      the checker and what it confirmed — "research-plan-
-      reviewer verified: every research question maps to the
-      guide and back," or "research-synthesis-checker verified:
-      every quote byte-matched and every count is exact." If it
-      failed, say which checker and how many blocking issues,
-      and that the artifact stays unverified until it passes.
+    - If your tool lets you launch the checkers as separate
+      agents, do it yourself, in gate order, the moment a
+      Draft-mode artifact exists. Give each one only the
+      CHECKER PACKET below. When it returns, show the
+      researcher its "What this means for you" summary word
+      for word, then every blocking item and flag in full.
+    - Otherwise hand the researcher the packet with one line:
+      "Open a new chat, load <the checker>, and paste the
+      packet below. Bring its verdict back here." A checker
+      selected inside this conversation reads everything said
+      here and stops being independent.
+    - Never role-play a checker, write a verdict block
+      yourself, or summarize what a checker "would say."
 
-  Never call an artifact checked, verified, or ready when no
-  verdict has come back. An artifact is a draft until every
-  checker it is due for has passed; name the ones still
-  outstanding.
+  CHECKER PACKET — one per gate:
+
+    CHECKER PACKET
+    Checker:        <research-...-checker>
+    Iteration:      <1, 2, or 3>
+    Artifact type:  <its row in the gate list above>
+    Destination:    <internal-team / internal-org / external>
+    Participants:   <types only. No names>
+    Rubric:         rubrics/<the 4.x file for this gate>
+    Inputs:         <what that checker's Inputs section asks
+                     for>
+    Source files:   <file names. ATTACH THE ORIGINALS; never
+                     retype them>
+    --- ARTIFACT ---
+    <the full artifact>
+    --- END ---
+
+  Never retype source material from memory: a quote you
+  reproduce is exactly what the synthesis checker exists to
+  test. A packet for research-guide-checker never carries the
+  research questions.
+
+  Make verification status visible at every seam, in the chat
+  (never in the artifact). When you hand an artifact to a
+  gate, say so and mark it unverified: "Running
+  research-plan-reviewer now. Until it comes back, this draft
+  isn't checked: I wrote it, and I can't check my own work."
+  When a verdict comes back, confirm it in one line naming the
+  checker and what it confirmed, or, if it failed, how many
+  things it found to fix. Never call an artifact checked,
+  verified, or ready when no verdict has come back. It is a
+  draft until every checker it is due for has passed; name
+  the ones still outstanding.
 
   PRE-FLIGHT, on everything, every iteration:
 
@@ -983,6 +1062,13 @@ REVISION PROTOCOL
                 section so the human sees them at the moment of
                 decision, then take it to the RELEASE SIGN-OFF
                 below before anyone else sees it.
+                Plain-language flags are the exception: fix
+                them yourself first (formal words, academic
+                register, a long methods section) and say in
+                one line what you changed. No revision round
+                used and no re-run, unless a change touches a
+                quote, a count, or an attribution; then re-run
+                research-synthesis-checker.
     REVISE    — fix ONLY the blocking items, then re-run the
                 same gate with the iteration number bumped.
                 Do not re-open the whole artifact; open-ended
@@ -1005,33 +1091,29 @@ REVISION PROTOCOL
 
 RELEASE SIGN-OFF — the researcher reads the thing
 
-  A RELEASE verdict means no gate found a defect. It does not
-  mean anyone has read the artifact — and it goes out under the
-  researcher's name, not a gate's. So after the last gate and
-  before the artifact is shared, ask for the sign-off, every
-  time, in so many words: "Before this goes anywhere, read the
-  whole thing — every section, every slide, every speaker note
-  — and make your own edits. Sign off when you have."
+  Passing the gates isn't the same as being ready to share, and
+  the artifact goes out under the researcher's name. So after
+  the last gate, ask once, in plain words, something like:
+  "All the checks passed. Before you share it, give it a full
+  read and change anything you'd say differently. It goes out
+  under your name. Tell me when you're done, and what you
+  changed, if anything." Keep it that short and that friendly;
+  "done, no changes" is a complete answer.
 
-  Record the answer:
+  Note it yourself in one line:
 
-    RESEARCHER SIGN-OFF
-      artifact:     <name and date>
-      reviewed_by:  <name>
-      date:         <date>
-      read_in_full: yes
-      edits:        <what they changed, or "none — reviewed
-                     and accepted as is">
+    Signed off: <name>, <date>. Read in full. Changes: <what
+    they changed, or "none">
 
-  Until that block exists, the artifact is a draft, whatever
-  the verdict said. "None — reviewed and accepted as is" is a
-  legitimate edits entry; the requirement is the reading and
-  the ownership, not churn. If an edit moves a quote, a count,
-  or an attribution, re-run research-synthesis-checker before
-  release — a researcher's edit goes stale exactly the way a
-  revision does. If they decline to review, record that
-  instead; you cannot stop them sharing a draft, but the
-  record should say that is what it was.
+  Until they've said they read it, the artifact is a draft,
+  whatever the verdict said. "None" is fine; the point is the
+  reading and the ownership, not churn. If an edit moves a
+  quote, a count, or an attribution, re-run
+  research-synthesis-checker before release — a researcher's
+  edit goes stale exactly the way a revision does. If they'd
+  rather not review it, note that instead; you can't stop them
+  sharing a draft, but the record should say that is what it
+  was.
 
 COVERAGE — flag both directions, delete nothing
 

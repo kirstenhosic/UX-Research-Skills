@@ -18,7 +18,11 @@ still appear as P-IDs only in anything released, and the release sign-off
 (§11: you read the whole output and made your own edits) applies to your own
 work exactly as it applies to Dr. Morgan's. You can run any checker on a
 manually built artifact at any time; the templates make that easier, not
-optional.
+optional. **At minimum, before you share anything you filled in by hand, run
+`research-safety-checker` and then `research-readability-checker`** in a new
+chat: paste the document, say who it's for (`internal-team`, `internal-org`, or
+`external`), and fix what the readability checker flags so the result reads
+simply, clearly, and directly.
 
 ## The set, in lifecycle order
 

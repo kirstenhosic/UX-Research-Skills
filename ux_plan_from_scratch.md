@@ -257,8 +257,12 @@ PHASE 3 — PARTICIPANTS & RECRUITMENT
     for comparative or quantitative work), and recommend confirming 
     against a primary source — never present a number as a hard law.
   - How will they be recruited, and what are the screening criteria 
-    that qualify someone in or out? Account for how hard these 
-    technical practitioners are to reach.
+    that qualify someone in or out? Establish the team's actual 
+    access first — direct or through gatekeepers, general or 
+    specialized users, external SMEs acceptable or not — and apply 
+    only the recruitment patterns that fit (Patterns A–C in 
+    select_best_method.md). Account for how hard these technical 
+    practitioners are to reach.
   - Note any incentive and any recruiting limitations up front.
 
 PHASE 4 — METHOD SELECTION & RATIONALE
@@ -272,6 +276,9 @@ PHASE 4 — METHOD SELECTION & RATIONALE
     need the full design rationale.
   - Push back on lab studies where contextual inquiry or diary studies 
     would better capture real, high-stakes workflows.
+  - Weigh the choice with the MVRM criteria in select_best_method.md, 
+    in order: question fit, recruitment feasibility, minimum credible 
+    sample, decision stakes.
 
 PHASE 5 — DISCUSSION GUIDE / TASKS
   - What questions or tasks will the session use? Map each one back to 
@@ -281,9 +288,10 @@ PHASE 5 — DISCUSSION GUIDE / TASKS
     specific past instance with a bounded recall window ("think about 
     the last time you… — when was that?", then "walk me through what 
     you did") — not a prediction ("would you…") and not a generalized 
-    habit ("how do you usually…"). An unbounded "tell me about a time" 
-    invites reconstruction and lets events drift across time 
-    boundaries. THE BAR is that every topic is reachable through at 
+    habit ("how do you usually…"). Bound the window by recency, or by 
+    a landmark event ("the last one before the March incident"). An 
+    unbounded "tell me about a time" invites reconstruction and lets 
+    events drift across time boundaries. THE BAR is that every topic is reachable through at 
     least one behavioral question; report the ratio too, but say that 
     no published work supports any particular number — two-thirds of 
     the core is a place to start the argument, not a threshold. Mark 
@@ -365,6 +373,9 @@ PHASE 6 — ANALYSIS PLAN
     findings? Don't let them skip this — a great study with no analysis 
     plan produces no insights.
   - Match the analysis approach to the method and the questions.
+  - Use the six-stage framework from analyze_your_data.md as the 
+    spine: orient, organize, code and tag (or clean and describe), 
+    find patterns, synthesize, communicate.
 
 PHASE 7 — OUTPUT, ETHICS & LOGISTICS
   - Who needs to see the findings, in what format, and what decision 
@@ -387,6 +398,18 @@ with a clearly marked placeholder (e.g., "TBD — needs decision: …")
 and ask for it — never invent participants, numbers, dates, findings, 
 or quotes to fill a gap. Trim optional sections for lightweight studies 
 and keep them for larger or higher-stakes ones; say what you trimmed.
+
+When the plan (or a rationale or brief) is wanted as a Word document, 
+route it through the Research Document Template skill 
+(/research-document-template, skills/research-document-template.py) 
+rather than freehanding the styling. Give it the study type, product, 
+research questions, participants, timeline, and deliverable; it 
+returns a styled .docx in the suite's design system (DESIGN-SYSTEM.md: 
+USWDS palette, Public Sans, numbered sections, page numbers). Someone 
+who has already done the planning thinking and needs a polished plan 
+fast can use the skill directly; someone new to research design, or 
+weighing tradeoffs, gets more from working the phases here first. 
+Usage: skills/README.md.
 
 RESEARCH PLAN TEMPLATE
 ======================
@@ -509,19 +532,30 @@ Consent & recording:
 
 Warm-up:
   Light context and rapport — current role, how [product] fits 
-  their day. No leading questions.
+  their day. No leading questions, and nothing touching competence 
+  or mistakes yet.
+
+Background / current workflow (UNPRIMED — before any stimulus, 
+concept, or feature name):
+  How they do the work today, in their own words.
 
 Core sections (mapped to research questions, general → specific,
 chronological within a workflow narrative):
   - [Section per research question, with a timing estimate — a 
-    substantive open question with probes runs 4–6 minutes]
+    substantive open question with probes runs 4–6 minutes; the 
+    sections total the actual session length]
   - Open main questions with TED+W: "Tell me about…", "Explain…", 
     "Describe…", "Walk me through…"
-  - Enter each topic through a specific past instance: "tell me 
-    about the last time you…" → "walk me through what you did".
-    Mark each question [behavioral], [contextual], or [hypothetical].
+  - Enter each topic through a specific past instance with a 
+    bounded recall window: "think about the last time you… — when 
+    was that?" → "walk me through what you did". Mark each question 
+    [behavioral], [contextual], or [hypothetical], note the recall 
+    window on behavioral ones, and report the counts to the 
+    researcher — it is the first thing research-guide-checker 
+    reconstructs if you don't supply it.
+  - Ask what happened, not why they think they did it.
   - Built-in probes: "tell me more", "what happened next?", 
-    "what were you expecting there?"
+    "what were you expecting there?", "in what sense?", silence
 
 Stimulus / concept reactions (LAST, after the unprimed questions):
   - Anything that shows a design or names an unreleased feature 
@@ -530,7 +564,8 @@ Stimulus / concept reactions (LAST, after the unprimed questions):
 
 Wrap-up:
   Anything we didn't ask that we should have? Anyone else we 
-  should talk to?
+  should talk to? Screener and demographic questions go here, at 
+  the end, unless they gate which branch of the guide runs.
 
 Close:
   Thank you for sharing your thoughts — this helps us understand 
@@ -560,29 +595,58 @@ RELEASE GATE (apply to every artifact this file produces)
   checking, and they never edit; that separation is what keeps
   the check independent.
 
-  YOU CANNOT RUN THE CHECKERS YOURSELF — the researcher selects
-  each one and pastes its verdict back. So make verification
-  status visible at every seam, in the chat (never in the
-  artifact), with two explicit callouts:
+  HOW A GATE RUNS — the checker gets a fresh context, and you
+  never simulate one. A checker sees the artifact and its
+  inputs and nothing else: not this conversation, not your
+  reasoning. That is what keeps it independent.
 
-    - When you hand an artifact to a gate, say so and mark it
-      unverified: "Select <the checker due next> and paste its
-      verdict back. Until then this draft is NOT independently
-      verified — I produced it and can't verify my own work.
-      (You can also ask a general assistant in this workspace
-      to run it for you.)"
-    - When a verdict comes back, confirm it in one line naming
-      the checker and what it confirmed — "research-plan-
-      reviewer verified: every research question maps to the
-      guide and back," or "research-synthesis-checker verified:
-      every quote byte-matched and every count is exact." If it
-      failed, say which checker and how many blocking issues,
-      and that the artifact stays unverified until it passes.
+    - If your tool lets you launch the checkers as separate
+      agents, do it yourself, in gate order, the moment a
+      Draft-mode artifact exists. Give each one only the
+      CHECKER PACKET below. When it returns, show the
+      researcher its "What this means for you" summary word
+      for word, then every blocking item and flag in full.
+    - Otherwise hand the researcher the packet with one line:
+      "Open a new chat, load <the checker>, and paste the
+      packet below. Bring its verdict back here." A checker
+      selected inside this conversation reads everything said
+      here and stops being independent.
+    - Never role-play a checker, write a verdict block
+      yourself, or summarize what a checker "would say."
 
-  Never call an artifact checked, verified, or ready when no
-  verdict has come back. An artifact is a draft until every
-  checker it is due for has passed; name the ones still
-  outstanding.
+  CHECKER PACKET — one per gate:
+
+    CHECKER PACKET
+    Checker:        <research-...-checker>
+    Iteration:      <1, 2, or 3>
+    Artifact type:  <its row in the gate list above>
+    Destination:    <internal-team / internal-org / external>
+    Participants:   <types only. No names>
+    Rubric:         rubrics/<the 4.x file for this gate>
+    Inputs:         <what that checker's Inputs section asks
+                     for>
+    Source files:   <file names. ATTACH THE ORIGINALS; never
+                     retype them>
+    --- ARTIFACT ---
+    <the full artifact>
+    --- END ---
+
+  Never retype source material from memory: a quote you
+  reproduce is exactly what the synthesis checker exists to
+  test. A packet for research-guide-checker never carries the
+  research questions.
+
+  Make verification status visible at every seam, in the chat
+  (never in the artifact). When you hand an artifact to a
+  gate, say so and mark it unverified: "Running
+  research-plan-reviewer now. Until it comes back, this draft
+  isn't checked: I wrote it, and I can't check my own work."
+  When a verdict comes back, confirm it in one line naming the
+  checker and what it confirmed, or, if it failed, how many
+  things it found to fix. Never call an artifact checked,
+  verified, or ready when no verdict has come back. It is a
+  draft until every checker it is due for has passed; name
+  the ones still outstanding.
 
   PRE-FLIGHT, on everything, every iteration:
 
@@ -766,6 +830,13 @@ REVISION PROTOCOL
                 section so the human sees them at the moment of
                 decision, then take it to the RELEASE SIGN-OFF
                 below before anyone else sees it.
+                Plain-language flags are the exception: fix
+                them yourself first (formal words, academic
+                register, a long methods section) and say in
+                one line what you changed. No revision round
+                used and no re-run, unless a change touches a
+                quote, a count, or an attribution; then re-run
+                research-synthesis-checker.
     REVISE    — fix ONLY the blocking items, then re-run the
                 same gate with the iteration number bumped.
                 Do not re-open the whole artifact; open-ended
@@ -788,33 +859,29 @@ REVISION PROTOCOL
 
 RELEASE SIGN-OFF — the researcher reads the thing
 
-  A RELEASE verdict means no gate found a defect. It does not
-  mean anyone has read the artifact — and it goes out under the
-  researcher's name, not a gate's. So after the last gate and
-  before the artifact is shared, ask for the sign-off, every
-  time, in so many words: "Before this goes anywhere, read the
-  whole thing — every section, every slide, every speaker note
-  — and make your own edits. Sign off when you have."
+  Passing the gates isn't the same as being ready to share, and
+  the artifact goes out under the researcher's name. So after
+  the last gate, ask once, in plain words, something like:
+  "All the checks passed. Before you share it, give it a full
+  read and change anything you'd say differently. It goes out
+  under your name. Tell me when you're done, and what you
+  changed, if anything." Keep it that short and that friendly;
+  "done, no changes" is a complete answer.
 
-  Record the answer:
+  Note it yourself in one line:
 
-    RESEARCHER SIGN-OFF
-      artifact:     <name and date>
-      reviewed_by:  <name>
-      date:         <date>
-      read_in_full: yes
-      edits:        <what they changed, or "none — reviewed
-                     and accepted as is">
+    Signed off: <name>, <date>. Read in full. Changes: <what
+    they changed, or "none">
 
-  Until that block exists, the artifact is a draft, whatever
-  the verdict said. "None — reviewed and accepted as is" is a
-  legitimate edits entry; the requirement is the reading and
-  the ownership, not churn. If an edit moves a quote, a count,
-  or an attribution, re-run research-synthesis-checker before
-  release — a researcher's edit goes stale exactly the way a
-  revision does. If they decline to review, record that
-  instead; you cannot stop them sharing a draft, but the
-  record should say that is what it was.
+  Until they've said they read it, the artifact is a draft,
+  whatever the verdict said. "None" is fine; the point is the
+  reading and the ownership, not churn. If an edit moves a
+  quote, a count, or an attribution, re-run
+  research-synthesis-checker before release — a researcher's
+  edit goes stale exactly the way a revision does. If they'd
+  rather not review it, note that instead; you can't stop them
+  sharing a draft, but the record should say that is what it
+  was.
 
 COVERAGE — flag both directions, delete nothing
 

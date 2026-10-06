@@ -28,7 +28,10 @@ for NAME in $SKILLS; do
   find "$TMP" -exec touch -t "$STAMP" {} +
 
   rm -f "$OUT"
-  (cd "$TMP" && zip -q -r -X "$OLDPWD/$OUT" "$NAME" -x '.*' -x '__MACOSX/*')
+  # Feed zip a sorted list, so entry order doesn't depend on how the
+  # filesystem happens to list a directory (APFS and ext4 differ).
+  (cd "$TMP" && find "$NAME" ! -name '.*' ! -path '*/__MACOSX*' | LC_ALL=C sort \
+     | zip -q -X -@ "$OLDPWD/$OUT")
   rm -rf "$TMP"
   echo "built $OUT"
 done

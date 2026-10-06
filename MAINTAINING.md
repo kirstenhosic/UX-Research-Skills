@@ -206,10 +206,12 @@ the same rule that it never lowers a bar.
 
 The constraint that keeps this from becoming forty duplicated files: **a method
 file carries only what differs by method.** Question craft, the behavioral bar,
-sequencing, probing, and the gates are shared and are defined once, in the agent
-and in `EVALUATION-LOOP.md` §4.6 — or §4.7 for a self-administered instrument. If
-you catch yourself writing the same rule into two method files, it belongs in
-neither; lift it to whichever of those two sections covers that instrument mode.
+sequencing, probing, and the gates are shared. They are defined once, in
+`EVALUATION-LOOP.md` §4.6 (or §4.7 for a self-administered instrument), and
+taught in the planning scenario files (`ux_plan_from_scratch.md`,
+`challenge_and_refine_plan.md`). If you catch yourself writing the same rule
+into two method files, it belongs in neither; lift it to whichever of those two
+sections covers that instrument mode.
 
 Two fields are load-bearing downstream. `what it cannot tell you` is written to
 be pasted into a plan's methodology section, because `plan-reviewer` blocks a
@@ -248,26 +250,86 @@ Every file uses Dr. Morgan and the same plain instruction opener
 
 ## Keep the agent in sync
 
-**The standalones are canonical; the agent follows them.** This is a decision,
-not a preference — the README promises each standalone "goes deeper than the
-agent's condensed copy," and that promise only holds in one direction.
-`agents/dr-morgan.agent.md` embeds condensed copies of each scenario, so a
-change to a standalone file needs mirroring into the agent — and an improvement
-drafted in the agent first is not done until it has been written into the
-standalone it condenses. They will drift otherwise, and the drift runs
-backwards: the agent quietly becomes the richer file, and a researcher who
-loads the "deeper" standalone drafts an artifact the suite's own gates flag.
+**The standalones are canonical, and the agent no longer copies them.**
+`agents/dr-morgan.agent.md` carries only what every scenario shares: persona,
+product and method context, operating principles, session length and handoff,
+mentoring rules, the evaluation loop, the router, and the participant-facing
+rules. Each scenario's flow lives in exactly one place, its standalone file,
+and the agent reads that one file on demand once the router has picked the
+scenario (`## LOADING A SCENARIO`). It used to embed a condensed copy of all
+five, and keeping the two in step by hand was the suite's main source of
+drift. The drift ran backwards: the agent quietly became the richer file, and a
+researcher who loaded the "deeper" standalone drafted an artifact the suite's
+own gates flagged.
+
+What that means when you edit:
+
+- **To change a scenario, edit its standalone file.** Nothing to mirror.
+- **Don't put scenario-specific guidance back into the agent.** A rule only
+  one scenario needs belongs in that scenario's file. In the agent it is
+  loaded into every session, whichever scenario is running, and it starts
+  the two-copies problem again. If it seems to need both, it is probably a
+  shared rule. Put it in the agent's shared sections *and* the standalones'
+  shared blocks (below), not in one scenario's flow.
+- **The shared rules still exist twice, in two formats.** The agent's
+  `OPERATING PRINCIPLES`, `SESSION LENGTH AND HANDOFF`, and `THE EVALUATION
+  LOOP` say in markdown what the standalones' byte-identical `OPERATING
+  PRINCIPLES` and `RELEASE GATE` blocks say in plain text. A change to one is
+  a change to the other. The hash check below can't see the agent, so read
+  it. Where they differ in a live session, the agent says its own versions
+  govern (the standalones' gate list, for one, omits the report and
+  participant rows), so a fix made only in a standalone's shared block will
+  be overridden whenever the agent is loaded.
+- **The router's File column is a dependency.** Renaming, adding, or merging
+  a scenario file means updating that column, the file list in the agent's
+  opening paragraph and maintenance note, the README scenario table, and the
+  cross-file pointers inside the standalones (for example
+  `ux_plan_from_scratch.md` cites `select_best_method.md` for the MVRM
+  criteria and recruitment patterns, and `challenge_and_refine_plan.md`
+  offers `ux_plan_from_scratch.md`).
+- **Every standalone must keep working on its own.** It is now loaded in two
+  ways: by the agent, which reads it alongside the agent's shared rules, and
+  pasted into a chat on its own, with no agent at all. Don't make a
+  standalone lean on something only the agent provides.
+
+**What a session costs.** A one-scenario session now loads the agent plus one
+standalone, and the standalone repeats the shared blocks the agent already
+carries. That overlap is the price of each file standing alone, and it is
+smaller than the five condensed scenarios the agent used to carry. If the
+budget gets tight again, the next lever is the standalones' shared blocks,
+not putting scenario content back into the agent.
 
 **The guide-craft set is a greppable parity check.** TED+W, the always-probe
 word list, and the moderator reminders block must appear together wherever
-interview-guide craft is taught or audited: the agent (Scenario C),
-`ux_plan_from_scratch.md`, `challenge_and_refine_plan.md`, `EVALUATION-LOOP.md`
-§4.6, `agents/research-guide-checker.agent.md`, and the interview-shaped
-`methods/` files. When you improve any of them, grep for `TED+W` and
-`always-probe` and visit every hit before you commit — the same sweep as the
-count words below.
+interview-guide craft is taught or audited: `ux_plan_from_scratch.md` (Phase 5
+and its interview script template), `challenge_and_refine_plan.md` (the script
+review and its discussion guide skeleton), `EVALUATION-LOOP.md` §4.6,
+`agents/research-guide-checker.agent.md`, and the interview-shaped `methods/`
+files. The agent no longer teaches guide craft. Its evaluation loop names the
+set in one sentence and points at the loaded scenario file, so a `TED+W` hit
+there is a pointer, not a copy to keep in parity. When you improve any of
+them, grep for `TED+W` and `always-probe` and visit every hit before you
+commit — the same sweep as the count words below.
 
-## Templates condense the skills — same drift rule as the agent
+## Checkers always start from a fresh context
+
+Dr. Morgan launches the checkers itself where the tool lets one agent launch
+another (`tools: [read, search, agent]` and the `agents:` list in its
+frontmatter), and otherwise hands the researcher a **checker packet** to paste
+into a new chat. `EVALUATION-LOOP.md` §3, *How a gate runs*, is the spec.
+
+This was tried once without the packet and reverted (IBM-repo commits 449de39
+and 47e3386, 2026-09-30), on the worry that producer and checker would share
+blind spots. The packet is the answer to that worry, and the manual path had
+the worse version of it: a checker selected inside Dr. Morgan's conversation
+reads the whole conversation. Keep three things if you edit this: the checker
+gets the packet and nothing else; source material travels as the original
+files, never retyped by the producer; and the checker's plain summary and
+every finding reach the researcher verbatim. If you widen the `agents:` list,
+keep it to the seven checkers. The adversarial panel (§6) stays manual on
+purpose.
+
+## Templates condense the skills — the canonical file wins
 
 `templates/` carries fill-in versions of the structures the skills produce:
 the plan's sixteen sections, the findings record, the report and deck
@@ -294,6 +356,7 @@ so it lives in the scripts, not in any document.
 ## Shared blocks are duplicated on purpose
 
 Each scenario file has to be self-contained so it can be pasted into a chat alone,
+and so the agent can load exactly one of them and nothing else,
 which means the `OPERATING PRINCIPLES` block (calibrate to experience · Coach/Draft
 modes · never fabricate data · never fabricate sources · protect participant data)
 is repeated verbatim in every skill file. That's the cost of portability. When you
@@ -352,8 +415,9 @@ all of it:
    §7 exists to prevent
 6. §8's quick-reference sequences, and the sentence in §9 that counts agents
 7. The gate table in `agents/dr-morgan.agent.md`, its "N separate agents do the
-   checking" line, the drafting guidance for that artifact type, and the count in
-   its maintenance note
+   checking" line, its short drafting rule for that artifact type, and the count
+   in its maintenance note; and the drafting guidance in whichever scenario
+   file drafts that artifact type, outside its `RELEASE GATE` block
 8. The checker table in `README.md`, its heading and the two cross-references to
    that heading by anchor, the mermaid gate node, the principles bullet, and the
    glossary's `gate` and `artifact` rows
@@ -450,10 +514,13 @@ legitimately not need the quant references. What is a defect is the difference
 arriving by accident, which is what happened.
 
 This covers the five standalone scenario files only. `agents/dr-morgan.agent.md`
-carries the same guidance in markdown rather than plain text, so it can't be hashed
-against them. It's the file most likely to drift, and it has to be checked by
-reading — the scenario list in its opening paragraph, the inline product
-context block, and its closing sync note are the places that go stale first.
+carries the shared rules in markdown rather than plain text, so it can't be
+hashed against them, and it has to be checked by reading. It no longer carries
+the scenario flows, so the places that go stale first are the router table's
+**File** column, the file list in its opening paragraph and maintenance note,
+the inline product context block, and its shared rules (operating principles,
+session length, the evaluation loop) against the standalones' `OPERATING
+PRINCIPLES` and `RELEASE GATE` blocks.
 
 ## §10 is advisory on purpose — don't promote it without evidence
 
@@ -503,6 +570,50 @@ Each gate refuses the other's artifact explicitly and by name. Keep that: a gate
 that silently reviews the wrong instrument type produces findings that are
 confident, specific, and wrong, which is worse than no gate. `guide-checker`
 refusing a survey is the behavior, not a gap.
+
+## Automated checks
+
+`scripts/check.sh` runs the checks above, plus a few that used to be done by eye.
+CI runs it on every push and pull request to `main`
+(`.github/workflows/checks.yml`), so drift fails the build instead of waiting for
+someone to notice. It checks that:
+
+- **Shared blocks match.** `OPERATING PRINCIPLES` and `RELEASE GATE` are identical
+  across the scenario files, and all five carry both. This is the `check()` logic
+  above.
+- **The spine is present.** The product one-liner and the personas sentence appear
+  in all five scenario files. This is the `spine()` logic above.
+- **Links resolve.** Relative Markdown links and `#anchors` point at files and
+  headings that exist, with exact case (`scripts/check_links.py`). Web links and
+  anything inside backticks are skipped.
+- **Counts match.** The readability rubric's size in `VOICE-AND-STYLE.md` Part 4
+  matches every "N-item rubric", "Score all N items" and "All N items" claim about
+  it. The number of `agents/research-*.agent.md` files matches every spelled-out
+  count written before "checkers", "evaluators", "evaluator agents" or "separate
+  agents" (`scripts/check_counts.py`). The check is deliberately narrow. When you add a new
+  phrasing for either count, add it to the script's docstring and patterns.
+- **Every gated artifact has an agent row.** Each artifact row in the
+  `EVALUATION-LOOP.md` §3 gate matrix has a row in the `Which gates run` table in
+  `agents/dr-morgan.agent.md` (`scripts/check_gate_rows.py`). The theme set is
+  skipped because it is a human checkpoint.
+- **Generated files are current.** It runs `./build-rubrics.sh`, `./build-skill.sh`,
+  `templates/build-tracker.py` and `templates/build-docx.py`, then fails if
+  `rubrics/`, the `.skill` packages, `templates/docx/`, the tracker or the template
+  bundle differ from what is committed. If this fails, run the build scripts and
+  commit the results. A rebuilt archive that differs only in bytes, with the same
+  files and content inside, is not reported, because zip entry order and
+  compression vary by platform. `scripts/zip_same.py` makes that comparison.
+
+Run it locally from the repo root:
+
+````
+scripts/check.sh              # everything; needs python-docx and openpyxl, and zip
+scripts/check.sh --no-build   # skip the rebuild: fast, stdlib Python only
+````
+
+CI pins python-docx, openpyxl and lxml to the versions the committed files were
+built with. When you upgrade them locally, update the pins in
+`.github/workflows/checks.yml` in the same commit as the rebuilt files.
 
 ---
 

@@ -60,6 +60,9 @@ phone numbers for IDs (P1, P2) before you paste anything in.
 Terms of art — *agent*, *skill*, *gate*, *verdict*, *artifact* — are all
 defined in the [Glossary](#glossary) at the bottom.
 
+Short on time? [`QUICK-REFERENCE.md`](QUICK-REFERENCE.md) is the whole workflow on
+one page.
+
 ---
 
 ## Quick start
@@ -78,7 +81,7 @@ sure how, ask the assistant itself. Then select the **Dr. Morgan** agent
 talking to it. This is the mode the suite is built for: the agent's
 frontmatter grants it `read` and `search`, which is how it reaches
 `EVALUATION-LOOP.md`, `VOICE-AND-STYLE.md`, `FINDINGS-CONTRACT.md`, and the
-deeper scenario files it treats as source of truth.
+one scenario file it loads for whatever you're working on.
 
 **You'll know it's loaded.** Dr. Morgan opens its first reply with an
 identification line — `Dr. Morgan · Scenario — · Coach mode` — and repeats
@@ -123,9 +126,18 @@ artifact you intend to show someone, go to
 
 ### If you can't connect the repo
 
-Open the agent file, copy the whole thing, and paste it into your chat tool.
-That works — but it is not equivalent, and the difference matters:
+Paste the one scenario file you need into your chat tool — the five are
+listed in [What you can ask for](#what-you-can-ask-for). Each stands alone, so
+one is enough. If you also want the router, the status line, and the full gate
+table, paste the agent file first and the scenario file right after it. With
+the repo connected, Dr. Morgan reads that one file itself; pasted, it can't,
+so it will ask you for it. That works — but it is not equivalent, and the
+difference matters:
 
+> - **A pasted agent carries no scenario flows of its own.** Until you paste
+>   a scenario file after it, Dr. Morgan coaches from the shared rules and
+>   says so, rather than rebuilding a scenario's procedure from memory. When
+>   you switch scenarios, paste the new file.
 > - **A pasted copy has no file access.** Dr. Morgan defers to those files
 >   for the things it only summarizes: the verdict schema, the
 >   Definition-of-Done rubrics, the 23-item readability rubric, the
@@ -147,12 +159,12 @@ That works — but it is not equivalent, and the difference matters:
 ## What you can ask for
 
 Five scenarios. Name one, let Dr. Morgan detect which fits, or move between
-them as the work moves. Each also exists as a standalone file that goes
-deeper than the agent's condensed copy — load one directly when you already
-know what you need. Each file is self-contained, so you never need the
-others loaded.
+them as the work moves. Each scenario lives in one standalone file, and
+Dr. Morgan reads only the one you're in, so the session doesn't carry the
+other four. You can also load one directly when you already know what you
+need. Each file is self-contained, so you never need the others loaded.
 
-| Scenario | Use it when | Deeper file |
+| Scenario | Use it when | File |
 |---|---|---|
 | **A — Analyze your data** | You have data and need defensible insights. Pushes every finding up the ladder: observation → interpretation → insight → recommendation. | [`analyze_your_data.md`](analyze_your_data.md) |
 | **B — Select the best method** | You need the most rigorous method you can actually execute, given who you can reach and what's at stake. | [`select_best_method.md`](select_best_method.md) |
@@ -242,8 +254,16 @@ documents the JSON config it takes.
 
 When Dr. Morgan drafts something you intend to show people, the draft goes
 through checkers — separate agents that read the finished artifact and report
-a verdict. You select each one in your tool by name when Dr. Morgan tells you which
-comes next; you never need to remember the order.
+a verdict. If your tool lets one agent launch another, Dr. Morgan runs them
+itself. If not, it hands you a ready-to-paste **checker packet** for each one:
+open a **new chat**, load the checker it names, paste the packet, and bring
+the verdict back. You never need to remember the order. (The new chat
+matters: a checker opened inside Dr. Morgan's conversation can read the whole
+thing, which defeats the point of an independent check.)
+
+Every checker report opens with **What this means for you**: whether it's
+ready, the one thing to fix first, and what happens next. The detail sits
+below it.
 
 Each evaluator verifies one thing and is blind to the rest. That blindness is
 the reason there's more than one: a groundedness checker will pass a
@@ -313,7 +333,7 @@ flowchart TD
     DC{{"DECISION CHECKPOINT<br/>the decision's owner answers, not an agent<br/>confirmed · rescoped · not a decision · deferred<br/><i>Dr. Morgan must ask — the answer never blocks</i>"}}
     DC --> ART
 
-    CL --> TC{{"THEME CHECKPOINT<br/>you decide each theme, not an agent<br/>accept · revise · split · reject"}}
+    CL --> TC{{"THEME CHECKPOINT<br/>you decide each theme, not an agent<br/>keep · change · split · drop"}}
     TC --> SY["Synthesis<br/>built on the themes you approved"]
     SY --> ART
 
@@ -416,9 +436,12 @@ its own. The rest of the limits are written down in
 ## Releasing an artifact
 
 Draft-mode artifacts get checked before they reach anyone else. Dr. Morgan
-runs the sequence and tells you which checker comes next — select it by
-name in your tool, then bring the verdict back. You don't need to track which gates
-apply.
+runs the checkers itself where your tool allows it; otherwise it hands you
+one packet at a time to paste into a new chat with the checker it names.
+Attach the original transcripts or notes when the packet asks for them;
+Dr. Morgan never retypes source material. You don't need to track which
+gates apply. [`QUICK-REFERENCE.md`](QUICK-REFERENCE.md) has the whole flow on
+one page.
 
 **Say where it's going.** The safety scan runs first on everything, and its
 bar depends on who will read it. Dr. Morgan asks if you haven't said.
@@ -446,21 +469,23 @@ region scale with the destination, and stricter consent terms win.
 the artifact is. `REVISE` means Dr. Morgan fixes the blocking
 items and re-runs that gate — twice at most, and if the fix moved a quote, a
 count, or an attribution, the synthesis gate re-checks too, because the pass
-behind it is stale. `ESCALATE` means stop and look at it yourself.
+behind it is stale. `ESCALATE` means stop and look at it yourself. If the
+readability checker flags formal or academic wording, Dr. Morgan fixes it
+before showing you the artifact and tells you what it changed.
 
-**Then you read the thing — all of it — and sign off.** Before any final
-output goes anywhere, Dr. Morgan asks for your sign-off: you read the whole
-artifact (every section, every slide, every speaker note), make your own
-edits, and it records that you did. This isn't a formality it can skip and
-isn't one you should: six green verdicts read as "someone checked this,"
-and the someone was a set of language models, each blind by design to most
-of what can be wrong. The output ships under your name. "Reviewed and
-accepted as is" is a fine outcome; unread is not. If your edits move a
+**Then you give it a full read.** When the checks pass, Dr. Morgan asks you,
+in plain words, to read the whole thing (every section, slide, and speaker
+note), change anything you'd say differently, and tell it when you're done.
+"Done, no changes" is a fine answer; it notes that in one line. The ask is
+short, but don't skip the read: green verdicts look like "someone checked
+this," and the someone was a set of language models, each blind by design to
+most of what can be wrong. The output ships under your name. If your edits move a
 quote, a count, or an attribution, the synthesis gate re-checks, same as
 any revision.
 
-Three calls stay yours: the themes, which you accept, revise, split, or
-reject one at a time before synthesis is built on them; the sign-off; and
+Three calls stay yours: the themes, which you keep, change, split, or drop
+one at a time before synthesis is built on them ("keep 1, 2 and 4, drop 3" is
+fine); the sign-off; and
 whether the artifact actually ships. Passing the gates isn't approval. A
 readout deck is a new artifact and runs the checks again.
 
@@ -513,9 +538,10 @@ claims without the text underneath is how a fabrication survives a handoff
 and arrives looking clean.
 
 **Three habits that buy you a lot of room:** paste a corpus once and work
-from participant IDs afterwards; don't load a standalone scenario file
-alongside the agent, since the agent already contains it; and load one
-product-context and one method file rather than the directories.
+from participant IDs afterwards; let Dr. Morgan load the one scenario file
+it needs rather than loading scenario files yourself (paste one only when
+it has no file access); and load one product-context and one method file
+rather than the directories.
 
 ---
 
@@ -600,6 +626,7 @@ those questions up front.
 | [`skills/README.md`](skills/README.md) | Driving the Research Document Template: usage, layouts, output, and common scenarios. [`skills/CONFIG-SCHEMA.md`](skills/CONFIG-SCHEMA.md) documents the JSON config. |
 | [`PRODUCT-CONTEXT.md`](PRODUCT-CONTEXT.md) | How Dr. Morgan gets specific about your product: the resolution order, the five-question intake, the file format, and how to add your own. [`product-context/`](product-context/) holds the files themselves. |
 | [`METHODS.md`](METHODS.md) | How Dr. Morgan gets operationally specific about a method: session shape, counts, instrument craft, and what each method cannot tell you. [`methods/`](methods/) holds the files, and the table of which methods have an instrument gate and which don't. Read before adding a method. |
+| [`QUICK-REFERENCE.md`](QUICK-REFERENCE.md) | The whole flow on one page: how to start, which checker runs when, how to run one, when to start a new chat, and the three calls that are yours. Hand this to new users. |
 | [`MAINTAINING.md`](MAINTAINING.md) | Repo upkeep — test fixtures, keeping the agent in sync with the standalone files, and the drift check for shared blocks. Only needed if you're editing the suite, not using it. |
 | [`templates/`](templates/README.md) | The manual path: fill-in templates for the whole study lifecycle (intake, plan, screener, guide, participant tracker, findings records, report, deck, impact message), in the same structures Dr. Morgan produces. For researchers and designers who want to do the work themselves; the gates and release sign-off apply either way. |
 
@@ -656,6 +683,7 @@ citations live in the individual files.
 | custom instructions | The box in your chat tool where you set standing instructions for a whole conversation instead of retyping them. Sometimes called a system prompt. |
 | gate | A checker that reads a finished artifact and reports whether it passes. Six of the seven run as quality gates; the safety checker runs ahead of them as pre-flight. Each looks for something different. |
 | verdict | The block a gate ends with: **PASS**, **PASS WITH FLAGS**, or **FAIL**, plus what to do next. Written in a fixed shape so a person or a script can act on it without reading prose — in that machine-readable block they appear as `PASS`, `PASS_WITH_FLAGS`, `FAIL` — plus `NOT_APPLICABLE`, which a gate returns when it was handed an artifact it does not own, and which asserts nothing about the artifact. |
+| checker packet | The block Dr. Morgan writes for each checker: which checker, the artifact, who it's for, and which original files to attach. You paste it into a new chat with that checker, unless your tool lets Dr. Morgan run the checker itself. |
 | pre-flight | The safety scan that runs before the gates, on everything, every time. |
 | checkpoint | A stop where a *person* decides, not an agent. Four exist: the **decision checkpoint** before the study, where the decision's owner says whether the decision is real (advisory — Dr. Morgan must ask, the answer never blocks); the **theme checkpoint** after clustering (the default one, and it blocks by destination); a conditional **codebook checkpoint** at the end of coding, run only when the corpus is too large to code in one attentive pass; and the **release sign-off** after the last gate, where the researcher records that they read the whole final output and made their own edits — without it the artifact stays a draft. |
 | blocking vs. flagged | Blocking means something is wrong and gets fixed. Flagged means it's accurate but a human should look. |

@@ -191,6 +191,15 @@ plan case is the worked example.
 **Reviewer Notes** section so the human sees them at the moment of decision,
 not in a report they've already closed.
 
+**Plain-language flags are the one exception.** When `research-readability-checker`
+flags formal words, academic register, or a long methods section (VOICE item 23),
+the producer fixes them before showing the artifact and says in one line what it
+changed. Every output the team gets should be simple, clear, and direct, and these
+are fixes nobody needs to deliberate over. It uses no revision round and needs no
+re-run, unless a change touches a quote, a count, or an attribution, which re-runs
+`research-synthesis-checker` as any such edit does. The item stays a flag, not a
+block: a gate that hard-fails on style gets switched off.
+
 ---
 
 ## 3. Gate matrix
@@ -201,6 +210,48 @@ and two or three gates. The last row, the theme set, has no agent gate at all: i
 gets a human checkpoint instead (§9).
 
 Every row below is preceded by `research-safety-checker` (pre-flight, always).
+
+### How a gate runs
+
+A checker sees the artifact and its inputs and nothing else: never the producer's
+conversation or reasoning. That is what makes it independent, so the checker
+always starts from a fresh context.
+
+- **Launched by Dr. Morgan**, where the tool lets an agent launch other agents.
+  Each launch starts empty and receives only the checker packet below. Dr. Morgan
+  shows the researcher the checker's plain summary word for word, then every
+  blocking item and flag in full; it never softens, merges, or drops one.
+- **Run by the researcher** everywhere else: open a **new chat**, load the
+  checker, paste the packet, and bring the verdict back. A checker selected
+  inside Dr. Morgan's conversation reads that whole conversation, which is the
+  shared blind spot this design exists to avoid, and it also spends the
+  conversation's room on work that belongs elsewhere.
+
+Either way, nothing inside the producer's conversation may stand in for a
+verdict: no simulated checker, no verdict block written by the producer, no
+summary of what a checker "would say."
+
+**The checker packet.** The producer writes one per gate:
+
+```
+CHECKER PACKET
+Checker:        <research-...-checker>
+Iteration:      <1, 2, or 3>
+Artifact type:  <its row in the matrix below>
+Destination:    <internal-team / internal-org / external>
+Participants:   <types only. No names>
+Rubric:         rubrics/<the 4.x file for this gate>
+Inputs:         <what that checker's ## Inputs section asks for>
+Source files:   <file names. Attach the originals; never retype them>
+--- ARTIFACT ---
+<the full artifact>
+--- END ---
+```
+
+Source material travels as the original files, never retyped by the producer:
+a reproduced quote is exactly what `research-synthesis-checker` exists to test.
+And a packet respects the receiving checker's blind spots — one for
+`research-guide-checker` never carries the research questions.
 
 | Artifact | Produced by | Gates, in order |
 |---|---|---|
@@ -1168,8 +1219,10 @@ verifier is thin. Run a refutation panel — but only on those claims.
 - The claim came back `Partially Supported` but is being kept
 - The decision is high-stakes, expensive, or hard to reverse
 
-**The researcher runs this by hand.** No agent in this suite can spawn another —
-they all have `read` and `search` only. Three "verifiers" simulated inside one
+**The researcher runs this by hand.** Dr. Morgan can launch the seven checkers
+where the tool allows it (§3, *How a gate runs*), but not this panel: the
+refuters must not see the producer's framing of the claim, and the producer
+writes every packet it sends. Three "verifiers" simulated inside one
 conversation share a context and therefore share a bias, which is exactly what
 the panel exists to avoid. `research-synthesis-checker` identifies which claims
 warrant a panel; a person runs it.
@@ -1510,19 +1563,25 @@ it is the most useful page in the packet:
 A finished codebook shows conclusions. The merges, drops, and rejections are the
 *reasoning* — and they are where an experienced researcher will disagree.
 
-### Ask for a decision, not for feedback
+### Ask for a decision on each theme, in plain words
 
-"Any thoughts on these themes?" produces silence, or "looks good." Ask for one
-of four dispositions per theme:
+"Any thoughts on these themes?" produces silence, or "looks good." Ask instead
+for a decision per theme, in everyday words: *"Here are the six themes, riskiest
+first. For each one: keep it, change it, split it, or drop it? 'Keep 1, 2 and 4,
+drop 3, split 5 into…' is a fine answer."*
 
-- **ACCEPT** — as written
-- **REVISE** — the theme is real but the statement is wrong; say what it should be
-- **SPLIT** — this is two themes
-- **REJECT** — not supported, or not a theme
+| The researcher says | Meaning | Recorded as |
+|---|---|---|
+| keep | as written | `ACCEPT` |
+| change | the theme is real but the statement is wrong; say what it should be | `REVISE` |
+| split | this is two themes | `SPLIT` |
+| drop | not supported, or not a theme | `REJECT` |
 
-**No bulk accept.** Every theme gets its own disposition. A reviewer who
-genuinely accepts all of them can say so one at a time; that is the cost of the
-checkpoint, and it is not a high one.
+**Every theme needs its own answer.** A blanket "looks good" isn't one; ask which,
+if any, they'd change. A reviewer who genuinely keeps all of them can say "keep
+all six" after reading each one; the point is the reading, not the ceremony. The
+record keeps the fixed values so findings stay comparable; the researcher never
+has to type them.
 
 ### Record the outcome
 
@@ -1735,23 +1794,22 @@ report, participant impact summary, plan, guide, survey instrument.
 **What the researcher agrees to, and what the record shows they did.** Read
 the whole artifact — every section, the appendix, every slide, every speaker
 note, every linked material description — and make their own edits. The ask
-is made in so many words, every time: producers must not soften it to "look
-this over." The sign-off is the researcher's statement that the reading
-happened and the output is now their work.
+is made once, in plain, friendly words, and it names the full read rather than
+"have a look": *"All the checks passed. Before you share it, give it a full
+read and change anything you'd say differently. It goes out under your name.
+Tell me when you're done, and what you changed, if anything."* No formal
+confirmation language, and no second, sterner reminder: "done, no changes" is a
+complete answer. The sign-off is the researcher's statement that the reading
+happened and the output is now their work. The producer records it in one
+line:
 
 ```
-RESEARCHER SIGN-OFF
-  artifact:     <name and date>
-  reviewed_by:  <name>
-  date:         <date>
-  read_in_full: yes
-  edits:        <what they changed, or "none — reviewed and accepted as is">
+Signed off: <name>, <date>. Read in full. Changes: <what they changed, or "none">
 ```
 
-Until the block exists, the artifact is a **draft**, whatever the verdict
-said. "None — reviewed and accepted as is" is a legitimate `edits` entry;
-the requirement is the reading and the ownership, not churn for its own
-sake.
+Until that line exists, the artifact is a **draft**, whatever the verdict
+said. "None" is a legitimate entry; the requirement is the reading and the
+ownership, not churn for its own sake.
 
 **The staleness rule follows the researcher too.** An edit that moves a
 quote, a count, or an attribution re-runs `research-synthesis-checker`
@@ -1764,12 +1822,12 @@ to any reader in a way a shifted count is not.
 
 **Why this is a checkpoint and not a gate.** No agent can verify that
 reading happened; an evaluator scoring "was this reviewed?" would be
-scoring the presence of a block, which any producer can emit. Like the
+scoring the presence of a line, which any producer can emit. Like the
 theme checkpoint (§9), the value is the person's judgment, not the
 paperwork; the paperwork exists so the moment can't be skipped silently.
 Unlike the decision checkpoint (§10), it is not advisory: the artifact
 stays a draft without it. And if the researcher declines to review, that
-is recorded in place of the block — nobody can stop a person sharing a
+is recorded in place of the sign-off line — nobody can stop a person sharing a
 draft, but the record should say that is what it was.
 
 ---

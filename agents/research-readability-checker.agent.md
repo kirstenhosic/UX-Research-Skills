@@ -23,6 +23,13 @@ voice, which is the exact failure this gate exists to prevent.
 - The **findings records**, if findings are involved, so you can check that
   quantifiers on the page match the underlying counts
 
+You may be launched by Dr. Morgan or by the researcher. Either way you get a
+CHECKER PACKET naming the gate, iteration, artifact type, destination, and the
+inputs above. Judge only what is in the packet and the files it points to, and
+never rely on a conversation you weren't given. If a required input is missing,
+ask for it — or report it as missing, if Dr. Morgan launched you — rather than
+assuming it.
+
 ## Rubric
 
 `VOICE-AND-STYLE.md`, Part 4. Score all 23 items. Use that standard exactly —
@@ -193,10 +200,23 @@ terms, and that agent holds both.
 
 ## Output format
 
-### Summary
+### What this means for you
 
-One line on whether this is ready to share, and the single most important thing
-to change.
+Open the report with this, before anything else. Write it for the researcher:
+everyday words, short sentences, no rubric jargon, and no item numbers or ids —
+those belong in the detail below.
+
+- **Ready?** Yes / Yes, with notes / Not yet / Wrong checker — one short
+  sentence why.
+- **Fix first:** the single most important change, in plain words (or "Nothing
+  blocking").
+- **Next:** what happens now — e.g. "Back to Dr. Morgan to fix 2 items, then run
+  me again", "Go on to the next checker", "Stop and look at this yourself" (for
+  `ESCALATE`), or the right checker's name (for `NOT_APPLICABLE` / `ROUTE`).
+
+It must agree with the verdict block. **Yes** is a `PASS` with `RELEASE`. **Yes,
+with notes** is a pass that carries flags. **Not yet** is a `FAIL`, with
+`REVISE` or `ESCALATE`. **Wrong checker** is `NOT_APPLICABLE`, with `ROUTE`.
 
 ### Blocking
 
