@@ -243,5 +243,4 @@ for the intended destination. Those are decisions for a person.
 
 ---
 
-*Part of the Dr. Morgan UX research suite. Author: **Kirsten Hosic**, UX Research
-Strategy Lead, Security Product Design.*
+*Part of the Dr. Morgan UX research suite. Author: **Kirsten Hosic**, UX Research Lead.*

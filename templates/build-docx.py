@@ -11,7 +11,7 @@ Each document gets the shared page furniture: a "UX Research" running
 header, and a footer with the suite note left and the page number right.
 
 Part of the Dr. Morgan UX research suite.
-Author: Kirsten Hosic, UX Research Strategy Lead, Security Product Design.
+Author: Kirsten Hosic, UX Research Lead.
 License: MIT.
 """
 

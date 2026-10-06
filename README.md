@@ -1,5 +1,5 @@
 # Dr. Morgan — UX Research Skills & Agents
-By **Kirsten Hosic**, UX Research Strategy Lead, Security Product Design.
+By **Kirsten Hosic**, UX Research Lead.
 
 A UX research mentor you talk to inside your AI tool, plus the checkers that
 inspect its work before anyone else sees it. It's product-agnostic: it works
@@ -706,5 +706,5 @@ The last gate is still you reading the thing.
 - **Repository:** [kirstenhosic/UX-Research-Skills](https://github.com/kirstenhosic/UX-Research-Skills) *(private — ask the maintainer for access before passing the link on)*
 - **Clone:** `https://github.com/kirstenhosic/UX-Research-Skills.git`
 - **License:** MIT
-- **Author and maintainer:** Kirsten Hosic ([@kirstenhosic](https://github.com/kirstenhosic)), UX Research Strategy Lead, Security Product Design
+- **Author and maintainer:** Kirsten Hosic ([@kirstenhosic](https://github.com/kirstenhosic)), UX Research Lead
 - **Cite it:** see [`CITATION.cff`](CITATION.cff)

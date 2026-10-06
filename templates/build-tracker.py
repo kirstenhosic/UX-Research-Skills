@@ -10,7 +10,7 @@ Every sheet gets the shared print furniture: a "UX Research" header and
 a right-aligned page number in the footer.
 
 Part of the Dr. Morgan UX research suite.
-Author: Kirsten Hosic, UX Research Strategy Lead, Security Product Design.
+Author: Kirsten Hosic, UX Research Lead.
 License: MIT.
 """
 import os

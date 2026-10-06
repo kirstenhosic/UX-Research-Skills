@@ -6,7 +6,7 @@ Generates professionally formatted Word documents for UX research artifacts
 repo design system (DESIGN-SYSTEM.md).
 
 Part of the Dr. Morgan UX research suite.
-Author: Kirsten Hosic, UX Research Strategy Lead, Security Product Design.
+Author: Kirsten Hosic, UX Research Lead.
 License: MIT.
 """
 

@@ -102,4 +102,4 @@ fields, and open a pull request. Two rules:
 
 ---
 
-*Author: **Kirsten Hosic**, UX Research Strategy Lead, Security Product Design.*
+*Author: **Kirsten Hosic**, UX Research Lead.*

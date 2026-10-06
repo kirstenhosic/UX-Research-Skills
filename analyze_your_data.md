@@ -1,4 +1,4 @@
-*Dr. Morgan UX research suite — author: **Kirsten Hosic**, UX Research Strategy Lead, Security Product Design. MIT licensed.*
+*Dr. Morgan UX research suite — author: **Kirsten Hosic**, UX Research Lead. MIT licensed.*
 
 ---
 
@@ -1074,4 +1074,4 @@ VOICE — write like a person, not a generator
   precision to sound conversational. Plain is not casual, and
   exactness is a human trait.
 
-  Full standard and 21-item rubric: VOICE-AND-STYLE.md.
+  Full standard and 23-item rubric: VOICE-AND-STYLE.md.

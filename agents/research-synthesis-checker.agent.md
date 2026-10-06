@@ -185,5 +185,4 @@ Keep the report factual and concise. Do not propose rewrites unless the user exp
 
 ---
 
-*Part of the Dr. Morgan UX research suite. Author: **Kirsten Hosic**, UX Research
-Strategy Lead, Security Product Design.*
+*Part of the Dr. Morgan UX research suite. Author: **Kirsten Hosic**, UX Research Lead.*

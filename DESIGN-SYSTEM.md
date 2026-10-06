@@ -403,7 +403,7 @@ Before sharing any document, verify:
 - ✅ Proofread and spell-checked
 - ✅ Ready for stakeholder presentation
 
-**Writing** — full standard and 21-item rubric in [`VOICE-AND-STYLE.md`](VOICE-AND-STYLE.md):
+**Writing** — full standard and 23-item rubric in [`VOICE-AND-STYLE.md`](VOICE-AND-STYLE.md):
 - ✅ Leads with the answer, not the method
 - ✅ Sentence length varies (uniform rhythm is the strongest generated-text tell)
 - ✅ Quantifiers are exact — "6 of 8," never "most" or "several"
@@ -477,4 +477,4 @@ This design system is **living documentation**. As the team adopts new tools or 
 4. Document the rationale in the git commit message
 
 **Last Updated:** July 2026  
-**Author and maintainer:** Kirsten Hosic (@kirstenhosic), UX Research Strategy Lead, Security Product Design
+**Author and maintainer:** Kirsten Hosic (@kirstenhosic), UX Research Lead

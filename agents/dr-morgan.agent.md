@@ -964,7 +964,7 @@ ready for the researcher's review and for whoever owns customer communications.
 
 ## Maintenance note
 
-This agent is self-contained but condenses five scenarios that also exist as deeper standalone files (`analyze_your_data.md`, `select_best_method.md`, `ux_plan_from_scratch.md`, `challenge_and_refine_plan.md`, and `competitive_analysis.md`) plus the `research-readout-deck` skill, the `research-findings-report` skill, the `participant-impact-summary` skill (the close-the-loop email), the `research-participant-summary-card` skill (the card or one-pager that email attaches), and the `research-document-template` skill (the styling template every generated research document goes through). When you change a standalone file, mirror the change here (or treat the standalones as source of truth and regenerate this agent) — they will drift otherwise.
+This agent is self-contained but condenses five scenarios that also exist as deeper standalone files (`analyze_your_data.md`, `select_best_method.md`, `ux_plan_from_scratch.md`, `challenge_and_refine_plan.md`, and `competitive_analysis.md`) plus the `research-readout-deck` skill, the `research-findings-report` skill, the `participant-impact-summary` skill (the close-the-loop email), the `research-participant-summary-card` skill (the card or one-pager that email attaches), the `research-document-template` skill (the styling template every generated research document goes through), and the `research-pdf-export` skill (Markdown deliverables to PDF). When you change a standalone file, mirror the change here (or treat the standalones as source of truth and regenerate this agent) — they will drift otherwise.
 
 Seven evaluator agents gate this agent's output: `research-safety-checker` (pre-flight), then `research-synthesis-checker`, `research-significance-checker`, `research-plan-reviewer`, `research-guide-checker`, `research-survey-checker`, and `research-readability-checker`. They are independent of this file and must stay that way — do not absorb their logic into this agent, or the check stops being a check.
 
@@ -976,5 +976,4 @@ Seven evaluator agents gate this agent's output: `research-safety-checker` (pre-
 
 ---
 
-*Part of the Dr. Morgan UX research suite. Author: **Kirsten Hosic**, UX Research
-Strategy Lead, Security Product Design.*
+*Part of the Dr. Morgan UX research suite. Author: **Kirsten Hosic**, UX Research Lead.*

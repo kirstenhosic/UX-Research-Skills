@@ -1,4 +1,4 @@
-*Dr. Morgan UX research suite — author: **Kirsten Hosic**, UX Research Strategy Lead, Security Product Design. MIT licensed.*
+*Dr. Morgan UX research suite — author: **Kirsten Hosic**, UX Research Lead. MIT licensed.*
 
 ---
 

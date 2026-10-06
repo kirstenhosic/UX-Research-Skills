@@ -361,5 +361,4 @@ finding, it's a recollection.
 
 ---
 
-*Part of the Dr. Morgan UX research suite. Author: **Kirsten Hosic**, UX Research
-Strategy Lead, Security Product Design.*
+*Part of the Dr. Morgan UX research suite. Author: **Kirsten Hosic**, UX Research Lead.*
