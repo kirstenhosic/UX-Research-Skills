@@ -559,10 +559,10 @@ A second directory, [`methods/`](methods/), answers the other half of "be
 specific": not *who are these people* but *what does a good instrument for
 this method actually look like.* One file per method — generative interview,
 moderated usability test, diary study, concept test, survey, tree test, and
-A/B test so far — each carrying
-session shape, how many questions or tasks fit in an hour, the craft rules
-particular to that instrument, and a **what it cannot tell you** section
-written to drop into a plan's methodology section verbatim.
+A/B test so far — each carrying session shape, how many questions or tasks
+fit in an hour, the craft rules particular to that instrument, and a **what it
+cannot tell you** section written to drop into a plan's methodology section
+verbatim.
 
 Dr. Morgan resolves it the same way it resolves product context: the matching
 file, then the nearest neighbour with the difference declared, then generic

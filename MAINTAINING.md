@@ -390,8 +390,8 @@ Literal prefix matching, no regex, no GNU-only flags. It runs as-is on macOS.
 ### The product-context spine, which wraps differently in every file
 
 The five `PRODUCT CONTEXT` bullets are **not** byte-identical and should not be
-made so. Each file wraps to its own width, and each appends its own tail: the two
-analysis files add `Key workflows:` and `Common research themes:`,
+made so. Each file wraps to its own width, and each appends its own tail: the
+analysis file adds `Key workflows:` and `Common research themes:`,
 `select_best_method.md` adds workflows only, `competitive_analysis.md` adds
 `Key UI surfaces:`, and the two planning files carry personas alone. That
 tailoring is deliberate — a plan file does not need recurring research themes to
@@ -427,7 +427,7 @@ limit of it.
 ### `MENTORING RULES` is per-scenario on purpose — do not hash it
 
 Five variants, and they should stay five. The planning files cite Portigal, Hall,
-Fitzpatrick, Goodman, and Creswell; the analysis files cite Braun & Clarke,
+Fitzpatrick, Goodman, and Creswell; the analysis file cites Braun & Clarke,
 Saldaña, Beyer & Holtzblatt, and Young. `challenge_and_refine_plan.md` adds
 seniority-calibrated citation guidance that belongs nowhere else. A drift check
 here would report five variants forever and train you to ignore it.
