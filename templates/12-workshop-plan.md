@@ -43,9 +43,13 @@ How we'll know it worked:
 Non-goals:              What this session will not try to do.
 Why a workshop:         Why this beats an async review, a decision meeting,
                          1:1s, or a study.
+Reversibility:          [hard to reverse: why, and the sign-offs that follows]
+                         or [reversible: review date, what would reverse it]
 Attendees:              Role · decision rights · location and time zone
   [name]                [role] · [decides / signs off / input]
 Consulted afterwards:   [names, including anyone whose sign-off is needed]
+Sign-offs needed:       [function, person, status: in the room / before /
+                         after by date / "decided pending review"]
 Owner attendance:       [throughout] or [criteria and rule agreed by YYYY-MM-DD]
 Roles:                  Facilitator [name] · co-facilitator [name] ·
                          capturer [name] · timekeeper [name]
@@ -70,6 +74,13 @@ Data handling:
   Participant data:     what is shown, and how it is de-identified (names never;
                          role and account fine on an internal board)
   Recording consent:    [from everyone recorded, or not recording]
+  Confidential material: [what partners bring, what reaches the board and the
+                         summary; board, recording, and AI note-taker
+                         approved for it]
+Access needs:           [asked for by date; what was acted on]
+If the decision is contested: [objection and response recorded; escalation
+                         path and deadline; whether the decision stands
+                         meanwhile]
 Dates:                  Materials out [date] · dry run [date] · summary to
                          attendees [date]
 ```
@@ -95,9 +106,9 @@ needs an output a later block produces.
 
 Read it back aloud before the room closes.
 
-| Decision | Decided by, under which rule | Rests on (label) | What would reverse it |
-|---|---|---|---|
-| | | | |
+| Decision | Decided by, under which rule | Rests on (label) | What would reverse it | Objection and response |
+|---|---|---|---|---|
+| | | | | |
 
 | Action | Owner | Due | Status at 30 days |
 |---|---|---|---|
@@ -129,9 +140,13 @@ Prompt:            "[exact words]"
 Materials / frame: [board frame, notes, form]
 Facilitator moves: how to open · how to draw out quiet people · what to do with
                    an off-topic thread
-Contingencies:     if the room stalls / splits / runs long
+Contingencies:     if the room stalls / splits into two camps / can't decide
+                   (defer, with an owner and a date)
 Handover:          [what carries into the next block]
 ```
+
+**Cut first if time runs short:** [block]. Never the decide block or the
+read-back.
 
 ## 6. Pre-work packet
 

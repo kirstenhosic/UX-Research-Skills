@@ -170,7 +170,10 @@ PHASE 1 — FRAME THE DECISION AND THE OUTCOMES
   the end of the day and thirty days later, before designing a
   single activity.
   Also settle: is a workshop the right tool (above), which type it
-  is, and what it will NOT try to do. Write the non-goals down; they
+  is, whether the decision is hard to reverse (a capability removed,
+  a default changed for existing users, a security posture: if so,
+  the rigor and the sign-offs scale with it), and what it will NOT
+  try to do. Write the non-goals down; they
   are what you point at when the room drifts.
 
 PHASE 2 — DIAGNOSE THE ROOM (the pre-workshop research)
@@ -227,8 +230,10 @@ PHASE 3 — CHOOSE THE FORMAT
       everyone join from their own laptop, so the remote people are
       not watching a room through one camera.
     - Time zones: rotate the inconvenience, or split the day.
-    - Access: send materials ahead, caption calls, and give every
-      activity a written channel as well as a spoken one. Silent
+    - Access: ask for access needs in advance, send materials ahead,
+      caption calls, never carry votes or categories by color alone,
+      respect stated working hours (not only time zones), and give
+      every activity a written channel as well as a spoken one. Silent
       writing time helps non-native speakers, slower processors, and
       people who think before they speak, and anonymous written input
       reliably draws out more contributions, especially critical ones
@@ -373,7 +378,12 @@ PHASE 5 — WRITE THE FACILITATION GUIDE, THEN PILOT IT
 
 PHASE 6 — CAPTURE, FOLLOW THROUGH, AND EVALUATE
   Capture: name who records what. Photograph every board before
-  anything moves. Label every output with the evidence labels while
+  anything moves. Attribute decisions and actions to owners, never
+  opinions or dissent to named people in anything that leaves the
+  room. An action whose owner wasn't there stays "proposed" until
+  they accept it. When the owner overrules an objection, record the
+  objection and the response, name the escalation path and its
+  deadline, and say whether the decision stands meanwhile. Label every output with the evidence labels while
   the people who wrote it are still in the room to say which it is.
   Follow through: send the summary within a stated window (24–48
   hours is a reasonable rule of thumb): decisions with owners, open
@@ -590,8 +600,9 @@ Full definitions follow.
      Outcomes: artifacts, decisions, and commitments that will exist
      at the end · How we'll know it worked: at the close, and at
      thirty days · Non-goals · Why a workshop, rather than the
-     lighter option · Attendees by role, with decision rights;
-     consulted afterwards · Owner attendance: throughout, or criteria
+     lighter option · Reversibility: hard to reverse or not, and what
+     follows · Attendees by role, with decision rights; consulted
+     afterwards; sign-offs needed and their status · Owner attendance: throughout, or criteria
      and rule agreed by a date · Roles: facilitator, co-facilitator,
      capturer, timekeeper · Inputs, each labeled, with what the
      evidence covers · Format, length, and tool · Criteria, weights,
@@ -600,7 +611,10 @@ Full definitions follow.
      Risks to the room and the design countermeasure for each · Data
      handling: the plan's destination and the board's, any
      participant data shown and how it is de-identified, recording
-     consent · Dates: materials out, dry run, summary to attendees
+     consent, confidential material partners bring and where it goes ·
+     Access needs asked for · If the decision is contested: how an
+     objection is recorded and escalated · Dates: materials out, dry
+     run, summary to attendees
 
   2. AGENDA WITH ACTIVITY-TO-OUTCOME MAP
      One row per block: time · block name · arc stage (open,
@@ -613,7 +627,8 @@ Full definitions follow.
 
   3. DECISION AND ACTION LOG
      Decisions: what was decided · by whom, under which rule · the
-     evidence label it rests on · what would reverse it. Actions:
+     evidence label it rests on · what would reverse it · any
+     objection, with the owner's response. Actions:
      what · owner · due date · status at thirty days. Open questions
      and assumptions to test, each with an owner. Read it back aloud
      before the room closes.
@@ -629,8 +644,9 @@ Full definitions follow.
      Per block: the exact prompt, word for word · timing, with a cut
      line if the block runs long · materials and board frame ·
      facilitator moves (how to open, how to draw out quiet people,
-     what to do with an off-topic thread) · contingencies · the
-     handover to the next block.
+     what to do with an off-topic thread) · contingencies (a stall, a
+     two-camp split, no decision in the room) · the handover to the
+     next block. Plus which block is cut first if time runs short.
 
   6. PRE-WORK PACKET
      Short and labeled: what we know [evidence], what partners have
@@ -667,6 +683,13 @@ PRODUCT-SPECIFIC CHALLENGES TO ALWAYS RAISE:
     recorded as "decided pending review"
   - Distributed teams across time zones: diverge async, converge
     live
+  - Partners bring confidential material too: vulnerability detail,
+    credentials in a screenshot, a customer's system configuration,
+    unreleased roadmap. Name it in the plan, decide what reaches the
+    board and the summary, and check that the board, any recording,
+    and any AI note-taker are approved for it. Tell attendees when AI
+    capture is on. A credential or an unpatched vulnerability on a
+    widely shared board is a security incident, not a draft defect
   - Whiteboards outlive workshops and get shared widely, so treat a
     board's destination as at least internal-org. Participant names,
     emails, and phone numbers never go on a board; quotes carry P1,

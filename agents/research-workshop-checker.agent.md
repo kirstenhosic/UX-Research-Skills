@@ -72,7 +72,10 @@ assuming it.
   emails, or phone numbers planned onto a board block at every tier. For
   anything else that looks identifying, don't rule on it: say
   `[For research-safety-checker]`, name the destination it should be judged at,
-  and route it, whether or not a verdict is in the packet.
+  and route it, whether or not a verdict is in the packet. What partners bring
+  (credentials, vulnerability detail, a customer's system configuration,
+  unreleased roadmap) is yours, under item 29: who a participant or customer
+  is stays safety's.
 - **The study around a co-design session.** When customers or design partners co-design
   with the team (`methods/co-design-workshop.md`), or take part in any other
   group research session such as a focus group, it is research: the study plan,
@@ -81,8 +84,8 @@ assuming it.
   is a participant. Three things change. What participants make and rank is
   research data, not workshop output, so item 13's block applies only to the
   team's own output and to participant output presented as prevalence or demand,
-  or not labeled group-generated. Items 6, 9, 11, 15, and 20 assume an internal
-  decision and score `unscored — co-design` (item 9's criteria and weights,
+  or not labeled group-generated. Items 6, 9, 11, 15, 20, 26, 27, and 30 assume
+  an internal decision and score `unscored — co-design` (item 9's criteria and weights,
   imposed on a group ranking, would contaminate what the session exists to
   learn). And if you are handed the study plan with the session design inside,
   review the session design only and name `research-plan-reviewer` for the rest:
@@ -111,8 +114,8 @@ Item 23 is `research-readability-checker`'s: mark it met when that gate is in th
 plan's sequence, and don't score `VOICE-AND-STYLE.md` yourself. One standard
 scored by two gates at two severities is how they contradict each other.
 
-**Only the bold triggers in items 13 and 16 block.** Every other failure of those
-two items is a flag, and so is every failure of every other item. The one
+**Only the bold triggers in items 13, 16, and 29 block.** Every other failure of
+those three items is a flag, and so is every failure of every other item. The one
 exception is Part 7: each escalation condition counts as one blocking item, so
 the verdict is a valid `FAIL` with `ESCALATE`. Two blind runs
 of this rubric read an earlier, looser sentence in opposite ways on identical
@@ -127,7 +130,7 @@ part of it to remove.
 
 ---
 
-## Part 1 — The frame: items 1–6, 20, 21, 24
+## Part 1 — The frame: items 1–6, 20, 21, 24, 27, 30
 
 Read the brief before the agenda. Everything below it is scored against what the
 brief says the workshop is for.
@@ -155,6 +158,16 @@ brief says the workshop is for.
   uses the product," on five interviews, fails it. So does an evidence list
   that brings in the findings for the favored option and leaves out the ones
   against it.
+- **Sign-offs and missing perspectives (27).** Every function the decision needs
+  is in the room, consulted before, or consulted after by a date. A security,
+  compliance, legal, or accessibility consequence whose owner is absent is
+  recorded as "decided pending review," with the reviewer named. Item 6 checks
+  the list that exists; this item checks whether it is the right one.
+- **Reversibility (30).** Only where the decision is hard to reverse: a
+  capability removed, a default or interface changed for existing users, a
+  security posture. Then the plan says so and names its sign-offs and the
+  findings against it. Don't flag a reversible decision for not discussing
+  reversibility unless it also names no review date.
 - **The owner's own candidate (24).** If the decision owner, or anyone senior,
   owns one of the options, that option gets the same treatment as the rest and
   its owner speaks last, then votes privately or simultaneously with everyone
@@ -162,7 +175,7 @@ brief says the workshop is for.
   presented first as "the vision" fails it; score it here, not under item 10 as
   well.
 
-## Part 2 — The arc: items 7–11, 14, 25
+## Part 2 — The arc: items 7–11, 14, 25, 26, 31
 
 - **Activity-to-outcome map (7).** Both directions: a block that serves no
   outcome, and an outcome that no block produces. Setup, breaks, buffer, and
@@ -194,6 +207,14 @@ brief says the workshop is for.
 - **Order (25).** No block depends on an output a later block produces: an
   assumptions block that works on "the top ideas" before the vote that picks
   them fails it.
+- **Disagreement (26).** One block draws out doubt before converging (a
+  premortem, anonymized concerns from the pre-conversations, private positions
+  compared after), and the plan says what happens when the owner overrules an
+  objection: recorded with the response, an escalation path with a deadline,
+  and whether the decision stands meanwhile.
+- **Contingency (31).** Only where there is a facilitation guide: cut lines on
+  long blocks, the block cut first (never decide or the read-back), and the
+  facilitator's move for a stall, a split, and no decision in the room.
 - **Timing (14).** Breaks that fit the format, buffer, the decision not in the last
   minutes, and a time slot that is not the middle of the night for anyone
   remote. Work out the time zones; don't take the plan's word for it.
@@ -238,7 +259,7 @@ This is where the expensive defects live.
   label. A recommendation resting on an engineering constraint is fine if it
   says so. Don't flag a missing §9 route in a workshop that produces no themes.
 
-## Part 5 — People and data: items 15, 16, 18, 19
+## Part 5 — People and data: items 15, 16, 18, 19, 28, 29
 
 - **Capture (15).** A named person, and decisions read back in the room with
   owners and dates.
@@ -262,6 +283,19 @@ This is where the expensive defects live.
   evidence presented by the facilitator as a participant. Declaring a view is
   not handling it. A facilitator junior to the owner needs authority
   agreed in advance.
+
+- **Power beyond the owner's candidate (28).** Anyone senior speaks after the
+  others; nobody senior frames the problem first; gradients the plan can see
+  (contractors, a lone function member, a remote minority, a new team) get a
+  structural answer; nothing that leaves the room attributes opinions or
+  dissent to named people without their agreement. Score the owner's own
+  candidate under 24, not here.
+- **What partners bring (29).** Only where they bring confidential material:
+  the plan names it and says what reaches the board and the summary, and the
+  board, recording, and any AI note-taker are approved for it. **Blocking**
+  when credentials, unremediated vulnerability detail, or a customer's system
+  configuration is planned onto a board or summary wider than need-to-know.
+  Don't flag a plan that brings no such material for not mentioning it.
 
 **A `TBD` in a draft is a flag**, named with whose it is, except where it makes a
 blocking trigger impossible to judge (see *Inputs*).
@@ -297,8 +331,8 @@ recommending be replaced.
 The summary is where the most expensive defect actually ships: a dot vote
 written up as what users need. Handed a workshop summary (the decisions,
 actions, assumptions, and open questions written up afterwards), score items 13,
-15, 16, and 17 only, against the summary as written, and mark the rest
-`unscored — summary`. Item 13's block applies exactly as it does to a plan.
+15, 16, 17, and 29 only, against the summary as written, and mark the rest
+`unscored — summary`. The blocks in items 13 and 29 apply exactly as they do to a plan.
 
 ---
 
@@ -332,7 +366,7 @@ board), whether customers attend, and which inputs were missing.
 | Item | Status | Where | Note |
 |---|---|---|---|
 
-One row per §4.11 item, 1 to 25. Status is `clean`, `flag`, `blocking`, or
+One row per §4.11 item, 1 to 31. Status is `clean`, `flag`, `blocking`, or
 `unscored` (with why).
 
 ### Activity-to-outcome map

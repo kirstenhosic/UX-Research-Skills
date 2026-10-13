@@ -265,7 +265,7 @@ And a packet respects the receiving checker's blind spots — one for
 | **Synthesis findings** | Scenario A | `synthesis-checker` → `significance-checker` → `readability-checker` |
 | **Competitive analysis** | Scenario E | `synthesis-checker` (source-integrity mode) → `significance-checker` → `readability-checker` |
 | **Workshop plan** | Scenario F | `workshop-checker` → `readability-checker` |
-| **Workshop summary** (the decisions, actions, and assumptions written up afterwards) | Scenario F | `workshop-checker` (summary mode: items 13, 15, 16, 17) → `readability-checker` |
+| **Workshop summary** (the decisions, actions, and assumptions written up afterwards) | Scenario F | `workshop-checker` (summary mode: items 13, 15, 16, 17, 29) → `readability-checker` |
 | **Research plan with a co-design session plan** | Scenario C, D, F; `methods/co-design-workshop.md` | `plan-reviewer` → `workshop-checker` (the session design only) → `readability-checker` |
 | **Readout deck** | `research-readout-deck` | `synthesis-checker` (re-verify against the findings contract) → `readability-checker` |
 | **Findings report** | `research-findings-report` | `synthesis-checker` (re-verify against the findings contract) → `readability-checker` |
@@ -1196,9 +1196,12 @@ before the gate existed; the fixture's README records what each run changed.
 2. Outcomes are stated as things that will exist at the end (artifacts,
    decisions, commitments). A state of mind ("alignment," "shared
    understanding") counts only when the plan names the artifact that would
-   show it, such as each person's written account of the decision, compared
+   show it, such as each person's written account of the decision, compared.
+   The brief also names what the workshop will not try to do
 3. Success is defined in the brief: what is checked at the close, and what is
-   checked at a stated later date
+   checked at a stated later date, by a named person who reports it to the
+   decision owner. The later check asks what happened to each decision (held,
+   reversed on new evidence, or lapsed), not only how many actions closed
 4. The plan says why a workshop beats the lighter option (an async review, a
    decision meeting, 1:1s, or a study). A decision already made is run as a
    readout, not a workshop
@@ -1222,13 +1225,17 @@ before the gate existed; the fixture's README records what each run changed.
    decision owner or anyone senior is in the room, because a public reveal
    still shows each vote to them. A structured round of spoken input before
    the owner decides is input, not a vote, and is not held to this; nor are
-   the reasons for an objection, which are given aloud after the signal
+   the reasons for an objection, which are given aloud after the signal. The
+   vote mechanics are stated: votes each, whether they can be stacked, and what
+   happens on a tie or near-tie
 10. No near-field candidate (the team's own concept, a backlog item, a direct
     competitor's design) and no candidate attributed to an owner is shown
     before the divergent activity it would anchor, unless the plan says why
     exposure is intended, as a Design Sprint's Lightning Demos do. Examples
     can raise the quality of ideas as well as narrow them; the item asks for
-    the choice to be made on purpose
+    the choice to be made on purpose. In a synthesis workshop the
+    researcher's draft themes are an anchor too: partners work from the data
+    first
 11. Each function's unique knowledge is asked for in its own block or its own
     structured slot, not left to surface in open discussion, and the room is
     told up front who holds which expertise
@@ -1255,9 +1262,13 @@ before the gate existed; the fixture's README records what each run changed.
     the block applies to the team's own output, and to participant output
     presented as prevalence or demand, or not labeled group-generated
 14. Timing fits the format: breaks in remote blocks, buffer in the agenda, and
-    the decision not left to the final minutes
+    the decision not left to the final minutes. As rules of thumb: working
+    groups of about 5 to 8, or the room split with a shared structure; a
+    remote day of about four hours at most; no block past about 90 minutes
+    without a break
 15. A capture plan names who records what, and decisions and actions are read
-    back in the room with owners and dates
+    back in the room with owners and dates. An action whose owner is not in the
+    room is recorded as proposed until they accept it
 16. Participant data shown in the room meets `research-safety-checker`'s
     tables, for each participant type, at each destination: the plan's own
     text at the plan's destination, and what it puts on a board at the
@@ -1269,7 +1280,8 @@ before the gate existed; the fixture's README records what each run changed.
     as external, with no roadmap commitments. Customers who make, rank, or
     are asked about their own work in a segment make that segment co-design
     research, with a study plan (`methods/co-design-workshop.md`); customers
-    who only watch or hear a segment do not. **Blocking** where those tables
+    who only watch or hear a segment do not. Customers do not attend the
+    segments where the team negotiates trade-offs or decides. **Blocking** where those tables
     block at the board's destination (participant names, emails, and phone
     numbers block at every tier), or when participant data reaches anyone the
     study's consent does not cover (consent stricter than the destination
@@ -1279,9 +1291,13 @@ before the gate existed; the fixture's README records what each run changed.
     checkpoint, and each recommendation citing what it rests on: the findings
     (`depends_on` per `FINDINGS-CONTRACT.md`, or the report's own finding
     numbers when the findings are not records), or its `[team knowledge]` or
-    `[assumption]` label when it rests on those
+    `[assumption]` label when it rests on those. The summary's distribution
+    names the people the decision affects who were not in the room
 18. Materials go out ahead, and every activity that takes spoken input also
-    has a written channel
+    has a written channel. Attendees are asked for access needs in advance;
+    calls are captioned; meaning (votes, categories) is never carried by color
+    alone; and the time slot respects stated working hours, not only time
+    zones
 19. The facilitator holds no stake in the outcome, or the plan handles the
     stake structurally (a co-facilitator for the converge and decide
     segments, an outside facilitator for them, or the evidence presented by
@@ -1293,7 +1309,9 @@ before the gate existed; the fixture's README records what each run changed.
     on a summary of work they did not see
 21. The plan states what its evidence covers (which personas, how many
     people, what deployment scale), and where the decision reaches past it,
-    that part is labeled `[assumption]` and routed to a test (item 17).
+    that part is labeled `[assumption]` and routed to a test (item 17). Boards
+    keep apart the personas the evidence separates (the person who configures
+    a product and the daily user, for example).
     The inputs include the findings that cut against the favored option, not
     only the ones for it
 22. A dry run with at least one person is scheduled before the day, or the
@@ -1308,7 +1326,55 @@ before the gate existed; the fixture's README records what each run changed.
     last and votes privately or simultaneously with everyone else (item 9)
 25. The blocks run in an order that works: no block depends on an output that
     a later block produces
+26. The plan says how disagreement is handled. In the room, at least one block
+    draws out doubt before converging: a premortem, concerns from the
+    pre-conversations brought in anonymously, or private positions recorded
+    before discussion and compared after. After the room, an objection the
+    owner overrules is recorded in the decision log with the owner's response,
+    the escalation path and its deadline are named, and the plan says whether
+    the decision stands while it is escalated
+27. Every function whose knowledge the decision needs, or whose sign-off it
+    requires, is in the room, consulted before the day, or consulted afterwards
+    by a stated date. A decision with security, compliance, legal, or
+    accessibility consequences whose owner is not in the room is recorded as
+    "decided pending review," with the reviewer named. Anyone deliberately left
+    out of a segment is named, with the reason
+28. Seniority and other power gradients are handled structurally, not only
+    when a senior person owns a candidate (item 24): anyone senior speaks after
+    the others in discussion, and no one senior frames the problem before the
+    room has worked on it. Gradients the plan can see (contractors or vendors, a
+    lone member of a function, a remote minority, a recently joined team) get a
+    structural answer, such as anonymous input for concerns, or everyone on
+    their own device when anyone is remote. What leaves the room attributes
+    decisions and actions to owners, not opinions or dissent to named people,
+    unless they agreed
+29. Where partners bring confidential material (vulnerability detail,
+    credentials or tokens, a customer's system configuration, contract terms,
+    unreleased roadmap), the plan names it and says what reaches the board and
+    the summary, judged at their destinations. The whiteboard, any recording,
+    and any AI note-taking tool are approved for that material, and attendees
+    are told when AI capture is on. **Blocking** when credentials, unremediated
+    vulnerability detail, or a customer's system configuration is planned onto
+    a board or summary whose destination is wider than the people who need it.
+    Who a participant or customer is stays `research-safety-checker`'s (item
+    16); this item covers what partners bring
+30. Where the decision is hard to reverse (a capability removed, a default or an
+    interface changed for existing users, a security posture), the plan says so
+    and scales the rigor to it: it names the sign-offs (item 27), brings in the
+    findings against the favored option (item 21), and does not rest on an
+    unlabeled assumption. A reversible decision names when it will be reviewed
+    and what evidence would reverse it
+31. Where there is a facilitation guide, each block of more than about 20
+    minutes has a cut line, the plan says which block is cut first if time runs
+    short (never the decide block or the read-back), and it names the
+    facilitator's move for a stall, a two-camp split, and a decision that cannot
+    be reached in the room (a deferral with an owner and a date, never a show
+    of hands to rescue it)
 
+Items 26 to 31 were appended on 2026-10-13 from the adversarial read's omission
+audit, with amendments to items 2, 3, 9, 10, 14, 15, 16, 17, 18, and 21. Four of
+the six new items are conditional (they apply only where the situation exists),
+so a plan is not flagged for omitting what does not concern it.
 Items 24 and 25 were appended on 2026-10-13, after independent blind readers
 across the fixture's runs raised each with no item to score it against, at
 least three readers apiece (for item 25, one was the readability gate). They sit after
@@ -1316,7 +1382,7 @@ item 23 because items are cited by number in `research-workshop-checker` and in
 the fixture's key.
 Items 19 to 22 were added on 2026-10-13 while building the workshop fixture:
 the scenario file taught all four and no item here checked them. Only the
-**bold** triggers in items 13 and 16 block. Every other failure of those two
+**bold** triggers in items 13, 16, and 29 block. Every other failure of those three
 items is a flag, as is every failure of every other item, with one exception.
 A plan that names neither a decision nor an output, one whose decision is
 already made and that exists to ratify it, and one whose decision rests on
@@ -1480,17 +1546,21 @@ which is the same standard this suite holds research to.
   facilitator are the controls.
 - **§4.11 flags generously on a careful plan.** The fixture's defensible plan
   drew no blocking calls, but 17 and 23 flags in two instances before four
-  wordings were tightened; some of the rest are real and some are taste. Expect
-  a careful plan to come back with a handful of flags, and read them as a
-  checklist for the dry run, not as a grade.
+  wordings were tightened; some of the rest are real and some are taste. Items
+  26 to 31 added more (15 on that plan, 19 on a Design Sprint plan). Expect a
+  careful plan to come back with 10 to 20 flags, and read them as a checklist
+  for the dry run, not as a grade.
 - **The same author wrote Scenario F, §4.11, the gate, and the fixture.** A
   clean fixture run says the specification is consistent with itself. The
   adversarial read (`adversarial-reads/workshop-4.11-2026-10.md` in the testing
   repo) was run by contexts that had not written it: neither of two plans in
   other traditions was blocked, and its Tier 1 and Tier 2 findings were fixed
-  and verified the same day. It was one instance of each audit. Still open: the
-  omission audit's proposed new items, and flag volume on expert plans in other
-  traditions (18 and 21 flags after the fixes, with nothing blocking).
+  and verified the same day. Its omission audit became items 26 to 31 and ten
+  amendments; item 29's one new blocking trigger fired on the plan built to
+  fire it and nowhere else. It was one instance of each audit. Still open: flag
+  volume on expert plans in other traditions (19 and 21 flags, with nothing
+  blocking), and whether a co-design segment run with no consent blocks under
+  item 16 (fixture A11).
 - **`survey-checker` cannot see the sample, which is where a survey's validity
   lives.** It reads the instrument. Who was invited, who answered, and who
   declined decide whether the numbers mean anything, and none of it exists until

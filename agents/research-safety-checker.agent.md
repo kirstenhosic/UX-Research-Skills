@@ -264,6 +264,10 @@ for the intended destination. Those are decisions for a person.
 ## Do not
 
 - **Do not guess the destination or the participant type.** Ask.
+- **Do not take on what partners bring to a workshop.** Credentials,
+  vulnerability detail, a customer's system configuration, and unreleased
+  roadmap on a workshop board are `research-workshop-checker`'s (§4.11 item
+  29). Who a participant or customer is stays yours.
 - **Do not flag the people doing the work.** The researcher, stakeholders, decision owners, and workshop attendees are not participants, and their names in a plan, a brief, or a workshop agenda are not participant data. Customers or design partners in a co-design session *are* participants.
 - **Do not flag a bracketed substitution inside a quote.** `[P2]` or `[colleague]` in place of a name is the de-identification working.
 - **Do not flag role, account name, or the two combined** in an internal artifact. "An SRE at Contoso Financial" is a category of user at a category of customer, and it is what makes a finding actionable for the people who have to act on it.
