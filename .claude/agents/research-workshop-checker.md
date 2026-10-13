@@ -273,8 +273,10 @@ This is where the expensive defects live.
   Customers in the room hear plans as promises, so a roadmap commitment to them
   fails item 16. Customers who make, rank, or are asked about their own work in
   a segment make it co-design research (see *What you are blind to*); customers
-  who only watch or hear a segment do not. **Blocking** on its bold triggers
-  only.
+  who only watch or hear a segment do not. A co-design segment with no study
+  plan or consent behind it is a flag: route it to `research-plan-reviewer` and
+  never block on it, because the consent trigger applies to data from a study
+  that exists. **Blocking** on its bold triggers only.
 - **Materials and channels (18).** Out ahead, and a written channel for every
   activity that takes spoken input. A spoken-only discussion with people on a
   call fails it; silent reading and sketching don't need one.

@@ -1280,7 +1280,10 @@ before the gate existed; the fixture's README records what each run changed.
     as external, with no roadmap commitments. Customers who make, rank, or
     are asked about their own work in a segment make that segment co-design
     research, with a study plan (`methods/co-design-workshop.md`); customers
-    who only watch or hear a segment do not. Customers do not attend the
+    who only watch or hear a segment do not. A co-design segment with no study
+    plan or consent behind it is a flag, routed to `research-plan-reviewer`,
+    never a block: the consent trigger below applies to data from a study that
+    exists. Customers do not attend the
     segments where the team negotiates trade-offs or decides. **Blocking** where those tables
     block at the board's destination (participant names, emails, and phone
     numbers block at every tier), or when participant data reaches anyone the
@@ -1559,8 +1562,7 @@ which is the same standard this suite holds research to.
   amendments; item 29's one new blocking trigger fired on the plan built to
   fire it and nowhere else. It was one instance of each audit. Still open: flag
   volume on expert plans in other traditions (19 and 21 flags, with nothing
-  blocking), and whether a co-design segment run with no consent blocks under
-  item 16 (fixture A11).
+  blocking).
 - **`survey-checker` cannot see the sample, which is where a survey's validity
   lives.** It reads the instrument. Who was invited, who answered, and who
   declined decide whether the numbers mean anything, and none of it exists until
