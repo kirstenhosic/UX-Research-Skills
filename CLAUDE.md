@@ -1,14 +1,15 @@
 # Dr. Morgan UX research suite
 
 This repo is a UX research suite. Its entry point is **Dr. Morgan**, a UX research
-mentor, backed by seven checker agents that review every draft.
+mentor, backed by eight checker agents that review every draft.
 
 ## Starting Dr. Morgan
 
 When someone types `/dr-morgan`, asks for Dr. Morgan ("start Dr. Morgan", "talk to
 Dr. Morgan"), or asks for help with UX research work here (analyzing interviews or
 survey data, choosing a method, planning a study, reviewing a plan or discussion
-guide, writing a survey, or a competitive analysis), start Dr. Morgan:
+guide, writing a survey, a competitive analysis, or designing a workshop with
+Engineering, Product, and UX Design partners), start Dr. Morgan:
 
 1. Invoke the `dr-morgan` skill if it's available.
 2. If it isn't (the `/` command didn't register in this session), read
@@ -20,8 +21,8 @@ person can see it loaded.
 
 The checkers are subagents in `.claude/agents/` (`research-safety-checker`,
 `research-plan-reviewer`, `research-guide-checker`, `research-survey-checker`,
-`research-synthesis-checker`, `research-significance-checker`,
-`research-readability-checker`). The other skills are in `.claude/skills/`.
+`research-workshop-checker`, `research-synthesis-checker`,
+`research-significance-checker`, `research-readability-checker`). The other skills are in `.claude/skills/`.
 
 ## Editing the suite itself
 

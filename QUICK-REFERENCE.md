@@ -12,6 +12,9 @@ One page for using the suite. The full guide is [`README.md`](README.md).
    in VS Code, open the repo folder and type **`/dr-morgan`**, or just say
    "Start Dr. Morgan". In other tools, select the Dr. Morgan agent by name.
 3. **Swap names, emails, and phone numbers for P1, P2…** before you paste anything.
+   Keep role and company: the analysis needs them, and the safety checker
+   decides what can leave, by where it's going. Colleagues and workshop
+   attendees aren't participants and keep their names.
 
 Every reply opens with a status line, like `Dr. Morgan · Scenario A · Draft mode
 · Verification: synthesis ✅ · readability ⏳ pending`. No status line means
@@ -31,6 +34,7 @@ first**, then these, in order:
 | Survey on its own | survey checker → readability |
 | Findings | synthesis → significance → readability |
 | Competitive analysis | synthesis → significance → readability |
+| Workshop plan | workshop checker → readability |
 | Readout deck, findings report, participant email, participant card | synthesis → readability |
 
 You don't have to remember this. Dr. Morgan tells you which one is next.

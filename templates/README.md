@@ -43,6 +43,7 @@ editable Markdown source.
 | 09 | [Readout deck](09-readout-deck.md) | [Word](https://github.com/kirstenhosic/UX-Research-Skills/raw/main/templates/docx/09-readout-deck.docx) | Building the share-out slides | `skills/research-readout-deck`, §4.4 |
 | 10 | [Participant impact message](10-participant-impact-message.md) | [Word](https://github.com/kirstenhosic/UX-Research-Skills/raw/main/templates/docx/10-participant-impact-message.docx) | Closing the loop with participants after release | `skills/participant-impact-summary`, §4.9 |
 | 11 | [Participant summary card](11-participant-summary-card.md) | [Word](https://github.com/kirstenhosic/UX-Research-Skills/raw/main/templates/docx/11-participant-summary-card.docx) | You want a designed one-pager to attach to that message | `skills/research-participant-summary-card`, §4.10 |
+| 12 | [Workshop plan](12-workshop-plan.md) | [Word](https://github.com/kirstenhosic/UX-Research-Skills/raw/main/templates/docx/12-workshop-plan.docx) | You're planning a workshop with Engineering, Product, and Design partners | `workshop_design.md`, §4.11 |
 
 **Want the whole set?** [**Download all templates as a zip**](https://github.com/kirstenhosic/UX-Research-Skills/raw/main/templates/UX-Research-Templates.zip) — every Word file plus the Excel tracker in one download.
 

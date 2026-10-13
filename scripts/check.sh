@@ -27,7 +27,7 @@ FAILED=0
 fail() { echo "FAIL $*"; FAILED=1; }
 ok()   { echo "ok   $*"; }
 
-SCENARIOS="analyze_your_data.md ux_plan_from_scratch.md challenge_and_refine_plan.md select_best_method.md competitive_analysis.md"
+SCENARIOS="analyze_your_data.md ux_plan_from_scratch.md challenge_and_refine_plan.md select_best_method.md competitive_analysis.md workshop_design.md"
 
 if command -v md5sum >/dev/null 2>&1; then
   md5of() { md5sum | cut -d' ' -f1; }
@@ -81,7 +81,7 @@ spine() {
 }
 spine '[PRODUCT NAME] — [one-line description of what it does].'
 spine 'Core personas include [PERSONA A], [PERSONA B], and [PERSONA C] ([what they do or manage])'
-[ "$spine_fail" = 0 ] && ok "spine: product one-liner and personas sentence present in all 5 scenario files"
+[ "$spine_fail" = 0 ] && ok "spine: product one-liner and personas sentence present in all 6 scenario files"
 
 # --- c. Relative links and anchors.
 python3 scripts/check_links.py || FAILED=1

@@ -56,6 +56,7 @@ letting a reader assume coverage.
 | Interview, usability, diary, concept test | `guide-checker` (§4.6) | Everything |
 | Tree test | `guide-checker`, task rules only — the interview items don't apply | Everything |
 | Survey | `survey-checker` (§4.7). Not `guide-checker`, which declares survey instruments out of scope on purpose: self-administered wording answers to a different literature, and the guide rubric would give confident, wrong advice on one | Everything |
+| Co-design workshop | Three, on three objects: `plan-reviewer` (§4.1) for the study plan, `workshop-checker` (§4.11) for the session plan, `guide-checker` (§4.6) for any one-to-one segment | Everything |
 | **A/B test** | **None.** No guide, no recruited participants, no transcript — there is no artifact of the shape the loop expects | Pre-flight safety, and the findings downstream |
 
 There were two gaps here. The survey one was closed the way a gap like this has

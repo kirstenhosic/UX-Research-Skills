@@ -9,10 +9,11 @@ repository-code: "https://github.com/kirstenhosic/UX-Research-Skills"
 abstract: >-
   An invokable, product-agnostic UX research mentor for product teams, with a
   scenario router covering analysis (with an integrity-first audit built in), method selection,
-  study planning, plan and discussion-guide critique, and competitive analysis —
-  plus seven independent evaluator agents that gate every drafted artifact for
+  study planning, plan and discussion-guide critique, competitive analysis, and
+  cross-functional workshop design —
+  plus eight independent evaluator agents that gate every drafted artifact for
   participant safety, plan soundness, discussion-guide quality, survey-instrument
-  quality, groundedness, significance, and readability.
+  quality, workshop-plan design, groundedness, significance, and readability.
 keywords:
   - ux-research
   - user-research

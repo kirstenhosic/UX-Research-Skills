@@ -204,8 +204,8 @@ block: a gate that hard-fails on style gets switched off.
 
 ## 3. Gate matrix
 
-Gates attach to **artifact types**, not to skills. One pre-flight plus six
-evaluators cover them, and no artifact runs all seven — most run the pre-flight
+Gates attach to **artifact types**, not to skills. One pre-flight plus seven
+evaluators cover them, and no artifact runs all eight — most run the pre-flight
 and two or three gates. The last row, the theme set, has no agent gate at all: it
 gets a human checkpoint instead (§9).
 
@@ -263,6 +263,7 @@ And a packet respects the receiving checker's blind spots — one for
 | **Survey instrument, standalone** | Scenario C, D; any Draft-mode questionnaire | `survey-checker` → `readability-checker` |
 | **Synthesis findings** | Scenario A | `synthesis-checker` → `significance-checker` → `readability-checker` |
 | **Competitive analysis** | Scenario E | `synthesis-checker` (source-integrity mode) → `significance-checker` → `readability-checker` |
+| **Workshop plan** | Scenario F | `workshop-checker` → `readability-checker` |
 | **Readout deck** | `research-readout-deck` | `synthesis-checker` (re-verify against the findings contract) → `readability-checker` |
 | **Findings report** | `research-findings-report` | `synthesis-checker` (re-verify against the findings contract) → `readability-checker` |
 | **Participant impact summary** | `participant-impact-summary` | `synthesis-checker` (impact mode) → `readability-checker` |
@@ -370,7 +371,31 @@ That report is a warning, not a verdict. Nothing passes, fails, or gets revised
 on it. It exists so that whoever compares the document against the reviewed
 plan is told what is missing instead of being left to notice.
 
-### The seven evaluators
+### Why a workshop plan gets its own gate
+
+A workshop plan has prompts, so it looks like a guide, and it has an agenda and a
+decision, so it looks like a plan. It is neither. `guide-checker` reads a
+one-to-one conversation with a moderator in it; a workshop is a group, and the
+failures that matter are group failures — the senior voice that anchors the room,
+the shared knowledge that crowds out what only one function knows, the vote that
+stops being private. §4.6 has no items for any of them. `plan-reviewer` holds
+research questions and a sample; a workshop has neither, and §4.1 scored against
+one demands both. Widening either would have put two standards on one gate, the
+failure both earlier splits were made to fix.
+
+The defect that decides it is the evidence boundary. A workshop produces the
+team's beliefs, and its output looks exactly like findings: clustered,
+prioritized, photographed, written up by a researcher. No other gate is placed to
+catch a dot vote written up as user need, because no other gate reads the plan
+that says it will be.
+
+The gate was built **after** its fixture, not before. Scenario F shipped with
+§4.11 as a drafting bar and no agent applying it; `workshop-fixture/` in the
+testing repo then ran §4.11 blind on a plan with keyed defects and on a plan
+written to professional standard, and the rubric was revised on what those runs
+found before this gate was written against it.
+
+### The eight evaluators
 
 | Agent | Verifies | Cannot see |
 |---|---|---|
@@ -380,6 +405,7 @@ plan is told what is missing instead of being left to notice.
 | `research-plan-reviewer` | Will this study answer its question? Does the guide cover it? | Anything post-fieldwork; the wording, order, and repetition inside the guide |
 | `research-guide-checker` | Are the questions well-formed, behavioral, non-repeating, and in an order a conversation could follow? | Whether the study is worth running; whether the guide covers the research questions; **the moderator**, where most leading actually happens |
 | `research-survey-checker` | Are the items, response options, order, and routing sound enough to field once? | Whether a survey should answer this at all; **the sample and non-response**, where a survey's validity actually lives |
+| `research-workshop-checker` | Is the workshop built to avoid the known ways groups go wrong, and does it keep its output out of the findings? | **The room**, where most of a workshop happens; whether the research it brings in is true |
 | `research-readability-checker` | Will a mixed stakeholder audience understand and act on it? Has the safety scan already run? | Whether any of it is correct; participant safety, which `research-safety-checker` owns |
 
 Each column-3 entry is the reason there is more than one evaluator. A
@@ -1155,6 +1181,114 @@ item 8 applies: the product owner confirms wording before it goes out.
 
 ---
 
+### 4.11 Workshop plan
+
+Applied by `research-workshop-checker`. A workshop plan is the brief, the agenda
+with its activity-to-outcome map, and the facilitation guide where there is one.
+Every item here was run blind against `workshop-fixture/` in the testing repo
+before the gate existed; the fixture's README records what each run changed.
+
+1. A named decision the workshop serves, with an owner and a date. Or, for a
+   workshop that ends in no decision, the named output and who uses it next
+2. Outcomes are stated as things that will exist at the end (artifacts,
+   decisions, commitments), never as states of mind ("alignment,"
+   "shared understanding")
+3. Success is defined before the design: what is checked at the close, and
+   what is checked at a stated later date
+4. The plan says why a workshop beats the lighter option (an async review, a
+   decision meeting, 1:1s, or a study). A decision already made is run as a
+   readout, not a workshop
+5. The workshop type is named, and no more than two are chained
+6. Attendees are listed by role with their decision rights; the decision owner
+   and the people consulted afterwards are named
+7. Every agenda block maps to an outcome, and every outcome has a block. Flag
+   both directions, as §5 does for findings. The setup block and breaks are
+   exempt when the plan marks them as outside the arc
+8. Divergent work starts with individual, silent generation before any group
+   discussion
+9. Criteria, weights, and the decision rule are stated before any scoring,
+   voting, or deciding, including whether the room's scores are a vote or
+   advice to the owner. Votes, scores, and consent checks are private or
+   simultaneous, never a show of hands. A structured round of spoken input
+   before the owner decides is input, not a vote, and is not held to this
+10. No candidate solution is shown before the divergent activity it would
+    anchor
+11. Each function's unique knowledge is asked for in its own block, not left to
+    surface in open discussion
+12. Facilitation prompts are written word for word: neutral, one ask each, and
+    presupposing neither the problem nor the fix. A follow-up asked only after
+    the first answer ("if not, what would change your mind?") is not a second
+    ask
+13. Every claim brought in or produced carries an evidence label (`[evidence]`,
+    `[team knowledge]` with its source, `[assumption]`, `[decision]`), and the
+    plan says outputs will be labeled as they are captured. Candidate
+    solutions (a backlog, a prototype, a competitor's design) are not claims:
+    they are labeled as candidates, or as `[assumption]` until mapped to
+    evidence, which says the same thing. What fails is a candidate with no
+    label, or one labeled as evidence. An input that restates a
+    finding beyond what the finding says (proxy evidence as direct customer
+    behavior, a count dropped or rounded up, a reasoning pattern turned into a
+    request) fails this item too. **Blocking** where workshop output is
+    presented as a research finding, or a dot vote as evidence of user need
+14. Timing fits the format: breaks in remote blocks, buffer in the agenda, and
+    the decision not left to the final minutes
+15. A capture plan names who records what, and decisions and actions are read
+    back in the room with owners and dates
+16. Participant data shown in the room is de-identified to the bar of the
+    board's destination, which is `research-safety-checker`'s bar (role and
+    account name allowed on internal boards, names never, everything
+    identifying blocked while customers can see it). The plan's own text is
+    judged at the plan's destination, and what it puts on a board at the
+    board's; customers attending the session do not make the plan external
+    unless they receive it. Recording consent for attendees is addressed; any
+    customer or design partner attendance is treated as external, with no roadmap
+    commitments. **Blocking** when identifying participant data is on a board,
+    or when participant data reaches anyone the study's consent does not
+    cover (consent stricter than the destination governs, as it does for
+    `research-safety-checker`)
+17. Follow-through is planned: a summary within a stated window, assumptions
+    routed to a test, any themes the workshop produces routed to the §9
+    checkpoint, and recommendations citing the findings they rest on
+    (`depends_on` per `FINDINGS-CONTRACT.md`, or the report's own finding
+    numbers when the findings are not records)
+18. Materials go out ahead, and every activity has a written channel as well as
+    a spoken one
+19. The facilitator holds no stake in the outcome, or the plan handles the
+    stake structurally: a co-facilitator for the converge and decide
+    segments, not only a declared view. Where the facilitator is junior to
+    the decision owner, the facilitator's authority over time and turns is
+    agreed with the owner in advance
+20. The decision owner attends throughout, or has agreed the criteria and the
+    decision rule in advance. An owner who arrives only to decide is deciding
+    on a summary of work they did not see
+21. The plan states what its evidence covers (which personas, how many
+    people, what deployment scale) and the decision does not reach past it.
+    The inputs include the findings that cut against the favored option, not
+    only the ones for it
+22. A dry run with at least one person is scheduled before the day
+23. Meets `VOICE-AND-STYLE.md`
+24. Where the decision owner, or anyone senior in the room, owns one of the
+    candidates, the plan handles it: that candidate is treated like the others
+    (no demo, no "vision" framing ahead of the rest), and its owner speaks and
+    votes last
+25. The blocks run in an order that works: no block depends on an output that
+    a later block produces
+
+Items 24 and 25 were appended on 2026-10-13, after independent blind readers
+across the fixture's runs raised each with no item to score it against, at
+least three readers apiece (for item 25, one was the readability gate). They sit after
+item 23 because items are cited by number in `research-workshop-checker` and in
+the fixture's key.
+Items 19 to 22 were added on 2026-10-13 while building the workshop fixture:
+the scenario file taught all four and no item here checked them. Only the
+**bold** triggers in items 13 and 16 block. Every other failure of those two
+items is a flag, as is every failure of every other item. The first two blind
+runs read the old wording, "items 13 and 16 are blocking," in opposite ways
+and returned 9 blocking calls and 2 on identical text. Item 16 is the one an agent
+already checks today, through `research-safety-checker`.
+
+---
+
 ## 5. Research-question coverage — flag both directions
 
 A coverage check that only runs one way misses half the problem. Run it both
@@ -1219,7 +1353,7 @@ verifier is thin. Run a refutation panel — but only on those claims.
 - The claim came back `Partially Supported` but is being kept
 - The decision is high-stakes, expensive, or hard to reverse
 
-**The researcher runs this by hand.** Dr. Morgan can launch the seven checkers
+**The researcher runs this by hand.** Dr. Morgan can launch the eight checkers
 where the tool allows it (§3, *How a gate runs*), but not this panel: the
 refuters must not see the producer's framing of the claim, and the producer
 writes every packet it sends. Three "verifiers" simulated inside one
@@ -1255,7 +1389,7 @@ which is the same standard this suite holds research to.
   Strict-verdict rules and blind context reduce this; they don't remove it.
 - **An evaluator sharing a model and context with the producer shares its blind
   spots.** Blind evaluation (source + claim only) is the main defense.
-- **Chained gates compound false positives.** Six gates each with a small
+- **Chained gates compound false positives.** Seven gates each with a small
   false-alarm rate produce a system that flags something almost every run. If
   flags become noise, people stop reading them. Watch for gates that flag
   constantly, and tighten the ones that do.
@@ -1291,6 +1425,20 @@ which is the same standard this suite holds research to.
   closed by `research-survey-checker` and §4.7, which is what the shape of a fix
   looks like if anyone takes on the experiment half: a separate gate with its own
   literature, not a widened existing one.
+- **`workshop-checker` cannot see the room, which is where a workshop
+  happens.** It reads the design. Whether the facilitator leads, whether the
+  senior voice fills every silence, whether a private vote stays private: none
+  of it is in the plan. A `PASS` says the plan is built to avoid the known
+  failures, not that the workshop did. The dry run (§4.11 item 22) and the
+  facilitator are the controls.
+- **§4.11 flags generously on a careful plan.** The fixture's defensible plan
+  drew no blocking calls, but 17 and 23 flags in two instances before four
+  wordings were tightened; some of the rest are real and some are taste. Expect
+  a careful plan to come back with a handful of flags, and read them as a
+  checklist for the dry run, not as a grade.
+- **The same author wrote Scenario F, §4.11, the gate, and the fixture.** A
+  clean fixture run says the specification is consistent with itself. An
+  adversarial read of §4.11, by someone who did not write it, is still owed.
 - **`survey-checker` cannot see the sample, which is where a survey's validity
   lives.** It reads the instrument. Who was invited, who answered, and who
   declined decide whether the numbers mean anything, and none of it exists until
@@ -1407,6 +1555,21 @@ plan to be finished.
 7. Release
 ```
 
+**Producing a workshop plan:**
+
+```
+1. Draft the brief, agenda, and facilitation guide (Dr. Morgan, Scenario F)
+2. research-safety-checker         → PRE-FLIGHT, always runs first; the board's
+                                     destination is checked separately from
+                                     the plan's
+3. research-workshop-checker       → FAIL? revise blocking items, re-run
+4. research-readability-checker    → FAIL? revise, re-run
+5. Dry-run the agenda with at least one person. The gate cannot see the room
+6. RELEASE SIGN-OFF (§11)          → the researcher reads the plan and makes
+                                     their own edits; recorded
+7. Release to attendees
+```
+
 **Producing a deck:**
 
 ```
@@ -1470,7 +1633,7 @@ Cap: 2 revisions per gate. Then a person looks at it.
 
 ## 9. The theme checkpoint — a person in the middle, not only at the end
 
-Everything above this section is a machine filter. Seven agents check artifacts
+Everything above this section is a machine filter. Eight agents check artifacts
 and return verdicts; the human decides at the end. That works well for findings,
 because a finding is a checkable object — a quote either matches the transcript
 or it doesn't.

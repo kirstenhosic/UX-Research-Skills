@@ -145,7 +145,7 @@ artifact you intend to show someone, go to
 
 ### If you can't connect the repo
 
-Paste the one scenario file you need into your chat tool — the five are
+Paste the one scenario file you need into your chat tool — the six are
 listed in [What you can ask for](#what-you-can-ask-for). Each stands alone, so
 one is enough. If you also want the router, the status line, and the full gate
 table, paste the agent file first and the scenario file right after it. With
@@ -177,10 +177,10 @@ difference matters:
 
 ## What you can ask for
 
-Five scenarios. Name one, let Dr. Morgan detect which fits, or move between
+Six scenarios. Name one, let Dr. Morgan detect which fits, or move between
 them as the work moves. Each scenario lives in one standalone file, and
 Dr. Morgan reads only the one you're in, so the session doesn't carry the
-other four. You can also load one directly when you already know what you
+other five. You can also load one directly when you already know what you
 need. Each file is self-contained, so you never need the others loaded.
 
 | Scenario | Use it when | File |
@@ -190,6 +190,7 @@ need. Each file is self-contained, so you never need the others loaded.
 | **C — Build a plan from scratch** | Nothing exists yet. Seven phases in order: frame, questions, participants, method, guide, analysis, output — with depth scaled to the stakes. | [`ux_plan_from_scratch.md`](ux_plan_from_scratch.md) |
 | **D — Challenge and refine a plan** | You have a draft and want it stress-tested. Audits the upstream decisions first, then the guide for leading, double-barreled, and hypothetical questions. | [`challenge_and_refine_plan.md`](challenge_and_refine_plan.md) |
 | **E — Competitive analysis** | You're comparing two to four products across UX, capability, and market lenses, ending in a verdict tied to a real decision. Includes UI teardowns from sourced screenshots and demo video. | [`competitive_analysis.md`](competitive_analysis.md) |
+| **F — Design a workshop** | You're planning a workshop with Engineering, Product, and UX Design partners. Starts by asking whether a workshop is the right tool at all, then works through the decision it serves, the room, the format, an arc built to counter known group biases, the facilitation guide, and the 30-day follow-through. Keeps workshop output labeled as the team's knowledge and assumptions, never as research findings. | [`workshop_design.md`](workshop_design.md) |
 
 **One analysis path.** A used to have a stricter twin you chose between. It's
 merged in: the hard rules, the integrity audit, and the per-finding checks
@@ -269,7 +270,7 @@ documents the JSON config it takes.
 
 ---
 
-## The seven checkers
+## The eight checkers
 
 When Dr. Morgan drafts something you intend to show people, the draft goes
 through checkers — separate agents that read the finished artifact and report
@@ -296,6 +297,7 @@ fabricated quote.
 | [`research-plan-reviewer`](agents/research-plan-reviewer.agent.md) | Will this study answer its question? Does the guide cover it? | Anything post-fieldwork; the wording, order, and repetition inside the guide |
 | [`research-guide-checker`](agents/research-guide-checker.agent.md) | Are the questions well-formed, behavioral, non-repeating, and in an order a conversation could follow? | Whether the study is worth running; whether the guide covers the research questions; the moderator, where most leading actually happens |
 | [`research-survey-checker`](agents/research-survey-checker.agent.md) | Are the items, response options, order, and routing sound enough to field once? | Whether a survey should answer this at all; the sample and non-response, where a survey's validity actually lives |
+| [`research-workshop-checker`](agents/research-workshop-checker.agent.md) | Is the workshop built to avoid the known ways groups go wrong, and does it keep its output out of the findings? | The room, where most of a workshop happens; whether the research it brings in is true |
 | [`research-synthesis-checker`](agents/research-synthesis-checker.agent.md) | Is each claim traceable to source text? | Whether the claim matters |
 | [`research-significance-checker`](agents/research-significance-checker.agent.md) | Does it map to a question and a decision? Does it reach insight level? Is the corpus complete? | Whether the claim is true |
 | [`research-readability-checker`](agents/research-readability-checker.agent.md) | Will a mixed stakeholder audience understand and act on it? Has the safety scan already run? | Whether any of it is correct; participant safety, which `research-safety-checker` owns |
@@ -324,6 +326,16 @@ acquiescence, satisficing, which option sits at the top of the list.
 suite: a guide with a defect in it can be corrected before the next
 participant, and a survey cannot. Field it and the list is spent.
 
+**A workshop plan gets its own gate too.** Its facilitation guide has prompts
+and its brief has a decision, so it looks like a guide and a plan, and both of
+those gates refuse it. A workshop's failures are group failures: the senior
+voice that anchors the room, the vote that stops being private, the knowledge
+only one function holds that never gets asked for. And its output looks exactly
+like findings. `research-workshop-checker` reads the plan against §4.11 of
+`EVALUATION-LOOP.md`, and blocks the plan that would write a dot vote up as user
+need. It was built after its test fixture, not before, and the rubric changed
+twelve times on what that fixture found.
+
 ---
 
 ## How it fits together
@@ -333,7 +345,7 @@ flowchart TD
     START(["<b>START HERE</b><br/>You, with a research question"])
     START --> DM
 
-    DM["<b>Dr. Morgan</b><br/>routes five scenarios, A through E"]
+    DM["<b>Dr. Morgan</b><br/>routes six scenarios, A through F"]
 
     DM -->|"Coach mode<br/>the default"| COACH["Dr. Morgan questions<br/>and challenges your thinking"]
     COACH --> WORK["You analyze, draft,<br/>and rethink"]
@@ -357,7 +369,7 @@ flowchart TD
     SY --> ART
 
     ART --> PF["<b>Pre-flight · research-safety-checker</b><br/>could this expose a participant?<br/>the bar rises with the audience: team → org → public"]
-    PF --> G["<b>Quality gates, in order</b><br/>plan-reviewer · guide-checker · survey-checker<br/>synthesis-checker · significance-checker<br/>readability-checker<br/><i>only the ones that fit the artifact run</i>"]
+    PF --> G["<b>Quality gates, in order</b><br/>plan-reviewer · guide-checker · survey-checker<br/>workshop-checker · synthesis-checker · significance-checker<br/>readability-checker<br/><i>only the ones that fit the artifact run</i>"]
     G --> V{"Verdict"}
 
     V -->|"PASS or PASS WITH FLAGS<br/>→ RELEASE"| ENDR(["<b>Released to your team</b><br/>flags ride along as Reviewer Notes"])
@@ -421,7 +433,9 @@ reading the thing.
   `[inference]`, or `[unknown]`. A missing label means the labeling missed
   something, not that the claim underneath is solid.
 - **Add a second pass at participant data, not the first one.**
-  De-identifying before you paste is still your job.
+  Swapping names, emails, and phone numbers for P1, P2… before you paste is
+  still your job; keep role and company, which the analysis needs and the
+  checker decides about at release.
   [`research-safety-checker`](agents/research-safety-checker.agent.md) reads
   the artifact against the destination you declared and catches things people
   miss, but it can only flag what it recognizes.
@@ -435,10 +449,12 @@ reading the thing.
   guide runs [`research-guide-checker`](agents/research-guide-checker.agent.md)
   before a session is scheduled, and every survey runs
   [`research-survey-checker`](agents/research-survey-checker.agent.md) before
-  the link is sent — a fielded survey has no second chance. Both state their
-  own limits in every report: a review is not a pilot, and neither can see
-  the moderator in the room or who never answered. So pilot the guide with
-  one person, and mind the sample.
+  the link is sent — a fielded survey has no second chance. Every workshop
+  plan runs [`research-workshop-checker`](agents/research-workshop-checker.agent.md)
+  before it goes to attendees. All three state their own limits in every
+  report: a review is not a pilot, and none of them can see the moderator,
+  the room, or who never answered. So pilot the guide, dry-run the workshop,
+  and mind the sample.
 
 **What they can't do**
 
@@ -637,7 +653,7 @@ those questions up front.
 
 | File | What it's for |
 |---|---|
-| [`agents/dr-morgan.agent.md`](agents/dr-morgan.agent.md) | The main agent — an `.agent.md` file your tool can load by name. Routes between all five scenarios and switches mid-conversation. Start here. |
+| [`agents/dr-morgan.agent.md`](agents/dr-morgan.agent.md) | The main agent — an `.agent.md` file your tool can load by name. Routes between all six scenarios and switches mid-conversation. Start here. |
 | [`EVALUATION-LOOP.md`](EVALUATION-LOOP.md) | How release works: the gate matrix, the verdict shape, the two-pass cap, escalation triggers, Definition of Done per artifact type, and the known limits. Read before adding a skill or evaluator. |
 | [`FINDINGS-CONTRACT.md`](FINDINGS-CONTRACT.md) | One shape for a finding, shared by everything that produces or reads one. Because the deck skill can only render fields a record contains, this is what structurally stops evidence from being invented during deck building. |
 | [`VOICE-AND-STYLE.md`](VOICE-AND-STYLE.md) | How outputs should read, and the rubric the readability gate scores against. |
@@ -647,11 +663,11 @@ those questions up front.
 | [`METHODS.md`](METHODS.md) | How Dr. Morgan gets operationally specific about a method: session shape, counts, instrument craft, and what each method cannot tell you. [`methods/`](methods/) holds the files, and the table of which methods have an instrument gate and which don't. Read before adding a method. |
 | [`QUICK-REFERENCE.md`](QUICK-REFERENCE.md) | The whole flow on one page: how to start, which checker runs when, how to run one, when to start a new chat, and the three calls that are yours. Hand this to new users. |
 | [`MAINTAINING.md`](MAINTAINING.md) | Repo upkeep — test fixtures, keeping the agent in sync with the standalone files, and the drift check for shared blocks. Only needed if you're editing the suite, not using it. |
-| [`templates/`](templates/README.md) | The manual path: fill-in templates for the whole study lifecycle (intake, plan, screener, guide, participant tracker, findings records, report, deck, impact message), in the same structures Dr. Morgan produces. For researchers and designers who want to do the work themselves; the gates and release sign-off apply either way. |
+| [`templates/`](templates/README.md) | The manual path: fill-in templates for the whole study lifecycle (intake, plan, screener, guide, participant tracker, findings records, report, deck, impact message, participant card, workshop plan), in the same structures Dr. Morgan produces. For researchers and designers who want to do the work themselves; the gates and release sign-off apply either way. |
 
-The five scenario files and the seven evaluator agents are listed in
+The six scenario files and the eight evaluator agents are listed in
 [What you can ask for](#what-you-can-ask-for) and
-[The seven checkers](#the-seven-checkers).
+[The eight checkers](#the-eight-checkers).
 
 <details>
 <summary><b>Frameworks and canon referenced</b></summary>
@@ -688,6 +704,26 @@ citations live in the individual files.
 - Amy Schade & Tim Neusesser (Nielsen Norman Group) — competitive usability
   evaluation
 
+**Workshop design (Scenario F)**
+- Sam Kaner et al. — *Facilitator's Guide to Participatory Decision-Making*
+  (1996; 3rd ed. 2014): the diverge/converge diamond, decision rules
+- Gray, Brown & Macanufo — *Gamestorming* (2010)
+- Lipmanowicz & McCandless — *The Surprising Power of Liberating Structures*
+  (2013)
+- Knapp, Zeratsky & Kowitz — *Sprint* (2016)
+- Priya Parker — *The Art of Gathering* (2018)
+- Sanders & Stappers — *Convivial Toolbox* (2012); Michael J. Muller —
+  "Participatory Design: The Third Space in HCI" (2003)
+- Gothelf & Seiden — *Lean UX*; Bland & Osterwalder — *Testing Business
+  Ideas* (2019); Jim Kalbach — *Mapping Experiences* (2016)
+- Group process: Diehl & Stroebe (1987) on production blocking; Rietzschel,
+  Nijstad & Stroebe (2006) on idea selection; Stasser & Titus (1985) and
+  Stasser, Stewart & Wittenbaum (1995) on shared-information bias; Nemeth,
+  Brown & Rogers (2001) on authentic dissent; Myers & Lamm (1976) on group
+  polarization; Janis (1972) on groupthink; Edmondson (1999) on psychological
+  safety; Klein (2007) on the premortem; Delbecq, Van de Ven & Gustafson
+  (1975) on the nominal group technique
+
 </details>
 
 <a id="glossary"></a>
@@ -696,11 +732,11 @@ citations live in the individual files.
 
 | Term | What it means here |
 |---|---|
-| artifact | Anything the suite produces for someone else to read: a research plan, a discussion guide, a survey instrument, a findings doc, a competitive analysis, a slide deck. |
+| artifact | Anything the suite produces for someone else to read: a research plan, a discussion guide, a survey instrument, a findings doc, a competitive analysis, a workshop plan, a slide deck. |
 | agent | A prompt packaged so a tool can load it by name. The configuration at the top of an `.agent.md` file is called *frontmatter*; you don't need to touch it. |
 | skill | A prompt bundled with its supporting files (templates, reference docs, scripts), usually shipped as one zipped `.skill` file. Most AI tools can invoke one by name. |
 | custom instructions | The box in your chat tool where you set standing instructions for a whole conversation instead of retyping them. Sometimes called a system prompt. |
-| gate | A checker that reads a finished artifact and reports whether it passes. Six of the seven run as quality gates; the safety checker runs ahead of them as pre-flight. Each looks for something different. |
+| gate | A checker that reads a finished artifact and reports whether it passes. Seven of the eight run as quality gates; the safety checker runs ahead of them as pre-flight. Each looks for something different. |
 | verdict | The block a gate ends with: **PASS**, **PASS WITH FLAGS**, or **FAIL**, plus what to do next. Written in a fixed shape so a person or a script can act on it without reading prose — in that machine-readable block they appear as `PASS`, `PASS_WITH_FLAGS`, `FAIL` — plus `NOT_APPLICABLE`, which a gate returns when it was handed an artifact it does not own, and which asserts nothing about the artifact. |
 | checker packet | The block Dr. Morgan writes for each checker: which checker, the artifact, who it's for, and which original files to attach. You paste it into a new chat with that checker, unless your tool lets Dr. Morgan run the checker itself. |
 | pre-flight | The safety scan that runs before the gates, on everything, every time. |

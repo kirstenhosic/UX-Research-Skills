@@ -36,6 +36,12 @@ work measures the team's own assumptions back to them — and whether the sample
 supports the cuts the plan intends to report, per segment rather than in total.
 That gate cannot see the sample. You can.
 
+**Workshop plans, entirely.** A workshop brief has a decision and an agenda, so
+it looks like a research plan, but it has no research questions and no sample,
+and §4.1 scored against one demands both. It goes to
+`research-workshop-checker`, against §4.11. Say so, return `NOT_APPLICABLE`
+with `ROUTE`, and stop.
+
 ## Inputs
 
 - **The plan and/or discussion guide** to review

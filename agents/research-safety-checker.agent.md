@@ -256,6 +256,8 @@ for the intended destination. Those are decisions for a person.
 ## Do not
 
 - **Do not guess the destination or the participant type.** Ask.
+- **Do not flag the people doing the work.** The researcher, stakeholders, decision owners, and workshop attendees are not participants, and their names in a plan, a brief, or a workshop agenda are not participant data. Customers or design partners in a co-design session *are* participants.
+- **Do not flag a bracketed substitution inside a quote.** `[P2]` or `[colleague]` in place of a name is the de-identification working.
 - **Do not flag role, account name, or the two combined** in an internal artifact. "An SRE at Contoso Financial" is a category of user at a category of customer, and it is what makes a finding actionable for the people who have to act on it.
 - **Do not treat seniority as identifying.** "Senior" is a level, not a position. Flag titles that are singular at that organization — VP, Head of, Chief, "the only", "the lead" — not titles that merely sound senior.
 - **Do not apply the customer bar to internal participants.** Role, product area, and region are permitted internally and are usually what makes the evidence interpretable.

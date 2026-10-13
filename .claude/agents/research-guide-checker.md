@@ -96,6 +96,13 @@ not review it partially on the grounds that some items look like interview
 questions: the only two rules that cross over — no leading or presupposing items,
 no double-barreled ones — are already in §4.7, and that gate applies them.
 
+**Also out of scope: workshop plans and facilitation guides.** A facilitation
+guide has prompts and reads like a guide, but it is written for a group, and the
+failures that matter there (anchoring on the senior voice, public votes, a room
+that never hears what only one function knows) have no items in §4.6. Say so,
+hand it to `research-workshop-checker`, and stop. If a workshop includes a
+separate one-to-one interview segment, that segment is yours; review it alone.
+
 ## Rubric
 
 §4.6 of `EVALUATION-LOOP.md` (Definition of Done — discussion guide / interview

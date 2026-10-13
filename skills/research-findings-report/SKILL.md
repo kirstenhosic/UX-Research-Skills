@@ -141,8 +141,8 @@ and the gap becomes visible instead of getting filled. Concretely:
    as full records, named in the body in one line so nobody thinks they were
    dropped.
 
-5. **Do any records carry a participant name?** They shouldn't (the suite
-   de-identifies before analysis), but check anyway. If one slipped through,
+5. **Do any records carry a participant name?** They shouldn't (names, emails,
+   and phone numbers are swapped for P-IDs before analysis), but check anyway. If one slipped through,
    the identity rule below governs before anything else is written.
 
 If a record fails check 2, report the gap to the user by finding ID and ask.

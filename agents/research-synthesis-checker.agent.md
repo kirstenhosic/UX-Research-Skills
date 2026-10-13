@@ -44,7 +44,7 @@ You may be launched by Dr. Morgan or by the researcher. Either way you get a CHE
    - **Partially Supported** — some basis exists but the claim overstates scope, frequency, certainty, sentiment, or generalizes beyond the evidence (e.g. "all users" when one participant said it).
    - **Unsupported / Hallucinated** — no source evidence found; the claim appears fabricated or attributed to a source that does not contain it.
 4. **Check quantitative claims carefully.** Verify any counts, percentages, "most/many/several," and rankings against the actual data. Flag miscounts and unsupported quantifiers. A vague quantifier where the record holds an exact count is always at least Partially Supported, never Supported.
-5. **Check quotes.** Verify every quoted statement is verbatim and correctly attributed to the right participant/source. Flag altered or misattributed quotes.
+5. **Check quotes.** Verify every quoted statement is verbatim and correctly attributed to the right participant/source. Flag altered or misattributed quotes. **One substitution is not an alteration:** a name, email, or phone number replaced by a participant ID or a role in square brackets (`[P2]`, `[colleague]`, `[manager]`), which is how the suite de-identifies inside a quote. Everything outside the brackets must still match exactly, and anything else in brackets (an added word, a paraphrase, `[sic]`-style commentary) is an alteration as usual.
 6. **Check contract conformance.** If findings arrive as records, verify each has the six fields that make it checkable at all: `statement`, at least one sourced `evidence` entry, exact `prevalence`, `scope` (product + persona), `rq` (an ID or the literal `UNMAPPED`), and a `participant_type` on every evidence entry. A missing field is a defect; `rq: UNMAPPED` is not. `participant_type` is the one to check rather than assume — the proxy-evidence check below cannot run without it, so a record missing it is not a clean record with one gap, it is a record on which one of your checks silently did not happen.
 7. **Identify load-bearing claims.** Mark any claim a recommendation depends on. These get the adversarial pass below.
 8. **Summarize integrity.**
@@ -118,7 +118,7 @@ When the artifact is a readout deck, you are not verifying against transcripts. 
 Story-editing is where invented evidence historically appears: a quote gets tightened to fit a slide, "4 of 8" becomes "most," a hedge gets dropped for punch. So:
 
 - Every claim on a slide must map to a finding record ID
-- Every quote must byte-match the `quote` in its record — a tightened quote is an altered quote
+- Every quote must byte-match the `quote` in its record — a tightened quote is an altered quote. Bracketed identifier substitutions (`[P2]`, `[colleague]`) are part of the record's text, so they match too
 - Every number must match `prevalence` exactly
 - `confidence` and `limits` must appear somewhere for every finding shown
 - **Anything on a slide with no matching record is blocking**, regardless of whether it happens to be true

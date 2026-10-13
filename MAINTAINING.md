@@ -286,7 +286,17 @@ What that means when you edit:
   cross-file pointers inside the standalones (for example
   `ux_plan_from_scratch.md` cites `select_best_method.md` for the MVRM
   criteria and recruitment patterns, and `challenge_and_refine_plan.md`
-  offers `ux_plan_from_scratch.md`).
+  offers `ux_plan_from_scratch.md`). Adding a whole scenario reaches further.
+  Adding `workshop_design.md` (Scenario F) took: the router row and menu,
+  the identification-line letter range and the carry-over packet's, "the
+  other N" in LOADING A SCENARIO, the agent's description, opening file list
+  and maintenance note; the `RELEASE GATE` block in every scenario file (it
+  gained a row); `SCENARIOS` in `scripts/check.sh`, and the `spine()` lists
+  here; the §3 gate matrix and the agent's gate table (a new artifact row
+  needs both, or `check_gate_rows.py` fails); a §4.x section and its `emit`
+  line; the README's scenario table, mermaid node, count words, reading list
+  and glossary; `QUICK-REFERENCE.md`; `CLAUDE.md`; and `CITATION.cff`. Grep
+  for `five` and `A–E` style ranges before you commit.
 - **Every standalone must keep working on its own.** It is now loaded in two
   ways: by the agent, which reads it alongside the agent's shared rules, and
   pasted into a chat on its own, with no agent at all. Don't make a
@@ -316,7 +326,7 @@ commit — the same sweep as the count words below.
 Claude Code (the CLI and the VS Code extension) only finds project agents in
 `.claude/agents/` and skills in `.claude/skills/<name>/SKILL.md`, in its own
 frontmatter format; it never reads `agents/*.agent.md`. `./build-claude.sh`
-derives that setup from the sources: the seven checkers as full copies with
+derives that setup from the sources: the eight checkers as full copies with
 read-only tools, Dr. Morgan as a full-copy `/dr-morgan` skill that only a person
 can start (so it runs in the main conversation and can launch the checkers as
 fresh-context subagents), and each skill as a short pointer to its real folder in
@@ -349,15 +359,16 @@ reads the whole conversation. Keep three things if you edit this: the checker
 gets the packet and nothing else; source material travels as the original
 files, never retyped by the producer; and the checker's plain summary and
 every finding reach the researcher verbatim. If you widen the `agents:` list,
-keep it to the seven checkers. The adversarial panel (§6) stays manual on
+keep it to the eight checkers. The adversarial panel (§6) stays manual on
 purpose.
 
 ## Templates condense the skills — the canonical file wins
 
 `templates/` carries fill-in versions of the structures the skills produce:
 the plan's sixteen sections, the findings record, the report and deck
-structures, the impact message. The skills and contracts are canonical; the
-templates follow them. A structural change to `ux_plan_from_scratch.md`,
+structures, the impact message, the workshop plan. The skills and contracts are
+canonical; the templates follow them. A structural change to
+`ux_plan_from_scratch.md`, the eight templates in `workshop_design.md`,
 `FINDINGS-CONTRACT.md`, or a `skills/*/SKILL.md` structure section is not done
 until the matching template reflects it. The templates deliberately compress
 (brief guidance plus a pointer to the deep doc), so wording can differ;
@@ -375,6 +386,38 @@ Edit the `.md` files or the build scripts, rerun the script, and commit both;
 never edit a generated file directly. Both builds stamp the shared page
 furniture (the "UX Research" header, page number right in the footer),
 so it lives in the scripts, not in any document.
+
+## De-identification is staged, and the stages live in several places
+
+Participant data is de-identified at four stages, each with its own rule: before
+it is pasted (names, emails, and phone numbers become P-IDs; role and account
+stay), in everything Dr. Morgan writes (the automated swap, the mapping in chat
+only, square brackets inside quotes), at release by destination
+(`research-safety-checker`'s tiers, consent winning when stricter), and back to
+participants (the participant summary skills, strictest of all). The people doing
+the work are not participants and keep their names.
+
+This replaced a rule, set 2026-10-13, that told researchers to strip employer and
+client before pasting, which contradicted the safety gate: the gate allows role
+and account in every internal artifact and calls them what makes a finding
+actionable. A researcher following the old rule removed exactly what the gate
+said to keep.
+
+The stages are written in the scenario files' shared `OPERATING PRINCIPLES` block
+(hashed, so drift fails the check), the agent's `Protect participant data`
+principle and its first proactive prompt, `QUICK-REFERENCE.md` step 3, and the
+README's principles list. Two gates depend on them and say so:
+`research-synthesis-checker` accepts a bracketed identifier substitution inside a
+quote as verbatim, and `research-safety-checker` does not flag the people doing
+the work or a bracketed substitution. Change a stage and visit all of them.
+
+Both gate changes were tested blind on 2026-10-13 with one targeted case each.
+`research-synthesis-checker` passed a quote with two `[colleague]` substitutions
+as verbatim and blocked a quote with words added inside brackets as altered.
+`research-safety-checker`, given a workshop brief, blocked one participant's name,
+left the facilitator, decision owner, and six attendees alone as people doing
+the work, and cleared role plus account and both bracketed substitutions. One
+instance each; run `gate-fixture/` before the next change to either gate.
 
 ## Shared blocks are duplicated on purpose
 
@@ -427,7 +470,7 @@ evaluator is the most expensive edit in this repo, and the drift check below
 only catches the first item on this list. Adding `research-survey-checker` took
 all of it:
 
-1. The `RELEASE GATE` block in all five scenario files, byte-identical
+1. The `RELEASE GATE` block in all six scenario files, byte-identical
 2. The gate matrix in `EVALUATION-LOOP.md` §3, and its preamble sentence, which
    counts the evaluators
 3. The evaluator table in §3, whose heading also counts them
@@ -476,11 +519,12 @@ Literal prefix matching, no regex, no GNU-only flags. It runs as-is on macOS.
 
 ### The product-context spine, which wraps differently in every file
 
-The five `PRODUCT CONTEXT` bullets are **not** byte-identical and should not be
+The `PRODUCT CONTEXT` bullets are **not** byte-identical and should not be
 made so. Each file wraps to its own width, and each appends its own tail: the
 analysis file adds `Key workflows:` and `Common research themes:`,
 `select_best_method.md` adds workflows only, `competitive_analysis.md` adds
-`Key UI surfaces:`, and the two planning files carry personas alone. That
+`Key UI surfaces:`, and the two planning files and `workshop_design.md` carry
+personas alone. That
 tailoring is deliberate — a plan file does not need recurring research themes to
 write a screener.
 
@@ -498,7 +542,7 @@ Whitespace-normalized, so wrapping doesn't matter:
 spine() {
   for f in analyze_your_data.md ux_plan_from_scratch.md \
            challenge_and_refine_plan.md select_best_method.md \
-           competitive_analysis.md; do
+           competitive_analysis.md workshop_design.md; do
     miss=$(tr -s ' \n' ' ' < "$f" | grep -cF "$1") 
     [ "$miss" = 0 ] && echo "    DRIFT — $f is missing: $1"
   done
@@ -513,11 +557,13 @@ limit of it.
 
 ### `MENTORING RULES` is per-scenario on purpose — do not hash it
 
-Five variants, and they should stay five. The planning files cite Portigal, Hall,
+Six variants, and they should stay six. The planning files cite Portigal, Hall,
 Fitzpatrick, Goodman, and Creswell; the analysis file cites Braun & Clarke,
 Saldaña, Beyer & Holtzblatt, and Young. `challenge_and_refine_plan.md` adds
 seniority-calibrated citation guidance that belongs nowhere else. A drift check
-here would report five variants forever and train you to ignore it.
+here would report six variants forever and train you to ignore it.
+`workshop_design.md` cites facilitation and group-process sources (Kaner, Gray,
+Diehl & Stroebe, Stasser & Titus) that no other scenario needs.
 
 **The pair that used to need this check is now one file.**
 `analyze_your_data.md` and `qualitative_data_analysis_skill.md` covered the same
@@ -536,7 +582,7 @@ Differences here are a decision, not automatically a defect — the strict path 
 legitimately not need the quant references. What is a defect is the difference
 arriving by accident, which is what happened.
 
-This covers the five standalone scenario files only. `agents/dr-morgan.agent.md`
+This covers the six standalone scenario files only. `agents/dr-morgan.agent.md`
 carries the shared rules in markdown rather than plain text, so it can't be
 hashed against them, and it has to be checked by reading. It no longer carries
 the scenario flows, so the places that go stale first are the router table's
@@ -565,7 +611,7 @@ The corresponding risk in the other direction is that the four questions grow.
 Four is already at the edge of what a stakeholder will answer in one message.
 An owner who is asked eight questions answers none of them.
 
-## Three gates read an instrument, and the splits are load-bearing
+## Four gates read an instrument, and the splits are load-bearing
 
 `research-plan-reviewer` holds the research questions and maps coverage in both
 directions. `research-guide-checker` never sees them and reads the guide as a
@@ -594,6 +640,21 @@ that silently reviews the wrong instrument type produces findings that are
 confident, specific, and wrong, which is worse than no gate. `guide-checker`
 refusing a survey is the behavior, not a gap.
 
+`research-workshop-checker` is the fourth, and it divides on **who is in the
+room**: a group, not one participant. Its facilitation guide looks like a
+discussion guide and its brief looks like a plan, so the temptation will be to
+send it to either. Both refuse it by name, and it refuses both of theirs. It is
+also the only gate built after its fixture: `workshop-fixture/` in the testing
+repo ran §4.11 blind as a proto-gate before the agent existed, and §4.11
+changed twelve times on what it found. The gate itself has since been run
+against it, including the refusal pair in both directions; the fixture's README
+has the record. Run it again before you edit §4.11 or the gate.
+
+**Editing §4.11 is a three-file edit**: the rubric, the gate (which names items
+by number in its Parts), and `workshop-fixture/README.md`, whose key cites items
+by number. Item 24 was appended after item 23 rather than inserted for that
+reason.
+
 ## Automated checks
 
 `scripts/check.sh` runs the checks above, plus a few that used to be done by eye.
@@ -602,10 +663,10 @@ CI runs it on every push and pull request to `main`
 someone to notice. It checks that:
 
 - **Shared blocks match.** `OPERATING PRINCIPLES` and `RELEASE GATE` are identical
-  across the scenario files, and all five carry both. This is the `check()` logic
+  across the scenario files, and all six carry both. This is the `check()` logic
   above.
 - **The spine is present.** The product one-liner and the personas sentence appear
-  in all five scenario files. This is the `spine()` logic above.
+  in all six scenario files. This is the `spine()` logic above.
 - **Links resolve.** Relative Markdown links and `#anchors` point at files and
   headings that exist, with exact case (`scripts/check_links.py`). Web links and
   anything inside backticks are skipped.
