@@ -64,8 +64,8 @@ IS A WORKSHOP THE RIGHT TOOL? — THE MINIMUM VIABLE WORKSHOP:
 The same logic as the Minimum Viable Research Method: recommend the
 lightest format that will actually produce the outcome. Eight people
 for four hours is thirty-two person-hours before anyone prepares, and
-preparation commonly runs at least as long as the session (a rule of
-thumb; budget for it).
+preparation often runs as long as the session itself (an unsourced rule
+of thumb; budget for it anyway).
 
 A workshop earns its cost when at least one of these is true:
   - The knowledge the decision needs is spread across functions, and
@@ -102,7 +102,8 @@ round of 1:1 stakeholder interviews, or a research study.
 WORKSHOP TYPES — MATCH THE TYPE TO WHERE THE WORK IS:
 
 Most bad workshops are two or three types run at once without saying
-so. Name the type, and chain two at most in one session.
+so. Name the type, and chain two at most in one session (a rule of
+thumb, not a measured limit; a Design Sprint counts as one type).
 
   1. ALIGNMENT / KICKOFF (before research)
      Produces: a shared problem statement, draft research questions,
@@ -116,9 +117,10 @@ so. Name the type, and chain two at most in one session.
   3. SYNTHESIS / SENSEMAKING (after fieldwork, with the data)
      Produces: draft themes built by partners working in the actual
      corpus. Hand-off: the analysis scenario's theme checkpoint
-     (analyze_your_data.md). The workshop can host the checkpoint if
-     the review packet meets section 4.5 of EVALUATION-LOOP.md and a
-     keep / change / split / drop answer is recorded per theme.
+     (analyze_your_data.md). Partner-built themes are drafts and go
+     through that checkpoint like any others, reviewed by someone who
+     did not build them; the workshop is not the checkpoint for its
+     own themes.
   4. JOURNEY OR SERVICE MAPPING (current state, from evidence)
      Produces: a map of the experience across roles, with every step
      labeled [evidence] or [assumption]. The gaps in the map are
@@ -173,7 +175,7 @@ PHASE 1 — FRAME THE DECISION AND THE OUTCOMES
 
 PHASE 2 — DIAGNOSE THE ROOM (the pre-workshop research)
   Treat the key attendees as participants in a small study. Run
-  short conversations (15–20 minutes is usually enough) with the engineering lead, the product
+  short conversations (15–20 minutes, as a rule of thumb) with the engineering lead, the product
   manager, the design lead, and the decision owner, or a three-to-
   five question async pre-survey if time is short. Ask:
     - What would make this workshop a success for you?
@@ -228,8 +230,10 @@ PHASE 3 — CHOOSE THE FORMAT
     - Access: send materials ahead, caption calls, and give every
       activity a written channel as well as a spoken one. Silent
       writing time helps non-native speakers, slower processors, and
-      people who think before they speak; it is also one of the
-      strongest defenses against the loudest-voice problem.
+      people who think before they speak, and anonymous written input
+      reliably draws out more contributions, especially critical ones
+      (Postmes & Lea, 2000). It does not by itself make the decision
+      better; it makes more of what people know reach the room.
 
 PHASE 4 — DESIGN THE ARC
   Every workshop that ends in a decision has the same shape: open
@@ -260,21 +264,29 @@ PHASE 4 — DESIGN THE ARC
       the room works from its priors. One exception: in a synthesis
       workshop, give partners the raw data, not your themes. Your
       themes are a frame too, and the room will anchor on them.
-    - Never show a candidate solution before the divergent activity
-      it would anchor. It is the same ordering rule as a stimulus in
-      a discussion guide: once seen, it can't be unseen.
-    - Individual before group. Silent, individual generation first,
-      then sharing. Groups brainstorming aloud produce fewer ideas
-      than the same people working alone (Diehl & Stroebe), mostly
-      because only one person can talk at a time. This sequence,
+    - Show anchors before ideation only on purpose. The team's own
+      concept, a backlog item, or a direct competitor's design shown
+      before divergence narrows what the room produces, as a
+      stimulus does in a discussion guide. But examples can also raise
+      the novelty and quality of ideas (Sio, Kotovsky & Cagan, 2015),
+      which is why a Design Sprint runs Lightning Demos first. Decide
+      which you want, and say why in the plan.
+    - A written channel before open discussion. Silent individual
+      writing, brainwriting, or individual pre-work first, then
+      sharing. Groups brainstorming aloud produce fewer ideas than the
+      same number of people working alone with their ideas pooled
+      (Diehl & Stroebe), mostly because only one person can talk at
+      a time. This sequence,
       silent generation, round-robin sharing, discussion, then
       private voting, is the nominal group technique (Delbecq, Van
       de Ven & Gustafson).
     - Generating well is not choosing well. Groups that generate
-      alone still tend to pick their safer, more familiar ideas
-      rather than their best ones (Rietzschel, Nijstad & Stroebe).
-      So score options against the agreed criteria, not by gut
-      preference, and keep one slot open for the riskiest option.
+      alone still pick feasible, familiar ideas over original ones,
+      and rating ideas for quality did not fix it (Rietzschel,
+      Nijstad & Stroebe, 2006 and 2010). In a product decision,
+      feasibility is often the right call. If originality matters to
+      this one, put it in the criteria; if it doesn't, say the room
+      is choosing for feasibility rather than pretend otherwise.
     - Commit before anyone sees anyone else's vote. Votes, scores,
       and consent signals go in as a private ballot or as cards
       revealed together; visible dots attract dots. Where the
@@ -369,8 +381,11 @@ PHASE 6 — CAPTURE, FOLLOW THROUGH, AND EVALUATE
     - assumptions to test → method selection or a research plan
     - draft themes from a synthesis workshop → the analysis
       scenario's theme checkpoint, then the synthesis gate
-    - recommendations → FINDINGS-CONTRACT.md records, each naming
-      the findings it rests on
+    - recommendations → attached to the FINDINGS-CONTRACT.md records
+      they rest on (depends_on), or labeled [team knowledge] or
+      [assumption]; never written up as new findings
+    - the summary itself → research-workshop-checker in summary
+      mode, then readability, before it goes out
     - a written report or deck of the outcomes → the
       research-findings-report or research-readout-deck skill, only
       for content that rests on [evidence]
@@ -432,22 +447,28 @@ DESIGNING AGAINST GROUP BIAS — the reason a workshop needs a design:
                             Rogers, 2001)
   Group polarization        discussion pushes a group further in the
                             direction it already leaned (Myers &
-                            Lamm, 1976), which is how a prioritization
-                            session talks itself into its boldest
-                            option
+                            Lamm, 1976), cautious or bold
                             → record individual positions privately
-                            before discussion, and compare after
-  Bandwagon voting          visible votes attract votes
-                            → private or simultaneous voting
+                            before discussion, and compare after, so
+                            a shift is visible
+  Bandwagon voting          visible votes attract votes; a random
+                            early up-vote measurably shifts later
+                            ratings (Muchnik, Aral & Taylor, 2013)
+                            → votes committed before anyone sees
+                            anyone else's
   Low psychological safety  people withhold what they think will
                             cost them (Edmondson, 1999). It is a team
                             climate built over time; one meeting's
                             ground rules don't create it
                             → anonymous input, which a workshop can
-                            actually control, and written channels
-                            for every activity
+                            actually control: it adds contributions,
+                            not better decisions on its own (Postmes
+                            & Lea, 2000)
   Vividness                 in a synthesis workshop, the memorable
-                            session dominates the wall
+                            session can dominate the wall (a
+                            plausible risk; lab evidence for
+                            vividness effects is mixed: Taylor &
+                            Thompson, 1982)
                             → assign the full corpus, and carry
                             exact prevalence on every theme
   Proxy as user voice       "customers want X," said by a colleague
@@ -477,7 +498,8 @@ FRAMEWORKS — reference naturally; cite ONLY these verified sources:
     📚 Convivial Toolbox — Elizabeth B.-N. Sanders & Pieter Jan
        Stappers (2012): generative tools for co-design
     📚 "Participatory Design: The Third Space in HCI" — Michael J.
-       Muller (2003), in The Human-Computer Interaction Handbook
+       Muller (2002), in Jacko & Sears (eds.), The Human-Computer
+       Interaction Handbook
 
   Assumptions and mapping:
     📚 Lean UX — Jeff Gothelf & Josh Seiden (2013; 3rd ed. 2021):
@@ -503,6 +525,19 @@ FRAMEWORKS — reference naturally; cite ONLY these verified sources:
        enough: A comparison of interactive and nominal brainstorming
        groups on idea generation and selection," Journal of
        Experimental Social Psychology
+    📚 Rietzschel, Nijstad & Stroebe (2010), "The selection of
+       creative ideas after individual idea generation," British
+       Journal of Psychology
+    📚 Sio, Kotovsky & Cagan (2015), "Fixation or inspiration? A
+       meta-analytic review of the role of examples on design
+       processes," Design Studies
+    📚 Muchnik, Aral & Taylor (2013), "Social influence bias: A
+       randomized experiment," Science
+    📚 Postmes & Lea (2000), "Social processes and group decision
+       making: Anonymity in group decision support systems,"
+       Ergonomics
+    📚 Taylor & Thompson (1982), "Stalking the elusive 'vividness'
+       effect," Psychological Review
     📚 Nemeth, Brown & Rogers (2001), "Devil's advocate versus
        authentic dissent: Stimulating quantity and quality,"
        European Journal of Social Psychology
@@ -556,11 +591,16 @@ Full definitions follow.
      at the end · How we'll know it worked: at the close, and at
      thirty days · Non-goals · Why a workshop, rather than the
      lighter option · Attendees by role, with decision rights;
-     consulted afterwards · Inputs, each labeled · Format, length,
-     and tool · Decision rule · Risks to the room and the design
-     countermeasure for each · Data handling: the plan's destination
-     and the board's, any participant data shown and how it is
-     de-identified, recording consent
+     consulted afterwards · Owner attendance: throughout, or criteria
+     and rule agreed by a date · Roles: facilitator, co-facilitator,
+     capturer, timekeeper · Inputs, each labeled, with what the
+     evidence covers · Format, length, and tool · Criteria, weights,
+     and each one's scale · Decision rule, and whether scores are a
+     vote or advice · Vote mechanics: votes each, stacking, ties ·
+     Risks to the room and the design countermeasure for each · Data
+     handling: the plan's destination and the board's, any
+     participant data shown and how it is de-identified, recording
+     consent · Dates: materials out, dry run, summary to attendees
 
   2. AGENDA WITH ACTIVITY-TO-OUTCOME MAP
      One row per block: time · block name · arc stage (open,
@@ -579,7 +619,8 @@ Full definitions follow.
      before the room closes.
 
   4. ROOM DIAGNOSIS
-     Attendees by function and seniority · decision rights · what
+     Facilitator's private notes, never sent to attendees or put in a
+     checker packet. Attendees by function and seniority · decision rights · what
      each believes the answer is (from the pre-conversations) ·
      unique knowledge each holds · tensions to design around ·
      skeptics, and what would earn their trust.
@@ -600,7 +641,8 @@ Full definitions follow.
      Who captures each block · photographs and board exports, named
      and stored where · how outputs get their evidence labels · who
      writes the summary, by when · where each kind of output goes
-     next (Phase 6 routing).
+     next (Phase 6 routing), recommendations attached to the findings
+     they rest on, never written up as new findings.
 
   8. WORKSHOP EVALUATION
      Each Phase 1 outcome: produced, partly, or not, with what
@@ -632,8 +674,10 @@ PRODUCT-SPECIFIC CHALLENGES TO ALWAYS RAISE:
     board ("P1, Senior SRE at Contoso Financial"). The moment a
     customer or design partner can see the board, it is external, and
     account names come off
-  - Customers or design partners in the room make this a co-design
-    session with external participants: consent, recording terms,
+  - Customers or design partners who make, rank, or are asked about
+    their own work in a segment make that segment a co-design session
+    with external participants (customers who only watch or hear a
+    segment don't, though anything they can see is external): consent, recording terms,
     and no roadmap commitments, and anything they see is held to the
     external bar. It is research, so it needs a study plan too, and
     methods/co-design-workshop.md has its session shape, counts, and
@@ -657,10 +701,15 @@ DRAFTING TO THE BAR — the workshop plan's standard:
   roles and time zones, the findings the plan draws on, the consent
   terms, and both destinations: the plan's and the board's.
 
-  Two things it is most likely to block, so draft against them
-  first: any plan to write workshop output up as research findings
-  or to present a dot vote as user need, and participant data on a
-  board that reaches anyone the study's consent doesn't cover. And
+  Only a few things block, so draft against them first: any plan to
+  write workshop output up as research findings or to present a dot
+  vote as user need (item 13); participant names, emails, or phone
+  numbers on a board, or anything else safety's tables block at the
+  board's destination; participant data that reaches anyone the
+  study's consent doesn't cover (both item 16); and a plan with no
+  decision or output, one that ratifies a decision already made, or
+  one that rests on evidence that doesn't exist yet. The summary
+  written up afterwards goes to the same gate, in summary mode. And
   one thing no checker can do: see the room. A plan that passes is
   built to avoid the known failures; the dry run and the facilitator
   are what actually avoid them.

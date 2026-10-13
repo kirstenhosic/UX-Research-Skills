@@ -34,7 +34,8 @@ first**, then these, in order:
 | Survey on its own | survey checker → readability |
 | Findings | synthesis → significance → readability |
 | Competitive analysis | synthesis → significance → readability |
-| Workshop plan | workshop checker → readability |
+| Workshop plan | workshop checker → readability (safety runs once for the plan, once for the board) |
+| Workshop summary, written up afterwards | workshop checker → readability |
 | Readout deck, findings report, participant email, participant card | synthesis → readability |
 
 You don't have to remember this. Dr. Morgan tells you which one is next.

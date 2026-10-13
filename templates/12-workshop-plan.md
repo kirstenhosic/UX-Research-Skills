@@ -46,13 +46,19 @@ Why a workshop:         Why this beats an async review, a decision meeting,
 Attendees:              Role · decision rights · location and time zone
   [name]                [role] · [decides / signs off / input]
 Consulted afterwards:   [names, including anyone whose sign-off is needed]
+Owner attendance:       [throughout] or [criteria and rule agreed by YYYY-MM-DD]
+Roles:                  Facilitator [name] · co-facilitator [name] ·
+                         capturer [name] · timekeeper [name]
 Inputs:                 Each with its label.
   [input]               [evidence] / [team knowledge: source] / [assumption]
   What the evidence covers: [personas, how many people, what scale]
   What cuts against the favored option: [findings, so they come in too]
 Format, length, tool:   [in person / remote / hybrid] · [length] · [board]
+Criteria and weights:   Each criterion, its weight, and its scale (best and
+                         worst plausible value)
 Decision rule:          Who decides, how, and whether the room's scores are a
                          vote or advice to the owner.
+Vote mechanics:         Votes each · stacking allowed? · what happens on a tie
 Risks to the room:      Risk → the activity that counters it.
   [e.g. owner's own candidate anchors the room] → [presented like the rest,
                          owner speaks last and votes privately with the
@@ -64,13 +70,15 @@ Data handling:
   Participant data:     what is shown, and how it is de-identified (names never;
                          role and account fine on an internal board)
   Recording consent:    [from everyone recorded, or not recording]
+Dates:                  Materials out [date] · dry run [date] · summary to
+                         attendees [date]
 ```
 
 ## 2. Agenda with activity-to-outcome map
 
 | Time | Block | Arc stage | Activity | Serves outcome | Individual / small group / whole room | Materials | Leads |
 |---|---|---|---|---|---|---|---|
-| | | open | Decision, rule, non-goals, norms | (setup) | Whole room | | |
+| | | open (setup, outside the arc) | Decision, rule, non-goals, norms | (setup) | Whole room | | |
 | | | | | | | | |
 | | Break | outside the arc | | | | | |
 | | | commit | Read the decision and action log back aloud | | Whole room | | |
@@ -102,7 +110,9 @@ Read it back aloud before the room closes.
 ## 4. Room diagnosis
 
 From 15–20 minute conversations with the key people beforehand, or a short async
-pre-survey.
+pre-survey. **These are the facilitator's private notes.** They hold candid views
+about named colleagues: never send them to attendees or put them in a checker
+packet.
 
 | Person | Function and seniority | Decision rights | What they think the answer is | What only they know | Tensions, skeptics, what would earn trust |
 |---|---|---|---|---|---|
@@ -143,9 +153,11 @@ Send date:                 YYYY-MM-DD
 
 Summary written by [name], sent by [date]. Where each kind of output goes next:
 assumptions to a test or a study; draft themes to the theme checkpoint
-(`EVALUATION-LOOP.md` §9); recommendations as findings records citing the
-findings they rest on; a written report or deck only for content resting on
-`[evidence]`.
+(`EVALUATION-LOOP.md` §9); recommendations attached to the findings records
+they rest on, or labeled `[team knowledge]` or `[assumption]`, never written up
+as new findings; a written report or deck only for content resting on
+`[evidence]`. The summary itself goes to `research-workshop-checker` (summary
+mode), then readability, before it goes out.
 
 ## 8. Workshop evaluation
 

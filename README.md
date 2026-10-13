@@ -713,7 +713,7 @@ citations live in the individual files.
 - Knapp, Zeratsky & Kowitz — *Sprint* (2016)
 - Priya Parker — *The Art of Gathering* (2018)
 - Sanders & Stappers — *Convivial Toolbox* (2012); Michael J. Muller —
-  "Participatory Design: The Third Space in HCI" (2003)
+  "Participatory Design: The Third Space in HCI" (2002)
 - Gothelf & Seiden — *Lean UX*; Bland & Osterwalder — *Testing Business
   Ideas* (2019); Jim Kalbach — *Mapping Experiences* (2016)
 - Group process: Diehl & Stroebe (1987) on production blocking; Rietzschel,
