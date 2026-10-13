@@ -2,7 +2,7 @@
 
 > **Maintainer:** Kirsten Hosic · **Last reviewed:** 2026-10 · **Status:** draft
 >
-> Format: [`../METHODS.md`](../METHODS.md). Shared question rules: `EVALUATION-LOOP.md` §4.6.
+> Format: [`../METHODS.md`](../METHODS.md). Session prompts: `EVALUATION-LOOP.md` §4.11 item 12; a one-to-one segment: §4.6.
 > Session design: `EVALUATION-LOOP.md` §4.11 and [`../workshop_design.md`](../workshop_design.md).
 
 **Gating — three gates, three different objects.** This is research with external
@@ -11,8 +11,12 @@ method here. The **study plan** goes to `research-plan-reviewer` (§4.1): resear
 questions, who is recruited and why, consent. The **session plan** goes to
 `research-workshop-checker` (§4.11), which reads the group design, and here every
 board is external and every customer in the room is a participant. Any
-**one-to-one segment** goes to `research-guide-checker` (§4.6) on its own. Don't
-send the whole thing to one gate; each refuses the others' objects by name.
+**one-to-one segment** goes to `research-guide-checker` (§4.6) on its own. Sent
+together, as a study plan with the session design inside, they run in order:
+`plan-reviewer`, then `workshop-checker` on the session design only, then
+`readability-checker` (§3). What participants make and rank in the session is
+research data, not workshop output: it reaches findings through analysis,
+labeled group-generated.
 
 **One sentence:** Customers or design partners work alongside the team in a
 facilitated group session, making things (maps, rankings, sketches) that show

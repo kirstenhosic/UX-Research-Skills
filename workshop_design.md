@@ -275,10 +275,13 @@ PHASE 4 — DESIGN THE ARC
       rather than their best ones (Rietzschel, Nijstad & Stroebe).
       So score options against the agreed criteria, not by gut
       preference, and keep one slot open for the riskiest option.
-    - Private before public on votes and on every decide-stage
-      signal. Votes and consent checks are cast privately or
-      simultaneously and revealed together. Visible dots attract
-      dots. Agree the mechanics before voting: how many votes each
+    - Commit before anyone sees anyone else's vote. Votes, scores,
+      and consent signals go in as a private ballot or as cards
+      revealed together; visible dots attract dots. Where the
+      decision owner or anyone senior is in the room, make it
+      private, not only simultaneous: a public reveal still shows
+      each vote to them. Reasons for an objection come aloud,
+      after the signal. Agree the mechanics before voting: how many votes each
       person gets, whether they can stack them, and what happens on
       a near-tie.
     - Criteria before scoring. Agree what "good" means, and how much
@@ -642,7 +645,8 @@ DRAFTING TO THE BAR — the workshop plan's standard:
 
   The standard for a workshop plan is section 4.11 of
   EVALUATION-LOOP.md. Draft to it rather than waiting to be caught.
-  research-safety-checker runs first, then research-workshop-checker
+  research-safety-checker runs first, once for each destination (the
+  plan's, then the board's), then research-workshop-checker
   reads the design against section 4.11, then
   research-readability-checker reads the plan as the mixed room
   will. In the checker packets, the artifact type is "Workshop

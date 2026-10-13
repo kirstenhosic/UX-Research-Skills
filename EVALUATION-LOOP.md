@@ -264,6 +264,7 @@ And a packet respects the receiving checker's blind spots — one for
 | **Synthesis findings** | Scenario A | `synthesis-checker` → `significance-checker` → `readability-checker` |
 | **Competitive analysis** | Scenario E | `synthesis-checker` (source-integrity mode) → `significance-checker` → `readability-checker` |
 | **Workshop plan** | Scenario F | `workshop-checker` → `readability-checker` |
+| **Research plan with a co-design session plan** | Scenario C, D, F; `methods/co-design-workshop.md` | `plan-reviewer` → `workshop-checker` (the session design only) → `readability-checker` |
 | **Readout deck** | `research-readout-deck` | `synthesis-checker` (re-verify against the findings contract) → `readability-checker` |
 | **Findings report** | `research-findings-report` | `synthesis-checker` (re-verify against the findings contract) → `readability-checker` |
 | **Participant impact summary** | `participant-impact-summary` | `synthesis-checker` (impact mode) → `readability-checker` |
@@ -1208,9 +1209,13 @@ before the gate existed; the fixture's README records what each run changed.
    discussion
 9. Criteria, weights, and the decision rule are stated before any scoring,
    voting, or deciding, including whether the room's scores are a vote or
-   advice to the owner. Votes, scores, and consent checks are private or
-   simultaneous, never a show of hands. A structured round of spoken input
-   before the owner decides is input, not a vote, and is not held to this
+   advice to the owner. Votes, scores, and consent signals are committed before
+   anyone sees anyone else's (a private ballot, or cards revealed together),
+   never a show of hands; and private, not only simultaneous, where the
+   decision owner or anyone senior is in the room, because a public reveal
+   still shows each vote to them. A structured round of spoken input before
+   the owner decides is input, not a vote, and is not held to this; nor are
+   the reasons for an objection, which are given aloud after the signal
 10. No candidate solution is shown before the divergent activity it would
     anchor
 11. Each function's unique knowledge is asked for in its own block, not left to
@@ -1234,18 +1239,19 @@ before the gate existed; the fixture's README records what each run changed.
     the decision not left to the final minutes
 15. A capture plan names who records what, and decisions and actions are read
     back in the room with owners and dates
-16. Participant data shown in the room is de-identified to the bar of the
-    board's destination, which is `research-safety-checker`'s bar (role and
-    account name allowed on internal boards, names never, everything
-    identifying blocked while customers can see it). The plan's own text is
-    judged at the plan's destination, and what it puts on a board at the
-    board's; customers attending the session do not make the plan external
-    unless they receive it. Recording consent for attendees is addressed; any
-    customer or design partner attendance is treated as external, with no roadmap
-    commitments. **Blocking** when identifying participant data is on a board,
-    or when participant data reaches anyone the study's consent does not
-    cover (consent stricter than the destination governs, as it does for
-    `research-safety-checker`)
+16. Participant data shown in the room meets `research-safety-checker`'s
+    tables, for each participant type, at each destination: the plan's own
+    text at the plan's destination, and what it puts on a board at the
+    board's. A board is external while customers can see it; customers
+    attending the session do not make the plan external unless they receive
+    it. Safety runs once for each destination, and this item follows its
+    verdicts rather than holding a version of its own. Recording consent for
+    attendees is addressed; any customer or design partner attendance is treated
+    as external, with no roadmap commitments. **Blocking** where those tables
+    block at the board's destination (participant names, emails, and phone
+    numbers block at every tier), or when participant data reaches anyone the
+    study's consent does not cover (consent stricter than the destination
+    governs, as it does for `research-safety-checker`)
 17. Follow-through is planned: a summary within a stated window, assumptions
     routed to a test, any themes the workshop produces routed to the §9
     checkpoint, and recommendations citing the findings they rest on
@@ -1269,8 +1275,8 @@ before the gate existed; the fixture's README records what each run changed.
 23. Meets `VOICE-AND-STYLE.md`
 24. Where the decision owner, or anyone senior in the room, owns one of the
     candidates, the plan handles it: that candidate is treated like the others
-    (no demo, no "vision" framing ahead of the rest), and its owner speaks and
-    votes last
+    (no demo, no "vision" framing ahead of the rest), and its owner speaks
+    last and votes privately or simultaneously with everyone else (item 9)
 25. The blocks run in an order that works: no block depends on an output that
     a later block produces
 
@@ -1282,10 +1288,14 @@ the fixture's key.
 Items 19 to 22 were added on 2026-10-13 while building the workshop fixture:
 the scenario file taught all four and no item here checked them. Only the
 **bold** triggers in items 13 and 16 block. Every other failure of those two
-items is a flag, as is every failure of every other item. The first two blind
-runs read the old wording, "items 13 and 16 are blocking," in opposite ways
-and returned 9 blocking calls and 2 on identical text. Item 16 is the one an agent
-already checks today, through `research-safety-checker`.
+items is a flag, as is every failure of every other item, with one exception.
+A plan that names neither a decision nor an output, one whose decision is
+already made and that exists to ratify it, and one whose decision rests on
+evidence the plan says does not exist yet each count as one blocking item and
+escalate (§1): item-level flags on them would be noise, and `FAIL` with
+`ESCALATE` needs a blocking item to stand on (§2). The first two blind runs
+read the old wording, "items 13 and 16 are blocking," in opposite ways and
+returned 9 blocking calls and 2 on identical text.
 
 ---
 
@@ -1437,8 +1447,12 @@ which is the same standard this suite holds research to.
   a careful plan to come back with a handful of flags, and read them as a
   checklist for the dry run, not as a grade.
 - **The same author wrote Scenario F, §4.11, the gate, and the fixture.** A
-  clean fixture run says the specification is consistent with itself. An
-  adversarial read of §4.11, by someone who did not write it, is still owed.
+  clean fixture run says the specification is consistent with itself. The
+  adversarial read (`adversarial-reads/workshop-4.11-2026-10.md` in the testing
+  repo) was run by contexts that had not written it: neither of two plans in
+  other traditions was blocked, and eight boundary faults were fixed and
+  verified. It was one instance of each audit, and its Tier 2 list (item 8's
+  universality, item 10's scope, item 11's remedy, the omissions) is open.
 - **`survey-checker` cannot see the sample, which is where a survey's validity
   lives.** It reads the instrument. Who was invited, who answered, and who
   declined decide whether the numbers mean anything, and none of it exists until
@@ -1559,9 +1573,9 @@ plan to be finished.
 
 ```
 1. Draft the brief, agenda, and facilitation guide (Dr. Morgan, Scenario F)
-2. research-safety-checker         → PRE-FLIGHT, always runs first; the board's
-                                     destination is checked separately from
-                                     the plan's
+2. research-safety-checker         → PRE-FLIGHT, always runs first, once per
+                                     destination: the plan at the plan's,
+                                     board content at the board's
 3. research-workshop-checker       → FAIL? revise blocking items, re-run
 4. research-readability-checker    → FAIL? revise, re-run
 5. Dry-run the agenda with at least one person. The gate cannot see the room

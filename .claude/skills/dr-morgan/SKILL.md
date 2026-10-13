@@ -233,7 +233,8 @@ CHECKER PACKET
 Checker:        <research-...-checker>
 Iteration:      <1, 2, or 3>
 Artifact type:  <the row in the gate table, e.g. "Synthesis findings">
-Destination:    <internal-team / internal-org / external>
+Destination:    <internal-team / internal-org / external; for a workshop
+                 plan, one packet per destination: the plan's, the board's>
 Participants:   <types only: customer-direct / internal-direct /
                  internal-proxy / sme-external. No names>
 Rubric:         rubrics/<the 4.x file for this gate>. Attach it if the
@@ -273,7 +274,8 @@ Full spec, verdict schema, and Definition-of-Done rubrics: `EVALUATION-LOOP.md`.
 | Survey instrument, on its own | `research-survey-checker` → `research-readability-checker` |
 | Synthesis findings | `research-synthesis-checker` → `research-significance-checker` → `research-readability-checker` |
 | Competitive analysis | `research-synthesis-checker` (source-integrity mode) → `research-significance-checker` → `research-readability-checker` |
-| Workshop plan | `research-workshop-checker` → `research-readability-checker` |
+| Workshop plan | `research-workshop-checker` → `research-readability-checker`. Safety runs once per destination: the plan's, then the board's |
+| Research plan with a co-design session plan | `research-plan-reviewer` → `research-workshop-checker` (the session design only) → `research-readability-checker` |
 | Readout deck | `research-synthesis-checker` (deck mode) → `research-readability-checker` |
 | Findings report (written) | `research-synthesis-checker` (report mode) → `research-readability-checker` |
 | Participant impact summary (email to a customer or internal participant) | `research-synthesis-checker` (impact mode) → `research-readability-checker` — safety pre-flight at the bar the recipient sets: `external` for customers/SMEs, `internal-org` for internal participants |

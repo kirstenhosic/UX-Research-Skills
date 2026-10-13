@@ -36,7 +36,8 @@ rewritten section.
 - **Consent terms** for any study whose data will be shown, and for recording
   the workshop
 - **Destinations**: where the plan goes, and where the board goes afterwards
-- **The `research-safety-checker` verdict**, which runs first as pre-flight
+- **The `research-safety-checker` verdicts**, which run first as pre-flight: one
+  for the plan at its destination, one for board content at the board's
 
 If the decision or the attendee list is missing, review everything else and flag
 the omission. Most of §4.11 cannot be scored without them.
@@ -58,16 +59,26 @@ assuming it.
   than the findings do. Whether the findings themselves are supported by their
   source is `research-synthesis-checker`'s, and it has already run on them.
 - **Participant data, as a scan.** `research-safety-checker` runs first and owns
-  the tiers. You apply §4.11 item 16 at **its** bar (role and account name are
-  allowed on internal boards; names never; everything identifying blocks while
-  customers can see the board) and never a stricter one of your own. If its
-  verdict is in the packet, align with it. If you see something it missed, block
-  on it and say `[For research-safety-checker]` so the pre-flight is re-run.
+  the tiers: its tables differ by participant type and by destination, and you
+  hold no version of them. Item 16 follows its verdicts, the board run for
+  anything on a board. One bright line you apply yourself: participant names,
+  emails, or phone numbers planned onto a board block at every tier. For
+  anything else that looks identifying, don't rule on it: say
+  `[For research-safety-checker]`, name the destination it should be judged at,
+  and route it, whether or not a verdict is in the packet.
 - **The study around a co-design session.** When customers or design partners co-design
   with the team (`methods/co-design-workshop.md`), it is research: the study plan,
   its research questions and its recruitment are `research-plan-reviewer`'s. You
   read the session design, and in it every board is external and every customer
-  is a participant.
+  is a participant. Three things change. What participants make and rank is
+  research data, not workshop output, so item 13's block applies only to the
+  team's own output and to participant output presented as prevalence or demand,
+  or not labeled group-generated. Items 6, 9, 11, 15, and 20 assume an internal
+  decision and score `unscored — co-design` (item 9's criteria and weights,
+  imposed on a group ranking, would contaminate what the session exists to
+  learn). And if you are handed the study plan with the session design inside,
+  review the session design only and name `research-plan-reviewer` for the rest:
+  the one partial read you are allowed.
 - **A separate interview segment.** If the workshop includes one-to-one
   interviews with customers or design partners, that segment is a discussion guide
   and goes to `research-guide-checker`. Say so and don't score its questions.
@@ -80,7 +91,8 @@ how they start contradicting each other.
 research plans (`research-plan-reviewer`). A facilitation guide looks like a
 discussion guide, and a discussion guide has prompts, so the confusion runs both
 ways. If you are handed one of those, say which gate owns it, return
-`NOT_APPLICABLE` with `ROUTE`, and stop. Do not review it partially.
+`NOT_APPLICABLE` with `ROUTE`, and stop. Do not review it partially, except a
+co-design study plan's session design (above).
 
 ## Rubric
 
@@ -91,7 +103,9 @@ Item 23 points at `VOICE-AND-STYLE.md`; if you don't have it, say item 23 is
 unscored rather than guessing at the standard.
 
 **Only the bold triggers in items 13 and 16 block.** Every other failure of those
-two items is a flag, and so is every failure of every other item. Two blind runs
+two items is a flag, and so is every failure of every other item. The one
+exception is Part 7: each escalation condition counts as one blocking item, so
+the verdict is a valid `FAIL` with `ESCALATE`. Two blind runs
 of this rubric read an earlier, looser sentence in opposite ways on identical
 text and returned 9 blocking calls and 2. The current wording exists to stop
 that.
@@ -105,7 +119,9 @@ brief says the workshop is for.
 
 - **Decision and outcomes (1, 2, 3).** A decision with an owner and a date. Then
   outcomes you could photograph or read back at the end. "Alignment" and "shared
-  understanding" fail item 2 every time, because nobody can check them. Success
+  understanding" fail item 2 unless the plan names the artifact that would show
+  them (each person's written account of the decision, compared at the close, for
+  example); checking them belongs to item 3. Success
   defined at the close *and* at a later date; a satisfaction score alone is
   reaction data and fails item 3.
 - **Why a workshop (4).** The plan should say why this beats the lighter option.
@@ -122,7 +138,8 @@ brief says the workshop is for.
   against it.
 - **The owner's own candidate (24).** If the decision owner, or anyone senior,
   owns one of the options, that option gets the same treatment as the rest and
-  its owner goes last. The owner's concept presented first as "the vision" fails
+  its owner speaks last, then votes privately or simultaneously with everyone
+  else (item 9). "Votes last" is not the standard. The owner's concept presented first as "the vision" fails
   it, and usually fails item 10 as well.
 
 ## Part 2 — The arc: items 7–11, 14, 25
@@ -135,8 +152,11 @@ brief says the workshop is for.
   An open brainstorm aloud fails it.
 - **Criteria and the decision rule before deciding (9).** Criteria and weights
   before scoring; the rule before the decision; whether the room's scores are a
-  vote or advice to the owner. Votes, scores, and consent checks are private or
-  simultaneous. **A structured round of spoken input before the owner decides is
+  vote or advice to the owner. Votes, scores, and consent signals are committed
+  before anyone sees anyone else's: a private ballot, or cards revealed
+  together. A simultaneous reveal is enough against herding; where the owner or
+  anyone senior is in the room it must also be private. The reasons for an
+  objection are given aloud after the signal. **A structured round of spoken input before the owner decides is
   input, not a vote, and is not held to this.** The fixture's false-positive run
   flagged one in both instances; it was the rubric's wording, now fixed.
 - **No anchors before divergence (10).** A prototype, the owner's concept, or a
@@ -189,8 +209,8 @@ This is where the expensive defects live.
 
 - **Capture (15).** A named person, and decisions read back in the room with
   owners and dates.
-- **Data and customers (16).** At the safety gate's bar (see *What you are blind
-  to*). The plan's own text is judged at the plan's destination; customers in
+- **Data and customers (16).** By the safety gate's verdicts (see *What you are
+  blind to*), one for each destination. The plan's own text is judged at the plan's destination; customers in
   the session don't make the plan external unless they receive it. What the plan
   puts on a board is judged at the board's destination: a board shared
   to a wide channel is `internal-org`, and while customers can see it, it is
@@ -218,7 +238,8 @@ does not mean the workshop will avoid them.
 
 ## Part 7 — When to escalate
 
-Escalate rather than list defects when:
+Escalate rather than list defects when the following is true. Each counts as one
+blocking item (`P7-1`, `P7-2`, `P7-3`), so the verdict is `FAIL` with `ESCALATE`:
 
 - There is no decision and no outcome anywhere in the plan. Nothing can be mapped,
   so item-level findings would be noise.

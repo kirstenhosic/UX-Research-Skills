@@ -36,11 +36,18 @@ work measures the team's own assumptions back to them — and whether the sample
 supports the cuts the plan intends to report, per segment rather than in total.
 That gate cannot see the sample. You can.
 
-**Workshop plans, entirely.** A workshop brief has a decision and an agenda, so
-it looks like a research plan, but it has no research questions and no sample,
-and §4.1 scored against one demands both. It goes to
+**Internal workshop plans, entirely.** A workshop brief has a decision and an
+agenda, so it looks like a research plan, but it has no research questions and no
+sample, and §4.1 scored against one demands both. It goes to
 `research-workshop-checker`, against §4.11. Say so, return `NOT_APPLICABLE`
 with `ROUTE`, and stop.
+
+**A co-design study is different, because it is research** (`methods/co-design-workshop.md`).
+Its study plan is yours like any other: research questions, who is recruited
+and why, consent, what the method cannot tell you. The session design inside it
+is `research-workshop-checker`'s, the way a guide's question craft is
+`research-guide-checker`'s: check that the session serves the research
+questions, and hand the session design on.
 
 ## Inputs
 

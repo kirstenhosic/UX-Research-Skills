@@ -55,7 +55,8 @@ Decision rule:          Who decides, how, and whether the room's scores are a
                          vote or advice to the owner.
 Risks to the room:      Risk → the activity that counters it.
   [e.g. owner's own candidate anchors the room] → [presented like the rest,
-                         owner speaks and votes last]
+                         owner speaks last and votes privately with the
+                         rest]
 Data handling:
   Plan destination:     internal-team / internal-org / external
   Board destination:    internal-org at least; external while customers can

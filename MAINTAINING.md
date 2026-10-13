@@ -652,7 +652,10 @@ also the only gate built after its fixture: `workshop-fixture/` in the testing
 repo ran §4.11 blind as a proto-gate before the agent existed, and §4.11
 changed twelve times on what it found. The gate itself has since been run
 against it, including the refusal pair in both directions; the fixture's README
-has the record. Run it again before you edit §4.11 or the gate.
+has the record. Run it again before you edit §4.11 or the gate. The adversarial
+read (`adversarial-reads/workshop-4.11-2026-10.md`) fixed the safety gate's
+single destination, the co-design route, and the gate's paraphrase of the safety
+tables; all three touch files outside this gate, so check them when you edit it.
 
 **Editing §4.11 is a three-file edit**: the rubric, the gate (which names items
 by number in its Parts), and `workshop-fixture/README.md`, whose key cites items

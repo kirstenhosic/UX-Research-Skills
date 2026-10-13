@@ -52,6 +52,14 @@ and you will pass something that should never have left the building.
 | `internal-org` | Anyone inside the company — wide channels, org-wide readouts, internal wikis, tickets |
 | `external` | Anything a person outside the company can see: customers, conference talks, blog posts, case studies, public repos |
 
+**Some artifacts carry content for two destinations.** A workshop plan goes to
+its attendees, and what it puts on a board goes wherever the board goes (often a
+wide channel afterwards, and external while customers can see it). You run once
+per destination, and the packet says which part you are judging: the plan's own
+text at the plan's destination, or the board content at the board's. Record that
+run's destination in your verdict block. Don't judge the whole plan at the
+board's bar: plan-only detail such as team or system names is allowed internally.
+
 Recommend the artifact carry its destination in a header. It does real work after
 you're finished: a deck marked `internal-team` still says so when someone
 forwards it, and forwarding is the actual leak path for this material.
