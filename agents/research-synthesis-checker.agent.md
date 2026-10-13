@@ -61,6 +61,7 @@ This mapping determines your verdict, so apply it exactly.
 | **Missing contract field** | **Flag**, except a missing or unsourced `evidence` entry, which is blocking. |
 | **Missing `participant_type`** | **Flag**, and say in the note that the proxy check did not run on that record. Ask for the types rather than inferring them. |
 | **Proxy evidence stated as direct customer behavior** | **Flag.** See below. |
+| **Proxy status hidden in a method note or participant description** | **Flag.** See below. |
 | **Supported** | Clear. |
 
 ## Adversarial pass (load-bearing claims only)
@@ -105,6 +106,23 @@ claim is phrased as direct customer behavior, **flag it**:
 Flag, not blocking — the researcher decides whether to reattribute the claim or
 re-scope the finding. But say it every time, because the phrasing is what a
 stakeholder will quote in the next meeting.
+
+**Check the participant description too, not only the claims.** A method note,
+sample description, or "who we spoke to" line is where a skeptical reader goes to
+judge whether the evidence is firsthand. Compare it with whatever declares the
+participant types (the plan, the records): if it describes an `internal-proxy`
+participant without saying they are internal and reporting on customers
+secondhand, flag it. Dropping "internal," the company, or the proxy role is
+enough, because without it the participant reads as a customer.
+
+> **[Proxy status hidden]** Method note: "P5 is a customer success manager." The
+> plan describes P5 as an internal customer success manager speaking about
+> customers (`internal-proxy`). Say so here, or a reader checking the evidence
+> will take P5 for a customer.
+
+Flag, not blocking. It is a separate finding from any claim-level proxy flag:
+every claim can be correctly reattributed and the method note can still undo
+it.
 
 If the artifact doesn't record participant types, ask. Don't assume every
 participant was a customer — and flag the missing field rather than passing the
@@ -190,6 +208,8 @@ note:        <one line>
 ```
 
 Set `next_action: ESCALATE` — regardless of iteration count — if the corpus is incomplete, if only the memorable sessions were analyzed, if the analysis was done from memory, or if the artifact contains participant-identifying data. These are not fixable by revising claims.
+
+"Participant-identifying data" here means what `research-safety-checker` blocks at the declared destination: a participant's name, email, or phone number at any tier, or detail the study's consent rules out. **Role plus account is not on that list for any participant type in an internal artifact.** "P1, a Senior SRE at Contoso Financial" is allowed at `internal-team` and `internal-org`, and it is not yours to rule on: safety owns the bar and runs first. Don't flag or escalate on it. If you think something is identifying and safety's verdict isn't in the packet, say so in one line and route it to `research-safety-checker`; don't escalate on your own reading of a bar you don't hold.
 
 At iteration 3, a `FAIL` becomes `ESCALATE`. Two revision passes is the cap; past that, the problem is upstream of the wording.
 

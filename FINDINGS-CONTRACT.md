@@ -325,9 +325,11 @@ a record of customer behavior. A claim written as "customers do X" on proxy
 evidence gets flagged by `research-synthesis-checker`, and its scope line gets
 flagged by `research-significance-checker` if it doesn't name the proxy.
 
-The field also drives the safety bar: internal participants carry more permitted
-detail (role, product area, region are fine internally) while names, email
-addresses, and phone numbers block for everyone.
+The field also drives the safety bar, which `research-safety-checker` owns. In
+internal artifacts every participant type may carry role and account ("an SRE at
+Contoso Financial"); internal participants may also carry product area and
+region; names, email addresses, and phone numbers block for everyone, at every
+tier.
 
 ---
 

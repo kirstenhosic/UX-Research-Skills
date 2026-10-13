@@ -417,7 +417,11 @@ as verbatim and blocked a quote with words added inside brackets as altered.
 `research-safety-checker`, given a workshop brief, blocked one participant's name,
 left the facilitator, decision owner, and six attendees alone as people doing
 the work, and cleared role plus account and both bracketed substitutions. One
-instance each; run `gate-fixture/` before the next change to either gate.
+instance each. Both gates were then run against `gate-fixture/` the same day,
+two instances each: the safety gate was right on every call, and the synthesis
+gate's run surfaced two older faults, both fixed and verified there (it escalated
+on role plus account, and it had no rule for a method note that hides a proxy
+participant). The fixture's README has the record.
 
 ## Shared blocks are duplicated on purpose
 
