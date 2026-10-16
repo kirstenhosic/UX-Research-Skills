@@ -118,7 +118,7 @@ For each finding, assign a level and challenge anything below `insight`:
 
 - **OBSERVATION** — "6 of 8 couldn't complete [the key task]"
 - **INTERPRETATION** — "The [feature] UI doesn't surface what users need when they need it"
-- **INSIGHT** — "[Persona]' mental model of [feature] is [model A]-based, but the product's is [model B]-based; the mismatch causes systematic task failure"
+- **INSIGHT** — "[Persona] think of [feature] as [what they're trying to get done], but the product makes them start from [the system's organizing concept]; that mismatch is why [the task] fails again and again"
 - **RECOMMENDATION** — "Surface [the outcome users care about] before [the system's organizing concept]"
 
 A theme is a cluster. An insight is a tension, contradiction, or unmet need

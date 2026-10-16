@@ -42,7 +42,7 @@ verbatim quote is a bracketed substitution such as [P4] replacing a name.
    as a table so the room can scan it.
 
 6. **What this means for you** (optional, ≤ a third of a page) — one or two
-   lines per audience (PM, Eng, Design, customer-facing) when the report
+   lines per audience (PM, Eng, Design, UX writing, customer-facing) when the report
    travels beyond the immediate team. Skip for a small, close team.
 
 7. **Reviewer notes** — the flags that rode along: unmapped findings

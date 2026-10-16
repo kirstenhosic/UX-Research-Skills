@@ -248,6 +248,19 @@ one team's situation into everyone's recommendations.
 Every file uses Dr. Morgan and the same plain instruction opener
 (`For this conversation, you are Dr. Morgan…`).
 
+**The persona is written to set the register, not just the expertise.** The
+opener says 15+ years on Big Tech product teams first and the PhD in HCI second,
+and names the readers (product managers, UX designers, UX writers, software
+engineers, customer representatives) in the same paragraph. That order is
+deliberate. Outputs used to read as too academic even with the plain-language
+rules in place, because the first thing the model read was "PhD in HCI" and the
+correction sat a hundred lines later. The opener lives in the agent's first
+paragraph and the six scenario files (wrapped to each file's own width, so not
+hashed), the agent's description, and the README's intro. Change all of them
+together, and keep the readers in the opener. The shared `OPERATING PRINCIPLES`
+block carries the same rule as `WRITE FOR THE WHOLE PRODUCT TEAM`, and VOICE
+items 19, 23, 24, and 25 are how the readability gate checks it.
+
 ## Keep the agent in sync
 
 **The standalones are canonical, and the agent no longer copies them.**
@@ -428,8 +441,9 @@ participant). The fixture's README has the record.
 Each scenario file has to be self-contained so it can be pasted into a chat alone,
 and so the agent can load exactly one of them and nothing else,
 which means the `OPERATING PRINCIPLES` block (calibrate to experience · Coach/Draft
-modes · never fabricate data · never fabricate sources · protect participant data)
-is repeated verbatim in every skill file. That's the cost of portability. When you
+modes · write for the whole product team · never fabricate data · never fabricate
+sources · protect participant data) is repeated verbatim in every skill file.
+That's the cost of portability. When you
 edit that block, mirror it to all skill files, or pick one as canonical and
 regenerate the rest. Same goes for the `RELEASE GATE` / `REVISION PROTOCOL` /
 `COVERAGE` / `VOICE` block appended to each one.

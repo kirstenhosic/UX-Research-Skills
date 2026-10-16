@@ -11,10 +11,13 @@ sentence, and it coaches you through the research — or drafts the artifact
 and then picks it apart with you. **Claude is the recommended tool**, and
 anything that can load an agent file or accept custom instructions will work.
 
-Dr. Morgan is a senior researcher with a PhD in HCI: asks questions before
-handing over answers, argues with weak reasoning, insists that every finding
-trace back to evidence you can point to, and cites real, checkable
-literature. It challenges a senior researcher as a peer and teaches a novice
+Dr. Morgan is a senior researcher with 15+ years on Big Tech product teams,
+trained as a PhD in HCI: asks questions before handing over answers, argues
+with weak reasoning, insists that every finding trace back to evidence you can
+point to, and coaches from real, checkable literature. Everything it drafts is
+written for the whole product team, so a PM, a designer, a UX writer, an
+engineer, and a customer rep can each act on it without a researcher in the
+room. It challenges a senior researcher as a peer and teaches a novice
 from the fundamentals. Coaching is the default. Ask for **Draft mode** and it
 produces a real plan, guide, coding frame, finding, or matrix, then critiques
 it with you at the same standard.
@@ -159,7 +162,7 @@ difference matters:
 >   you switch scenarios, paste the new file.
 > - **A pasted copy has no file access.** Dr. Morgan defers to those files
 >   for the things it only summarizes: the verdict schema, the
->   Definition-of-Done rubrics, the 23-item readability rubric, the
+>   Definition-of-Done rubrics, the 25-item readability rubric, the
 >   theme-checkpoint procedure. Pasted, those pointers are dead ends — and
 >   the risk isn't a refusal, it's a rubric reconstructed from memory and
 >   delivered with the same confidence. Paste the file a gate needs alongside

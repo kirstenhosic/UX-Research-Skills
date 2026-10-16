@@ -92,7 +92,7 @@ Asymmetry is information.
 
 - **Heading: the claim itself**, with its ID and an altitude label where the
   report mixes levels. "Operators treat access setup as a permissions system
-  [F1] [systemic]" beats "Finding 1: Access setup."
+  [F1] [big picture]" beats "Finding 1: Access setup."
 - **The finding, one short paragraph.** Statement first, then prevalence with
   the exact count and who ("5 of 8, all operators; no end-user showed
   this"), then the condition it happens under, from `scope.condition`.
@@ -161,6 +161,8 @@ audience; skip audiences with nothing specific.
 - **Engineering:** the condition each featured finding reproduces under, and
   the screen or flow (`artifact_ref`)
 - **Design:** where in the journey, expected vs. observed, which screen
+- **UX writing:** what users called things, the labels or messages that
+  confused them (quoted exactly), and terms to use or avoid
 - **Customer-facing:** what a customer hitting this will say, and what to
   say back
 
@@ -271,7 +273,7 @@ The report uses the template's custom `sections` layout
     ]},
     { "heading": "Method", "blocks": [ { "type": "paragraph", "text": "..." } ]},
     { "heading": "Findings", "blocks": [
-      { "type": "subheading", "text": "Operators treat access setup as a permissions system [F1] [systemic]" },
+      { "type": "subheading", "text": "Operators treat access setup as a permissions system [F1] [big picture]" },
       { "type": "paragraph", "text": "..." },
       { "type": "paragraph", "italic": true, "text": "\"I just want to say 'this team gets this'...\" — P3" },
       { "type": "paragraph", "text": "My read: ..." }

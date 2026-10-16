@@ -167,7 +167,9 @@ The positive version. These are habits, not rules.
 
 **Lead with the answer.** Not the method, not the background. The first line of
 a findings document should be the thing you'd say if you had one sentence in a
-hallway. Method goes lower, where a skeptic will look for it.
+hallway. Method goes lower, where a skeptic will look for it, and so does every
+table of participants or study metadata: nothing sits between the title block
+and the summary.
 
 **One idea per sentence.** Concrete nouns, active verbs, named actors. If a
 sentence has two ideas joined by "and," it's usually two sentences.
@@ -182,6 +184,13 @@ Academic register and research-process framing describe *your* work, not the
 reader's takeaway — keep them out of anything a stakeholder opens. This is the
 lowest formality that still reads as competent, not casualness: see Part 5,
 *Don't fake casualness*. Plain is not sloppy.
+
+Academic writing has sentence shapes as well as words, and they read as a paper
+even when every word is plain: *findings suggest*, *the data indicate*,
+*participants reported experiencing*, *this indicates a need for*, *it was
+observed that*. Say who did what instead. "4 of 5 [persona A] skipped the [key]
+step" beats "Findings suggest participants experienced difficulty with [feature]
+configuration."
 
 **Quantify exactly.** "6 of 8," not "most." "2 of 8, both [persona A]," not "some
 users." Exact counts at small n are honest twice over — they give the real
@@ -215,20 +224,24 @@ without embarrassment, cut it. This one test catches most of Part 1.
 
 ## Part 3 — Writing for a mixed stakeholder room
 
-These documents get read by software engineers, customer representatives, UX
-designers and researchers, and product managers — usually the same document, at
-the same time. That's the actual constraint.
+These documents get read by product managers, UX designers, UX writers,
+software engineers, and customer representatives, usually the same document at
+the same time. That's the actual constraint. Write the way a senior researcher on
+a Big Tech product team writes for that room, not the way a paper is written for
+reviewers. Researchers read it too, and what they need lives in the method note,
+so it never sets the register for the rest of the document.
 
 ### The failure mode specific to mixed audiences
 
-Not tone. **Unmarked altitude switching.** One paragraph sits at "[persona]'
-mental model of [the core concept]" and the next at "the modal's close button
-is 4px too small." Both may be true. A reader who came for one gets thrown by
+Not tone. **Unmarked altitude switching.** One paragraph sits at "how
+[persona] think [the core concept] works" and the next at "the modal's close
+button is 4px too small." Both may be true. A reader who came for one gets thrown by
 the other and stops trusting their footing in the document.
 
-Mark the level. Group findings by altitude, or label them — `[systemic]`,
-`[workflow]`, `[interface]` — so a reader can find their layer and skim the
-rest without feeling lost.
+Mark the level. Group findings by altitude, or label them in plain words —
+`[big picture]`, `[workflow]`, `[on screen]` — so a reader can find their layer
+and skim the rest without feeling lost. (The old labels `[systemic]` and
+`[interface]` meant the same thing and read as research shorthand.)
 
 ### What each reader needs from the same finding
 
@@ -236,25 +249,71 @@ rest without feeling lost.
 |---|---|---|
 | **Software engineers** | Mechanism and reproducibility | The condition it happens under, what the system did, how often. Precision over narrative. They will check your numbers. |
 | **Product managers** | The decision and its cost | What changes, what it costs to fix, what it costs to ignore, by when. Lead with the ask. |
-| **UX designers** | The flow and the mental-model gap | Where in the journey, what the user expected vs. what happened, which screen. |
-| **UX researchers** | Method and defensibility | Sample, recruitment, what you did about disconfirming evidence, what you'd caveat. |
+| **UX designers** | The flow and the expectation gap | Where in the journey, what the user expected vs. what happened, which screen. |
+| **UX writers** | The words | What users called things, in their own words. Which labels, messages, errors, or docs confused them, quoted exactly. Terms to use and terms to avoid, and any word that means different things to different groups (customers, support, operators), side by side with the word list. |
+| **UX researchers** | Method and defensibility | Sample, recruitment, what you did about disconfirming evidence, what you'd caveat. This goes in the method note, not the body. |
 | **Customer representatives** | The customer-facing symptom | What the customer will say when they hit this, and what the rep can say back. Whether it's shipped, planned, or under discussion. |
 
-**One document, not five.** Write the finding once, then a short *"What this
-means for you"* block with a line or two per audience. Splitting into five
-documents guarantees four go stale.
+**One document, not six.** Write the finding once, then a short *"What this
+means for you"* block with a line or two per audience. Splitting into six
+documents guarantees five go stale.
 
 ### Jargon discipline
 
 - Expand every acronym on first use, including the ones you think are obvious.
   SUS is not obvious to a customer rep.
-- Research jargon stays out unless it's carrying weight. "Thematic saturation,"
-  "affinity mapping," and "axial coding" describe *your* process; stakeholders
-  need your *conclusions*. Method detail belongs in a method note, not in the
+- Research jargon stays out of the body. Process terms ("thematic saturation,"
+  "affinity mapping," "axial coding") describe *your* process; stakeholders need
+  your *conclusions*. Method detail belongs in a method note, not in the
   finding.
-- Your product's own jargon is fine and welcome — if your audience uses those
+- Academic concept terms are the quieter problem, because they feel like
+  findings. They are how a researcher thinks, not how a product team talks.
+  Swap them:
+
+  | Instead of | Write |
+  |---|---|
+  | mental model | how people think X works |
+  | cognitive load | how much people have to keep track of |
+  | affordance | what the screen suggests you can do |
+  | salient | stands out, noticeable |
+  | heuristic | rule of thumb |
+  | triangulated with | checked against (the logs, the tickets) |
+  | saturation | after session N we stopped hearing anything new |
+  | construct, operationalize | what we measured, and how |
+  | implications | what this means for you |
+  | n = 5 | 5 people |
+
+  "Mental model" is a fine word for planning notes and coaching. In a
+  deliverable, say what people actually think.
+- Record labels are for the record. The findings contract has fields and values
+  the gates need (`RQ2`, `internal-proxy`, `customer-direct`,
+  `direction-of-travel`, *disconfirming*, *unmapped, retained*). They stay in
+  the records and the appendix. On the page a stakeholder reads, write what they
+  mean:
+
+  | Record says | Page says |
+  |---|---|
+  | RQ2 | the question itself, in words ("how [persona] decide when to [do the task]") |
+  | internal-proxy, secondhand | a colleague reporting what customers tell them |
+  | customer-direct | a customer, in their own words |
+  | self-report | what people told us; we didn't watch them do it |
+  | disconfirming evidence | what cuts against it |
+  | direction-of-travel | longer-term direction, not this quarter |
+  | unmapped finding, retained | not something we set out to study, kept because it matters |
+- Your product's own jargon is fine and welcome. If your audience uses those
   words daily, they are the actual words. Don't over-simplify for an audience
-  that knows more than the document does.
+  that knows more than the document does. But not every reader is an engineer.
+  The first time a product term carries the summary or a finding's headline,
+  give it a few plain words ("a [term], [what it does, in plain words]") so a
+  PM, writer, or customer rep can follow.
+- The literature stays in coaching. Authors, book titles, and study names help
+  Dr. Morgan coach the researcher. They never appear in anything a stakeholder
+  opens, method note included. A finding stands on its evidence, not on a
+  citation, and a name-drop is what makes a document read as academic. Sources
+  for factual claims (a vendor's docs, a pricing page, a log query) are not
+  literature and stay wherever the artifact's own rules require them. Neither is
+  a framework the artifact actually scored against, named once in its method
+  note (a competitive analysis lists its "frameworks used" there).
 
 ### Methods sections are brief
 
@@ -313,7 +372,7 @@ artifact as a whole.
 
 **Audience**
 18. Acronyms expanded on first use
-19. Research-process jargon confined to the method note
+19. Research jargon confined to the method note. That covers process terms (*saturation*, *affinity mapping*, *coding*) and academic concept terms (*mental model*, *cognitive load*, *affordance*), which take the plain swap in Part 3; record labels (`RQ2`, `internal-proxy`, `direction-of-travel`) are written out in plain words outside the records and appendix. Broadened 2026-10-16 in place, so the numbered cross-references stay intact.
 20. A "what this means for you" pass exists for the audiences who will act
 
 **Safety**
@@ -337,6 +396,21 @@ artifact as a whole.
     nominalization. Methods sections state what was done and what it can't tell
     you, not the design rationale. Appended 2026-09-14 with the plain-language
     update; appended, not inserted, for the same numbering reason as item 22.
+    Academic sentence shapes (*findings suggest*, *participants reported
+    experiencing*, *this indicates a need for*) count as academic register;
+    added 2026-10-16.
+
+24. The hallway test. Each reader the document is for (product manager, UX
+    designer, UX writer, software engineer, customer representative) could say,
+    from the summary alone and in one sentence, what it means for them and what
+    they would do next. A summary only a researcher could act on fails. Appended
+    2026-10-16 with the Big Tech audience update.
+
+25. No literature in a stakeholder artifact. No authors, book titles, or study
+    names in anything a stakeholder opens, method note included; the literature
+    is for coaching. Sources for factual claims are not literature and stay
+    where the artifact's own rules require them, and a framework the artifact
+    scored against may be named once in its method note. Appended 2026-10-16.
 
 Items 11, 15, and 16 are blocking. Item 21 is owned by the safety gate, which
 runs before any of this. The rest are

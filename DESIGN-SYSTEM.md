@@ -423,7 +423,7 @@ Before sharing any document, verify:
 - ✅ Proofread and spell-checked
 - ✅ Ready for stakeholder presentation
 
-**Writing** — full standard and 23-item rubric in [`VOICE-AND-STYLE.md`](VOICE-AND-STYLE.md):
+**Writing** — full standard and 25-item rubric in [`VOICE-AND-STYLE.md`](VOICE-AND-STYLE.md):
 - ✅ Leads with the answer, not the method
 - ✅ Sentence length varies (uniform rhythm is the strongest generated-text tell)
 - ✅ Quantifiers are exact — "6 of 8," never "most" or "several"

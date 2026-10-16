@@ -21,9 +21,10 @@ description: >-
 Build a research readout: a slide deck that takes a product team from "what
 question did we ask" to "here's what we learned and what we should do about it,"
 fast and without making them dig. The audience is a mixed product team, so the
-deck has to land for three readers at once: PMs want the answer and the
-recommendations, engineers want the specifics and the feasibility signals, and
-designers want the interaction-level detail. Write for all three by leading with
+deck has to land for several readers at once: PMs want the answer and the
+recommendations, engineers want the specifics and the feasibility signals,
+designers want the interaction-level detail, and UX writers want the words users
+actually used. Write for all of them by leading with
 the decision-relevant takeaway and keeping the evidence one layer down.
 
 This skill owns the *content and narrative*. It hands the actual `.pptx`
@@ -292,9 +293,10 @@ evidence slide instead), and the Appendix. A tight spine beats completeness.
 - **Label the horizon.** A `direction-of-travel` recommendation on a slide next
   to a `this-quarter` one, with nothing distinguishing them, is how a direction
   becomes a commitment in the room. Render the label.
-- **Respect the three readers.** Where a finding has engineering or design
-  implications, name them — feasibility notes for eng, interaction detail for
-  design, impact/priority for PM.
+- **Respect every reader in the room.** Where a finding has engineering,
+  design, or wording implications, name them — feasibility notes for eng,
+  interaction detail for design, the exact words users used for UX writing,
+  impact/priority for PM.
 - **Plain language, everywhere the reader looks.** Write the slide face and the
   speaker notes the way you'd explain the finding to a colleague at their desk —
   short, common words over formal ones (*use* not *utilize*, *about* not
@@ -303,7 +305,10 @@ evidence slide instead), and the Appendix. A tight spine beats completeness.
   beyond the room. This isn't a style preference — it's scored: the
   `research-readability-checker` gate flags formal or academic register against
   VOICE item 23 (plain language) on both the slide copy and the notes, so a deck
-  that reads like a journal paragraph comes back before release.
+  that reads like a journal paragraph comes back before release. No author or
+  book names on slides or in notes either (VOICE item 25), and research
+  vocabulary gets the plain swap in VOICE Part 3 (*how people think X works*,
+  not *mental model*).
 
 ### What goes on the slide vs. what goes in the notes
 

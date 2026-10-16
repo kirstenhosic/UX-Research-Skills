@@ -90,7 +90,8 @@ standalone quote slides (fold the quote into its evidence slide).
   `internal-team` slide face.
 - **Plain language on the slide face and in the notes** — everyday words over
   formal ones, jargon and acronyms spelled out; the `research-readability-checker`
-  gate scores it (VOICE item 23).
+  gate scores it (VOICE item 23). No author or book names, and research
+  vocabulary gets the plain swap in VOICE Part 3 (VOICE items 19 and 25).
 - Visual weight tracks evidence strength; the strongest finding is not the
   smallest slide.
 - Surface the product's value where a finding supports it — sourced to the

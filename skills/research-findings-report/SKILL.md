@@ -14,7 +14,7 @@ description: >-
   but recommend running the analysis first and say what the shortcut costs.
   The report leads with each finding, follows with counted evidence, states
   the strength of every claim, and is written for a mixed stakeholder
-  audience (PM + Eng + UXD + customer-facing roles).
+  audience (PM + Eng + UXD + UX writing + customer-facing roles).
 ---
 
 # Research Findings Report
@@ -23,8 +23,9 @@ Build the written readout: the document that takes a stakeholder from "what
 question did we ask" to "here is what we learned, how sure we are, and what we
 should do about it" without a meeting. The audience is mixed. PMs read for the
 decision and its cost, engineers read for the mechanism and the counts,
-designers read for the flow and the mental-model gap, and customer-facing
-colleagues read for the symptom a customer will describe. Write once, for all
+designers read for the flow and where it broke what users expected, UX writers
+read for the words users used and the ones that confused them, and
+customer-facing colleagues read for the symptom a customer will describe. Write once, for all
 of them, by leading with the finding and keeping the evidence one layer down.
 
 This skill owns the report's *content, structure, and language*. It hands the
@@ -254,7 +255,7 @@ before writing.
    as a design-system table so the room can scan it.
 7. **Potential Next Steps** — prioritized study roadmap for follow-up research (e.g., developer interviews, EU accounts, surveys).
 8. **What this means for you** (optional, ≤ a third of a page) — one or two
-   lines per audience (PM, Eng, Design, customer-facing) for a report
+   lines per audience (PM, Eng, Design, UX writing, customer-facing) for a report
    traveling beyond the immediate team. Skip for a small, close team.
 9. **Reviewer Notes** — the flags that rode along from the gates: unmapped
    findings retained, research questions left unaddressed, open judgment
@@ -297,13 +298,17 @@ gate scores. The rules that do the most work in a findings report:
   open tabs. If the record carries one, it survives the trip to the page.
   Specific is the point.
 - **Plain language for a mixed room.** Expand every acronym on first use.
-  Research-process jargon (thematic saturation, affinity mapping) stays in
-  the method note or the appendix. Product jargon stays in: this is a
-  technical audience, and the product's own names for [feature] and
-  [organizing concept] are the actual words.
+  Research jargon (thematic saturation, affinity mapping, mental model,
+  cognitive load) stays in the method note or the appendix, and record labels
+  (`RQ2`, `internal-proxy`, `direction-of-travel`) are written out in plain
+  words on the page; the swap tables are in `VOICE-AND-STYLE.md` Part 3. No
+  author or book names anywhere in the report. Product jargon stays in: the
+  product's own names for [feature] and [organizing concept] are the actual
+  words. The first time one carries the summary or a headline, give it a few
+  plain words so a PM, writer, or customer rep can follow.
 - **Mark the altitude.** Don't jump from a mental-model claim to a 4px button
   in adjacent paragraphs without signaling. Group findings by level or label
-  them (`[systemic]` / `[workflow]` / `[interface]`).
+  them in plain words (`[big picture]` / `[workflow]` / `[on screen]`).
 - **Recommendations are actions with owners.** "Reorder the access setup flow
   so permissions come first. Design, this sprint." Not "consideration should
   be given to reordering."
