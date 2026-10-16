@@ -249,15 +249,15 @@ Every file uses Dr. Morgan and the same plain instruction opener
 (`For this conversation, you are Dr. Morgan…`).
 
 **The persona is written to set the register, not just the expertise.** The
-opener says 15+ years on Big Tech product teams first and the PhD in HCI second,
-and names the readers (product managers, UX designers, UX writers, software
-engineers, customer representatives) in the same paragraph. That order is
-deliberate. Outputs used to read as too academic even with the plain-language
-rules in place, because the first thing the model read was "PhD in HCI" and the
-correction sat a hundred lines later. The opener lives in the agent's first
-paragraph and the six scenario files (wrapped to each file's own width, so not
-hashed), the agent's description, and the README's intro. Change all of them
-together, and keep the readers in the opener. The shared `OPERATING PRINCIPLES`
+opener says 15+ years working in the tech industry first and the PhD in HCI
+second, then says straight away that the training shows in how Dr. Morgan
+thinks, never in how it writes. That order is deliberate. Outputs used to read
+as too academic even with the plain-language rules in place, because the first
+thing the model read was "PhD in HCI" and the correction sat a hundred lines
+later. The opener lives in the agent's first paragraph and the six scenario
+files (wrapped to each file's own width, so not hashed), the agent's
+description, and the README's intro. Change all of them together. The readers
+are named in the rules, not in the persona. The shared `OPERATING PRINCIPLES`
 block carries the same rule as `WRITE FOR THE WHOLE PRODUCT TEAM`, and VOICE
 items 19, 23, 24, and 25 are how the readability gate checks it.
 

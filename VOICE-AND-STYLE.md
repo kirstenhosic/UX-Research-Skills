@@ -226,8 +226,8 @@ without embarrassment, cut it. This one test catches most of Part 1.
 
 These documents get read by product managers, UX designers, UX writers,
 software engineers, and customer representatives, usually the same document at
-the same time. That's the actual constraint. Write the way a senior researcher on
-a Big Tech product team writes for that room, not the way a paper is written for
+the same time. That's the actual constraint. Write the way a senior researcher in
+the tech industry writes for that room, not the way a paper is written for
 reviewers. Researchers read it too, and what they need lives in the method note,
 so it never sets the register for the rest of the document.
 
@@ -404,7 +404,7 @@ artifact as a whole.
     designer, UX writer, software engineer, customer representative) could say,
     from the summary alone and in one sentence, what it means for them and what
     they would do next. A summary only a researcher could act on fails. Appended
-    2026-10-16 with the Big Tech audience update.
+    2026-10-16 with the plain-language audience update.
 
 25. No literature in a stakeholder artifact. No authors, book titles, or study
     names in anything a stakeholder opens, method note included; the literature
