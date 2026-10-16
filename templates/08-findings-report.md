@@ -69,8 +69,8 @@ interrupted by an em dash or en dash.
 
 ## Formatting
 
-Suite documents render in USWDS styling (`primary` #005EA2 headings,
-`ink` #1B1B1B body, Public Sans). A manual report in the team's standard
+Suite documents render in the muted navy styling (Navy #002436 headings,
+Charcoal #1F2A30 body, Public Sans). A manual report in the team's standard
 document template is fine; the structure above is what matters.
 
 ## Before release

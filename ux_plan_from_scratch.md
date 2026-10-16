@@ -450,7 +450,7 @@ route it through the Research Document Template skill
 rather than freehanding the styling. Give it the study type, product, 
 research questions, participants, timeline, and deliverable; it 
 returns a styled .docx in the suite's design system (DESIGN-SYSTEM.md: 
-USWDS palette, Public Sans, numbered sections, page numbers). Someone 
+muted navy palette, Public Sans, numbered sections, page numbers). Someone 
 who has already done the planning thinking and needs a polished plan 
 fast can use the skill directly; someone new to research design, or 
 weighing tradeoffs, gets more from working the phases here first. 

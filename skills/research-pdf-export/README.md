@@ -1,6 +1,6 @@
 # research-pdf-export
 
-Markdown in, PDF in USWDS styling out (ReportLab, U.S. Web Design System color tokens, the Public Sans typeface, optional cover page, TOC from a `## Contents` list).
+Markdown in, PDF in the suite's styling out (ReportLab, a formal muted navy palette, the Public Sans typeface, optional cover page, TOC from a `## Contents` list).
 
 Adapted from the `document-conversion` skill by Neil Everette. The renderer and style reference are his; the marketplace manifest, install prompt and usage-telemetry script were removed when it joined this suite.
 

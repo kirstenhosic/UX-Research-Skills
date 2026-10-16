@@ -1,6 +1,6 @@
 {
-  "title": "Research PDF Style Reference (USWDS styling)",
-  "description": "Reference-only mirror of the hardcoded styling constants used by scripts/generate_pdf.py. The script does NOT load this file at runtime; edit the script to change behavior. This file exists so a human can see colors, fonts, margins, and layout values in one place. Color values are U.S. Web Design System (USWDS) tokens; the typeface is Public Sans.",
+  "title": "Research PDF Style Reference",
+  "description": "Reference-only mirror of the hardcoded styling constants used by scripts/generate_pdf.py. The script does NOT load this file at runtime; edit the script to change behavior. This file exists so a human can see colors, fonts, margins, and layout values in one place. Color values are the suite's muted navy palette (DESIGN-SYSTEM.md); the typeface is Public Sans.",
 
   "page": {
     "size": "letter",
@@ -80,27 +80,24 @@
   },
 
   "colors": {
-    "_note": "USWDS token names and published default hex values. The script's constants use the same names in UPPER_SNAKE_CASE (primary-darker is PRIMARY_DARKER).",
-    "primary-lighter": "#D9E8F6",
-    "primary": "#005EA2",
-    "primary-dark": "#1A4480",
-    "primary-darker": "#162E51",
-    "accent-cool-lighter": "#E1F3F8",
-    "accent-cool": "#00BDE3",
-    "ink": "#1B1B1B",
-    "base-dark": "#565C65",
-    "base-lighter": "#DFE1E2",
-    "base-lightest": "#F0F0F0",
+    "_note": "The suite's muted navy palette (DESIGN-SYSTEM.md). The script's constants use the same names in UPPER_SNAKE_CASE (rule_gray is RULE_GRAY).",
+    "navy": "#002436",
+    "steel": "#00537E",
+    "charcoal": "#1F2A30",
+    "slate": "#5C6670",
+    "mist": "#F0F3F4",
+    "cool_gray": "#E3E8EA",
+    "rule_gray": "#D4D8D9",
+    "zebra": "#F7F9F9",
+    "link_blue": "#167FA6",
+    "on_dark": "#9CC3D5",
+    "on_dark_soft": "#DCE6EB",
     "white": "#FFFFFF",
-    "state": {
-      "_note": "Signal indicators only, never decoration. Defined in the script; the current layout uses none. Text uses the darker variant; warning is a fill only, always with ink text.",
-      "success": "#00A91C",
-      "success-darker": "#216E1F",
-      "error": "#D54309",
-      "error-dark": "#B50909",
-      "warning": "#FFBE2E",
-      "info": "#00BDE3",
-      "info-darker": "#2E6276"
+    "status": {
+      "_note": "Signal indicators only, never decoration, always with a word or icon. Defined in the script; the current layout uses none.",
+      "ok": "#4F7A28",
+      "risk": "#9A6A00",
+      "block": "#A33A3A"
     }
   },
 
@@ -109,7 +106,7 @@
       "font": "PublicSans-Light",
       "size": 32,
       "leading": 36,
-      "color": "ink",
+      "color": "navy",
       "space_before": 0,
       "space_after": 6
     },
@@ -117,7 +114,7 @@
       "font": "PublicSans-Medium",
       "size": 16,
       "leading": 22,
-      "color": "ink",
+      "color": "navy",
       "space_before": 16,
       "space_after": 6
     },
@@ -125,7 +122,7 @@
       "font": "PublicSans-Medium",
       "size": 12,
       "leading": 17,
-      "color": "ink",
+      "color": "steel",
       "space_before": 12,
       "space_after": 5,
       "_note": "H4-H6 also render in this style."
@@ -134,7 +131,7 @@
       "font": "PublicSans-Regular",
       "size": 9.5,
       "leading": 14.5,
-      "color": "ink",
+      "color": "charcoal",
       "space_before": 0,
       "space_after": 6,
       "alignment": "left"
@@ -143,7 +140,7 @@
       "font": "PublicSans-Regular",
       "size": 9.5,
       "leading": 14.5,
-      "color": "ink",
+      "color": "charcoal",
       "space_after": 3,
       "left_indent": 18,
       "bullet_indent": 0,
@@ -153,7 +150,7 @@
       "font": "PublicSans-Regular",
       "size": 9.5,
       "leading": 14.5,
-      "color": "ink",
+      "color": "charcoal",
       "space_after": 3,
       "left_indent": 36,
       "bullet_indent": 18,
@@ -170,20 +167,20 @@
       "font": "PublicSans-Light",
       "size": 24,
       "leading": 26,
-      "color": "accent-cool",
+      "color": "on_dark",
       "space_after": 14
     },
     "cover_description": {
       "font": "PublicSans-Light",
       "size": 14,
       "leading": 20,
-      "color": "accent-cool-lighter"
+      "color": "on_dark_soft"
     },
     "cover_meta_label": {
       "font": "PublicSans-Light",
       "size": 12,
       "leading": 13,
-      "color": "accent-cool",
+      "color": "on_dark",
       "space_after": 2
     },
     "cover_meta_value": {
@@ -197,38 +194,38 @@
       "font": "PublicSans-Light",
       "size": 28,
       "leading": 32,
-      "color": "ink",
+      "color": "navy",
       "space_after": 16
     },
     "toc_number": {
       "font": "PublicSans-Light",
       "size": 14,
       "leading": 24,
-      "color": "primary"
+      "color": "navy"
     },
     "toc_text": {
       "font": "PublicSans-Light",
       "size": 14,
       "leading": 24,
-      "color": "ink"
+      "color": "charcoal"
     },
     "table_header": {
       "font": "PublicSans-SemiBold",
       "size": 8.5,
       "leading": 12,
-      "color": "ink"
+      "color": "navy"
     },
     "table_cell": {
       "font": "PublicSans-Regular",
       "size": 8.5,
       "leading": 12,
-      "color": "ink"
+      "color": "charcoal"
     },
     "callout_text": {
       "font": "PublicSans-Italic",
       "size": 9,
       "leading": 14,
-      "color": "primary-darker",
+      "color": "navy",
       "left_indent": 12,
       "right_indent": 12,
       "space_before": 4,
@@ -238,7 +235,7 @@
       "font": "PublicSans-Regular",
       "size": 8,
       "leading": 11,
-      "color": "base-dark",
+      "color": "slate",
       "left_indent": 12,
       "space_after": 2,
       "prefix": "— "
@@ -246,16 +243,16 @@
     "footer_text": {
       "font": "PublicSans-Regular",
       "size": 6.5,
-      "color": "base-dark"
+      "color": "slate"
     }
   },
 
   "table_style": {
-    "header_background": "base-lightest",
+    "header_background": "cool_gray",
     "header_font": "PublicSans-SemiBold",
-    "header_line_below": { "width": 1, "color": "ink" },
-    "row_line_below": { "width": 0.4, "color": "base-lighter" },
-    "alternating_rows": ["white", "base-lightest"],
+    "header_line_below": { "width": 1, "color": "navy" },
+    "row_line_below": { "width": 0.4, "color": "rule_gray" },
+    "alternating_rows": ["white", "zebra"],
     "cell_padding": { "top": 5, "bottom": 5, "left": 6, "right": 6 },
     "column_widths": "content width split evenly across columns",
     "outer_border": false,
@@ -264,8 +261,8 @@
   },
 
   "callout_box": {
-    "background": "primary-lighter",
-    "border_color": "primary",
+    "background": "mist",
+    "border_color": "navy",
     "border_width": 3,
     "corner_radius": 3,
     "padding": { "top": 10, "bottom": 10, "left": 12, "right": 12 },
@@ -275,28 +272,28 @@
   "toc_header": {
     "_note": "Top of the Contents page (build_toc). Body headings have no bar or rule.",
     "space_before_inches": 0.3,
-    "accent_bar": { "width": 40, "height": 3, "color": "primary" },
+    "accent_bar": { "width": 40, "height": 3, "color": "navy" },
     "space_after_bar": 6,
     "title_style": "toc_title",
-    "rule": { "color": "ink", "thickness": 0.75 },
+    "rule": { "color": "navy", "thickness": 0.75 },
     "space_after_rule": 12,
     "row": {
       "number_column_inches": 0.6,
       "text_column_inches": 5.5,
-      "line_below": { "width": 0.3, "color": "base-lighter" }
+      "line_below": { "width": 0.3, "color": "rule_gray" }
     }
   },
 
   "thin_rule": {
-    "color": "base-lighter",
+    "color": "rule_gray",
     "thickness": 0.5,
     "height": 4
   },
 
   "cover_page": {
-    "background": "primary-darker",
+    "background": "navy",
     "accent_line": {
-      "color": "accent-cool",
+      "color": "on_dark",
       "width": 1,
       "y_offset": 122
     },
@@ -319,7 +316,7 @@
     "_note": "The script draws a footer only -- there is no top header rule. The right-hand text is 'Page N'; when --footer-note is passed, the note is prepended as '{footer_note}  ·  Page N'. There is no default note.",
     "rule_y_offset_inches": -0.15,
     "text_y_offset_inches": -0.35,
-    "rule": { "color": "base-lighter", "width": 0.5 },
+    "rule": { "color": "rule_gray", "width": 0.5 },
     "left_template": "{title}  |  {date}",
     "right_template": "Page {page}",
     "right_template_with_note": "{footer_note}  ·  Page {page}"
@@ -330,5 +327,5 @@
     "author": "--team value, else empty"
   },
 
-  "link_color": "primary"
+  "link_color": "link_blue"
 }

@@ -157,9 +157,8 @@ sentence after the bold phrase giving the specifics. Keep the long tail for the
 Rhythm-setter. Full-color background, one short phrase, large, centered or
 left. Examples: "Interviews," "Survey data," "Alignment," "What would you
 change?," "Now what?" No other content. By default, dividers alternate between
-`primary-darker` (`#162E51`) and `primary` (`#005EA2`) backgrounds so
-consecutive dividers differ; keep the phrase in White either way (13.60:1 and
-6.72:1).
+Navy (`#002436`) and Steel (`#00537E`) backgrounds so consecutive dividers
+differ; keep the phrase in White either way (16.1:1 and 8.3:1).
 
 ---
 
@@ -464,9 +463,9 @@ at the end, quotes and dividers for rhythm.
 
 ## Theme & aesthetic guardrails (reference)
 
-The readout skill uses the **U.S. Web Design System (USWDS) palette with
-Public Sans** — light-dominant, `primary` blue as the single accent,
-`primary-darker` dark anchors, white content slides. The discipline is what
+The readout skill uses the suite's **muted navy palette with Public Sans** —
+light-dominant, formal, and quiet: Steel as the single accent, Navy dark
+anchors, white and Mist content slides, no bright blue. The discipline is what
 matters (light backgrounds, one accent, dark anchors, AA contrast), not the
 specific hues: a team can swap in its own brand palette as long as it keeps that
 discipline. Whichever palette you use, hold the aesthetic guardrails at the end
@@ -482,43 +481,43 @@ counted "environments", so "environment" couldn't double as a vague catch-all).
 Relabeling the unit the study counts quietly changes what a number means. See
 `VOICE-AND-STYLE.md` Part 1.9 for the full vocabulary tells.
 
-### Color — USWDS palette
+### Color — muted navy palette
 
-Build **light-dominant with `primary` as the single accent**: white content
-slides with `ink` type, `primary-darker` for title/divider/closing backgrounds,
-and `primary` used sparingly for the one focal element per slide. On the
-`primary-darker` slides, type goes white (or `primary-lighter` for secondary
-captions) and the accent shifts to `accent-cool` so it reads against the dark
-fill.
+Build **light-dominant, formal, and quiet**, with Navy as the structural color
+and Steel as the single accent: white and Mist content slides, Navy for
+title/divider/closing backgrounds, Steel for the one focal element per slide,
+and a Mist panel with a Navy bar for the one featured callout. On the Navy
+slides, type goes white (or Pale for secondary captions) and the accent shifts
+to muted sky so it reads against the dark fill. It's the same palette the
+suite's Word documents use (`DESIGN-SYSTEM.md`). No bright or saturated blue
+appears anywhere.
 
-| Role | USWDS token | Hex | Use |
-|------|-------------|-----|-----|
-| Accent | `primary` | `005EA2` | The single accent on light slides: kicker text, big stat numbers, accent rules, key callouts, annotation markers on screenshots |
-| Secondary accent | `primary-dark` | `1A4480` | Provenance tags, secondary bars, the accent bar on quote blockquotes |
-| Dark anchor | `primary-darker` | `162E51` | Title, divider, and closing backgrounds — the dark 20-30% of the deck |
-| Primary text | `ink` | `1B1B1B` | Titles and body on light slides |
-| Secondary text | `base-dark` | `565C65` | Subtitles, captions, quote attributions |
-| Page background | `white` | `FFFFFF` | Default content-slide background — the dominant surface |
-| Layer / card | `base-lightest` | `F0F0F0` | Card fills, the one featured panel per slide, table zebra rows |
-| Border / line | `base-lighter` | `DFE1E2` | Dividers, table rules, card borders (non-text only) |
-| Accent on dark | `accent-cool` | `00BDE3` | The focal accent when the slide background is `primary-darker` |
-| Text on dark | `white` / `primary-lighter` | `FFFFFF` / `D9E8F6` | Type on `primary-darker` backgrounds (`primary-lighter` for secondary/on-dark captions) |
+| Role | Name | Hex | Use |
+|------|------|-----|-----|
+| Accent | Steel | `00537E` | The single accent on light slides: kicker text, big stat numbers, accent rules, key callouts, annotation markers on screenshots |
+| Secondary accent | Navy | `002436` | Provenance tags, secondary bars, the accent bar on quote blockquotes |
+| Dark anchor | Navy | `002436` | Title, divider, and closing backgrounds — the dark 20-30% of the deck |
+| Title text | Navy | `002436` | Slide titles on light slides |
+| Body text | Charcoal | `1F2A30` | Body on light slides |
+| Secondary text | Slate | `5C6670` | Subtitles, captions, quote attributions |
+| Page background | White | `FFFFFF` | Default content-slide background — the dominant surface |
+| Layer / card | Mist | `F0F3F4` | Card fills, the one featured panel per slide (with a Navy bar), table zebra rows |
+| Table header | Cool Gray | `E3E8EA` | Table header fill, with bold Navy text |
+| Border / line | Rule Gray | `D4D8D9` | Dividers, table rules, card borders (non-text only) |
+| Accent on dark | Muted sky | `9CC3D5` | The focal accent when the slide background is Navy |
+| Text on dark | White / Pale | `FFFFFF` / `DCE6EB` | Type on Navy backgrounds (Pale for secondary captions) |
 
-Status colors (use only for severity or sentiment, never as the brand accent):
-success `success` `00A91C` as a fill, `success-darker` `216E1F` as text;
-error/critical `error` `D54309` as a fill, `error-dark` `B50909` as text;
-caution `warning` `FFBE2E` (fill only, always paired with `ink` text — never
-used as a text color); info `info` `00BDE3` as a fill, `info-darker` `2E6276`
-as text. The verified source is the USWDS theme and state color tokens
-(designsystem.digital.gov/design-tokens/color/theme-tokens/ and
-designsystem.digital.gov/design-tokens/color/state-tokens/).
+Status colors (use only for severity or sentiment, never as the brand accent,
+and always with a word or icon, never color alone): on track `4F7A28`, at risk
+`9A6A00`, blocked or critical `A33A3A`, info `00537E`. All four pass AA as text
+on white.
 
 ### Typography — Public Sans
 
 Use **Public Sans** for headings and body, with **Public Sans Light** for big
 titles and large statements; body, tables, and small-caps meta labels stay in
 Public Sans. Set large pull quotes in **Public Sans Light Italic**. If data or a
-table needs a monospace, use **Roboto Mono** (the USWDS default mono).
+table needs a monospace, use **Roboto Mono**.
 PowerPoint uses the font by name, so install Public Sans (free, SIL Open Font
 License, from Google Fonts) for exact rendering. If the renderer lacks the
 family, fall back to a clean grotesque (Helvetica Neue / Arial) — never a serif.
@@ -537,17 +536,14 @@ and again in QA:
 - **Word budgets.** Title ≤ ~10 words. ≤ 6 bullets per slide, ≤ ~12 words each.
   One idea per slide; if it needs more, it's two slides.
 - **Readable contrast (WCAG AA).** Every text/background pair meets 4.5:1 (small)
-  or 3:1 (large, ≥ 24 px). Safe pairings: `ink` `1B1B1B` on White (17.22:1) or
-  `base-lightest` `F0F0F0` (15.11:1); `base-dark` `565C65` on White (6.74:1) or
-  `F0F0F0` (5.92:1); `primary` `005EA2` only on light backgrounds — White
-  (6.72:1), `F0F0F0` (5.90:1), or `primary-lighter` `D9E8F6` (5.39:1); White
-  (13.60:1) or `primary-lighter` `D9E8F6` (10.90:1) on `primary-darker`
-  `162E51`; `accent-cool` `00BDE3` only on `primary-darker` (6.08:1); `ink` on
-  a `warning` `FFBE2E` fill (10.38:1). Never the light-slide accent as text on a
-  dark fill, never `warning` yellow as text, never `base` `71767A` or a lighter
-  gray as small text (4.03:1 on `F0F0F0`), never gray-on-gray midtones.
-- **One accent per slide.** The accent (`primary` on light, `accent-cool` on
-  `primary-darker`) marks a single focal point — don't flood a slide with it.
+  or 3:1 (large, ≥ 24 px). Safe pairings: Navy `002436` or Charcoal `1F2A30`
+  on White, Mist `F0F3F4`, or Cool Gray `E3E8EA` (13:1 or better); Slate
+  `5C6670` on White (5.9:1) or Mist (5.2:1); Steel `00537E` on White (8.3:1) or
+  Mist (7.4:1); White on Navy (16.1:1) or Steel (8.3:1); `9CC3D5` only on Navy
+  (8.6:1). Never the light-slide accent as text on a dark fill, never a gray
+  lighter than Slate as small text, never gray-on-gray midtones.
+- **One accent per slide.** The accent (Steel on light, `9CC3D5` on Navy)
+  marks a single focal point — don't flood a slide with it.
   Restraint is the whole look.
 - **Align to a grid.** Left-align titles and body; keep consistent column edges;
   centered text only on quote and single-insight slides.

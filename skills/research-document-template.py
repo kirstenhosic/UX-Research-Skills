@@ -18,13 +18,19 @@ from docx.enum.text import WD_ALIGN_PARAGRAPH, WD_TAB_ALIGNMENT, WD_TAB_LEADER
 from docx.oxml.ns import qn
 from docx.oxml import OxmlElement
 
-# Brand Colors — U.S. Web Design System (USWDS) theme tokens (see
-# DESIGN-SYSTEM.md; source: designsystem.digital.gov/design-tokens/color/theme-tokens/)
-PRIMARY = RGBColor(0x00, 0x5E, 0xA2)         # primary — titles, H1, accents
-BASE_DARK = RGBColor(0x56, 0x5C, 0x65)       # base-dark — subtitles, H2, metadata, footer text
-INK = RGBColor(0x1B, 0x1B, 0x1B)             # ink — body text
-BASE_LIGHTEST = "F0F0F0"                     # base-lightest (layer) — callout boxes, table headers
-PRIMARY_HEX = "005EA2"                       # Hex form of PRIMARY for XML
+# Brand Colors — the suite's muted navy palette (see DESIGN-SYSTEM.md,
+# "Color Palette"). Formal and quiet: navy for structure, steel for the second
+# level, charcoal text, cool-gray surfaces. No bright blue anywhere.
+NAVY = RGBColor(0x00, 0x24, 0x36)            # Navy — titles, H1, accents, table header text
+STEEL = RGBColor(0x00, 0x53, 0x7E)           # Steel — subtitles, H2
+CHARCOAL = RGBColor(0x1F, 0x2A, 0x30)        # Charcoal — body text
+SLATE = RGBColor(0x5C, 0x66, 0x70)           # Slate — metadata and footer text
+MIST = "F0F3F4"                              # Mist — callout boxes
+COOL_GRAY = "E3E8EA"                         # Cool Gray — table headers
+RULE_GRAY = "D4D8D9"                         # Rule Gray — table borders and rules
+ACCENT_HEX = "002436"                        # Hex form of NAVY for XML
+# Old names, kept so older callers still run
+PRIMARY, BASE_DARK, INK, BASE_LIGHTEST, PRIMARY_HEX = NAVY, SLATE, CHARCOAL, MIST, ACCENT_HEX
 
 # Default Font — Public Sans (free, SIL Open Font License; from Google Fonts or
 # skills/research-pdf-export/assets/fonts/). Word uses the font by name and
@@ -60,7 +66,7 @@ class ResearchDocumentGenerator:
         normal = self.doc.styles['Normal']
         normal.font.name = DEFAULT_FONT
         normal.font.size = Pt(11)
-        normal.font.color.rgb = INK
+        normal.font.color.rgb = CHARCOAL
         normal.paragraph_format.line_spacing = 1.15
         rpr = normal.element.get_or_add_rPr()
         rfonts = rpr.find(qn('w:rFonts'))
@@ -93,7 +99,7 @@ class ResearchDocumentGenerator:
         run.font.name = DEFAULT_FONT
         run.font.size = Pt(9)
         run.font.bold = True
-        run.font.color.rgb = PRIMARY
+        run.font.color.rgb = NAVY
         p.paragraph_format.space_after = Emu(0)
         last_p = p
         if len(lines) > 1:
@@ -101,7 +107,7 @@ class ResearchDocumentGenerator:
             run2 = p2.add_run(lines[1])
             run2.font.name = DEFAULT_FONT
             run2.font.size = Pt(9)
-            run2.font.color.rgb = BASE_DARK
+            run2.font.color.rgb = SLATE
             p2.paragraph_format.space_after = Emu(0)
             last_p = p2
         # Thin rule separating the header from the page body
@@ -111,7 +117,7 @@ class ResearchDocumentGenerator:
         bottom.set(qn('w:val'), 'single')
         bottom.set(qn('w:sz'), '4')
         bottom.set(qn('w:space'), '4')
-        bottom.set(qn('w:color'), PRIMARY_HEX)
+        bottom.set(qn('w:color'), ACCENT_HEX)
         borders.append(bottom)
         p_pr.append(borders)
 
@@ -124,7 +130,7 @@ class ResearchDocumentGenerator:
         def _styled(run, size=9):
             run.font.name = DEFAULT_FONT
             run.font.size = Pt(size)
-            run.font.color.rgb = BASE_DARK
+            run.font.color.rgb = SLATE
             return run
 
         if note:
@@ -152,6 +158,20 @@ class ResearchDocumentGenerator:
     # Low-level helpers
     # ------------------------------------------------------------------
 
+    def _gray_borders(self, table):
+        """Rule Gray borders on every edge, overriding the built-in table style's
+        theme-colored rules so tables stay in the palette's gray family."""
+        tbl_pr = table._tbl.tblPr
+        borders = OxmlElement('w:tblBorders')
+        for edge in ('top', 'left', 'bottom', 'right', 'insideH', 'insideV'):
+            e = OxmlElement(f'w:{edge}')
+            e.set(qn('w:val'), 'single')
+            e.set(qn('w:sz'), '4')
+            e.set(qn('w:space'), '0')
+            e.set(qn('w:color'), RULE_GRAY)
+            borders.append(e)
+        tbl_pr.append(borders)
+
     def shade_cell(self, cell, color):
         """Shade a table cell with background color"""
         shading_elm = OxmlElement('w:shd')
@@ -159,13 +179,13 @@ class ResearchDocumentGenerator:
         cell._element.get_or_add_tcPr().append(shading_elm)
 
     def _accent_border(self, cell):
-        """Add a left accent bar (primary blue) to a cell — used by callouts."""
+        """Add a left accent bar (navy) to a cell — used by callouts."""
         tc_pr = cell._element.get_or_add_tcPr()
         borders = OxmlElement('w:tcBorders')
         left = OxmlElement('w:left')
         left.set(qn('w:val'), 'single')
         left.set(qn('w:sz'), '28')
-        left.set(qn('w:color'), PRIMARY_HEX)
+        left.set(qn('w:color'), ACCENT_HEX)
         borders.append(left)
         tc_pr.append(borders)
 
@@ -196,7 +216,7 @@ class ResearchDocumentGenerator:
         title_run.font.size = Pt(28)
         title_run.font.bold = True
         title_run.font.name = DEFAULT_FONT
-        title_run.font.color.rgb = PRIMARY
+        title_run.font.color.rgb = NAVY
         title_para.paragraph_format.space_before = Emu(152400)
         title_para.paragraph_format.space_after = Emu(50800)
 
@@ -207,7 +227,7 @@ class ResearchDocumentGenerator:
             subtitle_run.font.size = Pt(16)
             subtitle_run.font.bold = True
             subtitle_run.font.name = DEFAULT_FONT
-            subtitle_run.font.color.rgb = BASE_DARK
+            subtitle_run.font.color.rgb = STEEL
             subtitle_para.paragraph_format.space_after = Emu(76200)
             rule_target = subtitle_para
 
@@ -218,7 +238,7 @@ class ResearchDocumentGenerator:
         bottom.set(qn('w:val'), 'single')
         bottom.set(qn('w:sz'), '8')
         bottom.set(qn('w:space'), '6')
-        bottom.set(qn('w:color'), PRIMARY_HEX)
+        bottom.set(qn('w:color'), ACCENT_HEX)
         borders.append(bottom)
         p_pr.append(borders)
 
@@ -230,7 +250,7 @@ class ResearchDocumentGenerator:
             run = p.add_run(item)
             run.font.size = Pt(10)
             run.font.name = DEFAULT_FONT
-            run.font.color.rgb = BASE_DARK
+            run.font.color.rgb = SLATE
         self.doc.add_paragraph().paragraph_format.space_after = Emu(152400)
 
     def add_heading_1(self, text, numbered=True):
@@ -242,14 +262,14 @@ class ResearchDocumentGenerator:
             if self._heading_num_id is None:
                 self._heading_num_id = self._add_list_definition([dict(
                     fmt='decimal', text='%1.', left=0, hanging=0, suffix='space',
-                    color=PRIMARY_HEX, bold=True)])
+                    color=ACCENT_HEX, bold=True)])
             self._apply_numbering(h, self._heading_num_id)
         h.paragraph_format.space_before = Emu(177800)
         h.paragraph_format.space_after = Emu(76200)
         self._keep_with_next(h)
         for run in h.runs:
             run.font.name = DEFAULT_FONT
-            run.font.color.rgb = PRIMARY
+            run.font.color.rgb = NAVY
         return h
 
     def add_heading_2(self, text):
@@ -260,7 +280,7 @@ class ResearchDocumentGenerator:
         self._keep_with_next(h)
         for run in h.runs:
             run.font.name = DEFAULT_FONT
-            run.font.color.rgb = BASE_DARK
+            run.font.color.rgb = STEEL
         return h
 
     def add_toc(self, title="Table of Contents", entries=None):
@@ -273,7 +293,7 @@ class ResearchDocumentGenerator:
         self._keep_with_next(h)
         for run in h.runs:
             run.font.name = DEFAULT_FONT
-            run.font.color.rgb = BASE_DARK
+            run.font.color.rgb = STEEL
 
         p_begin = self.doc.add_paragraph()
         p_begin.paragraph_format.space_before = Emu(19050)
@@ -303,13 +323,13 @@ class ResearchDocumentGenerator:
                 r_title = toc_p.add_run(entry_title)
                 r_title.font.name = DEFAULT_FONT
                 r_title.font.size = Pt(10.5)
-                r_title.font.color.rgb = INK
+                r_title.font.color.rgb = CHARCOAL
                 
                 r_page = toc_p.add_run(f"\t{page_num}")
                 r_page.font.name = DEFAULT_FONT
                 r_page.font.size = Pt(10.5)
                 r_page.font.bold = True
-                r_page.font.color.rgb = PRIMARY
+                r_page.font.color.rgb = NAVY
 
         p_end = self.doc.add_paragraph()
         p_end.paragraph_format.space_before = Emu(19050)
@@ -569,7 +589,7 @@ class ResearchDocumentGenerator:
         table.allow_autofit = False
 
         cell = table.rows[0].cells[0]
-        self.shade_cell(cell, BASE_LIGHTEST)
+        self.shade_cell(cell, MIST)
         self._accent_border(cell)
         cell.vertical_alignment = 1
 
@@ -579,13 +599,13 @@ class ResearchDocumentGenerator:
         title_run.font.bold = True
         title_run.font.size = Pt(12)
         title_run.font.name = DEFAULT_FONT
-        title_run.font.color.rgb = PRIMARY
+        title_run.font.color.rgb = NAVY
 
         content_run = title_p.add_run(content)
         content_run.font.size = Pt(11)
         content_run.font.name = DEFAULT_FONT
         content_run.font.italic = True
-        content_run.font.color.rgb = INK
+        content_run.font.color.rgb = CHARCOAL
 
         title_p.paragraph_format.space_before = Emu(50800)
         title_p.paragraph_format.space_after = Emu(50800)
@@ -597,12 +617,13 @@ class ResearchDocumentGenerator:
         num_cols = len(headers)
         table = self.doc.add_table(rows=len(rows) + 1, cols=num_cols)
         table.style = 'Light Grid Accent 1'
+        self._gray_borders(table)
 
         header_cells = table.rows[0].cells
         for i, header in enumerate(headers):
-            self.shade_cell(header_cells[i], BASE_LIGHTEST)
+            self.shade_cell(header_cells[i], COOL_GRAY)
             header_cells[i].text = header
-            self._style_cell_text(header_cells[i], bold=True, size=10.5, color=INK)
+            self._style_cell_text(header_cells[i], bold=True, size=10.5, color=NAVY)
 
         # Repeat header row across page breaks
         tr_pr = table.rows[0]._tr.get_or_add_trPr()
@@ -627,7 +648,7 @@ class ResearchDocumentGenerator:
                         run = p.add_run(item)
                         run.font.name = DEFAULT_FONT
                         run.font.size = Pt(10.5)
-                        run.font.color.rgb = INK
+                        run.font.color.rgb = CHARCOAL
                 else:
                     cell.text = cell_data
                     self._style_cell_text(cell, size=10.5)
@@ -642,6 +663,7 @@ class ResearchDocumentGenerator:
         """Two-column In Scope / Out of Scope table with bulleted, non-bold items."""
         table = self.doc.add_table(rows=2, cols=2)
         table.style = 'Light Grid Accent 1'
+        self._gray_borders(table)
 
         # The table style bolds the first column by default — turn that off so
         # scope items render in regular weight.
@@ -653,9 +675,9 @@ class ResearchDocumentGenerator:
         headers = headers or ['In Scope', 'Out of Scope']
         for i, header in enumerate(headers):
             cell = table.rows[0].cells[i]
-            self.shade_cell(cell, BASE_LIGHTEST)
+            self.shade_cell(cell, COOL_GRAY)
             cell.text = header
-            self._style_cell_text(cell, bold=True, size=10.5, color=INK)
+            self._style_cell_text(cell, bold=True, size=10.5, color=NAVY)
 
         tr_pr = table.rows[0]._tr.get_or_add_trPr()
         tr_pr.append(OxmlElement('w:tblHeader'))
@@ -672,7 +694,7 @@ class ResearchDocumentGenerator:
                 run.font.name = DEFAULT_FONT
                 run.font.size = Pt(10.5)
                 run.font.bold = False
-                run.font.color.rgb = INK
+                run.font.color.rgb = CHARCOAL
 
         for row in table.rows:
             for cell in row.cells:

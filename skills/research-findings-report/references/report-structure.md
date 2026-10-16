@@ -9,7 +9,7 @@ budget, only a relevance bar.
 
 The structure follows the shape of well-constructed UX research reports in
 general circulation (findings-first, evidence one layer down, method visible
-but brief, recommendations as actions) and renders in the suite's USWDS
+but brief, recommendations as actions) and renders in the suite's muted navy
 styling via the research-document-template. Nothing here changes the rendering
 rule: every claim, quote, and count comes from a findings record.
 
@@ -289,10 +289,10 @@ The report uses the template's custom `sections` layout
 ```
 
 Design-system specifics the template already owns (don't restyle):
-Public Sans throughout · `primary` #005EA2 titles and H1 ·
-`base-dark` #565C65 H2 · callouts on `base-lightest` #F0F0F0 with a `primary`
-accent bar · table headers `base-lightest` with bold `ink` text ·
-`ink` #1B1B1B body. The quote paragraph inside a finding renders italic; the
+Public Sans throughout · Navy #002436 titles and H1 ·
+Steel #00537E H2 · callouts on Mist #F0F3F4 with a Navy
+accent bar · table headers Cool Gray #E3E8EA with bold Navy text ·
+Charcoal #1F2A30 body. The quote paragraph inside a finding renders italic; the
 headline renders as a callout. One callout in the executive summary is
 emphasis; a callout per section is noise.
 

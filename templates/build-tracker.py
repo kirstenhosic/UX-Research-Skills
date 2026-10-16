@@ -24,18 +24,18 @@ OUT = os.path.join(os.path.dirname(os.path.abspath(__file__)),
                    "06-participant-tracker.xlsx")
 
 FONT = "Public Sans"
-PRIMARY = "005EA2"        # USWDS primary
-INK = "1B1B1B"            # USWDS ink
-BASE_DARK = "565C65"      # USWDS base-dark
-BASE_LIGHTEST = "F0F0F0"  # USWDS base-lightest
-BASE_LIGHTER = "DFE1E2"   # USWDS base-lighter (cell borders)
+NAVY = "002436"        # Navy: header fill, sheet titles (DESIGN-SYSTEM.md)
+CHARCOAL = "1F2A30"    # Charcoal: body text
+SLATE = "5C6670"       # Slate: example rows
+COOL_GRAY = "E3E8EA"   # Cool Gray: shaded cells
+RULE_GRAY = "D4D8D9"   # Rule Gray: borders
 
 header_font = Font(name=FONT, bold=True, color="FFFFFF", size=10)
-header_fill = PatternFill("solid", fgColor=PRIMARY)
-body_font = Font(name=FONT, size=10, color=INK)
-example_font = Font(name=FONT, size=10, color=BASE_DARK, italic=True)
+header_fill = PatternFill("solid", fgColor=NAVY)
+body_font = Font(name=FONT, size=10, color=CHARCOAL)
+example_font = Font(name=FONT, size=10, color=SLATE, italic=True)
 wrap = Alignment(wrap_text=True, vertical="top")
-thin = Side(style="thin", color=BASE_LIGHTER)
+thin = Side(style="thin", color=RULE_GRAY)
 border = Border(left=thin, right=thin, top=thin, bottom=thin)
 
 wb = Workbook()
@@ -91,9 +91,9 @@ r = 1
 for kind, text in rows:
     c = ws.cell(row=r, column=2, value=text)
     if kind == "title":
-        c.font = Font(name=FONT, bold=True, size=16, color=PRIMARY)
+        c.font = Font(name=FONT, bold=True, size=16, color=NAVY)
     elif kind == "h":
-        c.font = Font(name=FONT, bold=True, size=11, color=PRIMARY)
+        c.font = Font(name=FONT, bold=True, size=11, color=NAVY)
     else:
         c.font = body_font
         c.alignment = wrap
@@ -126,7 +126,7 @@ def sheet(ws, cols, widths, example, dropdowns):
             c.font = body_font
             c.border = border
             if row % 2 == 1:
-                c.fill = PatternFill("solid", fgColor=BASE_LIGHTEST)
+                c.fill = PatternFill("solid", fgColor=COOL_GRAY)
     for col_name, values in dropdowns.items():
         idx = cols.index(col_name) + 1
         letter = get_column_letter(idx)

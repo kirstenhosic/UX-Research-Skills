@@ -1,18 +1,18 @@
 ---
 name: research-pdf-export
 description: >
-  Convert a Markdown file into a PDF in USWDS styling (U.S. Web Design System color tokens with the Public Sans typeface). Use when the user asks to convert, render, generate, or export a Markdown document (.md) into a branded or styled PDF, asks for a "styled report" or a PDF "in USWDS styling," asks to "make a PDF from this markdown," or shares an .md file and wants it formatted for distribution. Produces PDFs via ReportLab using the bundled Public Sans fonts and USWDS color tokens, with optional cover page and auto-detected table of contents. Prefer this skill over generic markdown-to-PDF tools whenever a styled research PDF is wanted. Do not trigger for non-Markdown sources (Word docs, Google Docs, PDFs as input) or for documents that must carry a different visual style.
+  Convert a Markdown file into a PDF in the suite's styling (a formal, muted navy palette with the Public Sans typeface). Use when the user asks to convert, render, generate, or export a Markdown document (.md) into a branded or styled PDF, asks for a "styled report" or a PDF "in the suite's styling," asks to "make a PDF from this markdown," or shares an .md file and wants it formatted for distribution. Produces PDFs via ReportLab using the bundled Public Sans fonts and the suite's muted navy palette, with optional cover page and auto-detected table of contents. Prefer this skill over generic markdown-to-PDF tools whenever a styled research PDF is wanted. Do not trigger for non-Markdown sources (Word docs, Google Docs, PDFs as input) or for documents that must carry a different visual style.
 ---
 
-# Research PDF Export (Markdown → PDF in USWDS styling)
+# Research PDF Export (Markdown → PDF in the suite's styling)
 
 > Adapted from `document-conversion` by Neil Everette. Usage telemetry removed.
 
-Render a Markdown file into a PDF in USWDS styling using Python + ReportLab. Output uses the U.S. Web Design System (USWDS) color tokens with the Public Sans typeface. Public Sans ships with the skill in `assets/fonts/` under the SIL Open Font License 1.1 (license files included), so nothing is downloaded. Cover page, cover logo, footer note, and table of contents are optional.
+Render a Markdown file into a PDF in the suite's styling using Python + ReportLab. Output uses the suite's muted navy palette (`DESIGN-SYSTEM.md`) with the Public Sans typeface. Public Sans ships with the skill in `assets/fonts/` under the SIL Open Font License 1.1 (license files included), so nothing is downloaded. Cover page, cover logo, footer note, and table of contents are optional.
 
 ## Scope
 
-- **In scope:** Markdown (`.md`) input → PDF output in USWDS styling.
+- **In scope:** Markdown (`.md`) input → PDF output in the suite's styling.
 - **Out of scope:** DOCX, PPTX, HTML, slide decks, non-Markdown inputs. Do not invoke this skill for those — fail closed and tell the user.
 
 ## Execution mode
@@ -37,7 +37,7 @@ SKILL_DIR="$HOME/.claude/skills/research-pdf-export"
 Before running, skim:
 
 1. `$SKILL_DIR/references/style-schema.json` — style values (fonts, colors, margins, spacing). The schema mirrors the values hardcoded in the script. Edit both to keep in sync.
-2. `$SKILL_DIR/references/design-tokens.md` — USWDS color tokens, Public Sans typography, sources and licenses.
+2. `$SKILL_DIR/references/design-tokens.md` — Color tokens (muted navy palette), Public Sans typography, sources and licenses.
 
 ## Source markdown conventions
 
@@ -159,7 +159,7 @@ If the run printed the Public Sans warning, add a line saying the PDF rendered i
 |------|---------|
 | `$SKILL_DIR/scripts/generate_pdf.py` | PDF renderer (ReportLab). |
 | `$SKILL_DIR/references/style-schema.json` | Style values mirroring the script's hardcoded constants. |
-| `$SKILL_DIR/references/design-tokens.md` | USWDS color tokens, Public Sans typography, sources and licenses. |
+| `$SKILL_DIR/references/design-tokens.md` | Color tokens (muted navy palette), Public Sans typography, sources and licenses. |
 | `$SKILL_DIR/references/page-types/` | What the cover, table of contents, and content pages draw. |
 | `$SKILL_DIR/assets/fonts/` | Public Sans, ten static TTFs, with `OFL.txt` and `LICENSE.md` (SIL Open Font License 1.1). Loaded by default. |
 | `$SKILL_DIR/assets/logo.svg` | Optional, not shipped. Drop your own SVG here to put a logo on the cover (needs `svglib`). |

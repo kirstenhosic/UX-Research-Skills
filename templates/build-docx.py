@@ -5,7 +5,7 @@ Render the templates/*.md files into shareable .docx copies (templates/docx/).
 The .md files are the source of truth; every .docx here is generated. After
 editing a template, re-run:  python3 templates/build-docx.py
 Requires python-docx (same dependency as skills/research-document-template.py,
-which this script drives so the output matches the suite's USWDS styling).
+which this script drives so the output matches the suite's design-system styling).
 
 Each document gets the shared page furniture: a "UX Research" running
 header, and a footer with the suite note left and the page number right.
@@ -60,7 +60,7 @@ class TemplateDoc(rdt.ResearchDocumentGenerator):
                 continue
             run = p.add_run()
             run.font.name = rdt.DEFAULT_FONT
-            run.font.color.rgb = rdt.INK
+            run.font.color.rgb = rdt.CHARCOAL
             if part.startswith("**") and part.endswith("**"):
                 run.text, run.font.bold = part[2:-2], True
             elif part.startswith("`") and part.endswith("`"):
@@ -86,7 +86,7 @@ class TemplateDoc(rdt.ResearchDocumentGenerator):
             self.rich_runs(p, item)
 
     def add_preformatted(self, lines):
-        """A fenced skeleton: monospace, base-lightest shading, whitespace kept."""
+        """A fenced skeleton: monospace, Mist shading, whitespace kept."""
         for line in lines:
             p = self.doc.add_paragraph()
             p.paragraph_format.space_before = Emu(0)
@@ -94,12 +94,12 @@ class TemplateDoc(rdt.ResearchDocumentGenerator):
             p.paragraph_format.left_indent = Inches(0.15)
             shd = OxmlElement("w:shd")
             shd.set(qn("w:val"), "clear")
-            shd.set(qn("w:fill"), rdt.BASE_LIGHTEST)
+            shd.set(qn("w:fill"), rdt.MIST)
             p._p.get_or_add_pPr().append(shd)
             run = p.add_run(line if line else " ")
             run.font.name = MONO_FONT
             run.font.size = Pt(8.5)
-            run.font.color.rgb = rdt.INK
+            run.font.color.rgb = rdt.CHARCOAL
         self.doc.add_paragraph().paragraph_format.space_after = Emu(25400)
 
 
@@ -190,7 +190,7 @@ def parse_blocks(lines):
             # Take the current line unconditionally: nothing above claimed it,
             # so the loop must consume it here or it never advances. Stop only
             # at lines another branch will claim — a heading needs its space,
-            # so a wrapped "#1B1B1B" continues the paragraph instead of hanging.
+            # so a wrapped "#1F2A30" continues the paragraph instead of hanging.
             para = [line.strip()]
             i += 1
             while i < len(lines) and lines[i].strip() not in ("", "---") and \

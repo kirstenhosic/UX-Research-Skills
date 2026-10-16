@@ -4,14 +4,14 @@ Optional first page. Rendered only when the script is invoked with `--cover`. Im
 
 ## What the script actually draws
 
-1. **Full-bleed background fill** -- solid `primary-darker` (`#162E51`) covering the entire letter-size page.
-2. **Accent line** -- a single 1pt horizontal line in `accent-cool` (`#00BDE3`), spanning the content width, drawn 122pt below the top of the page.
+1. **Full-bleed background fill** -- solid `navy` (`#002436`) covering the entire letter-size page.
+2. **Accent line** -- a single 1pt horizontal line in `on_dark` (`#9CC3D5`), spanning the content width, drawn 122pt below the top of the page.
 3. **Title block** -- pushed down 1.7 inches from the top:
    - Title (required, 45pt Light, white).
-   - Subtitle (optional, 24pt Light, `accent-cool`) -- only if `--subtitle` is passed.
-   - Description (optional, 14pt Light, `accent-cool-lighter`, `#E1F3F8`) -- only if `--description` is passed.
+   - Subtitle (optional, 24pt Light, `on_dark`) -- only if `--subtitle` is passed.
+   - Description (optional, 14pt Light, `on_dark_soft`, `#DCE6EB`) -- only if `--description` is passed.
 4. **Metadata block** -- pushed 2.5 inches below the title block. Each item is a label/value pair:
-   - Label: 12pt Light, `accent-cool` (e.g. "Research date", "Team").
+   - Label: 12pt Light, `on_dark` (e.g. "Research date", "Team").
    - Value: 14pt Light, white.
 
    The "Research date" pair always renders: its value is `--date`, or the current month and year when `--date` is omitted. The "Team" pair renders only when `--team` is passed.

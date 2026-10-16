@@ -145,9 +145,9 @@ them separately, and ask once rather than inventing anything.
 - Which findings the user considers the headline, if they have a view
 
 **About delivery:**
-- Theme: **default to the USWDS palette** — white content slides,
-  `primary-darker` anchors, a single `primary` blue accent, Public Sans type
-  (the palette below). Only swap the palette if the user requires a different
+- Theme: **default to the muted navy palette** — white and Mist content
+  slides, Navy anchors, a single Steel accent, Public Sans type (the palette
+  below). Only swap the palette if the user requires a different
   brand, and keep the same discipline when you do
 - Any hard constraints (must-include sections). The deck targets **~15 slides**
   by default — see the slide budget in Step 3
@@ -278,7 +278,7 @@ evidence slide instead), and the Appendix. A tight spine beats completeness.
   `participant_type` distinction rides here too: a customer's own words and an
   internal SME reporting on customers must not read the same on the slide.
 - **The finding title and the quote must read as different things.** On a finding
-  slide the claim (the title) is the largest text — bold, upright, `ink`,
+  slide the claim (the title) is the largest text — bold, upright, Navy,
   sitting at the top under its kicker and accent rule. The quote sits lower,
   smaller, italic, set off by the accent bar. That visual gap is what lets a
   skimming reader tell your finding from the participant's words at a glance;
@@ -375,14 +375,14 @@ to carry over:
   titles, no text-only filler slides, strong contrast, no overflow. Every slide
   needs a visual element (stat callout, icon, chart, screenshot, or quote mark).
 
-### Theme — USWDS palette (Public Sans / `primary` blue on white)
+### Theme — muted navy palette (Public Sans / Navy and Steel on white)
 
-Use the **U.S. Web Design System (USWDS) palette with Public Sans**: light and
-grid-disciplined — predominantly **white (`#FFFFFF`)** content slides with crisp
-`ink` type (`#1B1B1B`), a single **`primary` blue (`#005EA2`)** accent, and
-**`primary-darker` (`#162E51`)** dark anchors for title, dividers, and closing
-slides (with white type and an **`accent-cool` (`#00BDE3`)** accent on those
-dark slides). Flat color only (no gradients, shadows, glows, or rounded-corner
+Use the suite's **muted navy palette with Public Sans**: formal, quiet, and
+grid-disciplined — predominantly **white (`#FFFFFF`) and Mist (`#F0F3F4`)**
+content slides with **Navy (`#002436`)** titles and **Charcoal (`#1F2A30`)**
+body type, a single **Steel (`#00537E`)** accent, and **Navy** dark anchors for
+title, dividers, and closing slides (with white type and a muted **`#9CC3D5`**
+accent on those dark slides). No bright or saturated blue anywhere. Flat color only (no gradients, shadows, glows, or rounded-corner
 gimmicks); lead with type hierarchy and whitespace, left-aligned to a grid.
 Typography is **Public Sans** (Public Sans for headings, body, data, and
 small-caps meta labels; Public Sans Light for big titles and large statements;
@@ -403,7 +403,7 @@ an `external` deck, follow whatever brand and co-marketing rules the destination
 requires instead. The mark is a fixed corner element; it does not count as the
 slide's one accent.
 
-**The full USWDS color-token palette (hex values + per-role usage), the status
+**The full color palette (hex values + per-role usage), the status
 colors, and the every-slide aesthetic guardrails live in
 [references/deck-structure.md](references/deck-structure.md) — read it before
 building, and enforce the guardrails again in QA (Step 6).**
@@ -484,9 +484,9 @@ Then re-check the **aesthetic guardrails** (in
 - Is the deck **≤ 15 slides** (or only slightly over for a large study)?
 - Any text running off-slide, clipped, or touching an edge? Any overflow?
 - Does every text/background pair pass AA contrast? No light-slide accent as text
-  on a dark fill, no `warning` yellow as text, no gray-on-gray?
-- One accent per slide (`primary` on light, `accent-cool` on `primary-darker`),
-  light backgrounds dominant, `primary-darker` anchors?
+  on a dark fill, no status color as the only signal, no gray-on-gray?
+- One accent per slide (Steel on light, `#9CC3D5` on Navy), light backgrounds
+  dominant, Navy anchors? No bright blue anywhere?
 - Public Sans throughout (Roboto Mono only for data that needs a monospace);
   images keeping their proportions inside the margins?
 

@@ -99,8 +99,8 @@ standalone quote slides (fold the quote into its evidence slide).
 - **Internal decks keep your organization's logo on every slide** — a small corner
   mark, white on dark slides, dark on light, marking provenance for anyone who
   forwards the file.
-- Theme: the USWDS palette in Public Sans — white content slides,
-  `primary-darker` #162E51 anchors, a single `primary` #005EA2 accent. A team
+- Theme: the muted navy palette in Public Sans — white and Mist content
+  slides, Navy #002436 anchors, a single Steel #00537E accent, no bright blue. A team
   can swap in its own brand palette if it keeps the same discipline.
 
 ## Before release

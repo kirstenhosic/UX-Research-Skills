@@ -11,15 +11,15 @@ Governed by `../SKILL.md`; palette and type come from `DESIGN-SYSTEM.md`.
 | Export | PNG at `--force-device-scale-factor=2` → 2400 × 3000 |
 | Padding | 64px top/bottom, 72px left/right |
 | Font | Public Sans (Google Fonts import, system sans fallback) |
-| Title | 50pt, 700, `primary` `#005EA2`, two lines via `<br>` |
-| Subtitle | 22pt, 400, `base-dark` `#565C65` |
-| Accent rule | 4px, `primary`, full width |
-| Stat tiles | `base-lightest` `#F0F0F0`, 6px `primary` left bar, 40pt `ink` `#1B1B1B` number |
-| Callout | `base-lightest`, 6px `primary` left bar, 25pt text |
-| Section labels | 19pt, 700, `base-dark`, uppercase, `.07em` tracking |
-| Condition rows | 1px `base-lighter` `#DFE1E2` border, 52px `primary` numbered square |
-| Bullets | 10px `primary` squares (`::before`), never round |
-| Footer | 1px `base-lighter` top border, 14pt `base-dark`, `space-between` |
+| Title | 50pt, 700, Navy `#002436`, two lines via `<br>` |
+| Subtitle | 22pt, 400, Steel `#00537E` |
+| Accent rule | 4px, Navy, full width |
+| Stat tiles | Mist `#F0F3F4`, 6px Navy left bar, 40pt Charcoal `#1F2A30` number |
+| Callout | Mist, 6px Navy left bar, 25pt text |
+| Section labels | 19pt, 700, Slate `#5C6670`, uppercase, `.07em` tracking |
+| Condition rows | 1px Rule Gray `#D4D8D9` border, 52px Navy numbered square |
+| Bullets | 10px Navy squares (`::before`), never round |
+| Footer | 1px Rule Gray top border, 14pt Slate, `space-between` |
 
 Card height is fixed. `margin-top: auto` on the footer absorbs slack, so
 moderate copy changes reflow without breaking the layout. If content
@@ -134,37 +134,37 @@ right: Anonymized — no names, accounts, or individual attribution  |  [Month Y
   * { box-sizing: border-box; margin: 0; padding: 0; }
   body { font-family: 'Public Sans', -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif; background: #fff; }
   .card { width: 1200px; height: 1500px; padding: 64px 72px; display: flex; flex-direction: column; }
-  .eyebrow { font-size: 17px; font-weight: 600; color: #565C65; letter-spacing: .06em; text-transform: uppercase; }
-  h1 { font-size: 50px; font-weight: 700; color: #005EA2; line-height: 1.1; margin-top: 16px; }
-  .sub { font-size: 22px; color: #565C65; margin-top: 14px; }
-  .rule { height: 4px; background: #005EA2; margin: 28px 0 36px; }
+  .eyebrow { font-size: 17px; font-weight: 600; color: #5C6670; letter-spacing: .06em; text-transform: uppercase; }
+  h1 { font-size: 50px; font-weight: 700; color: #002436; line-height: 1.1; margin-top: 16px; }
+  .sub { font-size: 22px; color: #00537E; margin-top: 14px; }
+  .rule { height: 4px; background: #002436; margin: 28px 0 36px; }
 
   .stats { display: flex; gap: 20px; }
-  .stat { flex: 1; background: #F0F0F0; border-left: 6px solid #005EA2; padding: 22px 24px; }
-  .stat .n { font-size: 40px; font-weight: 700; color: #1B1B1B; line-height: 1.05; }
-  .stat .l { font-size: 15px; color: #565C65; margin-top: 10px; line-height: 1.35; }
+  .stat { flex: 1; background: #F0F3F4; border-left: 6px solid #002436; padding: 22px 24px; }
+  .stat .n { font-size: 40px; font-weight: 700; color: #1F2A30; line-height: 1.05; }
+  .stat .l { font-size: 15px; color: #5C6670; margin-top: 10px; line-height: 1.35; }
 
-  .headline { background: #F0F0F0; border-left: 6px solid #005EA2; padding: 28px 30px; margin: 36px 0 40px; }
-  .headline .k { font-size: 15px; font-weight: 700; color: #005EA2; text-transform: uppercase; letter-spacing: .06em; }
-  .headline p { font-size: 25px; color: #1B1B1B; line-height: 1.42; margin-top: 12px; }
+  .headline { background: #F0F3F4; border-left: 6px solid #002436; padding: 28px 30px; margin: 36px 0 40px; }
+  .headline .k { font-size: 15px; font-weight: 700; color: #002436; text-transform: uppercase; letter-spacing: .06em; }
+  .headline p { font-size: 25px; color: #1F2A30; line-height: 1.42; margin-top: 12px; }
   .headline b { font-weight: 600; }
 
-  h2 { font-size: 19px; font-weight: 700; color: #565C65; text-transform: uppercase; letter-spacing: .07em; margin-bottom: 22px; }
+  h2 { font-size: 19px; font-weight: 700; color: #5C6670; text-transform: uppercase; letter-spacing: .07em; margin-bottom: 22px; }
 
   .reqs { display: flex; flex-direction: column; gap: 18px; }
-  .req { display: flex; gap: 22px; align-items: flex-start; border: 1px solid #DFE1E2; padding: 22px 24px; }
-  .req .num { flex: 0 0 52px; height: 52px; background: #005EA2; color: #fff; font-size: 24px; font-weight: 700;
+  .req { display: flex; gap: 22px; align-items: flex-start; border: 1px solid #D4D8D9; padding: 22px 24px; }
+  .req .num { flex: 0 0 52px; height: 52px; background: #002436; color: #fff; font-size: 24px; font-weight: 700;
               display: flex; align-items: center; justify-content: center; }
-  .req .t { font-size: 22px; font-weight: 600; color: #1B1B1B; line-height: 1.3; }
-  .req .d { font-size: 16px; color: #565C65; margin-top: 8px; line-height: 1.45; }
+  .req .t { font-size: 22px; font-weight: 600; color: #1F2A30; line-height: 1.3; }
+  .req .d { font-size: 16px; color: #5C6670; margin-top: 8px; line-height: 1.45; }
 
   .next { margin-top: 36px; }
   .next ul { list-style: none; display: flex; flex-direction: column; gap: 12px; margin-top: 6px; }
-  .next li { font-size: 17px; color: #1B1B1B; padding-left: 26px; position: relative; line-height: 1.4; }
-  .next li::before { content: ''; position: absolute; left: 0; top: 8px; width: 10px; height: 10px; background: #005EA2; }
+  .next li { font-size: 17px; color: #1F2A30; padding-left: 26px; position: relative; line-height: 1.4; }
+  .next li::before { content: ''; position: absolute; left: 0; top: 8px; width: 10px; height: 10px; background: #002436; }
 
-  footer { margin-top: auto; border-top: 1px solid #DFE1E2; padding-top: 18px;
-           display: flex; justify-content: space-between; font-size: 14px; color: #565C65; }
+  footer { margin-top: auto; border-top: 1px solid #D4D8D9; padding-top: 18px;
+           display: flex; justify-content: space-between; font-size: 14px; color: #5C6670; }
 </style>
 </head>
 <body>
